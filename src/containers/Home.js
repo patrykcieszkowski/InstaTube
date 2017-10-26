@@ -10,13 +10,13 @@ export class HomeContainer extends React.Component {
     const { screenProps } = this.props
 
     return (
-      <Components.partials.Container>
+      <Components.partials.Container fluid overflowHidden noPadding>
         <Components.partials.Navbar />
-        <Container fluid style={{ position: 'relative' }}>
+        <Components.partials.Container fluid noPadding>
           <Components.Home.Home />
 
           <Sidebar {...this.props} />
-        </Container>
+        </Components.partials.Container>
       </Components.partials.Container>
     )
   }
