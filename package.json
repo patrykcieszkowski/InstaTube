@@ -1,0 +1,48 @@
+{
+  "name": "insta-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject ",
+    "lint": "prettier 'src/**/*.js' 'src/components/**/*.js' '*.js' --write --single-quote --no-semi && standard --fix space-before-function-paren --never",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "aphrodite": "^1.2.5",
+    "bootstrap": "4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-dropzone": "^4.2.1",
+    "react-router-bootstrap": "^0.24.4",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.14",
+    "reactstrap": "next"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "prettier": "^1.7.4",
+    "standard": "^10.0.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote --no-semi",
+      "standard --fix",
+      "space-before-function-paren --never",
+      "git add"
+    ]
+  },
+  "standard": {
+    "globals": [
+      "URL",
+      "fetch",
+      "FormData",
+      "it",
+      "state",
+      "alert"
+    ],
+    "parser": "babel-eslint"
+  }
+}
