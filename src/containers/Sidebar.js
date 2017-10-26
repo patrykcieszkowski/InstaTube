@@ -1,5 +1,4 @@
 import React from 'react'
-import { Container } from 'reactstrap'
 import { Switch, Route, matchPath } from 'react-router-dom'
 
 import Components from '../components'
@@ -22,7 +21,7 @@ const routeList = [
 
 export class SidebarContainer extends React.Component {
   render() {
-    const screenProps = {}
+    // const screenProps = {}
     const match = matchPath(this.props.location.pathname, {
       path: '/nav/(.*)'
     }) || { isExact: false }

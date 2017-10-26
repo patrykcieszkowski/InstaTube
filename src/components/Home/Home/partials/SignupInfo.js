@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import style from '../style'
 
-const SignupInfo = () => ([
+const SignupInfo = () => [
   <Col xs="12" key={0}>
     <h1 className={css(style.signup.h1)}>Why should you register?</h1>
   </Col>,
@@ -13,12 +13,8 @@ const SignupInfo = () => ([
     <ul className={css(style.signup.list)}>
       <li className={css(style.signup.listItem)}>Manage uploads</li>
       <li className={css(style.signup.listItem)}>PPV links</li>
-      <li className={css(style.signup.listItem)}>
-        Link availability 24h
-      </li>
-      <li className={css(style.signup.listItem)}>
-        More config options
-      </li>
+      <li className={css(style.signup.listItem)}>Link availability 24h</li>
+      <li className={css(style.signup.listItem)}>More config options</li>
     </ul>
   </Col>,
   <Col xs="12" key={2}>
@@ -40,6 +36,6 @@ const SignupInfo = () => ([
       </Col>
     </Row>
   </Col>
-])
+]
 
 export default SignupInfo

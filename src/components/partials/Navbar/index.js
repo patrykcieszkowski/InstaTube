@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap'
+import { Collapse, Navbar, Nav, NavItem } from 'reactstrap'
 import { css } from 'aphrodite'
 import { Link } from 'react-router-dom'
 

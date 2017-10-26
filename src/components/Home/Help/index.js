@@ -21,7 +21,9 @@ export class Help extends React.Component {
   }
 
   onBoxClick(index, e) {
-    const newExpandedState = (!this.state.boxes[index]) ? false : !this.state.boxes[index].isExpanded
+    const newExpandedState = !this.state.boxes[index]
+      ? false
+      : !this.state.boxes[index].isExpanded
 
     this.setState({
       ...this.state,

@@ -30,7 +30,7 @@ const buttonStyle = {
     border: `none`
   },
   instagram: {
-    background: `#cd486b`,
+    backgroundColor: `#cd486b`,
     background: `radial-gradient(bottom, #fbad50, #e95950, #cd486b)`,
     border: `none`
   },

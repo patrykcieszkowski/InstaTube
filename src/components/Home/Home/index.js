@@ -1,7 +1,6 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
-import { Link } from 'react-router-dom'
 
 import UploadForm from '../../partials/UploadForm'
 import SignupInfo from './partials/SignupInfo'
