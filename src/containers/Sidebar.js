@@ -7,7 +7,7 @@ import Components from '../components'
 const routeList = [
   { title: 'Help', path: '/nav/help', component: Components.Home.Help },
   { title: 'About us', path: '/nav/about', component: Components.Home.About },
-  { title: 'Login', path: '/nav/login', component: Components.Home.Login }
+  { title: 'Login', path: '/nav/auth', component: Components.Home.Auth }
 ]
 
 export class SidebarContainer extends React.Component {
