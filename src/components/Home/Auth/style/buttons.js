@@ -18,6 +18,13 @@ const buttonStyle = {
     fontSize: `18px`,
     fontWeight: `500`
   },
+  remind: {
+    background: `#e1306c`,
+    border: `2px solid #e1306c`,
+    color: `white`,
+    fontSize: `18px`,
+    fontWeight: `500`
+  },
   facebook: {
     background: `#3b5998`,
     border: `none`
