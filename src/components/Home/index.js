@@ -1,11 +1,11 @@
 import Home from './Home'
-import Login from './Login'
+import Auth from './Auth'
 import Help from './Help'
 import About from './About'
 
 export default {
   Home,
   About,
-  Login,
+  Auth,
   Help
 }
