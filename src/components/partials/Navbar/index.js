@@ -112,7 +112,7 @@ export class NavbarComponent extends React.Component {
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
               <Link
-                to="/nav/login"
+                to="/nav/auth"
                 className={css(
                   style.collapse.link,
                   style.collapse.linkHighlight

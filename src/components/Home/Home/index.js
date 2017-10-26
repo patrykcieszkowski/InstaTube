@@ -35,7 +35,7 @@ export class Home extends React.Component {
           <Col xs="12">
             <Row>
               <Col xs="10">
-                <Link to="/nav/login" className={css(style.signup.signupButton)}>
+                <Link to="/nav/auth" className={css(style.signup.signupButton)}>
                   Sign me up for FREE!
                 </Link>
               </Col>
@@ -44,7 +44,7 @@ export class Home extends React.Component {
               <Col xs="10">
                 <span className={css(style.signup.loginSpan)}>
                   Already got an account?
-                  <Link to="/nav/login" className={css(style.signup.loginLink)}>
+                  <Link to="/nav/auth" className={css(style.signup.loginLink)}>
                     Login!
                   </Link>
                 </span>
