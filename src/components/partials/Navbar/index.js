@@ -28,7 +28,13 @@ export class NavbarComponent extends React.Component {
 
   render() {
     return (
-      <Navbar color="faded" expand="md" className={css(style.navbar.wrapper)}>
+      <Navbar
+        expand="md"
+        className={css(
+          style.navbar.wrapper,
+          this.props.bg ? style.navbar.background : ''
+        )}
+      >
         <button
           type="button"
           className={css(style.button.button)}
