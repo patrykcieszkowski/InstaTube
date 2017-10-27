@@ -43,8 +43,17 @@ const navCollapseStyle = {
   }
 }
 
+const navbarStyle = {
+  wrapper: {
+    padding: `0`
+  },
+  background: {
+    backgroundColor: `white`
+  }
+}
+
 export default {
-  navbar: StyleSheet.create({ wrapper: { padding: `15px 0` } }),
+  navbar: StyleSheet.create(navbarStyle),
   button: StyleSheet.create(buttonStyle),
   collapse: StyleSheet.create(navCollapseStyle)
 }
