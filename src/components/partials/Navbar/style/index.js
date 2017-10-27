@@ -6,8 +6,8 @@ const buttonStyle = {
     border: `none`,
     height: `54px`,
     width: `54px`,
-    margin: `20px 10px`,
-    marginTop: `0`,
+    margin: `15px 10px`,
+    zIndex: 100,
     backgroundColor: `#e1306c`
   },
   icon: {
