@@ -13,7 +13,7 @@ export class SidebarContent extends React.Component {
           <h2 className={css(style.header.h2)}>{this.props.title}</h2>
         </Col>
         <Col className={`d-flex align-content-center justify-content-end`}>
-          <Link to="/">
+          <Link to={this.props.homePath}>
             <i
               className={`la la-close ${css(style.header.closeIcon)}`}
               aria-hidden="true"
