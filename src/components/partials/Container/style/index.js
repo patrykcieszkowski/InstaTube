@@ -8,6 +8,6 @@ export default StyleSheet.create({
     padding: `0px`
   },
   overflowHidden: {
-    overflow: `hidden`
+    // overflowX: `hidden`
   }
 })
