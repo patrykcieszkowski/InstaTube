@@ -5,12 +5,12 @@ import style from './style'
 
 export class SidebarContainer extends React.Component {
   render() {
-    console.log(this.props.children)
     return (
       <div
         className={css(
           style.main.container,
-          this.props.isOpen ? style.main.active : ''
+          this.props.isOpen ? style.main.active : '',
+          this.props.stickToTop ? style.main.stickToTop : ''
         )}
       >
         {this.props.children}
