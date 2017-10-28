@@ -65,7 +65,10 @@ export class NavbarComponent extends React.Component {
         >
           <Nav navbar className="ml-auto">
             <NavItem className={css(style.collapse.item)}>
-              <Link to="/about" className={css(style.collapse.link)}>
+              <Link
+                to="/dashboard/nav/profile"
+                className={css(style.collapse.link)}
+              >
                 Profile
               </Link>
             </NavItem>
@@ -75,7 +78,10 @@ export class NavbarComponent extends React.Component {
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
-              <Link to="/about" className={css(style.collapse.link)}>
+              <Link
+                to="/dashboard/nav/payout"
+                className={css(style.collapse.link)}
+              >
                 Payouts
               </Link>
             </NavItem>
