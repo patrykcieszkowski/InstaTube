@@ -7,18 +7,20 @@ import Sidebar from './Sidebar'
 export class DashboardContiner extends React.Component {
   render() {
     const sidebarRouteList = [
-      { title: 'Settings', path: '/profile', component: Components.Home.Help },
-      { title: 'About us', path: '/about', component: Components.Home.About },
       {
-        title: 'Login',
-        path: '/auth',
-        component: Components.Home.Auth.Auth,
-        exact: true
+        title: 'Profile',
+        path: '/profile',
+        component: Components.Dashboard.Profile
       },
       {
-        title: 'Remind',
-        path: '/nav/auth/remind',
-        component: Components.Home.Auth.Remind
+        title: 'Payout History',
+        path: '/payout',
+        component: Components.Dashboard.Payout
+      },
+      {
+        title: 'Go Premium!',
+        path: '/premium',
+        component: Components.Dashboard.Premium
       }
     ]
 
