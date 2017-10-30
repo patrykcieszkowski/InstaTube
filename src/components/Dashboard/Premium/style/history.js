@@ -17,7 +17,7 @@ export const historyStyle = {
     fontSize: `12px`,
     fontWeight: `100`,
     margin: `10px 0`,
-    color: `#adadad`    
+    color: `#adadad`
   },
   statusSpan: {
     ...textSpan,

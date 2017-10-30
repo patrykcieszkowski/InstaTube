@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap'
 import style from '../style'
 
 export const PaymentHistory = props => [
-  <Row key={0} >
+  <Row key={0}>
     <Col>
       <h4 className={css(style.history.h4)}>history</h4>
     </Col>
