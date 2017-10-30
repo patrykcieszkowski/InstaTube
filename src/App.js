@@ -9,6 +9,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route path="/dashboard" component={Containers.Dashboard} />
+          <Route path="/m/:mediaId" component={Containers.Download} />
           <Route path="/" component={Containers.Home} />
         </Switch>
       </BrowserRouter>
