@@ -9,7 +9,7 @@ export const ContainerComponent = props => (
     className={css(
       style.wrapper,
       props.noPadding ? style.noPadding : '',
-      props.overflowHidden ? style.overflowHidden : ''
+      props.fullHeight ? style.fullHeight : ''
     )}
     fluid={props.fluid}
   >

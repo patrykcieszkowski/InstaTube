@@ -7,7 +7,7 @@ export default StyleSheet.create({
   noPadding: {
     padding: `0px`
   },
-  overflowHidden: {
-    // overflowX: `hidden`
+  fullHeight: {
+    height: `100%`
   }
 })
