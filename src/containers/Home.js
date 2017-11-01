@@ -24,7 +24,7 @@ export class HomeContainer extends React.Component {
     ]
 
     return (
-      <Components.partials.Container fluid overflowHidden noPadding>
+      <Components.partials.Container fluid noPadding fullHeight>
         <Components.partials.Navbar />
         <Components.partials.Container fluid noPadding>
           <Components.Home.Home />
