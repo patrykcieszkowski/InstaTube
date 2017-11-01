@@ -22,7 +22,8 @@ export const viewStyleSpan = {
 const viewsStyle = {
   box: {},
   inputWrapper: {
-    paddingRight: `5px`
+    paddingRight: `5px`,
+    paddingLeft: `8px`
   },
   input: {
     background: `#edf2f6`,

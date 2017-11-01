@@ -15,6 +15,9 @@ export const formStyle = {
     border: `none`,
     padding: `8px 10px`,
     fontSize: `18px`
+  },
+  row: {
+    margin: `0 -8px`
   }
 }
 
