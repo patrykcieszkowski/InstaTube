@@ -11,7 +11,12 @@ export class UploadForm extends React.Component {
     super()
     this.state = {
       files: [],
-      viewNumberCheckbox: false
+      viewNumberCheckbox: false,
+      validity: {
+        hour: 1,
+        minute: 0
+      },
+      displayTime: 1
     }
   }
 
@@ -26,6 +31,23 @@ export class UploadForm extends React.Component {
     this.setState({
       ...this.state,
       viewNumberCheckbox: !this.state.viewNumberCheckbox
+    })
+  }
+
+  onValidityChange(type, e) {
+    this.setState({
+      ...this.state,
+      validity: {
+        ...this.state.validity,
+        [type]: type === 'hour' ? e.target.value : e.target.value * 15
+      }
+    })
+  }
+
+  onDisplayTimeChange(e) {
+    this.setState({
+      ...this.state,
+      displayTime: e.target.value
     })
   }
 
