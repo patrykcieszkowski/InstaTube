@@ -29,15 +29,14 @@ export class NavbarComponent extends React.Component {
   render() {
     return (
       <Navbar
-        expand="md"
-        className={css(
+        className={`${css(
           style.navbar.wrapper,
           this.props.bg ? style.navbar.background : ''
-        )}
+        )} flex-lg-row-reverse flex-lg-nowrap justify-content-lg-center`}
       >
         <button
           type="button"
-          className={css(style.button.button)}
+          className={`${css(style.button.button)} d-lg-none`}
           onClick={this.toggleMenu.bind(this, 'main')}
         >
           <i
@@ -61,7 +60,7 @@ export class NavbarComponent extends React.Component {
         <Collapse
           isOpen={this.state.profileOpen}
           navbar
-          className={css(style.collapse.wrapper)}
+          className={`${css(style.collapse.wrapper)} d-lg-none`}
         >
           <Nav navbar className="ml-auto">
             <NavItem className={css(style.collapse.item)}>
@@ -93,10 +92,10 @@ export class NavbarComponent extends React.Component {
         <Collapse
           isOpen={this.state.mainOpen}
           navbar
-          className={css(style.collapse.wrapper)}
+          className={`${css(style.collapse.wrapper, style.collapse.main)}`}
         >
-          <Nav className="ml-auto" navbar>
-            <NavItem className={css(style.collapse.item)}>
+          <Nav className={`${css(style.collapse.mainList)} ml-auto d-lg-flex flex-lg-row justify-content-lg-around`} navbar>
+            <NavItem className={css(style.collapse.item, style.collapse.mainListItem)}>
               <Link
                 to="/nav/help"
                 className={css(style.collapse.link)}
@@ -105,7 +104,7 @@ export class NavbarComponent extends React.Component {
                 Help
               </Link>
             </NavItem>
-            <NavItem className={css(style.collapse.item)}>
+            <NavItem className={css(style.collapse.item, style.collapse.mainListItem)}>
               <Link
                 to="/nav/about"
                 className={css(style.collapse.link)}
@@ -114,7 +113,7 @@ export class NavbarComponent extends React.Component {
                 About us
               </Link>
             </NavItem>
-            <NavItem className={css(style.collapse.item)}>
+            <NavItem className={css(style.collapse.item, style.collapse.mainListItem)}>
               <Link
                 to="/nav/auth"
                 className={css(

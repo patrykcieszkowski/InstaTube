@@ -2,6 +2,7 @@ import { StyleSheet } from 'aphrodite'
 
 const buttonStyle = {
   button: {
+    flexShrink: 0,
     borderRadius: `50%`,
     border: `none`,
     height: `54px`,
@@ -25,7 +26,25 @@ const navCollapseStyle = {
       width: `100%`,
       zIndex: `-1`,
       boxShadow: `0px 4px 28px 1px rgba(0,0,0,0.75)`
+    },
+  },
+  main: {
+    '@media only screen and (min-width : 1200px)': {
+      display: `flex`,
+      background: `none`,
+      ':after': {
+        display: `none`
+      }
     }
+  },
+  mainList: {
+    maxWidth: `500px`,
+    width: `100%` 
+  },
+  mainListItem: {
+    '@media only screen and (min-width : 1200px)': {
+      border: `none`
+    }      
   },
   item: {
     textAlign: `center`,
@@ -36,7 +55,7 @@ const navCollapseStyle = {
   },
   link: {
     color: `#3C2557`,
-    fontWeight: 800
+    fontWeight: 600
   },
   linkHighlight: {
     color: `#4d5bd8`
@@ -45,7 +64,10 @@ const navCollapseStyle = {
 
 const navbarStyle = {
   wrapper: {
-    padding: `0`
+    padding: `0`,
+    '@media only screen and (min-width : 1200px)': {
+      padding: `0 20px`
+    }
   },
   background: {
     backgroundColor: `white`
