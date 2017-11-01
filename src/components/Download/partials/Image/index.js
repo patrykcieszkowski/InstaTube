@@ -43,7 +43,7 @@ export class Image extends React.Component {
       fullscreen: {
         ...this.state.fullscreen,
         show: true,
-        display: true        
+        display: true
       }
     })
   }
@@ -83,13 +83,17 @@ export class Image extends React.Component {
             )}
           />
         </Col>
-          <a
-            href="#enlarge"
-            onClick={this.onEnlargeClick.bind(this)}
-            className={css(style.image.enlargeButton)}
-          >
-            <i className={`la la-search-plus`} aria-hidden="true" title="enlarge" />
-          </a>
+        <a
+          href="#enlarge"
+          onClick={this.onEnlargeClick.bind(this)}
+          className={css(style.image.enlargeButton)}
+        >
+          <i
+            className={`la la-search-plus`}
+            aria-hidden="true"
+            title="enlarge"
+          />
+        </a>
       </Row>,
       <Row
         className={`d-flex justify-content-centern align-items-center ${css(
@@ -99,12 +103,7 @@ export class Image extends React.Component {
         )}`}
         key={1}
       >
-        <Col
-          className={css(
-            style.fullscreen.box,
-
-          )}
-        >
+        <Col className={css(style.fullscreen.box)}>
           {this.renderTimer()}
           <img
             src="https://twistedsifter.files.wordpress.com/2017/03/point-reyes-shipwreck.jpg"

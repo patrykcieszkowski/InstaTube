@@ -38,8 +38,7 @@ export const fullscreenStyle = {
     fontSize: `50px`,
     textAlign: `center`,
     color: `white`,
-    textDecoration: `none`,
-
+    textDecoration: `none`
   }
 }
 

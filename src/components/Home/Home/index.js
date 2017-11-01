@@ -11,14 +11,20 @@ export class Home extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Row className={css(style.grid.row, style.upload.wrapper)}>
-          <Col className={css(style.upload.box)}>
-            <UploadForm />
+        <Row>
+          <Col xs='12' md='4'>
+            <Row>
+              <Col className={css(style.upload.box)}>
+                <UploadForm />
+              </Col>
+            </Row>  
           </Col>
-        </Row>
-        <Row className={css(style.grid.row, style.signup.box)}>
-          <SignupInfo />
-        </Row>
+          <Col  xs='12' md='4' className={css(style.signup.box)}>
+            <Row>          
+              <SignupInfo />
+            </Row>
+          </Col>
+        </Row>          
       </Container>
     )
   }

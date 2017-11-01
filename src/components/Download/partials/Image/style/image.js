@@ -1,7 +1,5 @@
 export const imageStyle = {
-  wrapper: {
-
-  },
+  wrapper: {},
   box: {
     position: `relative`
   },
@@ -16,7 +14,7 @@ export const imageStyle = {
     fontSize: `50px`,
     textAlign: `center`,
     color: `white`,
-    textDecoration: `none`,
+    textDecoration: `none`
   },
   image: {
     width: `100%`,
