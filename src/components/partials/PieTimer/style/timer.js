@@ -14,7 +14,7 @@ const timerStyle = {
     }
   },
   overlayWrapper: {
-    color: `white`
+    color: `#dd316d`
   }
 }
 

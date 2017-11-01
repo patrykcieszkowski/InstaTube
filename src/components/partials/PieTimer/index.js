@@ -13,27 +13,46 @@ export class PieTimer extends React.Component {
     state.stroke = props.stroke || 12
     state.radius = state.size / 2 - state.stroke / 2
     state.dashArray = state.radius * Math.PI * 2
+
     //time
-    state.time = {
-      timeout: props.timeout,
-      passed: 0
+    if (!props.timerInit) {
+      const timeoutDate = new Date()
+      timeoutDate.setSeconds(timeoutDate.getSeconds() + props.timeout)
+      state.time = {
+        timeoutDate: timeoutDate,
+        timeout: props.timeout,
+        passed: props.passedTime || 0
+      }
+    } else {
+      state.time = props.timerInit
     }
+
     this.state = state
   }
 
   componentWillMount() {
-    const _self = this
     const interval = setInterval(() => {
-      _self.setState({
-        ..._self.state,
+      const passedTime =
+        this.state.time.timeout -
+        Math.floor((this.state.time.timeoutDate.getTime() - Date.now()) / 1000)
+
+      this.setState({
+        ...this.state,
         time: {
-          ..._self.state.time,
-          passed: _self.state.time.passed + 1
+          ...this.state.time,
+          passed: passedTime
         }
       })
 
-      if (this.state.time.passed / this.state.time.timeout * 100 >= 100) {
-        this.props.onComplete()
+      if (this.props.onProgress) {
+        this.props.onProgress(this.state.time) // pass timeout date
+      }
+
+      if (passedTime / this.state.time.timeout * 100 >= 100) {
+        if (this.props.onComplete) {
+          this.props.onComplete()
+        }
+
         clearInterval(interval)
       }
     }, 1000)
@@ -67,6 +86,7 @@ export class PieTimer extends React.Component {
               position={this.state.position}
               stroke={this.state.stroke}
               color={`#e2e6ea`}
+              fill={this.props.fill}
             />
             <Circle
               radius={this.state.radius}
@@ -75,11 +95,14 @@ export class PieTimer extends React.Component {
               color={`#dd316d`}
               dashArray={this.state.dashArray}
               dashOffset={percentage * this.state.dashArray}
-              fill={this.props.fill}
             />
           </g>
         </svg>
-        <Timer radius={this.state.radius} time={this.state.time} />
+        <Timer
+          radius={this.state.radius}
+          time={this.state.time}
+          overlay={this.props.overlay}
+        />
       </div>
     )
   }

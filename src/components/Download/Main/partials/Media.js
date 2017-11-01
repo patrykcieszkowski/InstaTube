@@ -2,17 +2,28 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
 
+import Video from '../../partials/VideoPlayer'
+import Audio from '../../partials/AudioPlayer'
+import Image from '../../partials/Image'
+
 import style from '../style'
 
 export class Media extends React.Component {
+  componentDidMount() {
+    console.log(this.props)
+  }
+
   render() {
     return (
       <Row className={css(style.media.wrapper)}>
-        <Col className={css(style.media.box)}>
-          <img
-            src="https://twistedsifter.files.wordpress.com/2017/03/point-reyes-shipwreck.jpg"
-            className={css(style.media.image)}
-          />
+        <Col xs="12" className={css(style.media.box)}>
+          <h2 className={css(style.media.titleH2)}>How to nothing</h2>
+        </Col>
+        <Col className={css(style.media.box, style.media.imageWrapper)}>
+          {/* <Video /> */}
+          {/* <Audio /> */}
+
+          <Image timerInit={this.props.timer} />
         </Col>
         <Col xs="12" className={css(style.media.box)}>
           <Row className={css(style.media.descRow)}>
@@ -22,7 +33,7 @@ export class Media extends React.Component {
           </Row>
           <Row className={css(style.media.descRow)}>
             <Col className={css(style.media.descParagraphWrapper)}>
-              <p className={css(style.media.descParagraph)}>
+              <p className={css(style.media.descParagraph, style.media.blur)}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
                 sit amet viverra mauris. Proin augue lacus, sagittis a ex sit
                 amet, consequat blandit dui. Nam sit amet imperdiet ipsum.

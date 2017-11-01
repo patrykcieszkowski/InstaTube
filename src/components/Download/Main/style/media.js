@@ -9,9 +9,19 @@ export const mediaStyle = {
   box: {
     padding: `5px 5px`
   },
-  image: {
+  imageWrapper: {
     width: `100%`,
-    borderRadius: `5px`
+    borderRadius: `5px`,
+    overflow: `hidden`,
+    margin: `0 5px`
+  },
+  image: {
+    width: `100%`
+  },
+  titleH2: {
+    fontSize: `28px`,
+    fontWeight: `600`,
+    textAlign: `center`
   },
   descRow: {
     margin: `-5px`
@@ -28,6 +38,9 @@ export const mediaStyle = {
   },
   descParagraph: {
     fontSize: `14px`
+  },
+  blur: {
+    filter: `blur(3px)`
   }
 }
 
