@@ -39,7 +39,7 @@ export class UploadForm extends React.Component {
               style.dropzone.wrapper
             )} d-flex align-items-center justify-content-center`}
           >
-            <Row>
+            <Row className={css(style.form.row)}>
               <Col className="justify-content-center">
                 <button type="button" className={css(style.dropzone.button)}>
                   <i
@@ -50,12 +50,12 @@ export class UploadForm extends React.Component {
                 </button>
               </Col>
               <Col className="d-flex flex-column justify-content-center">
-                <Row>
+                <Row className={css(style.form.row)}>
                   <span className={css(style.dropzone.titleSpan)}>
                     Add your file
                   </span>
                 </Row>
-                <Row>
+                <Row className={css(style.form.row)}>
                   <span className={css(style.dropzone.descSpan)}>
                     Maximum{' '}
                     <span className={css(style.dropzone.boldSpan)}>
@@ -67,11 +67,27 @@ export class UploadForm extends React.Component {
             </Row>
           </Dropzone>
         </FormGroup>
+        <FormGroup className={css(style.form.group)}>
+          <Row className={css(style.errors.fileErrorWrapper)}>
+            <Col className={css(style.errors.fileErrorBox)} xs='10'>
+              <span className={css(style.errors.fileErrorSpan)}>File is too large</span>
+            </Col>
+            <Col>
+              <span className={css(style.errors.fileErrorCloseButton)}>
+                <i
+                  className={`la la-close ${css(style.errors.fileErrorCloseIcon)}`}
+                  aria-hidden="true"
+                  title="close"
+                />
+              </span>
+            </Col>
+          </Row>
+        </FormGroup>
         <FormGroup className={css(style.form.group, style.message.box)}>
           <Input placeholder="Message" className={css(style.message.input)} />
         </FormGroup>
-        <FormGroup className={css(style.links.box)}>
-          <Row>
+        <FormGroup className={css(style.form.group, style.links.box)}>
+          <Row className={css(style.form.row)}>
             <Col
               xs="7"
               className={css(
@@ -92,10 +108,71 @@ export class UploadForm extends React.Component {
             </Col>
           </Row>
         </FormGroup>
-        <FormGroup />
-
-        <FormGroup className={css(style.views.box)}>
-          <Row>
+        <FormGroup className={css(style.form.group)}>
+          <Row className={css(style.form.row)}>
+            <Col xs="12">
+              <h4 className={css(style.sliders.h4)}>Display time</h4>
+            </Col>
+          </Row>
+          <Row className={css(style.form.row)}>
+            <Col xs="10" className={css(style.sliders.wrapper)}>
+              <input
+                type="range"
+                min="1"
+                max="100"
+                value={this.state.displayTime}
+                onChange={this.onDisplayTimeChange.bind(this)}
+                className={css(style.sliders.slider)}
+              />
+            </Col>
+            <Col xs="2" className={css(style.sliders.labelWrapper)}>
+              <span className={css(style.sliders.label)}>
+                {this.state.displayTime}h
+              </span>
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup className={css(style.form.group)}>
+          <Row className={css(style.form.row)}>
+            <Col xs="12">
+              <h4 className={css(style.sliders.h4)} >Validity period</h4>
+            </Col>
+          </Row>
+          <Row className={css(style.form.row)}>
+            <Col xs="5" className={css(style.sliders.wrapper)}>
+              <input
+                type="range"
+                min="1"
+                max="100"
+                value={this.state.validity.hour}
+                onChange={this.onValidityChange.bind(this, 'hour')}
+                className={css(style.sliders.slider)}
+              />
+            </Col>
+            <Col xs="1" className={css(style.sliders.labelWrapper)}>
+              <span className={css(style.sliders.label)}>
+                {this.state.validity.hour}h
+              </span>
+            </Col>
+            <Col xs="4" className={css(style.sliders.wrapper)}>
+              <input
+                type="range"
+                min="0"
+                max="4"
+                value={this.state.validity.minute / 15}
+                onChange={this.onValidityChange.bind(this, 'minute')}
+                className={css(style.sliders.slider)}
+              />
+            </Col>
+            <Col xs="2" className={css(style.sliders.labelWrapper)}>
+              <span className={css(style.sliders.label)}>
+                {this.state.validity.minute}m
+              </span>
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup className={css(style.form.group, style.views.box)}>
+          <Row className={css(style.form.row)}>
             <Col xs="7" className={css(style.views.inputWrapper)}>
               <Input
                 type="number"
