@@ -1,30 +1,31 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Container, Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 
+import Container from '../../partials/Container'
 import UploadForm from '../../partials/UploadForm'
-import SignupInfo from './partials/SignupInfo'
+import SignupInfo from '../partials/SignupInfo'
 
 import style from './style'
 
 export class Home extends React.Component {
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col xs='12' md='4'>
+      <Container fluid fullHeight className={`d-md-flex align-items-md-center`}>
+        <Row className={css(style.grid.mainRow)}>
+          <Col xs="12" lg="5" xl="4">
             <Row>
               <Col className={css(style.upload.box)}>
                 <UploadForm />
               </Col>
-            </Row>  
+            </Row>
           </Col>
-          <Col  xs='12' md='4' className={css(style.signup.box)}>
-            <Row>          
+          <Col xs="12" lg="5" xl="4" className={css(style.signup.box)}>
+            <Row>
               <SignupInfo />
             </Row>
           </Col>
-        </Row>          
+        </Row>
       </Container>
     )
   }

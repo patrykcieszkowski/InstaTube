@@ -91,13 +91,17 @@ export class UploadForm extends React.Component {
         </FormGroup>
         <FormGroup className={css(style.form.group)}>
           <Row className={css(style.errors.fileErrorWrapper)}>
-            <Col className={css(style.errors.fileErrorBox)} xs='10'>
-              <span className={css(style.errors.fileErrorSpan)}>File is too large</span>
+            <Col className={css(style.errors.fileErrorBox)} xs="10">
+              <span className={css(style.errors.fileErrorSpan)}>
+                File is too large
+              </span>
             </Col>
             <Col>
               <span className={css(style.errors.fileErrorCloseButton)}>
                 <i
-                  className={`la la-close ${css(style.errors.fileErrorCloseIcon)}`}
+                  className={`la la-close ${css(
+                    style.errors.fileErrorCloseIcon
+                  )}`}
                   aria-hidden="true"
                   title="close"
                 />
@@ -157,7 +161,7 @@ export class UploadForm extends React.Component {
         <FormGroup className={css(style.form.group)}>
           <Row className={css(style.form.row)}>
             <Col xs="12">
-              <h4 className={css(style.sliders.h4)} >Validity period</h4>
+              <h4 className={css(style.sliders.h4)}>Validity period</h4>
             </Col>
           </Row>
           <Row className={css(style.form.row)}>

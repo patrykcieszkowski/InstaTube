@@ -94,8 +94,15 @@ export class NavbarComponent extends React.Component {
           navbar
           className={`${css(style.collapse.wrapper, style.collapse.main)}`}
         >
-          <Nav className={`${css(style.collapse.mainList)} ml-auto d-lg-flex flex-lg-row justify-content-lg-around`} navbar>
-            <NavItem className={css(style.collapse.item, style.collapse.mainListItem)}>
+          <Nav
+            className={`${css(
+              style.collapse.mainList
+            )} ml-auto d-lg-flex flex-lg-row justify-content-lg-around`}
+            navbar
+          >
+            <NavItem
+              className={css(style.collapse.item, style.collapse.mainListItem)}
+            >
               <Link
                 to="/nav/help"
                 className={css(style.collapse.link)}
@@ -104,7 +111,9 @@ export class NavbarComponent extends React.Component {
                 Help
               </Link>
             </NavItem>
-            <NavItem className={css(style.collapse.item, style.collapse.mainListItem)}>
+            <NavItem
+              className={css(style.collapse.item, style.collapse.mainListItem)}
+            >
               <Link
                 to="/nav/about"
                 className={css(style.collapse.link)}
@@ -113,7 +122,9 @@ export class NavbarComponent extends React.Component {
                 About us
               </Link>
             </NavItem>
-            <NavItem className={css(style.collapse.item, style.collapse.mainListItem)}>
+            <NavItem
+              className={css(style.collapse.item, style.collapse.mainListItem)}
+            >
               <Link
                 to="/nav/auth"
                 className={css(

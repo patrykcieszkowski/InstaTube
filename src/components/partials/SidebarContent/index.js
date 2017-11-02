@@ -9,7 +9,8 @@ export class SidebarContent extends React.Component {
   render() {
     return [
       <Row key={1}>
-        <Col xs="8">
+        <Col xl="5" className={`d-none d-xl-block`} />
+        <Col xs="8" xl="5">
           <h2 className={css(style.header.h2)}>{this.props.title}</h2>
         </Col>
         <Col className={`d-flex align-content-center justify-content-end`}>
@@ -22,7 +23,9 @@ export class SidebarContent extends React.Component {
           </Link>
         </Col>
       </Row>,
-      <Row key={2}>{this.props.children}</Row>
+      <Row key={2} className={css(style.content.wrapper)}>
+        {this.props.children}
+      </Row>
     ]
   }
 }

@@ -26,11 +26,15 @@ export class HomeContainer extends React.Component {
     return (
       <Components.partials.Container fluid noPadding fullHeight>
         <Components.partials.Navbar />
-        <Components.partials.Container fluid noPadding>
+        <Components.partials.Container fluid noPadding fullHeight>
           <Components.Home.Home />
-
-          <Sidebar {...this.props} routeList={sidebarRouteList} />
         </Components.partials.Container>
+        <Sidebar
+          {...this.props}
+          routeList={sidebarRouteList}
+          stickToTopXLG
+          fullHeight
+        />
       </Components.partials.Container>
     )
   }

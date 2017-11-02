@@ -2,6 +2,9 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
 
+import { Scrollbars } from 'react-custom-scrollbars'
+
+import SignupInfo from '../partials/SignupInfo'
 import style from './style'
 
 const aboutUsList = [
@@ -31,16 +34,30 @@ export class About extends React.Component {
   render() {
     return (
       <Container fluid>
-        {aboutUsList.map((item, index) => (
-          <Row>
-            <Col xs="12" className={css(style.header)}>
-              <h3 className={css(style.h3)}>{item.name}</h3>
-            </Col>
-            <Col xs="12">
-              <p className={css(style.p)}>{item.body}</p>
-            </Col>
-          </Row>
-        ))}
+        <Row className={css(style.wrapper)}>
+          <Col xl="5" className={`d-none d-xl-flex align-items-center`}>
+            <Row className={``}>
+              <SignupInfo />
+            </Row>
+          </Col>
+          <Col>
+            <Scrollbars
+              style={{ width: '100%', height: `100%` }}
+              renderView={props => <Col {...props} />}
+            >
+              {aboutUsList.map((item, index) => (
+                <Row>
+                  <Col xs="12" className={css(style.header)}>
+                    <h3 className={css(style.h3)}>{item.name}</h3>
+                  </Col>
+                  <Col xs="12">
+                    <p className={css(style.p)}>{item.body}</p>
+                  </Col>
+                </Row>
+              ))}
+            </Scrollbars>
+          </Col>
+        </Row>
       </Container>
     )
   }

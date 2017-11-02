@@ -1,9 +1,16 @@
 export const boxStyle = {
+  wrapper: {
+    padding: 0
+  },
+  row: {
+    margin: `0 5px`
+  },
   box: {
     border: `1px solid #e6eaee`,
     borderRadius: `5px`,
     paddingTop: `20px`,
-    paddingBottom: `20px`
+    paddingBottom: `20px`,
+    margin: `5px`
   },
   hiddenBox: {
     background: `#e6eaee`

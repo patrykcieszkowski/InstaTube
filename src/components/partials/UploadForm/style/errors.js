@@ -4,14 +4,14 @@ export const errorStyle = {
     padding: `8px 15px`,
     background: `#f02e30`,
     borderRadius: `5px`,
-    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`    
+    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`
   },
   fileErrorBox: {
     padding: 0
   },
   fileErrorSpan: {
     color: `white`,
-    fontSize: `14px`,
+    fontSize: `14px`
   },
   fileErrorCloseButton: {
     position: `absolute`,

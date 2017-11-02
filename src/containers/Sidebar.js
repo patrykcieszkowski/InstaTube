@@ -14,6 +14,8 @@ export class SidebarContainer extends React.Component {
       <Components.partials.SidebarContainer
         isOpen={match.isExact}
         stickToTop={this.props.stickToTop}
+        stickToTopXLG={this.props.stickToTopXLG}
+        fullHeight={this.props.fullHeight}
       >
         <Switch>
           {this.props.routeList.map((route, index) => (

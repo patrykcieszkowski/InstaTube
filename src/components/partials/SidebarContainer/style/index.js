@@ -1,9 +1,9 @@
 import { StyleSheet } from 'aphrodite'
 
 import main from './main'
-// import header from './header'
+import nav from './nav'
 
 export default {
-  main: StyleSheet.create(main)
-  // header: StyleSheet.create(header)
+  main: StyleSheet.create(main),
+  nav: StyleSheet.create(nav)
 }

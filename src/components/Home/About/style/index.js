@@ -1,6 +1,9 @@
 import { StyleSheet } from 'aphrodite'
 
 const style = {
+  wrapper: {
+    height: `100%`
+  },
   h3: {
     color: `#3f295a`,
     fontSize: `18px`,

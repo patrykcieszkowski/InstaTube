@@ -8,15 +8,30 @@ export const mainStyle = {
     width: `0`,
     minHeight: `100%`,
     right: `0`,
-    transition: `1s`
+    transition: `1s`,
+    marginTop: `95px`
   },
   active: {
     padding: `20px`,
-    width: `calc(100% - 15px)`
+    width: `calc(100% - 15px)`,
+    '@media only screen and (min-width : 1200px)': {
+      width: `calc(66.6666667% - 20px)`
+    }
   },
   stickToTop: {
     top: `0px`,
-    paddingTop: `80px`
+    paddingTop: `95px`,
+    marginTop: `0`
+  },
+  'xlg-stickToTop': {
+    '@media only screen and (min-width : 1200px)': {
+      marginTop: `0`,
+      top: `0px`,
+      paddingTop: `105px`
+    }
+  },
+  fullHeight: {
+    height: `100%`
   }
 }
 

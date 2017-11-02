@@ -9,12 +9,12 @@ const HelpBox = props => (
     xs="12"
     className={css(
       style.box.box,
-      props.state.isExpanded ? style.box.hiddenBox : ''
+      !props.state.isExpanded ? style.box.hiddenBox : ''
     )}
     onClick={props.onClick}
   >
     <Row className={`align-items-center ${css(style.box.header)}`}>
-      <Col xs="1">{HelpDeskIcon(props.state.isExpanded)}</Col>
+      <Col xs="1">{HelpDeskIcon(!props.state.isExpanded)}</Col>
       <Col>
         <span className={css(style.box.title)}>{props.title}</span>
       </Col>
@@ -23,7 +23,7 @@ const HelpBox = props => (
       className={css(
         style.box.row,
         style.box.content,
-        props.state.isExpanded ? style.box.hiddenContent : ''
+        !props.state.isExpanded ? style.box.hiddenContent : ''
       )}
     >
       <Col xs="1" />
