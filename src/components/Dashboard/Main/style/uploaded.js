@@ -8,7 +8,7 @@ export const uploadedStyle = {
     margin: `3px 0`,
     padding: `5px`,
     '@media (max-width: 1199px)': {
-      background: `white`,
+      background: `white`
     },
     '@media (min-width: 1200px)': {
       height: `50px`,
