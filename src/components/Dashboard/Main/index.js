@@ -8,12 +8,15 @@ import UploadForm from '../../partials/UploadForm'
 import Container from '../../partials/Container'
 
 import Header from './partials/Header'
-import PaymentsList from './partials/PaymentsList'
+import Payments from './partials/Payments'
+import PaymentsListTitles from './partials/Payments/partials/titlesRow'
+
 import Uploaded from './partials/Uploaded'
 import UploadedListTitles from './partials/Uploaded/partials/titlesRow'
 import style from './style'
 
 const uploadFilesList = require('../../../json/dashboard-upload-files.json')
+const paymentList = require('../../../json/dashboard-payment-history.json')
 
 export class Main extends React.Component {
   render() {
@@ -61,9 +64,12 @@ export class Main extends React.Component {
             <Col xs="12">
               <h3 className={css(style.shared.h3)}>Payment history</h3>
             </Col>
+            <Col xs="12" className={`d-none d-xl-block`}>
+              <PaymentsListTitles />
+            </Col>
             <Col xs="12" className={css(style.payments.content)}>
-              <ScrollArea style={{ width: '100%', height: `200px` }}>
-                <PaymentsList />
+              <ScrollArea style={{ width: '100%', height: `382px` }}>
+                <Payments items={paymentList} />
               </ScrollArea>
             </Col>
           </Col>
