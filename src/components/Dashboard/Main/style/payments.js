@@ -15,7 +15,7 @@ export const paymentStyle = {
     fontWeight: `100`
   },
   text: {
-    fontSize: `16px`,
+    fontSize: `14px`,
     textAlign: `center`
   },
   idSpan: {
