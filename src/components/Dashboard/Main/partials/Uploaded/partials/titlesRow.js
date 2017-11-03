@@ -7,20 +7,20 @@ import style from '../../../style'
 export const UploadedListTitles = props => (
   <Row>
     <Col xl="1" />
+    <Col xl="">
+      <span className={css(style.uploaded.titleBlockSpan)}>Name</span>
+    </Col>
+    <Col xl="">
+      <span className={css(style.uploaded.titleBlockSpan)}>Views</span>
+    </Col>
+    <Col xl="">
+      <span className={css(style.uploaded.titleBlockSpan)}>Price</span>
+    </Col>
+    <Col xl="">
+      <span className={css(style.uploaded.titleBlockSpan)}>Earn</span>
+    </Col>
     <Col xl="3">
-      <span className={css(style.uploaded.titleSpan)}>Name</span>
-    </Col>
-    <Col xl="">
-      <span className={css(style.uploaded.titleSpan)}>Views</span>
-    </Col>
-    <Col xl="">
-      <span className={css(style.uploaded.titleSpan)}>Price</span>
-    </Col>
-    <Col xl="">
-      <span className={css(style.uploaded.titleSpan)}>Earn</span>
-    </Col>
-    <Col xl="3">
-      <span className={css(style.uploaded.titleSpan)}>Action/Expire</span>
+      <span className={css(style.uploaded.titleBlockSpan)}>Action/Expire</span>
     </Col>
   </Row>
 )
