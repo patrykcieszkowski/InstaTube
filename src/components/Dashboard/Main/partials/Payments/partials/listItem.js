@@ -1,16 +1,10 @@
 import React from 'react'
-import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
+import { css } from 'aphrodite'
 
-import style from '../style'
+import style from '../../../style'
 
-export const PaymentsList = () => [
-  <PaymentsListItem key={0} />,
-  <PaymentsListItem key={1} />,
-  <PaymentsListItem key={2} />
-]
-
-export const PaymentsListItem = () => (
+export const PaymentsListItem = props => (
   <Row className={css(style.payments.box)}>
     <Col xs="2" className={`d-flex justify-content-center align-items-center`}>
       <span
@@ -20,7 +14,7 @@ export const PaymentsListItem = () => (
           style.payments.idSpan
         )}
       >
-        1142
+        {props.item.id}
       </span>
     </Col>
     <Col xs="4" className={`d-flex justify-content-center align-items-center`}>
@@ -31,7 +25,7 @@ export const PaymentsListItem = () => (
           style.payments.titleSpan
         )}
       >
-        Lorem ipsum sasa
+        {props.item.title}
       </span>
     </Col>
     <Col xs="2" className={`d-flex justify-content-center align-items-center`}>
@@ -42,7 +36,7 @@ export const PaymentsListItem = () => (
           style.payments.priceSpan
         )}
       >
-        $5.00
+        ${props.item.total}
       </span>
     </Col>
     <Col xs="4" className={`d-flex justify-content-center align-items-center`}>
@@ -53,10 +47,10 @@ export const PaymentsListItem = () => (
           style.payments.dateSpan
         )}
       >
-        23-12-17 10:45:57
+        {props.item.date}
       </span>
     </Col>
   </Row>
 )
 
-export default PaymentsList
+export default PaymentsListItem
