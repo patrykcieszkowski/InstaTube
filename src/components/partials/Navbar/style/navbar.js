@@ -12,6 +12,19 @@ export const navbarStyle = {
   },
   background: {
     backgroundColor: `white`
+  },
+  backgroundBlock: {
+    position: `absolute`,
+    display: `block`,
+    top: 0,
+    left: 0,
+    height: `85px`,
+    width: `100%`,
+    backgroundColor: `white`
+  },
+  userButtonBox: {
+    margin: `15px 10px`,
+    position: `relative`
   }
 }
 
