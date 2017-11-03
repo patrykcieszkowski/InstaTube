@@ -35,6 +35,7 @@ export class DashboardContiner extends React.Component {
           routeList={sidebarRouteList}
           homePath={`/dashboard`}
           stickToTop
+          md
         />
       </Components.partials.Container>
     )
