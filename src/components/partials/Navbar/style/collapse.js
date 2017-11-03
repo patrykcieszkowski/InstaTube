@@ -9,6 +9,30 @@ export const collapseStyle = {
       boxShadow: `0px 4px 28px 1px rgba(0,0,0,0.75)`
     }
   },
+  userCollapseBox: {
+    top: `30px`,
+    position: `absolute`,
+    width: `100%`,
+    maxHeight: `0px`,
+    overflow: `hidden`,
+    borderRadius: `0 0 6px 6px`,
+    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`
+  },
+  userCollapseBoxActive: {
+    maxHeight: `300px`
+  },
+  userCollapseWrapper: {
+    paddingTop: `30px`,
+    background: `#f2f6f7`,
+    ':after': {
+      display: `none`
+    }
+  },
+  collapseList: {
+    listStyleType: `none`,
+    padding: 0,
+    margin: 0
+  },
   main: {
     '@media only screen and (min-width : 992px)': {
       display: `flex`,
@@ -41,6 +65,9 @@ export const collapseStyle = {
   },
   link: {
     color: `#3C2557`,
+    display: `block`,
+    width: `100%`,
+    textAlign: `center`,
     fontWeight: 600
   },
   linkHighlight: {

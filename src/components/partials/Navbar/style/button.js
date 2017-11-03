@@ -1,5 +1,6 @@
 export const buttonStyle = {
   button: {
+    position: `relative`,
     flexShrink: 0,
     borderRadius: `50%`,
     border: `none`,
@@ -12,6 +13,27 @@ export const buttonStyle = {
   icon: {
     color: `white`,
     fontSize: `26px`
+  },
+  userButtonLogged: {
+    width: `80px`,
+    borderRadius: `30px`,
+    '@media (min-width: 992px)': {
+      width: `100%`,
+      margin: 0,
+      borderRadius: `30px`,
+      padding: `0 15px`
+    }
+  },
+  userButtonLoggedSpan: {
+    fontSize: `16px`,
+    color: `white`,
+    padding: `0 5px`
+  },
+  userButtonLoggedIcon: {
+    padding: `0 5px`
+  },
+  userButtonLoggedDropIcon: {
+    fontSize: `16px`
   }
 }
 
