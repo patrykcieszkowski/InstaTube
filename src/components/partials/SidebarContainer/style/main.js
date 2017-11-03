@@ -1,12 +1,13 @@
 export const mainStyle = {
   container: {
     background: 'white',
-    position: 'absolute',
+    position: 'fixed',
     padding: `0`,
     boxShadow: `0px 0px 17px 0px rgba(0,0,0,0.15)`,
     top: `10px`,
     width: `0`,
-    minHeight: `100%`,
+    // minHeight: `100%`,
+    bottom: `0`,
     right: `0`,
     transition: `1s`,
     marginTop: `95px`
