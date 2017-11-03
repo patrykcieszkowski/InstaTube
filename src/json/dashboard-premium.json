@@ -1,0 +1,20 @@
+[
+  {
+    "status" : "Complete",
+    "date" : "2017-12-10",
+    "active" : 1,
+    "currency" : "USD"
+  },
+  {
+    "status" : "End",
+    "date" : "2017-12-09",
+    "active" : 1,
+    "currency" : "USD"
+  },
+  {
+    "status" : "Complete",
+    "date" : "2017-12-10",
+    "active" : 1,
+    "currency" : "USD"
+  }
+]
