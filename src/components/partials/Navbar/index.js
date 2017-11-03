@@ -3,6 +3,8 @@ import { Collapse, Navbar, Nav, NavItem } from 'reactstrap'
 import { css } from 'aphrodite'
 import { Link } from 'react-router-dom'
 
+import UserButton from './partials/userButton'
+
 import style from './style'
 
 export class NavbarComponent extends React.Component {
@@ -45,17 +47,59 @@ export class NavbarComponent extends React.Component {
             title="expand"
           />
         </button>
-        <button
-          type="button"
-          className={css(style.button.button)}
-          onClick={this.toggleMenu.bind(this, 'profile')}
-        >
-          <i
-            className={`la la-user ${css(style.button.icon)}`}
-            aria-hidden="true"
-            title="expand"
-          />
-        </button>
+
+        <UserButton
+          toggleMenu={this.toggleMenu.bind(this, 'profile')}
+          className={`d-xl-none`}
+        />
+
+        <div className={`d-none d-xl-flex`}>
+          <div className={css(style.navbar.userButtonBox)}>
+            <div>
+              <UserButton toggleMenu={this.toggleMenu.bind(this, 'profile')} />
+              {this.state.profileOpen}
+            </div>
+            <div
+              className={css(
+                style.collapse.userCollapseBox,
+                this.state.profileOpen
+                  ? style.collapse.userCollapseBoxActive
+                  : ''
+              )}
+            >
+              <div
+                className={`${css(
+                  style.collapse.wrapper,
+                  style.collapse.userCollapseWrapper
+                )} d-none d-xl-block`}
+              >
+                <ul className={`${css(style.collapse.collapseList)}`}>
+                  <li className={css(style.collapse.item)}>
+                    <Link
+                      to="/dashboard/nav/profile"
+                      className={css(style.collapse.link)}
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                  <li className={css(style.collapse.item)}>
+                    <Link to="/about" className={css(style.collapse.link)}>
+                      Logout
+                    </Link>
+                  </li>
+                  <li className={css(style.collapse.item)}>
+                    <Link
+                      to="/dashboard/nav/payout"
+                      className={css(style.collapse.link)}
+                    >
+                      Payouts
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <Collapse
           isOpen={this.state.profileOpen}
