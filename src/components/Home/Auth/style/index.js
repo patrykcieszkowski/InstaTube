@@ -6,6 +6,7 @@ import form from './form'
 import links from './links'
 import grid from './grid'
 import sider from './sider'
+import login from './login'
 
 export default {
   inputs: StyleSheet.create(inputs),
@@ -13,5 +14,6 @@ export default {
   form: StyleSheet.create(form),
   links: StyleSheet.create(links),
   grid: StyleSheet.create(grid),
-  sider: StyleSheet.create(sider)
+  sider: StyleSheet.create(sider),
+  login: StyleSheet.create(login)
 }

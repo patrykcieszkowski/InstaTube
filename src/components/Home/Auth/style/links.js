@@ -3,7 +3,11 @@ const linkStyle = {
     color: `#3f295a`,
     fontSize: `14px`,
     fontWeight: `600`,
-    textDecoration: `none`
+    textDecoration: `none`,
+
+    '@media (min-width: 1200px)': {
+      fontSize: `12px`,
+    }      
   }
 }
 
