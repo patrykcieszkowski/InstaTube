@@ -16,6 +16,8 @@ export class SidebarContainer extends React.Component {
         stickToTop={this.props.stickToTop}
         stickToTopXLG={this.props.stickToTopXLG}
         fullHeight={this.props.fullHeight}
+        md={this.props.md}
+        sm={this.props.sm}
       >
         <Switch>
           {this.props.routeList.map((route, index) => (
