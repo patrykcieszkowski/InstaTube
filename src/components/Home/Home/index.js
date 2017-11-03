@@ -11,7 +11,12 @@ import style from './style'
 export class Home extends React.Component {
   render() {
     return (
-      <Container fluid fullHeight className={`d-md-flex align-items-md-center`}>
+      <Container
+        fluid
+        fullHeight
+        minHeight
+        className={`d-md-flex align-items-md-center`}
+      >
         <Row className={css(style.grid.mainRow)}>
           <Col xs="12" lg="5" xl="4">
             <Row>
