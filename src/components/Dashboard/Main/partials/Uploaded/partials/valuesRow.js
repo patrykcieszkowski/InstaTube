@@ -144,14 +144,15 @@ const ItemValuesRow = props => {
             <input
               type="text"
               dir="rtl"
-              value="http://instatube.com/m/sa"
+              readOnly={true}
+              value={props.item.url}
               className={css(style.uploaded.copyInput)}
             />
           </Col>
           <Col xs="1" className={css(style.uploaded.actionIconBox)}>
-            <a href="#">
+            <a href="#" onClick={props.onCopyClick}>
               <i
-                className={`la la-link ${css(style.uploaded.actionIcon)}`}
+                className={`la la-copy ${css(style.uploaded.actionIcon)}`}
                 aria-hidden="true"
                 title="copy link"
               />
