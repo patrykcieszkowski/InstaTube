@@ -3,7 +3,7 @@ export const gridStyle = {
     height: `100%`
   },
   container: {
-    padding: `15px`
+    padding: `0 15px`
   }
 }
 

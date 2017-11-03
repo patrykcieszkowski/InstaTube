@@ -1,6 +1,6 @@
 const active = {
   padding: `20px`,
-  width: `calc(100% - 15px)`,
+  width: `calc(100% - 15px)`
 }
 
 export const mainStyle = {
@@ -26,7 +26,7 @@ export const mainStyle = {
     '@media only screen and (min-width : 1200px)': {
       marginTop: `0`,
       top: `0px`,
-      paddingTop: `105px`
+      paddingTop: `90px`
     }
   },
   lgActive: {
@@ -36,7 +36,7 @@ export const mainStyle = {
     },
     '@media only screen and (min-width : 1200px) and (max-width : 1599px)': {
       width: `calc(100% - 460px)`
-    },
+    }
   },
   mdActive: {
     ...active,

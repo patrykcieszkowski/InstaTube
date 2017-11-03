@@ -15,7 +15,12 @@ export class Auth extends React.Component {
     return (
       <Container fluid>
         <Row className={css(style.grid.wrapper)}>
-          <Col xl="5" className={`d-none d-xl-flex align-items-start ${css(style.sider.wrapper)}`}>
+          <Col
+            xl="5"
+            className={`d-none d-xl-flex align-items-start ${css(
+              style.sider.wrapper
+            )}`}
+          >
             <Row className={``}>
               <SignupInfo />
             </Row>

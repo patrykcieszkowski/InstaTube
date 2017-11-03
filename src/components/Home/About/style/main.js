@@ -1,6 +1,6 @@
 const mainStyle = {
   wrapper: {
-    height: `100%`
+    height: `calc(100% - 20px)`
   },
   h3: {
     color: `#3f295a`,

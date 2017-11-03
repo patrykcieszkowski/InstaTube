@@ -9,11 +9,21 @@ export class SidebarContent extends React.Component {
   render() {
     return [
       <Row key={1}>
-        <Col xl="5" className={`d-none d-xl-block`} />
-        <Col xs="8" xl="5">
+        <Col
+          xl="5"
+          className={`d-none d-xl-block ${css(
+            style.header.box,
+            style.header.sider
+          )}`}
+        />
+        <Col xs="8" xl="5" className={css(style.header.box)}>
           <h2 className={css(style.header.h2)}>{this.props.title}</h2>
         </Col>
-        <Col className={`d-flex align-content-center justify-content-end`}>
+        <Col
+          className={`d-flex align-content-center justify-content-end ${css(
+            style.header.box
+          )}`}
+        >
           <Link to={this.props.homePath}>
             <i
               className={`la la-close ${css(style.header.closeIcon)}`}

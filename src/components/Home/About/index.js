@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 
 import { Scrollbars } from 'react-custom-scrollbars'
 
+import ScrollArea from '../../partials/ScrollArea'
 import SignupInfo from '../partials/SignupInfo'
 import style from './style'
 
@@ -34,15 +35,20 @@ export class About extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Row className={css(style.wrapper)}>
-          <Col xl="5" className={`d-none d-xl-flex align-items-start ${css(style.sider.wrapper)}`}>
+        <Row className={css(style.main.wrapper)}>
+          <Col
+            xl="5"
+            className={`d-none d-xl-flex align-items-start ${css(
+              style.sider.wrapper
+            )}`}
+          >
             <Row className={``}>
               <SignupInfo />
             </Row>
           </Col>
           <Col>
-            <Scrollbars
-              style={{ width: '100%', height: `100%` }}
+            <ScrollArea
+              style={{ width: `100%`, height: `calc(100% - 20px)` }}
               renderView={props => <Col {...props} />}
             >
               {aboutUsList.map((item, index) => (
@@ -55,7 +61,7 @@ export class About extends React.Component {
                   </Col>
                 </Row>
               ))}
-            </Scrollbars>
+            </ScrollArea>
           </Col>
         </Row>
       </Container>

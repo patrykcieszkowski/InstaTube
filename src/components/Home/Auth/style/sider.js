@@ -1,6 +1,7 @@
 const siderStyle = {
   wrapper: {
-    padding: `48px 5px`
+    padding: `24px 15px`,
+    borderRight: `1px solid #e8f1f8`
   }
 }
 

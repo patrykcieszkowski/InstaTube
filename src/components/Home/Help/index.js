@@ -60,7 +60,13 @@ export class Help extends React.Component {
     return (
       <Container fluid className={css(style.grid.container)}>
         <Row className={css(style.grid.wrapper)}>
-          <Col xs="12" xl="5" className={`d-none d-xl-flex align-items-center`}>
+          <Col
+            xs="12"
+            xl="5"
+            className={`d-none d-xl-flex align-items-start ${css(
+              style.sider.wrapper
+            )}`}
+          >
             <Row>
               <SignupInfo />
             </Row>

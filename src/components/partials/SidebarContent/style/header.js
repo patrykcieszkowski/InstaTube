@@ -1,4 +1,10 @@
 export const headerStyle = {
+  box: {
+    padding: `20px 15px`
+  },
+  sider: {
+    borderRight: `1px solid #e8f1f8`
+  },
   h2: {
     fontSize: `36px`,
     fontWeight: `100`,
