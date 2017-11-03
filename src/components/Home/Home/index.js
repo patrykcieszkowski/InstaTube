@@ -25,8 +25,8 @@ export class Home extends React.Component {
               </Col>
             </Row>
           </Col>
-          <Col xs="12" lg="5" xl="4" className={css(style.signup.box)}>
-            <Row>
+          <Col xs="12" lg="auto" className={css(style.signup.box)}>
+            <Row className={css(style.signup.wrapper)}>
               <SignupInfo />
             </Row>
           </Col>
