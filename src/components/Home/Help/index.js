@@ -61,13 +61,12 @@ export class Help extends React.Component {
       <Container fluid className={css(style.grid.container)}>
         <Row className={css(style.grid.wrapper)}>
           <Col
-            xs="12"
-            xl="5"
+            xl="auto"
             className={`d-none d-xl-flex align-items-start ${css(
               style.sider.wrapper
             )}`}
           >
-            <Row>
+            <Row className={`${css(style.sider.box)}`}>
               <SignupInfo />
             </Row>
           </Col>

@@ -37,12 +37,12 @@ export class About extends React.Component {
       <Container fluid>
         <Row className={css(style.main.wrapper)}>
           <Col
-            xl="5"
+            xl="auto"
             className={`d-none d-xl-flex align-items-start ${css(
               style.sider.wrapper
             )}`}
           >
-            <Row className={``}>
+            <Row className={`${css(style.sider.box)}`}>
               <SignupInfo />
             </Row>
           </Col>

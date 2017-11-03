@@ -3,7 +3,8 @@ export const headerStyle = {
     padding: `20px 15px`
   },
   sider: {
-    borderRight: `1px solid #e8f1f8`
+    borderRight: `1px solid #e8f1f8`,
+    width: `300px`
   },
   h2: {
     fontSize: `36px`,
