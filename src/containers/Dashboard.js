@@ -25,9 +25,14 @@ export class DashboardContiner extends React.Component {
     ]
 
     return (
-      <Components.partials.Container fluid noPadding fullHeight>
+      <Components.partials.Container
+        fluid
+        noPadding
+        fullHeight
+        bg={`dashboard`}
+      >
         <Components.partials.Navbar bg />
-        <Components.partials.Container fluid noPadding>
+        <Components.partials.Container fluid noPadding minHeight fullHeight>
           <Components.Dashboard.Main />
         </Components.partials.Container>
         <Sidebar
