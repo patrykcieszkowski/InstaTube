@@ -10,8 +10,9 @@ export class SidebarContent extends React.Component {
     return [
       <Row key={1}>
         <Col
-          xl="5"
-          className={`d-none d-xl-block ${css(
+          xl="auto"
+          className={`d-none ${(this.props.md || this.props.sm) ? '' : 'd-xl-block'}
+          ${css(
             style.header.box,
             style.header.sider
           )}`}

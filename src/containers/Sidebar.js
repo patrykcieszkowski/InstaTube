@@ -28,6 +28,8 @@ export class SidebarContainer extends React.Component {
               title={route.title}
               render={props => (
                 <Components.partials.SidebarContent
+                  md={this.props.md}
+                  sm={this.props.sm}
                   title={route.title}
                   homePath={this.props.homePath || '/'}
                 >
