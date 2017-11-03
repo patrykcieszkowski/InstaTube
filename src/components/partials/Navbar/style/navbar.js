@@ -3,8 +3,8 @@ export const navbarStyle = {
     padding: `0`,
     '@media only screen and (min-width : 992px)': {
       padding: `0 20px`,
-      position: `fixed`,
-      top: 0,
+      position: `absolute`,
+      top: `0`,
       left: 0,
       width: `100%`,
       zIndex: 99
