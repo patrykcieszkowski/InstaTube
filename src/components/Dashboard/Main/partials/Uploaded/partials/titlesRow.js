@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap'
 
 import style from '../../../style'
 
-export const UploadedListTitles = (props) => (
+export const UploadedListTitles = props => (
   <Row>
     <Col xl="1" />
     <Col xl="3">
@@ -20,9 +20,7 @@ export const UploadedListTitles = (props) => (
       <span className={css(style.uploaded.titleSpan)}>Earn</span>
     </Col>
     <Col xl="3">
-      <span className={css(style.uploaded.titleSpan)}>
-        Action/Expire
-      </span>
+      <span className={css(style.uploaded.titleSpan)}>Action/Expire</span>
     </Col>
   </Row>
 )
