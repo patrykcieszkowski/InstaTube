@@ -13,22 +13,46 @@ export const PaymentsList = () => [
 export const PaymentsListItem = () => (
   <Row className={css(style.payments.box)}>
     <Col xs="2" className={`d-flex justify-content-center align-items-center`}>
-      <span className={css(style.payments.text, style.payments.idSpan)}>
+      <span
+        className={css(
+          style.payments.valueSpan,
+          style.payments.text,
+          style.payments.idSpan
+        )}
+      >
         1142
       </span>
     </Col>
     <Col xs="4" className={`d-flex justify-content-center align-items-center`}>
-      <span className={css(style.payments.text, style.payments.titleSpan)}>
+      <span
+        className={css(
+          style.payments.valueSpan,
+          style.payments.text,
+          style.payments.titleSpan
+        )}
+      >
         Lorem ipsum sasa
       </span>
     </Col>
     <Col xs="2" className={`d-flex justify-content-center align-items-center`}>
-      <span className={css(style.payments.text, style.payments.priceSpan)}>
+      <span
+        className={css(
+          style.payments.valueSpan,
+          style.payments.text,
+          style.payments.priceSpan
+        )}
+      >
         $5.00
       </span>
     </Col>
     <Col xs="4" className={`d-flex justify-content-center align-items-center`}>
-      <span className={css(style.payments.text, style.payments.dateSpan)}>
+      <span
+        className={css(
+          style.payments.valueSpan,
+          style.payments.text,
+          style.payments.dateSpan
+        )}
+      >
         23-12-17 10:45:57
       </span>
     </Col>

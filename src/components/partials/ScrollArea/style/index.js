@@ -2,8 +2,8 @@ import { StyleSheet } from 'aphrodite'
 
 export default StyleSheet.create({
   track: {
-    position: `absolute`, 
-    width:`10px`,
+    position: `absolute`,
+    width: `10px`,
     borderRadius: `5px`,
     padding: `2px 0`,
     backgroundColor: '#e2e9f1',
