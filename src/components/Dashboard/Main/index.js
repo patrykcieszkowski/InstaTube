@@ -25,7 +25,7 @@ export class Main extends React.Component {
         <Row className={css(style.header.wrapper)}>
           <Header />
         </Row>
-        <Row>
+        <Row className={css(style.main.mainRow)}>
           <Col xs="12" className={`d-xl-none`}>
             <Link to="#" className={css(style.header.button)}>
               Add new file
