@@ -8,7 +8,8 @@ export const paymentStyle = {
   box: {
     background: `white`,
     borderRadius: `5px`,
-    margin: `3px 0`
+    margin: `3px 0`,
+    height: `50px`
   },
   h3: {
     fontSize: `38px`,
