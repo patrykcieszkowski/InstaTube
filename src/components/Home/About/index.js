@@ -35,7 +35,7 @@ export class About extends React.Component {
     return (
       <Container fluid>
         <Row className={css(style.wrapper)}>
-          <Col xl="5" className={`d-none d-xl-flex align-items-center`}>
+          <Col xl="5" className={`d-none d-xl-flex align-items-start ${css(style.sider.wrapper)}`}>
             <Row className={``}>
               <SignupInfo />
             </Row>
@@ -47,11 +47,11 @@ export class About extends React.Component {
             >
               {aboutUsList.map((item, index) => (
                 <Row>
-                  <Col xs="12" className={css(style.header)}>
-                    <h3 className={css(style.h3)}>{item.name}</h3>
+                  <Col xs="12" className={css(style.main.header)}>
+                    <h3 className={css(style.main.h3)}>{item.name}</h3>
                   </Col>
                   <Col xs="12">
-                    <p className={css(style.p)}>{item.body}</p>
+                    <p className={css(style.main.p)}>{item.body}</p>
                   </Col>
                 </Row>
               ))}
