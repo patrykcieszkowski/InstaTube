@@ -1,13 +1,9 @@
 import { StyleSheet } from 'aphrodite'
 
-export default StyleSheet.create({
-  wrapper: {
-    position: `relative`
-  },
-  noPadding: {
-    padding: `0px`
-  },
-  fullHeight: {
-    height: `100%`
-  }
-})
+import main from './main'
+import background from './background'
+
+export default {
+  main: StyleSheet.create(main),
+  bg: StyleSheet.create(background)
+}

@@ -7,9 +7,11 @@ import style from './style'
 export const ContainerComponent = props => (
   <Container
     className={`${css(
-      style.wrapper,
-      props.noPadding ? style.noPadding : '',
-      props.fullHeight ? style.fullHeight : ''
+      style.main.wrapper,
+      props.noPadding ? style.main.noPadding : '',
+      props.minHeight ? style.main.minHeight : '',
+      props.fullHeight ? style.main.fullHeight : '',
+      props.bg ? style.bg[props.bg] : ''
     )} ${props.className}`}
     fluid={props.fluid}
   >
