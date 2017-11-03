@@ -29,11 +29,11 @@ export class NavbarComponent extends React.Component {
   }
 
   render() {
-    return (
+    return [
       <Navbar
+        key={0}
         className={`${css(
-          style.navbar.wrapper,
-          this.props.bg ? style.navbar.background : ''
+          style.navbar.wrapper
         )} flex-lg-row-reverse flex-lg-nowrap justify-content-lg-center`}
       >
         <button
@@ -182,8 +182,12 @@ export class NavbarComponent extends React.Component {
             </NavItem>
           </Nav>
         </Collapse>
-      </Navbar>
-    )
+      </Navbar>,
+      <div
+        key={1}
+        className={css(this.props.bg ? style.navbar.backgroundBlock : '')}
+      />
+    ]
   }
 }
 
