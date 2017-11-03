@@ -1,11 +1,11 @@
 export const headerStyle = {
   wrapper: {
-    marginTop: `85px`,
     paddingBottom: `20px`,
     marginBottom: `20px`,
     borderBottom: `1px solid #e3e9f0`,
     '@media (min-width: 1200px)': {
-      padding: `20px`
+      padding: `20px`,
+      paddingTop: `100px`,
     }
   },
   amountSpan: {
