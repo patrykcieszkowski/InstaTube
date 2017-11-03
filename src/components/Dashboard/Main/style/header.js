@@ -5,7 +5,7 @@ export const headerStyle = {
     borderBottom: `1px solid #e3e9f0`,
     '@media (min-width: 1200px)': {
       padding: `20px`,
-      paddingTop: `100px`,
+      paddingTop: `100px`
     }
   },
   amountSpan: {
