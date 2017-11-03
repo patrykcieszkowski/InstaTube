@@ -33,7 +33,9 @@ export class Main extends React.Component {
           </Col>
           <Col
             xl="auto"
-            className={`d-none d-xl-block ${css(style.main.colWrapper)}`}
+            className={`d-none d-xl-flex align-items-center ${css(
+              style.main.colWrapper
+            )}`}
           >
             <UploadForm />
           </Col>
