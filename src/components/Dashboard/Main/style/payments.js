@@ -21,6 +21,12 @@ export const paymentStyle = {
   idSpan: {
     color: `#3f295a`
   },
+  titleBlockSpan: {
+    display: `block`,
+    fontSize: `12px`,
+    fontWeight: `100`,
+    color: `#8c9194`
+  },
   titleSpan: {
     color: `#3f295a`,
     fontWeight: `600`

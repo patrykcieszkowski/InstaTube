@@ -18,7 +18,7 @@ export const uploadedStyle = {
   boxActive: {
     background: `white`
   },
-  titleSpan: {
+  titleBlockSpan: {
     display: `block`,
     fontSize: `12px`,
     fontWeight: `100`,
