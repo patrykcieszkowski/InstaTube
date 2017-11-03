@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite'
 
-import navbar from './button'
+import navbar from './navbar'
 import button from './button'
 import collapse from './collapse'
 
