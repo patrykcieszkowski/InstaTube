@@ -53,7 +53,7 @@ export class NavbarComponent extends React.Component {
           className={`d-xl-none`}
         />
 
-        <div className={`d-none d-xl-flex`}>
+        <div className={`d-none d-xl-flex ${css(style.navbar.userNavbar)}`}>
           <div className={css(style.navbar.userButtonBox)}>
             <div>
               <UserButton toggleMenu={this.toggleMenu.bind(this, 'profile')} />

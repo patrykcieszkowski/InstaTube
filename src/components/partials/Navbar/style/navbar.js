@@ -1,8 +1,9 @@
 export const navbarStyle = {
   wrapper: {
+    height: `85px`,
     padding: `0`,
-    '@media only screen and (min-width : 992px)': {
-      padding: `0 20px`,
+    '@media only screen and (min-width : 1200px)': {
+      padding: `0 50px`,
       position: `absolute`,
       top: `0`,
       left: 0,
@@ -23,8 +24,15 @@ export const navbarStyle = {
     backgroundColor: `white`
   },
   userButtonBox: {
-    margin: `15px 10px`,
+    margin: `0px 10px`,
     position: `relative`
+  },
+  userNavbar: {
+    '@media only screen and (min-width : 1200px)': {
+      position: `absolute`,
+      top: `10px`,
+      right: `50px`
+    }
   }
 }
 
