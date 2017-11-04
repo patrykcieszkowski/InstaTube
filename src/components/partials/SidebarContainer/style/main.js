@@ -13,7 +13,7 @@ export const mainStyle = {
     width: `0`,
     bottom: `0`,
     right: `0`,
-    transition: `1s`,
+    transition: `width 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
     marginTop: `95px`
   },
 
