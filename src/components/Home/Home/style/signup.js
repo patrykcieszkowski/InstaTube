@@ -5,7 +5,7 @@ export const signupStyle = {
   },
   wrapper: {
     '@media (min-width: 1200px)': {
-      width: `300px`
+      width: `320px`
     }
   }
 }
