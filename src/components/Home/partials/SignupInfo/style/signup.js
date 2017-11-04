@@ -3,17 +3,21 @@ export const signupStyle = {
     paddingLeft: `25px`,
     paddingRight: `25px`
   },
-  h1: {
-    fontSize: `40px`,
-    fontWeight: `600`,
+  h3: {
+    fontSize: `48px`,
+    lineHeight: `46px`,
+    fontWeight: `800`,
     color: '#3f295a'
   },
   list: {
     listStyleType: `none`,
-    padding: `5px 0`
+    margin: 0,
+    padding: `5px 0`,
+    paddingBottom: `45px`
   },
   listItem: {
-    fontSize: `22px`,
+    fontSize: `27px`,
+    fontWeight: `100`,
     color: '#3f295a',
     ':before': {
       fontFamily: `LineAwesome`,
@@ -24,23 +28,28 @@ export const signupStyle = {
   },
   signupButton: {
     display: `block`,
+    width: `270px`,
     color: `white`,
     textAlign: `center`,
     background: `#e1306c`,
-    borderRadius: `5px`,
+    borderRadius: `8px`,
     border: `none`,
     padding: `12px 0`,
-    fontSize: `19px`,
-    fontWeight: `600`
+    fontSize: `24px`,
+    fontWeight: `600`,
   },
   loginSpan: {
+    margin: `10px 0`,
     display: `block`,
     textAlign: `center`,
-    fontSize: `14px`,
+    fontSize: `16px`,
+    fontWeight: `100`,
     color: `#2a2a2a`
   },
   loginLink: {
     margin: `0 4px`,
+    marginRight: 0,
+    fontWeight: `600`,
     color: `#e1306c`
   }
 }
