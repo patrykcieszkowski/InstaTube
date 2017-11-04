@@ -52,7 +52,13 @@ export class Main extends React.Component {
                 <UploadedListTitles />
               </Col>
               <Col xs="12">
-                <ScrollArea style={{ width: '100%', height: `382px`, overflowX: `hidden` }}>
+                <ScrollArea
+                  style={{
+                    width: '100%',
+                    height: `382px`,
+                    overflowX: `hidden`
+                  }}
+                >
                   <Uploaded items={uploadFilesList} />
                 </ScrollArea>
               </Col>

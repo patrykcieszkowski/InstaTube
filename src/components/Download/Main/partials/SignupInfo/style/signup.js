@@ -9,7 +9,7 @@ export const signupStyle = {
     fontSize: `36px`,
     fontWeight: `100`,
     lineHeight: `46px`,
-    color: '#3f295a',
+    color: '#3f295a'
   },
   signupButton: {
     display: `block`,

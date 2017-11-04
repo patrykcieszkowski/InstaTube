@@ -6,8 +6,8 @@ const linkStyle = {
     textDecoration: `none`,
 
     '@media (min-width: 1200px)': {
-      fontSize: `12px`,
-    }      
+      fontSize: `12px`
+    }
   }
 }
 

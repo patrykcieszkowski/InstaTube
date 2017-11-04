@@ -30,11 +30,7 @@ export class Main extends React.Component {
 
   render() {
     return (
-      <Container
-        fluid
-        fullHeight
-        minHeight
-      >
+      <Container fluid fullHeight minHeight>
         <Row className={css(style.grid.content)}>
           <Col xs="12" className={`d-lg-none ${css(style.timer.wrapper)}`}>
             <Row className={css(style.timer.row)} />
@@ -53,11 +49,16 @@ export class Main extends React.Component {
             />
           </Col>
 
-          <Col xl="3" className={`d-none d-xl-flex justify-content-end ${css(style.timer.wrapper)}`}>
+          <Col
+            xl="3"
+            className={`d-none d-xl-flex justify-content-end ${css(
+              style.timer.wrapper
+            )}`}
+          >
             <PieTimer
               ref="timer"
               style={{
-                position: `relative`,
+                position: `relative`
               }}
               onComplete={this.onTimerComplete.bind(this)}
               onProgress={this.onTimerProgress.bind(this)}
@@ -69,7 +70,12 @@ export class Main extends React.Component {
           <Col xs="12" xl="6">
             <Media timer={this.state.timer} />
           </Col>
-          <Col xl="3" className={`d-none d-xl-flex align-items-center ${css(style.signup.wrapper)}`}>
+          <Col
+            xl="3"
+            className={`d-none d-xl-flex align-items-center ${css(
+              style.signup.wrapper
+            )}`}
+          >
             <Row className={`${css(style.signup.box)}`}>
               <SignupInfo />
             </Row>

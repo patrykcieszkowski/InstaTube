@@ -10,7 +10,9 @@ const SignupInfo = () => [
     <h3 className={css(style.signup.h3)}>Earn money!</h3>
   </Col>,
   <Col xs="12" key={1}>
-    <p className={css(style.signup.paragraph)}>Get more out of InstaTube, get money!</p>
+    <p className={css(style.signup.paragraph)}>
+      Get more out of InstaTube, get money!
+    </p>
   </Col>,
   <Col xs="12" key={2}>
     <Row>

@@ -13,7 +13,7 @@ export const historyStyle = {
     height: `calc(100% - 200px)`
   },
   contentWrapper: {
-    height: `100%`    
+    height: `100%`
   },
   box: {
     margin: 0,

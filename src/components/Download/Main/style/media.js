@@ -28,7 +28,7 @@ export const mediaStyle = {
       padding: `0 5px`,
       fontSize: `24px`,
       fontWeight: `800`
-    }      
+    }
   },
   descRow: {
     margin: `-5px`
