@@ -28,23 +28,28 @@ export const signupStyle = {
   },
   signupButton: {
     display: `block`,
+    width: `270px`,
     color: `white`,
     textAlign: `center`,
     background: `#e1306c`,
-    borderRadius: `5px`,
+    borderRadius: `8px`,
     border: `none`,
     padding: `12px 0`,
-    fontSize: `19px`,
-    fontWeight: `600`
+    fontSize: `24px`,
+    fontWeight: `600`,
   },
   loginSpan: {
+    margin: `10px 0`,
     display: `block`,
     textAlign: `center`,
-    fontSize: `14px`,
+    fontSize: `16px`,
+    fontWeight: `100`,
     color: `#2a2a2a`
   },
   loginLink: {
     margin: `0 4px`,
+    marginRight: 0,
+    fontWeight: `600`,
     color: `#e1306c`
   }
 }
