@@ -18,14 +18,14 @@ export class Home extends React.Component {
         className={`d-md-flex align-items-md-center`}
       >
         <Row className={css(style.grid.mainRow)}>
-          <Col xs="12" lg="auto">
+          <Col xs="12" xl="auto">
             <Row>
               <Col className={css(style.upload.box)}>
                 <UploadForm />
               </Col>
             </Row>
           </Col>
-          <Col xs="12" lg="auto" className={css(style.signup.box)}>
+          <Col xs="12" xl="auto" className={css(style.signup.box)}>
             <Row className={css(style.signup.wrapper)}>
               <SignupInfo />
             </Row>

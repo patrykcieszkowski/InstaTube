@@ -19,7 +19,7 @@ export const LoginForm = props => (
     </FormGroup>
     <FormGroup className={css(style.form.group)}>
       <Row>
-        <Col xs='12' lg='6' className={css(style.buttons.facebookWrapper)}>
+        <Col xs='12' xl='6' className={css(style.buttons.facebookWrapper)}>
           <Button
             className={`d-flex justify-content-center align-items-center ${css(
               style.buttons.button,
@@ -44,7 +44,7 @@ export const LoginForm = props => (
             </span>            
           </Button>
         </Col>
-        <Col xs='12' lg='6' className={css(style.buttons.instagramWrapper)}>
+        <Col xs='12' xl='6' className={css(style.buttons.instagramWrapper)}>
           <Button
             className={`d-flex justify-content-center align-items-center ${css(
               style.buttons.button,
@@ -74,12 +74,12 @@ export const LoginForm = props => (
 
     <FormGroup className={css(style.form.group)}>
       <Row>
-        <Col xs='12' lg='6'>
+        <Col xs='12' xl='6'>
           <Button className={css(style.buttons.button, style.buttons.login)}>
             Sign In
           </Button>
         </Col>
-        <Col xs='12' lg='6' className={`d-flex justify-content-lg-center align-items-lg-center ${css(style.login.remindWrapper)}`}>
+        <Col xs='12' xl='6' className={`d-flex justify-content-lg-center align-items-lg-center ${css(style.login.remindWrapper)}`}>
           <Link to={`/nav/auth/remind`} className={css(style.links.remind)}>
             Forgot password?
           </Link>

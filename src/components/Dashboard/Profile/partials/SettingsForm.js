@@ -29,19 +29,19 @@ export const PersonalInputs = () => (
     <Col xs="12">
       <h4 className={css(style.form.h4)}>basic</h4>
     </Col>
-    <Col xs="12" lg="6" className={css(style.inputs.wrapper)}>
+    <Col xs="12" xl="6" className={css(style.inputs.wrapper)}>
       <Input placeholder="Name" className={css(style.inputs.input)} />
     </Col>
-    <Col xs="12" lg="6" className={css(style.inputs.wrapper)}>
+    <Col xs="12" xl="6" className={css(style.inputs.wrapper)}>
       <Input placeholder="Surname" className={css(style.inputs.input)} />
     </Col>
     <Col xs="12" className={css(style.inputs.wrapper)}>
       <Input placeholder="Address" className={css(style.inputs.input)} />
     </Col>
-    <Col xs="12" lg="2" className={css(style.inputs.wrapper)}>
+    <Col xs="12" xl="2" className={css(style.inputs.wrapper)}>
       <Input placeholder="Zip" className={css(style.inputs.input)} />
     </Col>
-    <Col xs="12" lg="10" className={css(style.inputs.wrapper)}>
+    <Col xs="12" xl="10" className={css(style.inputs.wrapper)}>
       <Input placeholder="City" className={css(style.inputs.input)} />
     </Col>
   </Row>
