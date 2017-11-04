@@ -1,6 +1,6 @@
 export const navbarStyle = {
   wrapper: {
-    height: `85px`,
+    height: `80px`,
     padding: `0`,
     '@media only screen and (min-width : 1200px)': {
       padding: `0 50px`,
@@ -19,7 +19,7 @@ export const navbarStyle = {
     display: `block`,
     top: 0,
     left: 0,
-    height: `85px`,
+    height: `80px`,
     width: `100%`,
     backgroundColor: `white`
   },
@@ -30,7 +30,7 @@ export const navbarStyle = {
   userNavbar: {
     '@media only screen and (min-width : 1200px)': {
       position: `absolute`,
-      top: `10px`,
+      top: `13px`,
       right: `50px`
     }
   }

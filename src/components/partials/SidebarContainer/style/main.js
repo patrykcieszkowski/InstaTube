@@ -14,7 +14,7 @@ export const mainStyle = {
     bottom: `0`,
     right: `0`,
     transition: `width 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
-    marginTop: `95px`
+    marginTop: `80px`
   },
 
   stickToTop: {
@@ -26,7 +26,7 @@ export const mainStyle = {
     '@media only screen and (min-width : 1200px)': {
       marginTop: `0`,
       top: `0px`,
-      paddingTop: `90px`
+      paddingTop: `80px`
     }
   },
   lgActive: {
