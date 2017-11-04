@@ -20,10 +20,10 @@ export class Media extends React.Component {
           <h2 className={css(style.media.titleH2)}>How to nothing</h2>
         </Col>
         <Col className={css(style.media.box, style.media.imageWrapper)}>
-          {/* <Video /> */}
+          {<Video />}
           {/* <Audio /> */}
 
-          <Image timerInit={this.props.timer} />
+          {/* <Image timerInit={this.props.timer} /> */}
         </Col>
         <Col xs="12" className={css(style.media.box)}>
           <Row className={css(style.media.descRow)}>
@@ -33,7 +33,7 @@ export class Media extends React.Component {
           </Row>
           <Row className={css(style.media.descRow)}>
             <Col className={css(style.media.descParagraphWrapper)}>
-              <p className={css(style.media.descParagraph, style.media.blur)}>
+              <p className={css(style.media.descParagraph)}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
                 sit amet viverra mauris. Proin augue lacus, sagittis a ex sit
                 amet, consequat blandit dui. Nam sit amet imperdiet ipsum.

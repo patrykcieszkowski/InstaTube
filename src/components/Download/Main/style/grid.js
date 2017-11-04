@@ -1,6 +1,9 @@
 const gridStyle = {
   content: {
-    margin: 0
+    margin: 0,
+    '@media (min-width: 1200px)': {
+      paddingTop: `85px`
+    }
   }
 }
 

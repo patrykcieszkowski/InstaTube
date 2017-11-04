@@ -11,8 +11,8 @@ export class Image extends React.Component {
     super(props)
     const state = {}
     state.fullscreen = {
-      show: true,
-      display: true
+      show: false,
+      display: false
     }
     this.state = state
   }

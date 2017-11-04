@@ -1,6 +1,6 @@
 export const mediaStyle = {
   wrapper: {
-    margin: `0 -10px`,
+    margin: `10px -10px`,
     padding: `10px 0`,
     borderRadius: `5px`,
     background: `white`,
@@ -21,7 +21,14 @@ export const mediaStyle = {
   titleH2: {
     fontSize: `28px`,
     fontWeight: `600`,
-    textAlign: `center`
+    textAlign: `center`,
+    color: `#3C2557`,
+    '@media only screen and (min-width : 1200px)': {
+      textAlign: `left`,
+      padding: `0 5px`,
+      fontSize: `24px`,
+      fontWeight: `800`
+    }      
   },
   descRow: {
     margin: `-5px`

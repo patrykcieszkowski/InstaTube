@@ -9,8 +9,10 @@ const timerStyle = {
     textAlign: `center`,
     color: `white`,
     fontSize: `13px`,
-    '@media only screen and (min-width : 768px)': {
-      color: `#dd316d`
+    '@media only screen and (min-width : 1200px)': {
+      color: `#dd316d`,
+      fontSize: `18px`,
+      fontWeight: `600`
     }
   },
   overlayWrapper: {
