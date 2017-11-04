@@ -1,7 +1,6 @@
 export const signupStyle = {
   box: {
-    paddingLeft: `25px`,
-    paddingRight: `25px`
+    padding: `30px 45px`
   },
   wrapper: {
     '@media (min-width: 1200px)': {
