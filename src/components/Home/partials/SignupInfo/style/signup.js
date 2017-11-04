@@ -3,17 +3,21 @@ export const signupStyle = {
     paddingLeft: `25px`,
     paddingRight: `25px`
   },
-  h1: {
-    fontSize: `40px`,
-    fontWeight: `600`,
+  h3: {
+    fontSize: `48px`,
+    lineHeight: `46px`,
+    fontWeight: `800`,
     color: '#3f295a'
   },
   list: {
     listStyleType: `none`,
-    padding: `5px 0`
+    margin: 0,
+    padding: `5px 0`,
+    paddingBottom: `45px`
   },
   listItem: {
-    fontSize: `22px`,
+    fontSize: `27px`,
+    fontWeight: `100`,
     color: '#3f295a',
     ':before': {
       fontFamily: `LineAwesome`,

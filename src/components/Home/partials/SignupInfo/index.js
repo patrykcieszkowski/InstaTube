@@ -7,7 +7,7 @@ import style from './style'
 
 const SignupInfo = () => [
   <Col xs="12" key={0}>
-    <h1 className={css(style.signup.h1)}>Why should you register?</h1>
+    <h3 className={css(style.signup.h3)}>Why should you register?</h3>
   </Col>,
   <Col xs="12" key={1}>
     <ul className={css(style.signup.list)}>
