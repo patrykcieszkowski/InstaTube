@@ -12,7 +12,8 @@ export const signupStyle = {
   list: {
     listStyleType: `none`,
     margin: 0,
-    padding: `5px 0`,
+    padding: 0,
+    paddingTop: `15px`,
     paddingBottom: `45px`
   },
   listItem: {
@@ -39,6 +40,7 @@ export const signupStyle = {
     fontWeight: `600`,
   },
   loginSpan: {
+    width: `270px`,
     margin: `10px 0`,
     display: `block`,
     textAlign: `center`,
