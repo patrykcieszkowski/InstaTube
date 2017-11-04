@@ -1,4 +1,7 @@
 const withdrawStyle = {
+  wrapper: {
+    padding: `0 60px`
+  },
   amountSpan: {
     display: `block`,
     textAlign: `center`,
@@ -7,7 +10,7 @@ const withdrawStyle = {
     fontWeight: `600`
   },
   buttonWrapper: {
-    padding: `10px 0`
+    padding: `10px 15px`
   },
   button: {
     display: `block`,

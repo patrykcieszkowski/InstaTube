@@ -11,15 +11,14 @@ export class Payout extends React.Component {
   render() {
     return (
       <Container fluid className={css(style.grid.container)}>
-        <Row>
-          <Col xs="12">
+        <Row className={css(style.grid.mainRow)}>
+          <Col xs="12" className={css(style.history.wrapper)}>
             <PayoutHistory />
           </Col>
+          <Col xs="12" className={css(style.withdraw.wrapper)}>
+            <Withdraw />
+          </Col>
         </Row>
-        <Col xs="12">
-          <Withdraw />
-        </Col>
-        <Row />
       </Container>
     )
   }

@@ -5,12 +5,26 @@ const textSpan = {
 }
 
 export const historyStyle = {
+  mainRow: {
+    height: `100%`
+  },
+  wrapper: {
+    padding: `0 30px`,
+    height: `calc(100% - 200px)`
+  },
+  contentWrapper: {
+    height: `100%`    
+  },
   box: {
-    padding: `10px 0`,
+    margin: 0,
+    padding: `10px 15px`,
     borderRadius: `5px`,
     ':hover': {
       background: `#f3f5f7`
     }
+  },
+  titleRowWrapper: {
+    padding: `0 15px`
   },
   titleSpan: {
     ...textSpan,
