@@ -1,8 +1,3 @@
-const active = {
-  padding: `20px`,
-  width: `calc(100% - 15px)`
-}
-
 export const mainStyle = {
   container: {
     background: 'white',
@@ -13,13 +8,13 @@ export const mainStyle = {
     width: `0`,
     bottom: `0`,
     right: `0`,
-    transition: `width 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
+    transition: `all 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
+    transform: `translate3d(100%, 0, 0)`,
     marginTop: `80px`
   },
-
   stickToTop: {
     top: `0px`,
-    paddingTop: `95px`,
+    paddingTop: `100px`,
     marginTop: `0`
   },
   'xlg-stickToTop': {
@@ -29,29 +24,36 @@ export const mainStyle = {
       paddingTop: `80px`
     }
   },
-  lgActive: {
-    ...active,
-    '@media only screen and (min-width : 1600px)': {
-      width: `calc(100% - 510px)`
-    },
-    '@media only screen and (min-width : 1200px) and (max-width : 1599px)': {
-      width: `calc(100% - 460px)`
+  fullHeight: {
+    height: `calc(100% - 80px)`,
+    '@media only screen and (min-width : 1200px)': {
+      height: `100%`
     }
   },
-  mdActive: {
-    ...active,
+  active: {
+    // transform: translate3d(300px, 0, 0)
+    transform: `none`
+  },
+  lgSize: {
+    width: `calc(100% - 20px)`,
+    '@media only screen and (min-width : 1600px)': {
+      width: `calc(100% - 530px)`
+    },
+    '@media only screen and (min-width : 1200px) and (max-width : 1599px)': {
+      width: `calc(100% - 480px)`
+    }
+  },
+  mdSize: {
+    width: `calc(100% - 30px)`,
     '@media only screen and (min-width : 1200px)': {
       width: `630px`
     }
   },
-  smActive: {
-    ...active,
+  smSize: {
+    width: `calc(100% - 20px)`,
     '@media only screen and (min-width : 1200px)': {
       width: `600px`
     }
-  },
-  fullHeight: {
-    height: `100%`
   }
 }
 
