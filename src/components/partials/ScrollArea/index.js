@@ -12,13 +12,16 @@ export const ScrollArea = props => (
     renderThumbVertical={_props => (
       <div {..._props} className={css(style.thumb)} />
     )}
-    renderView={renderView || props.view}
+    renderView={_props =>
+      renderView({ className: props.renderClassName, props: _props })}
     {...props}
   >
     {props.children}
   </Scrollbars>
 )
 
-const renderView = props => <div {...props} className={css(style.view)} />
+const renderView = props => (
+  <div {...props.props} className={`${props.className} ${css(style.view)}`} />
+)
 
 export default ScrollArea
