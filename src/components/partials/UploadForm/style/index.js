@@ -9,6 +9,7 @@ import sliders from './sliders'
 import errors from './errors'
 import main from './main'
 import status from './status'
+import ppv from './ppv'
 
 export default {
   form: StyleSheet.create(form),
@@ -19,5 +20,6 @@ export default {
   sliders: StyleSheet.create(sliders),
   errors: StyleSheet.create(errors),
   main: StyleSheet.create(main),
-  status: StyleSheet.create(status)
+  status: StyleSheet.create(status),
+  ppv: StyleSheet.create(ppv)
 }

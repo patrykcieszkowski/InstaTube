@@ -37,7 +37,11 @@ export class Upload extends React.Component {
         view: false,
         number: 0
       },
-      success: false
+      success: false,
+      viewTypes: {
+        ppv: 0,
+        instagram: ''
+      }
     }
   }
 
@@ -128,6 +132,31 @@ export class Upload extends React.Component {
     })
   }
 
+  onPPVInputChange(e) {
+    if (e.target.value !== '' && !e.target.value.match(/^(\d+\.?\d*|\.\d+)$/))
+    {
+      return e.preventDefault()      
+    }
+
+    this.setState({
+      ...this.state,
+      viewTypes: {
+        ...this.state.viewTypes,
+        ppv: e.target.value
+      }
+    })
+  }
+
+  onInstagramInputChange(e) {
+    this.setState({
+      ...this.state,
+      viewTypes: {
+        ...this.state.viewTypes,
+        instagram: e.target.value
+      }
+    })
+  }
+
   onFormSubmit(e) {
     e.preventDefault()
     if (!this.state.upload.file) {
@@ -166,6 +195,8 @@ export class Upload extends React.Component {
           onMessageChange={this.onMessageChange.bind(this)}
           onInstagramClick={this.onLinkClick.bind(this, 'instagram')}
           onPPVClick={this.onLinkClick.bind(this, 'ppv')}
+          onPPVInputChange={this.onPPVInputChange.bind(this)}
+          onInstagramInputChange={this.onInstagramInputChange.bind(this)}
           onDisplayTimeChange={this.onDisplayTimeChange.bind(this)}
           onValidityMinuteChange={this.onValidityChange.bind(this, 'minute')}
           onValidityHourChange={this.onValidityChange.bind(this, 'hour')}
