@@ -11,7 +11,11 @@ const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
 const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
 
 export const UploadForm = props => (
-  <Form className={css(style.form.form)} onSubmit={props.onFormSubmit} style={props.style}>
+  <Form
+    className={css(style.form.form)}
+    onSubmit={props.onFormSubmit}
+    style={props.style}
+  >
     <FormGroup className={css(style.form.group)}>
       <Dropzone
         maxSize={20000000}

@@ -38,7 +38,7 @@ export const navbarStyle = {
     display: `none`,
     '@media only screen and (min-width : 1600px)': {
       display: `flex`
-    }      
+    }
   },
   transferSpan: {
     padding: `0 5px`,
@@ -47,6 +47,17 @@ export const navbarStyle = {
   },
   transferSpanAmount: {
     fontWeight: `800`
+  },
+  signOutLink: {
+    padding: `0 5px`,
+    display: `none`,
+    '@media only screen and (min-width : 1600px)': {
+      display: `flex`
+    }
+  },
+  signoutIcon: {
+    color: `#c4c5c6`,
+    fontSize: `24px`
   }
 }
 

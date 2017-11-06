@@ -25,7 +25,7 @@ const stateStyle = {
     fontSize: `52px`
   },
   inputWrapper: {
-    margin: `10px 0`,
+    margin: `10px 0`
   },
   input: {
     background: `white`,
@@ -38,7 +38,7 @@ const stateStyle = {
     color: `#3f295a`
   },
   buttonWrapper: {
-    margin: `0`,
+    margin: `0`
   },
   button: {
     background: `#e1306c`,
@@ -47,7 +47,7 @@ const stateStyle = {
     fontSize: `18px`,
     fontWeight: `600`,
     width: `100%`
-  },
+  }
 }
 
 export default stateStyle
