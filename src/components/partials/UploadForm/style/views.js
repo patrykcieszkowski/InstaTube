@@ -1,15 +1,15 @@
 export const viewStyleSpan = {
-  fontSize: `16px`,
+  fontSize: `18px`,
   fontWeight: `100`,
   display: `inline-block`,
   color: `#3f295a`,
-  width: `120px`,
+  width: `100%`,
   ':before': {
     display: `inline-block`,
     content: "''",
     width: `16px`,
     height: `16px`,
-    margin: `-2px 8px 0 0`,
+    margin: `-2px 8px 2px 0`,
     verticalAlign: `middle`,
     textAlign: `center`,
     backgroundColor: `#e1306c`,
@@ -25,6 +25,12 @@ const viewsStyle = {
     paddingRight: `5px`,
     paddingLeft: `8px`
   },
+  h4: {
+    fontSize: `18px`,
+    fontWeight: `100`,
+    textAlign: `center`,
+    margin: 0
+  },
   input: {
     background: `#edf2f6`,
     border: `3px solid #edf2f6`,
@@ -32,11 +38,13 @@ const viewsStyle = {
     fontSize: `14px`,
     fontWeight: `100`
   },
+  active: {
+    background: `white`
+  },
   checkbox: {
     display: `none`
   },
   label: {
-    color: `#f2f2f2`,
     margin: `0`
   },
   span: {
