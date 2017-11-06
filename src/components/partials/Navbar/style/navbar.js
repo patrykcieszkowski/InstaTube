@@ -1,6 +1,6 @@
 export const navbarStyle = {
   wrapper: {
-    height: `80px`,
+    minHeight: `80px`,
     padding: `0`,
     '@media only screen and (min-width : 1200px)': {
       padding: `0 50px`,
