@@ -8,7 +8,7 @@ export const boxStyle = {
   box: {
     border: `1px solid #e6eaee`,
     borderRadius: `5px`,
-    paddingTop: `10px`,
+    paddingTop: `20px`,
     paddingBottom: `10px`,
     margin: `15px 15px`,
     marginLeft: `0px`,
