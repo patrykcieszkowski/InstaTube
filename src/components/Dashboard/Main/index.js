@@ -37,7 +37,7 @@ export class Main extends React.Component {
               style.main.colWrapper
             )}`}
           >
-            <UploadForm />
+            <UploadForm dashboard />
           </Col>
           <Col
             xs="12"

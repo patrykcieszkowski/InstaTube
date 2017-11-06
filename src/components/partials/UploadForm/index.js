@@ -109,6 +109,10 @@ export class Upload extends React.Component {
   }
 
   onLinkClick(type, e) {
+    if (this.props.dashboard) {
+      e.preventDefault()
+    }
+    
     const links = JSON.parse(JSON.stringify(this.state.links))
     Object.keys(links).forEach(a => (links[a] = !!(a === type && !links[a])))
 
