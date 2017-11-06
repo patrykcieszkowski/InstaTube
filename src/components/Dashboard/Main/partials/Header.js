@@ -35,7 +35,7 @@ export const DashboardHeader = () => (
         xl=""
         className={`d-flex justify-content-center align-items-center`}
       >
-        <Link to="#" className={css(style.header.button)}>
+        <Link to="/dashboard/nav/payout" className={css(style.header.button)}>
           Withdraw
         </Link>
       </Col>
