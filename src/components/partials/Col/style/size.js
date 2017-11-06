@@ -55,7 +55,9 @@ const sizeStyle = {
     }
   },
   'col-xxxxl-auto': {
-    ...auto
+    '@media (min-width: 1800px)': {
+      ...auto
+    }
   },
   ...buildSizeClassList(1800, null, `xxxxl`)
 }
