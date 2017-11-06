@@ -60,7 +60,9 @@ export class About extends React.Component {
                 height: `calc(100% - 80px)`,
                 overflowX: `hidden`
               }}
-              autoHide={false}
+              autoHide={true}
+              autoHideTimeout={1000}
+              autoHideDuration={200}
             >
               {aboutUsList.map((item, index) => (
                 <Row className={css(style.content.box)} key={index}>
