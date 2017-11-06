@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Form, FormGroup, Input, Button } from 'reactstrap'
+import { Form, FormGroup, Input, Button, Col } from 'reactstrap'
 
 import style from '../style'
 
@@ -27,9 +27,11 @@ export const RegisterForm = props => (
     </FormGroup>
 
     <FormGroup className={css(style.form.group)}>
-      <Button className={css(style.buttons.button, style.buttons.signup)}>
-        Sign me up!
-      </Button>
+      <Col xs="12" xl="6" style={{ padding: 0 }}>
+        <Button className={css(style.buttons.button, style.buttons.signup)}>
+          Sign me up!
+        </Button>
+      </Col>
     </FormGroup>
   </Form>
 )
