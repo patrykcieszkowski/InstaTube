@@ -11,7 +11,7 @@ import PayoutHistoryItem from './partials/listItem.js'
 
 export const PayoutHistory = props => (
   <Row className={css(style.history.mainRow)}>
-    <Col xs="12">
+    <Col xs="12" className={css(style.history.titleWrapper)}>
       <PayoutHistoryTitles />
     </Col>
     <Col xs="12" className={css(style.history.contentWrapper)}>

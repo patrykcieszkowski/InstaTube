@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap'
 import style from '../../../style'
 
 export const PayoutHistoryTitles = props => (
-  <Row className={css(style.history.titleRowWrapper)}>
+  <Row>
     <Col xs="1" />
     <Col xs="4">
       <span className={css(style.history.titleSpan)}>Status</span>

@@ -5,8 +5,10 @@ import { Scrollbars } from 'react-custom-scrollbars'
 
 import style from './style'
 
-import SignupInfo from '../partials/SignupInfo'
+import Column from '../../partials/Col'
 
+import SidebarHeader from '../../partials/SidebarHeader'
+import ScrollArea from '../../partials/ScrollArea'
 import LoginForm from './partials/LoginForm'
 import RegisterForm from './partials/RegisterForm'
 
@@ -14,29 +16,55 @@ export class Auth extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Row className={css(style.grid.wrapper)}>
-          <Col
+        <Row className={css(style.main.wrapper)}>
+          <Column
             xl="auto"
+            xxxxl="3"
             className={`d-none d-xl-flex align-items-start ${css(
               style.sider.wrapper
             )}`}
           >
-            <Row className={css(style.sider.box)}>
-              <SignupInfo />
-            </Row>
-          </Col>
-          <Col>
-            <Scrollbars
+            <Row className={css(style.sider.box)} />
+          </Column>
+          <Col className={css(style.content.wrapper)}>
+            <ScrollArea
               style={{ width: '100%', height: `100%` }}
-              renderView={props => <Row {...props} />}
+              renderClassName={'row'}
+              autoHide={true}
             >
-              <Col xs="12" xl="6">
+              <Column
+                xs="12"
+                xl="12"
+                xxl="6"
+                xxxl="5"
+                xxxxl="5"
+                className={css(style.content.colWrapper)}
+              >
+                <Row>
+                  <SidebarHeader title={`Login`} paddingTop paddingBottom />
+                </Row>
                 <LoginForm />
-              </Col>
-              <Col xs="12" xl="6">
+              </Column>
+              <Column
+                xs="12"
+                xl="12"
+                xxl="6"
+                xxxl="5"
+                xxxxl="5"
+                className={css(style.content.colWrapper)}
+              >
+                <Row>
+                  <SidebarHeader
+                    title={`Register`}
+                    paddingTop
+                    paddingBottom
+                    className={`d-none d-xl-block`}
+                  />
+                  <SidebarHeader title={`Register`} className={`d-xl-none`} />
+                </Row>
                 <RegisterForm />
-              </Col>
-            </Scrollbars>
+              </Column>
+            </ScrollArea>
           </Col>
         </Row>
       </Container>

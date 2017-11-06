@@ -1,6 +1,8 @@
 const loginStyle = {
   remindWrapper: {
-    paddingLeft: `2px`
+    '@media (min-width: 1200px)': {
+      paddingLeft: `2px`
+    }
   }
 }
 

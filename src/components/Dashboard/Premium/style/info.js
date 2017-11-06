@@ -1,9 +1,14 @@
 export const infoStyle = {
   wrapper: {
+    padding: `0 30px`,
+    height: `210px`
+  },
+  box: {
+    height: `100%`,
     borderRadius: `5px`,
     border: `3px solid #f3f5f7`,
     padding: `20px 10px`,
-    margin: `10px 0`
+    margin: `0 -12px`
   },
   colWrapper: {
     margin: `5px 0`
@@ -24,7 +29,8 @@ export const infoStyle = {
     color: `#292931`
   },
   button: {
-    margin: `0 40px`,
+    width: `230px`,
+    margin: `0 auto`,
     display: `block`,
     color: `white`,
     textAlign: `center`,

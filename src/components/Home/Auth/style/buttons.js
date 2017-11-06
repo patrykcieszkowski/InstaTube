@@ -11,7 +11,8 @@ const buttonStyle = {
     fontWeight: `600`,
     // color: `#e6eaee`
     '@media (min-width: 1200px)': {
-      fontSize: `12px`
+      paddingRight: `2px`,
+      fontSize: `14px`
     }
   },
   signup: {
@@ -19,34 +20,42 @@ const buttonStyle = {
     border: `2px solid #e1306c`,
     color: `white`,
     fontSize: `18px`,
-    fontWeight: `500`
+    fontWeight: `600`,
+    '@media (min-width: 1200px)': {
+      fontSize: `14px`
+    }
   },
   remind: {
     background: `#e1306c`,
     border: `2px solid #e1306c`,
     color: `white`,
     fontSize: `18px`,
-    fontWeight: `500`
+    fontWeight: `600`
   },
   facebookWrapper: {
-    paddingRight: `2px`
+    '@media (min-width: 1200px)': {
+      paddingRight: `2px`
+    }
   },
   facebook: {
     background: `#3b5998`,
     border: `none`,
-    '@media (min-width: 1280px)': {
-      fontSize: `12px`
+    '@media (min-width: 1200px)': {
+      fontSize: `13px`
     }
   },
   instagramWrapper: {
-    paddingLeft: `2px`
+    '@media (min-width: 1200px)': {
+      paddingLeft: `2px`
+    }
   },
   instagram: {
     backgroundColor: `#cd486b`,
     background: `radial-gradient(bottom, #fbad50, #e95950, #cd486b)`,
     border: `none`,
-    '@media (min-width: 1280px)': {
-      fontSize: `12px`
+    '@media (min-width: 1200px)': {
+      fontSize: `13px`,
+      background: `linear-gradient(90deg, #e03560, #ae29aa)`
     }
   },
   icon: {

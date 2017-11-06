@@ -7,17 +7,15 @@ export class SidebarContainer extends React.Component {
   render() {
     return (
       <div
-        className={css(
+        className={`${css(
           style.main.container,
-          this.props.isOpen
-            ? this.props.md
-              ? style.main.mdActive
-              : this.props.sm ? style.main.smActive : style.main.lgActive
-            : '',
+          this.props.md ? style.main.mdSize : '',
+          this.props.sm ? style.main.smize : '',
+          !(this.props.sm || this.props.md) ? style.main.lgSize : '',
           this.props.stickToTop ? style.main.stickToTop : '',
           this.props.stickToTopXLG ? style.main['xlg-stickToTop'] : '',
           this.props.fullHeight ? style.main.fullHeight : ''
-        )}
+        )} ${css(this.props.isOpen ? style.main.active : '')}`}
       >
         <div
           className={css(

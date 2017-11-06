@@ -2,10 +2,9 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
 
-import { Scrollbars } from 'react-custom-scrollbars'
-
+import Column from '../../partials/Col'
+import SidebarHeader from '../../partials/SidebarHeader'
 import ScrollArea from '../../partials/ScrollArea'
-import SignupInfo from '../partials/SignupInfo'
 import style from './style'
 
 const aboutUsList = [
@@ -36,28 +35,40 @@ export class About extends React.Component {
     return (
       <Container fluid>
         <Row className={css(style.main.wrapper)}>
-          <Col
+          <Column
             xl="auto"
-            className={`d-none d-xl-flex align-items-start ${css(
+            xxxxl="3"
+            className={`d-none d-xl-flex align-items-center ${css(
               style.sider.wrapper
             )}`}
           >
-            <Row className={`${css(style.sider.box)}`}>
-              <SignupInfo />
+            <Row className={`${css(style.sider.box)}`} />
+          </Column>
+          <Col className={`${css(style.content.wrapper)}`}>
+            <Row>
+              <SidebarHeader
+                title={`About us`}
+                md={false}
+                paddingTop
+                paddingBottom
+              />
             </Row>
-          </Col>
-          <Col>
+
             <ScrollArea
-              style={{ width: `100%`, height: `calc(100% - 20px)` }}
-              renderView={props => <Col {...props} />}
+              style={{
+                width: `100%`,
+                height: `calc(100% - 80px)`,
+                overflowX: `hidden`
+              }}
+              autoHide={false}
             >
               {aboutUsList.map((item, index) => (
-                <Row>
-                  <Col xs="12" className={css(style.main.header)}>
-                    <h3 className={css(style.main.h3)}>{item.name}</h3>
+                <Row className={css(style.content.box)}>
+                  <Col xs="12" className={css(style.content.header)}>
+                    <h3 className={css(style.content.h3)}>{item.name}</h3>
                   </Col>
-                  <Col xs="12">
-                    <p className={css(style.main.p)}>{item.body}</p>
+                  <Col xs="12" className={css(style.content.textBox)}>
+                    <p className={css(style.content.p)}>{item.body}</p>
                   </Col>
                 </Row>
               ))}

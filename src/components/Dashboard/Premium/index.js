@@ -1,5 +1,10 @@
 import React from 'react'
+import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
+
+import style from './style'
+
+import SidebarHeader from '../../partials/SidebarHeader'
 
 import PremiumInfo from './partials/PremiumInfo'
 import PaymentHistory from './partials/PaymentHistory'
@@ -7,14 +12,20 @@ import PaymentHistory from './partials/PaymentHistory'
 export class Premium extends React.Component {
   render() {
     return (
-      <Container fluid>
+      <Container fluid className={css(style.main.container)}>
         <Row>
-          <Col xs="12">
+          <SidebarHeader
+            title="Go Premium!"
+            paddingBottom
+            testStyle={{ color: `#4f5bd5` }}
+            md={true}
+          />
+        </Row>
+        <Row className={`${css(style.main.mainRow)}`}>
+          <Col xs="12" className={css(style.info.wrapper)}>
             <PremiumInfo />
           </Col>
-        </Row>
-        <Row>
-          <Col xs="12">
+          <Col xs="12" className={css(style.history.wrapper)}>
             <PaymentHistory />
           </Col>
         </Row>

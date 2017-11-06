@@ -26,8 +26,8 @@ export const SettingsForm = props => (
 
 export const PersonalInputs = () => (
   <Row className={css(style.form.row)}>
-    <Col xs="12">
-      <h4 className={css(style.form.h4)}>basic</h4>
+    <Col xs="12" className={css(style.labels.wrapper)}>
+      <h4 className={css(style.labels.h4)}>basic</h4>
     </Col>
     <Col xs="12" xl="6" className={css(style.inputs.wrapper)}>
       <Input placeholder="Name" className={css(style.inputs.input)} />
@@ -49,8 +49,8 @@ export const PersonalInputs = () => (
 
 export const PasswordInputs = () => (
   <Row className={css(style.form.row)}>
-    <Col xs="12">
-      <h4 className={css(style.form.h4)}>password</h4>
+    <Col xs="12" className={css(style.labels.wrapper)}>
+      <h4 className={css(style.labels.h4)}>password</h4>
     </Col>
     <Col xs="12" className={css(style.inputs.wrapper)}>
       <Input
@@ -71,8 +71,8 @@ export const PasswordInputs = () => (
 
 export const BankInputs = () => (
   <Row className={css(style.form.row)}>
-    <Col xs="12">
-      <h4 className={css(style.form.h4)}>bank information</h4>
+    <Col xs="12" className={css(style.labels.wrapper)}>
+      <h4 className={css(style.labels.h4)}>bank information</h4>
     </Col>
     <Col xs="12" className={css(style.inputs.wrapper)}>
       <Input

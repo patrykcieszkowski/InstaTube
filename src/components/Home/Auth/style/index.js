@@ -7,6 +7,8 @@ import links from './links'
 import grid from './grid'
 import sider from './sider'
 import login from './login'
+import main from './main'
+import content from './content'
 
 export default {
   inputs: StyleSheet.create(inputs),
@@ -15,5 +17,7 @@ export default {
   links: StyleSheet.create(links),
   grid: StyleSheet.create(grid),
   sider: StyleSheet.create(sider),
-  login: StyleSheet.create(login)
+  login: StyleSheet.create(login),
+  main: StyleSheet.create(main),
+  content: StyleSheet.create(content)
 }

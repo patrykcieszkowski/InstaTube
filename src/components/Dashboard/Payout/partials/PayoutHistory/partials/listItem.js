@@ -6,17 +6,21 @@ import style from '../../../style'
 
 export const PayoutHistoryItem = props => (
   <Row className={css(style.history.box)}>
-    <Col xs="1">
-      <div className={css(style.circle.circle, style.circle.pending)} />
-    </Col>
-    <Col xs="4">
-      <span className={css(style.history.statusSpan)}>Complete</span>
-    </Col>
-    <Col xs="3">
-      <span className={css(style.history.amountSpan)}>$180</span>
-    </Col>
-    <Col xs="4">
-      <span className={css(style.history.dateSpan)}>23-12-2017</span>
+    <Col xs="12" className={css(style.history.innerWrapper)}>
+      <Row>
+        <Col xs="1">
+          <div className={css(style.circle.circle, style.circle.pending)} />
+        </Col>
+        <Col xs="4">
+          <span className={css(style.history.statusSpan)}>Complete</span>
+        </Col>
+        <Col xs="3">
+          <span className={css(style.history.amountSpan)}>$180</span>
+        </Col>
+        <Col xs="4">
+          <span className={css(style.history.dateSpan)}>23-12-2017</span>
+        </Col>
+      </Row>
     </Col>
   </Row>
 )

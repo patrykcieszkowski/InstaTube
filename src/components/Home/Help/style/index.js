@@ -1,11 +1,13 @@
 import { StyleSheet } from 'aphrodite'
 
 import box from './box'
-import grid from './grid'
+import content from './content'
+import main from './main'
 import sider from './sider'
 
 export default {
+  content: StyleSheet.create(content),
   box: StyleSheet.create(box),
-  grid: StyleSheet.create(grid),
+  main: StyleSheet.create(main),
   sider: StyleSheet.create(sider)
 }
