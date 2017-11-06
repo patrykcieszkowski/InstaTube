@@ -1,12 +1,12 @@
 import { StyleSheet } from 'aphrodite'
 
-import grid from './grid'
+import main from './main'
 import history from './history'
 import circle from './circle'
 import withdraw from './withdraw'
 
 export default {
-  grid: StyleSheet.create(grid),
+  main: StyleSheet.create(main),
   history: StyleSheet.create(history),
   circle: StyleSheet.create(circle),
   withdraw: StyleSheet.create(withdraw)
