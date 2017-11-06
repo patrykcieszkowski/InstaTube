@@ -7,7 +7,7 @@ const none = {
 const auto = {
   flex: `0 0 auto`,
   width: `auto`,
-  maxWidth: none
+  maxWidth: `none`
 }
 
 const buildSizeClass = size => ({
@@ -55,7 +55,9 @@ const sizeStyle = {
     }
   },
   'col-xxxxl-auto': {
-    ...auto
+    '@media (min-width: 1800px)': {
+      ...auto
+    }
   },
   ...buildSizeClassList(1800, null, `xxxxl`)
 }
