@@ -1,6 +1,7 @@
 export const gridStyle = {
   wrapper: {
-    height: `100%`
+    height: `100%`,
+    padding: `0 45px`
   },
   container: {
     padding: `0 15px`

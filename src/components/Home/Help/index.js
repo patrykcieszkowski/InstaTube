@@ -3,8 +3,9 @@ import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
 import { Scrollbars } from 'react-custom-scrollbars'
 
-import SignupInfo from '../partials/SignupInfo'
-
+import Column from '../../partials/Col'
+import ScrollArea from '../../partials/ScrollArea'
+import SidebarHeader from '../../partials/SidebarHeader'
 import HelpBox from './partials/HelpBox'
 import style from './style'
 
@@ -58,66 +59,102 @@ export class Help extends React.Component {
 
   render() {
     return (
-      <Container fluid className={css(style.grid.container)}>
-        <Row className={css(style.grid.wrapper)}>
-          <Col
+      <Container fluid className={css(style.main.container)}>
+        <Row className={css(style.main.wrapper)}>
+          <Column
             xl="auto"
+            xxxxl="3"
             className={`d-none d-xl-flex align-items-start ${css(
               style.sider.wrapper
             )}`}
           >
-            <Row className={`${css(style.sider.box)}`}>
-              <SignupInfo />
+            <Row className={`${css(style.sider.box)}`} />
+          </Column>
+          <Col className={css(style.content.wrapper)}>
+            <Row>
+              <SidebarHeader
+                title={`Quick Help`}
+                md={false}
+                paddingTop
+                paddingBottom
+              />
             </Row>
-          </Col>
-          <Col>
-            <Scrollbars
-              style={{ width: '100%', height: `100%` }}
-              renderView={props => <Row {...props} style={{ margin: 0 }} />}
+            <ScrollArea
+              style={{
+                width: '100%',
+                height: `calc(100% - 80px)`,
+                margin: 0,
+                overflowX: `hidden`
+              }}
+              className={'row'}
+              autoHide={false}
             >
-              <Col xs="12" xl="5" className={css(style.box.wrapper)}>
-                <Row className={css(style.box.row)}>
-                  {helpBoxList
-                    .slice(0, Math.floor(helpBoxList.length / 2))
-                    .map((box, index) => (
-                      <HelpBox
-                        key={index}
-                        index={index}
-                        title={box.title}
-                        state={this.state.boxes[index] || { isExpanded: false }}
-                        onClick={this.onBoxClick.bind(this, index)}
-                      >
-                        {box.desc}
-                      </HelpBox>
-                    ))}
+              <Col style={{ paddingLeft: 0 }}>
+                <Row>
+                  <Column
+                    xs="12"
+                    xl="12"
+                    xxl="6"
+                    xxxl="5"
+                    xxxxl="5"
+                    className={css(style.box.colWrapper)}
+                  >
+                    <Row className={css(style.box.row)}>
+                      {helpBoxList
+                        .slice(0, Math.floor(helpBoxList.length / 2))
+                        .map((box, index) => (
+                          <HelpBox
+                            key={index}
+                            index={index}
+                            title={box.title}
+                            state={
+                              this.state.boxes[index] || { isExpanded: false }
+                            }
+                            onClick={this.onBoxClick.bind(this, index)}
+                          >
+                            {box.desc}
+                          </HelpBox>
+                        ))}
+                    </Row>
+                  </Column>
+                  <Column
+                    xs="12"
+                    xl="12"
+                    xxl="6"
+                    xxxl="5"
+                    xxxxl="5"
+                    className={css(style.box.colWrapper)}
+                  >
+                    <Row className={css(style.box.row)}>
+                      {helpBoxList
+                        .slice(
+                          Math.floor(helpBoxList.length / 2),
+                          helpBoxList.length
+                        )
+                        .map((box, index) => {
+                          const _index =
+                            Math.floor(helpBoxList.length / 2) + index
+                          return (
+                            <HelpBox
+                              key={index}
+                              index={_index}
+                              title={box.title}
+                              state={
+                                this.state.boxes[_index] || {
+                                  isExpanded: false
+                                }
+                              }
+                              onClick={this.onBoxClick.bind(this, _index)}
+                            >
+                              {box.desc}
+                            </HelpBox>
+                          )
+                        })}
+                    </Row>
+                  </Column>
                 </Row>
               </Col>
-              <Col xs="12" xl="5" className={css(style.box.wrapper)}>
-                <Row className={css(style.box.row)}>
-                  {helpBoxList
-                    .slice(
-                      Math.floor(helpBoxList.length / 2),
-                      helpBoxList.length
-                    )
-                    .map((box, index) => {
-                      const _index = Math.floor(helpBoxList.length / 2) + index
-                      return (
-                        <HelpBox
-                          key={index}
-                          index={_index}
-                          title={box.title}
-                          state={
-                            this.state.boxes[_index] || { isExpanded: false }
-                          }
-                          onClick={this.onBoxClick.bind(this, _index)}
-                        >
-                          {box.desc}
-                        </HelpBox>
-                      )
-                    })}
-                </Row>
-              </Col>
-            </Scrollbars>
+            </ScrollArea>
           </Col>
         </Row>
       </Container>

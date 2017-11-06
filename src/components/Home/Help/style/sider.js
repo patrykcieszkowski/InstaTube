@@ -4,7 +4,9 @@ const siderStyle = {
     borderRight: `1px solid #e8f1f8`
   },
   box: {
-    width: `300px`
+    alignItems: `center`,
+    justifyContent: `center`,
+    width: `320px`
   }
 }
 

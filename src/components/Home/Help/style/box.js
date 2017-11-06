@@ -3,17 +3,21 @@ export const boxStyle = {
     padding: 0
   },
   row: {
-    margin: `0 5px`
+    margin: `0`
   },
   box: {
     border: `1px solid #e6eaee`,
     borderRadius: `5px`,
-    paddingTop: `20px`,
-    paddingBottom: `20px`,
-    margin: `5px`
+    paddingTop: `10px`,
+    paddingBottom: `10px`,
+    margin: `15px 15px`,
+    marginLeft: `0px`,
+    transition: `0.2s`
   },
   hiddenBox: {
-    background: `#e6eaee`
+    background: `#e6eaee`,
+    paddingTop: `20px`,
+    paddingBottom: `20px`
   },
   header: {},
   icon: {
