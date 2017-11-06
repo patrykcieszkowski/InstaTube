@@ -17,7 +17,44 @@ export const LoginForm = props => (
         className={css(style.inputs.input)}
       />
     </FormGroup>
-    <FormGroup className={css(style.form.group)}>
+
+    <FormGroup className={`${css(style.form.group)} d-flex d-xl-none`}>
+      <Button
+        className={`d-flex justify-content-center align-items-center ${css(
+          style.buttons.button,
+          style.buttons.facebook
+        )}`}
+      >
+        <span className={`justify-content-center align-items-center`}>
+          <i
+            className={`la la-facebook-official ${css(style.buttons.icon)}`}
+            aria-hidden="true"
+            title="facebook"
+          />
+          Login with facebook
+        </span>
+      </Button>
+    </FormGroup>
+
+    <FormGroup className={`${css(style.form.group)} d-flex d-xl-none`}>
+      <Button
+        className={`d-flex justify-content-center align-items-center ${css(
+          style.buttons.button,
+          style.buttons.instagram
+        )}`}
+      >
+        <span className={`justify-content-center align-items-center`}>
+          <i
+            className={`la la-instagram ${css(style.buttons.icon)}`}
+            aria-hidden="true"
+            title="instagram"
+          />
+          Login with instagram
+        </span>
+      </Button>
+    </FormGroup>
+
+    <FormGroup className={`${css(style.form.group)} d-none d-xl-block`}>
       <Row>
         <Col xs="12" xl="6" className={css(style.buttons.facebookWrapper)}>
           <Button
@@ -28,7 +65,7 @@ export const LoginForm = props => (
           >
             <span
               className={`${css(
-                style.grid.d1400None
+                style.grid.d1800None
               )} justify-content-center align-items-center`}
             >
               <i
@@ -40,7 +77,7 @@ export const LoginForm = props => (
             </span>
             <span
               className={`${css(
-                style.grid.d1400
+                style.grid.d1800
               )} justify-content-center align-items-center`}
             >
               <i
@@ -61,7 +98,7 @@ export const LoginForm = props => (
           >
             <span
               className={`${css(
-                style.grid.d1400None
+                style.grid.d1800None
               )} justify-content-center align-items-center`}
             >
               <i
@@ -73,7 +110,7 @@ export const LoginForm = props => (
             </span>
             <span
               className={`${css(
-                style.grid.d1400
+                style.grid.d1800
               )} justify-content-center align-items-center`}
             >
               <i

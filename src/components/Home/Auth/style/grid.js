@@ -1,16 +1,13 @@
 export const gridStyle = {
-  wrapper: {
-    height: `100%`
-  },
-  d1400: {
+  d1800: {
     display: `none`,
-    '@media (min-width: 1400px)': {
+    '@media (min-width: 1800px)': {
       display: `flex`
     }
   },
-  d1400None: {
+  d1800None: {
     display: `flex`,
-    '@media (min-width: 1400px)': {
+    '@media (min-width: 1800px)': {
       display: `none`
     }
   }
