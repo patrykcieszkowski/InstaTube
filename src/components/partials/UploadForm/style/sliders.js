@@ -4,6 +4,7 @@ const sliderThumbStyle = {
   height: `18px`,
   border: `none`,
   borderRadius: `50%`,
+  marginTop: `-7px`,
   background: `#e1306c`,
   cursor: `pointer`
 }
