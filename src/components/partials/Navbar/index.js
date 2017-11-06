@@ -54,6 +54,9 @@ export class NavbarComponent extends React.Component {
         />
 
         <div className={`d-none d-xl-flex ${css(style.navbar.userNavbar)}`}>
+          <div className={`${css(style.navbar.transfer)} justify-content-center align-items-center`}>
+            <span className={css(style.navbar.transferSpan)}>Transfer available: <span className={css(style.navbar.transferSpanAmount)}>245MB</span></span>
+          </div>
           <div className={css(style.navbar.userButtonBox)}>
             <div>
               <UserButton toggleMenu={this.toggleMenu.bind(this, 'profile')} />

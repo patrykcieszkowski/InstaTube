@@ -33,6 +33,20 @@ export const navbarStyle = {
       top: `13px`,
       right: `50px`
     }
+  },
+  transfer: {
+    display: `none`,
+    '@media only screen and (min-width : 1600px)': {
+      display: `flex`
+    }      
+  },
+  transferSpan: {
+    padding: `0 5px`,
+    fontSize: `16px`,
+    color: `#3f295a`
+  },
+  transferSpanAmount: {
+    fontWeight: `800`
   }
 }
 
