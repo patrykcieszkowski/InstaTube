@@ -4,7 +4,7 @@ export const navStyle = {
     top: 0,
     right: 0,
     width: `100%`,
-    height: `90px`,
+    height: `80px`,
     display: `none`,
     background: `#e8f1f7`
   },

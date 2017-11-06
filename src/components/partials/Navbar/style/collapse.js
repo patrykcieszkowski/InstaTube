@@ -46,8 +46,6 @@ export const collapseStyle = {
     maxWidth: `500px`,
     width: `100%`,
     '@media only screen and (min-width : 1200px)': {
-      // marginRight: `285px`,
-      marginLeft: `calc(33.33333% + 5px)`,
       zIndex: 99
     }
   },
