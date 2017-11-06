@@ -17,7 +17,7 @@ export const buttonStyle = {
   userButtonLogged: {
     width: `80px`,
     borderRadius: `30px`,
-    '@media (min-width: 992px)': {
+    '@media (min-width: 1200px)': {
       width: `100%`,
       margin: 0,
       borderRadius: `30px`,
