@@ -1,9 +1,8 @@
 export const gridStyle = {
   mainRow: {
-    '@media only screen and (min-width : 992px)': {
-      flexBasis: `100%`,
+    '@media only screen and (min-width : 1200px)': {
       margin: `85px 0`,
-      padding: `0 25px`
+      padding: `0 35px`
     }
   },
   row: {
