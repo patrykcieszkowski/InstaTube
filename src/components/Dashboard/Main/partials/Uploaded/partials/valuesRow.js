@@ -140,34 +140,72 @@ const ActionExpireColumn = ({ props, parsedTime }) => (
         </span>
       </div>
       <div>
-        <span
-          className={`${css(
-            style.uploaded.valueSpan
-          )} d-flex justify-content-xl-center align-items-center`}
-        >
-          <a href="#" onClick={props.onCopyActionToggle}>
-            <i
-              className={`la la-link ${css(style.uploaded.actionIcon)}`}
-              aria-hidden="true"
-              title="copy link"
-            />
-          </a>
-
-          <a href="#">
-            <i
-              className={`la la-trash-o ${css(
-                style.uploaded.actionIcon,
-                style.uploaded.actionIconTrash
-              )}`}
-              aria-hidden="true"
-              title="expand"
-            />
-          </a>
-        </span>
+        <RenderActions {...props} />
       </div>
     </div>
   </Column>
 )
+
+const RenderActions = props => {
+  if (!props.item.active) {
+    return (
+      <span
+        className={`${css(
+          style.uploaded.valueSpan
+        )} d-flex justify-content-xl-center align-items-center`}
+      >
+        <a href="#extend">
+          <i
+            className={`la la-clock-o ${css(
+              style.uploaded.actionIcon,
+              style.uploaded.actionIconExtend
+            )}`}
+            aria-hidden="true"
+            title="clock"
+          />
+        </a>
+
+        <a href="#delete" onClick={props.onDeleteItemClick}>
+          <i
+            className={`la la-trash-o ${css(
+              style.uploaded.actionIcon,
+              style.uploaded.actionIconTrash
+            )}`}
+            aria-hidden="true"
+            title="expand"
+          />
+        </a>
+      </span>
+    )
+  }
+
+  return (
+    <span
+      className={`${css(
+        style.uploaded.valueSpan
+      )} d-flex justify-content-xl-center align-items-center`}
+    >
+      <a href="#" onClick={props.onCopyActionToggle}>
+        <i
+          className={`la la-link ${css(style.uploaded.actionIcon)}`}
+          aria-hidden="true"
+          title="copy link"
+        />
+      </a>
+
+      <a href="#">
+        <i
+          className={`la la-trash-o ${css(
+            style.uploaded.actionIcon,
+            style.uploaded.actionIconTrash
+          )}`}
+          aria-hidden="true"
+          title="expand"
+        />
+      </a>
+    </span>
+  )
+}
 
 const CopyBlockColumn = ({ props }) => (
   <Column
@@ -245,30 +283,7 @@ const ActionsColumn = ({ props }) => (
     xxxxl="auto"
     className={`${css(style.grid['d-xxxxl-block'])} d-xl-none`}
   >
-    <span
-      className={`${css(
-        style.uploaded.valueSpan
-      )} d-flex justify-content-xl-center align-items-center`}
-    >
-      <a href="#" onClick={props.onCopyActionToggle}>
-        <i
-          className={`la la-link ${css(style.uploaded.actionIcon)}`}
-          aria-hidden="true"
-          title="copy link"
-        />
-      </a>
-
-      <a href="#">
-        <i
-          className={`la la-trash-o ${css(
-            style.uploaded.actionIcon,
-            style.uploaded.actionIconTrash
-          )}`}
-          aria-hidden="true"
-          title="expand"
-        />
-      </a>
-    </span>
+    <RenderActions {...props} />
   </Column>
 )
 
