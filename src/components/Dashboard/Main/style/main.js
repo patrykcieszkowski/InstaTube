@@ -3,7 +3,10 @@ export const mainStyle = {
     padding: `0 10px`
   },
   mainRow: {
-    marginTop: `60px`
+    '@media only screen and (min-width : 1200px)': {
+      marginTop: `60px`,
+      padding: `0 25px`
+    }
   }
 }
 
