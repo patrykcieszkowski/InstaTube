@@ -36,10 +36,15 @@ export const infoStyle = {
     textAlign: `center`,
     background: `#e1306c`,
     borderRadius: `5px`,
-    border: `none`,
     padding: `8px 0`,
     fontSize: `18px`,
-    fontWeight: `600`
+    fontWeight: `600`,
+    transition: `all 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)`,
+    border: `3px solid #e1306c`,
+    ':hover': {
+      background: 'white',
+      color: '#e1306c'
+    },
   },
   buttonMonthSpan: {
     fontSize: `14px`,
