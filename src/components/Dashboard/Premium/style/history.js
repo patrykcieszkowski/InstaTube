@@ -5,8 +5,20 @@ const textSpan = {
 }
 
 export const historyStyle = {
+  wrapper: {
+    padding: `15px 30px`,
+    height: `100%`
+  },
+  contentWrapper: {
+    height: `100%`,
+    padding: `0px`
+  },
+  innerWrapper: {
+    padding: `15px`
+  },
   box: {
-    padding: `10px 0`,
+    padding: `0`,
+    margin: `0`,
     borderRadius: `5px`,
     ':hover': {
       background: `#f3f5f7`
@@ -16,8 +28,7 @@ export const historyStyle = {
     textTransform: `uppercase`,
     fontSize: `12px`,
     fontWeight: `100`,
-    margin: `10px 0`,
-    color: `#adadad`
+    margin: `10px 0`
   },
   statusSpan: {
     ...textSpan,
