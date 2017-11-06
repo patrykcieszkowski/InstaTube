@@ -1,5 +1,6 @@
 const mainStyle = {
   wrapper: {
+    margin: 0,
     background: `white`,
     borderRadius: `5px`,
     padding: `8px`,
