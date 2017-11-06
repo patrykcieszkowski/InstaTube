@@ -3,8 +3,12 @@ import { css } from 'aphrodite'
 import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
+import attrAccept from 'attr-accept'
 
 import style from './style'
+
+const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
+const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
 
 export class UploadForm extends React.Component {
   constructor() {
@@ -35,7 +39,9 @@ export class UploadForm extends React.Component {
       ...this.state,
       upload: {
         file: null,
-        error: "File is too large"
+        error: attrAccept(files[0], ATTR_ACCEPT_ALL)
+          ? 'File is too large'
+          : 'Invalid media format'
       }
     })
   }
@@ -107,7 +113,7 @@ export class UploadForm extends React.Component {
       return this.setState({
         upload: {
           file: null,
-          error: "You need to upload the file"
+          error: 'You need to upload the file'
         }
       })
     }
@@ -115,10 +121,14 @@ export class UploadForm extends React.Component {
 
   render() {
     return (
-      <Form className={css(style.form.form)} onSubmit={this.onFormSubmit.bind(this)}>
+      <Form
+        className={css(style.form.form)}
+        onSubmit={this.onFormSubmit.bind(this)}
+      >
         <FormGroup className={css(style.form.group)}>
           <Dropzone
             maxSize={20000000}
+            accept={ATTR_ACCEPT_ALL}
             multiple={false}
             onDropRejected={this.onDropRejected.bind(this)}
             onDropAccepted={this.onDropAccepted.bind(this)}
@@ -161,7 +171,7 @@ export class UploadForm extends React.Component {
           <Row className={css(style.errors.fileErrorWrapper)}>
             <Col className={css(style.errors.fileErrorBox)} xs="10">
               <span className={css(style.errors.fileErrorSpan)}>
-                { this.state.upload.error }
+                {this.state.upload.error}
               </span>
             </Col>
             <Col>
@@ -248,11 +258,13 @@ export class UploadForm extends React.Component {
         <FormGroup
           className={css(style.form.group)}
           style={{
-            display: Object.keys(this.state.links).filter(
-              a => this.state.links[a]
-            ).length
-              ? `none`
-              : `block`
+            display:
+              (this.state.upload.file &&
+                attrAccept(this.state.upload.file, ATTR_ACCEPT_MEDIA)) ||
+              Object.keys(this.state.links).filter(a => this.state.links[a])
+                .length
+                ? `none`
+                : `block`
           }}
         >
           <Row className={css(style.form.row)}>
