@@ -35,7 +35,7 @@ export class UploadForm extends React.Component {
       ...this.state,
       upload: {
         file: null,
-        error: true
+        error: "File is too large"
       }
     })
   }
@@ -101,9 +101,21 @@ export class UploadForm extends React.Component {
     })
   }
 
+  onFormSubmit(e) {
+    e.preventDefault()
+    if (!this.state.upload.file) {
+      return this.setState({
+        upload: {
+          file: null,
+          error: "You need to upload the file"
+        }
+      })
+    }
+  }
+
   render() {
     return (
-      <Form className={css(style.form.form)}>
+      <Form className={css(style.form.form)} onSubmit={this.onFormSubmit.bind(this)}>
         <FormGroup className={css(style.form.group)}>
           <Dropzone
             maxSize={20000000}
@@ -149,14 +161,14 @@ export class UploadForm extends React.Component {
           <Row className={css(style.errors.fileErrorWrapper)}>
             <Col className={css(style.errors.fileErrorBox)} xs="10">
               <span className={css(style.errors.fileErrorSpan)}>
-                File is too large
+                { this.state.upload.error }
               </span>
             </Col>
             <Col>
               <span
                 className={css(style.errors.fileErrorCloseButton)}
                 onClick={() =>
-                  this.setState({ ...this.state, upload: { error: false } })}
+                  this.setState({ ...this.state, upload: { error: null } })}
               >
                 <i
                   className={`la la-close ${css(
