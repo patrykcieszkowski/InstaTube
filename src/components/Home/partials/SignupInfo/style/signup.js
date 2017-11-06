@@ -37,7 +37,7 @@ export const signupStyle = {
     border: `none`,
     padding: `12px 0`,
     fontSize: `24px`,
-    fontWeight: `600`,
+    fontWeight: `600`
   },
   loginSpan: {
     width: `270px`,
