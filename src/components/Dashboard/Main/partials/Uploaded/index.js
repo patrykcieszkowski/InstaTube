@@ -17,6 +17,18 @@ export class UploadedList extends React.Component {
     this.state = state
   }
 
+  onDeleteItemClick(index, e) {
+    e.preventDefault()
+    
+    this.setState({
+      ...this.state,
+      items: [
+        ...this.state.items.slice(0, index),
+        ...this.state.items.slice(index + 1)
+      ]
+    })
+  }
+
   onDateActionHover(index, state, e) {
     this.setState({
       ...this.state,
@@ -64,6 +76,7 @@ export class UploadedList extends React.Component {
         onDateActionHoverOut={this.onDateActionHover.bind(this, index, false)}
         onCopyActionToggle={this.onCopyActionToggle.bind(this, index)}
         onCopyClick={this.onCopyClick.bind(this, index)}
+        onDeleteItemClick={this.onDeleteItemClick.bind(this, index)}
       />
     ))
   }

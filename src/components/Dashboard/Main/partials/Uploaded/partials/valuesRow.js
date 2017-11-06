@@ -165,7 +165,7 @@ const RenderActions = props => {
           />
         </a>
 
-        <a href="#">
+        <a href="#delete" onClick={props.onDeleteItemClick}>
           <i
             className={`la la-trash-o ${css(
               style.uploaded.actionIcon,
