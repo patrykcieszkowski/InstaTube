@@ -31,7 +31,7 @@ export const headerStyle = {
     ':hover': {
       background: 'white',
       color: '#e1306c'
-    },
+    }
   },
   welcomeMessage: {
     color: `#3f295a`,

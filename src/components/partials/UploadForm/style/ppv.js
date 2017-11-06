@@ -1,6 +1,6 @@
 export const ppvStyle = {
   inputWrapper: {
-    padding: `0 7px`,
+    padding: `0 7px`
   },
   inputPPVWrapper: {
     paddingLeft: 0

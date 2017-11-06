@@ -26,7 +26,7 @@ const withdrawStyle = {
     ':hover': {
       background: 'white',
       color: '#e1306c'
-    },
+    }
   }
 }
 

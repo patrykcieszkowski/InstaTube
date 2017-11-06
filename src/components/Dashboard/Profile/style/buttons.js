@@ -11,7 +11,7 @@ const buttonStyle = {
     ':hover': {
       background: 'white',
       color: '#e1306c'
-    },
+    }
   }
 }
 

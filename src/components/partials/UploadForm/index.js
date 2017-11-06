@@ -112,7 +112,7 @@ export class Upload extends React.Component {
     if (this.props.dashboard) {
       e.preventDefault()
     }
-    
+
     const links = JSON.parse(JSON.stringify(this.state.links))
     Object.keys(links).forEach(a => (links[a] = !!(a === type && !links[a])))
 
@@ -137,9 +137,8 @@ export class Upload extends React.Component {
   }
 
   onPPVInputChange(e) {
-    if (e.target.value !== '' && !e.target.value.match(/^(\d+\.?\d*|\.\d+)$/))
-    {
-      return e.preventDefault()      
+    if (e.target.value !== '' && !e.target.value.match(/^(\d+\.?\d*|\.\d+)$/)) {
+      return e.preventDefault()
     }
 
     this.setState({

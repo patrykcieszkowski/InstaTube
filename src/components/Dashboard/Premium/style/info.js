@@ -44,7 +44,7 @@ export const infoStyle = {
     ':hover': {
       background: 'white',
       color: '#e1306c'
-    },
+    }
   },
   buttonMonthSpan: {
     fontSize: `14px`,

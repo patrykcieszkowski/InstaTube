@@ -19,7 +19,7 @@ export class UploadedList extends React.Component {
 
   onDeleteItemClick(index, e) {
     e.preventDefault()
-    
+
     this.setState({
       ...this.state,
       items: [

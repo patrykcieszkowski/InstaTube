@@ -14,7 +14,9 @@ const HelpBox = props => (
     onClick={props.onClick}
   >
     <Row className={`align-items-center ${css(style.box.header)}`}>
-      <Col xs="1" className={`d-flex align-items-center`}>{HelpDeskIcon(!props.state.isExpanded)}</Col>
+      <Col xs="1" className={`d-flex align-items-center`}>
+        {HelpDeskIcon(!props.state.isExpanded)}
+      </Col>
       <Col className={`d-flex align-items-center`}>
         <span className={css(style.box.title)}>{props.title}</span>
       </Col>

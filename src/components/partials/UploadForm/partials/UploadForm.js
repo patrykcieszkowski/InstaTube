@@ -119,7 +119,7 @@ export const UploadForm = props => (
       </Row>
     </FormGroup>
     <RenderInstagramPPVInput {...props} />
-    <RenderPPVInput {...props}  />
+    <RenderPPVInput {...props} />
     <FormGroup
       className={css(style.form.group)}
       style={{
@@ -244,7 +244,7 @@ export const UploadForm = props => (
   </Form>
 )
 
-const RenderInstagramPPVInput = (props) => {
+const RenderInstagramPPVInput = props => {
   if (!props.state.links.instagram) {
     return null
   }
@@ -258,9 +258,7 @@ const RenderInstagramPPVInput = (props) => {
             value={props.state.viewTypes.instagram}
             type="text"
             placeholder="@nickname"
-            className={css(
-              style.ppv.input
-            )} 
+            className={css(style.ppv.input)}
           />
         </Col>
       </Row>
@@ -268,7 +266,7 @@ const RenderInstagramPPVInput = (props) => {
   )
 }
 
-const RenderPPVInput = (props) => {
+const RenderPPVInput = props => {
   if (!props.state.links.ppv) {
     return null
   }
@@ -276,22 +274,26 @@ const RenderPPVInput = (props) => {
   return (
     <FormGroup className={css(style.form.group, style.views.box)}>
       <Row className={css(style.form.row)}>
-        <Col xs='1' className={`d-flex align-items-center justify-content-center`}>
-        <i
-          className={`la la-dollar ${css(style.ppv.dollarIcon)}`}
-          aria-hidden="true"
-          title="dollar"
-        />
+        <Col
+          xs="1"
+          className={`d-flex align-items-center justify-content-center`}
+        >
+          <i
+            className={`la la-dollar ${css(style.ppv.dollarIcon)}`}
+            aria-hidden="true"
+            title="dollar"
+          />
         </Col>
-        <Col xs={true} className={css(style.ppv.inputWrapper, style.ppv.inputPPVWrapper)}>
+        <Col
+          xs={true}
+          className={css(style.ppv.inputWrapper, style.ppv.inputPPVWrapper)}
+        >
           <Input
             onChange={props.onPPVInputChange}
             value={props.state.viewTypes.ppv}
             type="text"
             placeholder="0.00"
-            className={css(
-              style.ppv.input
-            )} 
+            className={css(style.ppv.input)}
           />
         </Col>
       </Row>
