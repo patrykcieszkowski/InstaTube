@@ -11,7 +11,7 @@ const mainStyle = {
     '@media (min-width: 1600px)': {
       width: `470px`
     }
-  },
+  }
 }
 
 export default mainStyle

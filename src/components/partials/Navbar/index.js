@@ -54,51 +54,13 @@ export class NavbarComponent extends React.Component {
         />
 
         <div className={`d-none d-xl-flex ${css(style.navbar.userNavbar)}`}>
-          <div className={css(style.navbar.userButtonBox)}>
-            <div>
-              <UserButton toggleMenu={this.toggleMenu.bind(this, 'profile')} />
-              {this.state.profileOpen}
-            </div>
-            <div
-              className={css(
-                style.collapse.userCollapseBox,
-                this.state.profileOpen
-                  ? style.collapse.userCollapseBoxActive
-                  : ''
-              )}
-            >
-              <div
-                className={`${css(
-                  style.collapse.wrapper,
-                  style.collapse.userCollapseWrapper
-                )} d-none d-xl-block`}
-              >
-                <ul className={`${css(style.collapse.collapseList)}`}>
-                  <li className={css(style.collapse.item)}>
-                    <Link
-                      to="/dashboard/nav/profile"
-                      className={css(style.collapse.link)}
-                    >
-                      Profile
-                    </Link>
-                  </li>
-                  <li className={css(style.collapse.item)}>
-                    <Link to="/about" className={css(style.collapse.link)}>
-                      Logout
-                    </Link>
-                  </li>
-                  <li className={css(style.collapse.item)}>
-                    <Link
-                      to="/dashboard/nav/payout"
-                      className={css(style.collapse.link)}
-                    >
-                      Payouts
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <RenderTransferBox {...this.props} />
+          <RenderUserButton
+            {...this.props}
+            state={this.state}
+            toggleMenu={this.toggleMenu.bind(this, 'profile')}
+          />
+          <RenderSignOutBox {...this.props} />
         </div>
 
         <Collapse
@@ -190,5 +152,91 @@ export class NavbarComponent extends React.Component {
     ]
   }
 }
+
+const RenderTransferBox = props => {
+  if (!props.dashboard) {
+    return null
+  }
+
+  return (
+    <div
+      className={`${css(
+        style.navbar.transfer
+      )} justify-content-center align-items-center`}
+    >
+      <span className={css(style.navbar.transferSpan)}>
+        Transfer available:{' '}
+        <span className={css(style.navbar.transferSpanAmount)}>245MB</span>
+      </span>
+    </div>
+  )
+}
+
+const RenderSignOutBox = props => {
+  if (!props.dashboard) {
+    return null
+  }
+
+  return (
+    <Link
+      to="/"
+      className={`${css(
+        style.navbar.signOutLink
+      )} justify-content-center align-items-center`}
+    >
+      <i
+        className={`la  la-sign-out ${css(style.navbar.signoutIcon)}`}
+        aria-hidden="true"
+        title="sign out"
+      />
+    </Link>
+  )
+}
+
+const RenderUserButton = props => (
+  <div className={css(style.navbar.userButtonBox)}>
+    <div>
+      <UserButton toggleMenu={props.toggleMenu} />
+      {props.state.profileOpen}
+    </div>
+    <div
+      className={css(
+        style.collapse.userCollapseBox,
+        props.state.profileOpen ? style.collapse.userCollapseBoxActive : ''
+      )}
+    >
+      <div
+        className={`${css(
+          style.collapse.wrapper,
+          style.collapse.userCollapseWrapper
+        )} d-none d-xl-block`}
+      >
+        <ul className={`${css(style.collapse.collapseList)}`}>
+          <li className={css(style.collapse.item)}>
+            <Link
+              to="/dashboard/nav/profile"
+              className={css(style.collapse.link)}
+            >
+              Profile
+            </Link>
+          </li>
+          <li className={css(style.collapse.item)}>
+            <Link to="/about" className={css(style.collapse.link)}>
+              Logout
+            </Link>
+          </li>
+          <li className={css(style.collapse.item)}>
+            <Link
+              to="/dashboard/nav/payout"
+              className={css(style.collapse.link)}
+            >
+              Payouts
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+)
 
 export default NavbarComponent

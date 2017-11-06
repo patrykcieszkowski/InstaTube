@@ -6,7 +6,6 @@ import attrAccept from 'attr-accept'
 
 import copyToClipboard from 'copy-to-clipboard'
 
-
 import style from './style'
 
 import UploadForm from './partials/UploadForm'
@@ -154,7 +153,10 @@ export class Upload extends React.Component {
   render() {
     return (
       <Row className={css(style.main.wrapper)}>
-        <Success onCopyLinkClick={this.onCopyLinkClick.bind(this)} style={{ display: !this.state.success ? `none` : `block` }} />
+        <Success
+          onCopyLinkClick={this.onCopyLinkClick.bind(this)}
+          style={{ display: !this.state.success ? `none` : `block` }}
+        />
         <UploadForm
           style={{ display: this.state.success ? `none` : `block` }}
           onFormSubmit={this.onFormSubmit.bind(this)}
