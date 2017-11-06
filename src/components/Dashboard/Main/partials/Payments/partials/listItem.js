@@ -5,7 +5,7 @@ import { css } from 'aphrodite'
 import style from '../../../style'
 
 export const PaymentsListItem = props => (
-  <Row className={css(style.payments.box)}>
+  <Row className={css(style.payments.box)} title={props.item.title}>
     <Col xs="2" className={`d-flex justify-content-center align-items-center`}>
       <span
         className={css(
@@ -22,7 +22,8 @@ export const PaymentsListItem = props => (
         className={css(
           style.payments.valueSpan,
           style.payments.text,
-          style.payments.titleSpan
+          style.payments.titleSpan,
+          style.payments.nameTextSpan
         )}
       >
         {props.item.title}

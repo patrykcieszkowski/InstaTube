@@ -13,6 +13,7 @@ const UploadedListItem = props => (
       !!props.item.active ? style.uploaded.boxActive : '',
       style.uploaded.box
     )}
+    title={props.item.title}
   >
     <Col xs="6" className={`d-xl-none`}>
       <ItemDescriptionRow />
