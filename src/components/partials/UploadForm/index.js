@@ -35,7 +35,7 @@ export class Upload extends React.Component {
       },
       views: {
         view: false,
-        number: 0
+        number: 1
       },
       success: false,
       viewTypes: {
@@ -123,7 +123,7 @@ export class Upload extends React.Component {
   }
 
   onViewsNumberChange(e) {
-    if (!e.target.value.match(/^\d+$/)) {
+    if (e.target.value !== '' && !e.target.value.match(/^\d+$/)) {
       return e.preventDefault()
     }
 
@@ -131,7 +131,10 @@ export class Upload extends React.Component {
       ...this.state,
       views: {
         ...this.state.views,
-        number: e.target.value
+        number:
+          +e.target.value < 1
+            ? e.target.value.length ? 1 : ''
+            : +e.target.value > 999 ? 999 : e.target.value
       }
     })
   }
