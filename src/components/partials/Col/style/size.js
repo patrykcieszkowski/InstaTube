@@ -7,7 +7,7 @@ const none = {
 const auto = {
   flex: `0 0 auto`,
   width: `auto`,
-  maxWidth: none
+  maxWidth: `none`
 }
 
 const buildSizeClass = size => ({
