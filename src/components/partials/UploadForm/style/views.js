@@ -32,14 +32,14 @@ const viewsStyle = {
     margin: 0
   },
   input: {
-    background: `#edf2f6`,
+    background: `white`,
     border: `3px solid #edf2f6`,
     padding: `8px 15px`,
     fontSize: `14px`,
     fontWeight: `100`
   },
   active: {
-    background: `white`
+    background: `#edf2f6`
   },
   checkbox: {
     display: `none`
