@@ -4,9 +4,9 @@ const linkStyle = {
     fontSize: `14px`,
     fontWeight: `600`,
     textDecoration: `none`,
-
+    padding: `10px 0`,
     '@media (min-width: 1200px)': {
-      fontSize: `12px`
+      fontSize: `14px`
     }
   }
 }
