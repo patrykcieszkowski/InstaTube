@@ -4,9 +4,13 @@ import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import attrAccept from 'attr-accept'
 
+import copyToClipboard from 'copy-to-clipboard'
+
+
 import style from './style'
 
 import UploadForm from './partials/UploadForm'
+import Success from './partials/Success'
 
 const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
 const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
@@ -33,7 +37,8 @@ export class Upload extends React.Component {
       views: {
         view: false,
         number: 0
-      }
+      },
+      success: false
     }
   }
 
@@ -134,27 +139,41 @@ export class Upload extends React.Component {
         }
       })
     }
+
+    this.setState({
+      ...this.state,
+      success: true
+    })
+  }
+
+  onCopyLinkClick(e) {
+    e.preventDefault()
+    copyToClipboard('http://in.pl/asdd21')
   }
 
   render() {
     return (
-      <UploadForm
-        onFormSubmit={this.onFormSubmit.bind(this)}
-        onDropRejected={this.onDropRejected.bind(this)}
-        onDropAccepted={this.onDropAccepted.bind(this)}
-        onFilenameChange={this.onFilenameChange.bind(this)}
-        onMessageChange={this.onMessageChange.bind(this)}
-        onInstagramClick={this.onLinkClick.bind(this, 'instagram')}
-        onPPVClick={this.onLinkClick.bind(this, 'ppv')}
-        onDisplayTimeChange={this.onDisplayTimeChange.bind(this)}
-        onValidityMinuteChange={this.onValidityChange.bind(this, 'minute')}
-        onValidityHourChange={this.onValidityChange.bind(this, 'hour')}
-        onViewsNumberChange={this.onViewsNumberChange.bind(this)}
-        onCheckboxClick={this.toggleCheckbox.bind(this)}
-        onErrorCloseClick={() =>
-          this.setState({ ...this.state, upload: { error: null } })}
-        state={this.state}
-      />
+      <Row className={css(style.main.wrapper)}>
+        <Success onCopyLinkClick={this.onCopyLinkClick.bind(this)} style={{ display: !this.state.success ? `none` : `block` }} />
+        <UploadForm
+          style={{ display: this.state.success ? `none` : `block` }}
+          onFormSubmit={this.onFormSubmit.bind(this)}
+          onDropRejected={this.onDropRejected.bind(this)}
+          onDropAccepted={this.onDropAccepted.bind(this)}
+          onFilenameChange={this.onFilenameChange.bind(this)}
+          onMessageChange={this.onMessageChange.bind(this)}
+          onInstagramClick={this.onLinkClick.bind(this, 'instagram')}
+          onPPVClick={this.onLinkClick.bind(this, 'ppv')}
+          onDisplayTimeChange={this.onDisplayTimeChange.bind(this)}
+          onValidityMinuteChange={this.onValidityChange.bind(this, 'minute')}
+          onValidityHourChange={this.onValidityChange.bind(this, 'hour')}
+          onViewsNumberChange={this.onViewsNumberChange.bind(this)}
+          onCheckboxClick={this.toggleCheckbox.bind(this)}
+          onErrorCloseClick={() =>
+            this.setState({ ...this.state, upload: { error: null } })}
+          state={this.state}
+        />
+      </Row>
     )
   }
 }
