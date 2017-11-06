@@ -34,7 +34,8 @@ export const collapseStyle = {
     margin: 0
   },
   main: {
-    '@media only screen and (min-width : 992px)': {
+    '@media only screen and (min-width : 1200px)': {
+      height: `80px`,
       display: `flex`,
       background: `none`,
       ':after': {
@@ -50,7 +51,7 @@ export const collapseStyle = {
     }
   },
   mainListItem: {
-    '@media only screen and (min-width : 992px)': {
+    '@media only screen and (min-width : 1200px)': {
       border: `none`
     }
   },
