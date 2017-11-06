@@ -7,7 +7,7 @@ const inputStyle = {
     fontWeight: `100`
   },
   wrapper: {
-    padding: `2px`
+    padding: `5px`
   }
 }
 

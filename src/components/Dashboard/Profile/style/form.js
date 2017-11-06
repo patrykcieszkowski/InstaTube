@@ -6,14 +6,7 @@ export const formStyle = {
     marginBottom: `10px`
   },
   row: {
-    margin: 0
-  },
-  h4: {
-    fontSize: `12px`,
-    fontWeight: `600`,
-    textTransform: `uppercase`,
-    marginTop: `5px`,
-    marginBottom: `2px`
+    margin: `0 -5px`
   }
 }
 
