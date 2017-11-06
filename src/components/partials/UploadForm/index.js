@@ -204,7 +204,7 @@ export class UploadForm extends React.Component {
               )}
             >
               <Link
-                to="/login"
+                to="/nav/auth"
                 onClick={this.onLinkClick.bind(this, 'instagram')}
                 className={css(
                   style.links.link,
@@ -218,7 +218,7 @@ export class UploadForm extends React.Component {
               className={css(style.links.wrapper, style.links.PPVLinkWrapper)}
             >
               <Link
-                to="/login"
+                to="/nav/auth"
                 onClick={this.onLinkClick.bind(this, 'ppv')}
                 className={css(
                   style.links.link,
@@ -230,7 +230,17 @@ export class UploadForm extends React.Component {
             </Col>
           </Row>
         </FormGroup>
-        <FormGroup className={css(style.form.group)}>
+        <FormGroup className={css(style.form.group)}
+          style={{
+            display:
+              (this.state.upload.file &&
+                attrAccept(this.state.upload.file, ATTR_ACCEPT_MEDIA)) ||
+              Object.keys(this.state.links).filter(a => this.state.links[a])
+                .length
+                ? `none`
+                : `block`
+          }}
+        >
           <Row className={css(style.form.row)}>
             <Col xs="12">
               <h4 className={css(style.sliders.h4)}>Display time</h4>
@@ -257,15 +267,6 @@ export class UploadForm extends React.Component {
 
         <FormGroup
           className={css(style.form.group)}
-          style={{
-            display:
-              (this.state.upload.file &&
-                attrAccept(this.state.upload.file, ATTR_ACCEPT_MEDIA)) ||
-              Object.keys(this.state.links).filter(a => this.state.links[a])
-                .length
-                ? `none`
-                : `block`
-          }}
         >
           <Row className={css(style.form.row)}>
             <Col xs="12">
