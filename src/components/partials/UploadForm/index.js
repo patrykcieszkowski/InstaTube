@@ -10,27 +10,53 @@ export class UploadForm extends React.Component {
   constructor() {
     super()
     this.state = {
-      files: [],
-      viewNumberCheckbox: false,
+      upload: {
+        file: null,
+        error: false
+      },
       validity: {
         hour: 1,
         minute: 0
       },
-      displayTime: 1
+      displayTime: 1,
+      links: {
+        instagram: false,
+        ppv: false
+      },
+      views: {
+        view: false,
+        number: 0
+      }
     }
   }
 
-  onDrop(files) {
+  onDropRejected(files) {
     this.setState({
       ...this.state,
-      files
+      upload: {
+        file: null,
+        error: "File is too large"
+      }
+    })
+  }
+
+  onDropAccepted(files) {
+    this.setState({
+      ...this.state,
+      upload: {
+        file: files[0],
+        error: false
+      }
     })
   }
 
   toggleCheckbox() {
     this.setState({
       ...this.state,
-      viewNumberCheckbox: !this.state.viewNumberCheckbox
+      views: {
+        ...this.state.views,
+        view: !this.state.views.view
+      }
     })
   }
 
@@ -51,12 +77,51 @@ export class UploadForm extends React.Component {
     })
   }
 
+  onLinkClick(type, e) {
+    const links = JSON.parse(JSON.stringify(this.state.links))
+    Object.keys(links).forEach(a => (links[a] = !!(a === type && !links[a])))
+
+    this.setState({
+      ...this.state,
+      links
+    })
+  }
+
+  onViewsNumberChange(e) {
+    if (!e.target.value.match(/^\d+$/)) {
+      return e.preventDefault()
+    }
+
+    this.setState({
+      ...this.state,
+      views: {
+        ...this.state.views,
+        number: e.target.value
+      }
+    })
+  }
+
+  onFormSubmit(e) {
+    e.preventDefault()
+    if (!this.state.upload.file) {
+      return this.setState({
+        upload: {
+          file: null,
+          error: "You need to upload the file"
+        }
+      })
+    }
+  }
+
   render() {
     return (
-      <Form className={css(style.form.form)}>
+      <Form className={css(style.form.form)} onSubmit={this.onFormSubmit.bind(this)}>
         <FormGroup className={css(style.form.group)}>
           <Dropzone
-            onDrop={this.onDrop.bind(this)}
+            maxSize={20000000}
+            multiple={false}
+            onDropRejected={this.onDropRejected.bind(this)}
+            onDropAccepted={this.onDropAccepted.bind(this)}
             className={`${css(
               style.dropzone.wrapper
             )} d-flex align-items-center justify-content-center`}
@@ -89,15 +154,22 @@ export class UploadForm extends React.Component {
             </Row>
           </Dropzone>
         </FormGroup>
-        <FormGroup className={css(style.form.group)}>
+        <FormGroup
+          className={css(style.form.group)}
+          style={{ display: !this.state.upload.error ? `none` : `block` }}
+        >
           <Row className={css(style.errors.fileErrorWrapper)}>
             <Col className={css(style.errors.fileErrorBox)} xs="10">
               <span className={css(style.errors.fileErrorSpan)}>
-                File is too large
+                { this.state.upload.error }
               </span>
             </Col>
             <Col>
-              <span className={css(style.errors.fileErrorCloseButton)}>
+              <span
+                className={css(style.errors.fileErrorCloseButton)}
+                onClick={() =>
+                  this.setState({ ...this.state, upload: { error: null } })}
+              >
                 <i
                   className={`la la-close ${css(
                     style.errors.fileErrorCloseIcon
@@ -121,14 +193,28 @@ export class UploadForm extends React.Component {
                 style.links.instagramLinkWrapper
               )}
             >
-              <Link to="/login" className={css(style.links.link)}>
+              <Link
+                to="/login"
+                onClick={this.onLinkClick.bind(this, 'instagram')}
+                className={css(
+                  style.links.link,
+                  this.state.links.instagram ? style.links.active : ''
+                )}
+              >
                 Instagram follow for view
               </Link>
             </Col>
             <Col
               className={css(style.links.wrapper, style.links.PPVLinkWrapper)}
             >
-              <Link to="/login" className={css(style.links.link)}>
+              <Link
+                to="/login"
+                onClick={this.onLinkClick.bind(this, 'ppv')}
+                className={css(
+                  style.links.link,
+                  this.state.links.ppv ? style.links.active : ''
+                )}
+              >
                 Pay per view
               </Link>
             </Col>
@@ -158,7 +244,17 @@ export class UploadForm extends React.Component {
             </Col>
           </Row>
         </FormGroup>
-        <FormGroup className={css(style.form.group)}>
+
+        <FormGroup
+          className={css(style.form.group)}
+          style={{
+            display: Object.keys(this.state.links).filter(
+              a => this.state.links[a]
+            ).length
+              ? `none`
+              : `block`
+          }}
+        >
           <Row className={css(style.form.row)}>
             <Col xs="12">
               <h4 className={css(style.sliders.h4)}>Validity period</h4>
@@ -197,28 +293,42 @@ export class UploadForm extends React.Component {
             </Col>
           </Row>
         </FormGroup>
+
         <FormGroup className={css(style.form.group, style.views.box)}>
+          <Row className={css(style.form.row)}>
+            <Col xs="12">
+              <h4 className={css(style.sliders.h4)}>Number of views</h4>
+            </Col>
+          </Row>
           <Row className={css(style.form.row)}>
             <Col xs="7" className={css(style.views.inputWrapper)}>
               <Input
-                type="number"
+                onChange={this.onViewsNumberChange.bind(this)}
+                type="text"
+                value={this.state.views.view ? this.state.views.number : ''}
                 placeholder="Number of views"
-                className={css(style.views.input)}
-                disabled={!this.state.viewNumberCheckbox}
+                className={css(
+                  style.views.input,
+                  !this.state.views.view ? style.views.active : ''
+                )}
+                disabled={!this.state.views.view}
               />
             </Col>
             <Col className="d-flex flex-column justify-content-center">
               <input
                 type="checkbox"
                 id="views_checkbox"
-                checked={this.state.viewNumberCheckbox}
+                checked={this.state.views.view}
                 onChange={this.toggleCheckbox.bind(this)}
                 className={css(style.views.checkbox)}
               />
-              <label htmlFor="views_checkbox">
+              <label
+                htmlFor="views_checkbox"
+                className={css(style.views.label)}
+              >
                 <span
                   className={css(
-                    this.state.viewNumberCheckbox
+                    this.state.views.view
                       ? style.views.spanChecked
                       : style.views.span
                   )}
