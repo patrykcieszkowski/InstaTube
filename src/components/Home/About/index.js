@@ -63,7 +63,7 @@ export class About extends React.Component {
               autoHide={false}
             >
               {aboutUsList.map((item, index) => (
-                <Row className={css(style.content.box)}>
+                <Row className={css(style.content.box)} key={index}>
                   <Col xs="12" className={css(style.content.header)}>
                     <h3 className={css(style.content.h3)}>{item.name}</h3>
                   </Col>
