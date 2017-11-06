@@ -87,7 +87,9 @@ export class Help extends React.Component {
                 overflowX: `hidden`
               }}
               className={'row'}
-              autoHide={false}
+              autoHide={true}
+              autoHideTimeout={1000}
+              autoHideDuration={200}
             >
               <Col style={{ paddingLeft: 0 }}>
                 <Row>
