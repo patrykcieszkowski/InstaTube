@@ -15,12 +15,16 @@ const RenderDropzone = props => (
       multiple={false}
       onDropRejected={props.onDropRejected}
       onDropAccepted={props.onDropAccepted}
-      className={`${css(
-        style.dropzone.wrapper
-      )} d-flex align-items-center justify-content-center`}
+      className={`${css(style.dropzone.wrapper)} d-flex align-items-center`}
     >
-      <Row className={css(style.form.row)}>
-        <Col className="justify-content-center">
+      <Row
+        className={`${css(
+          style.dropzone.row
+        )} d-flex align-items-center ${!props.state.upload.file
+          ? `justify-content-center`
+          : ''}`}
+      >
+        <Col xs="3" className={`d-flex justify-content-center`}>
           <button type="button" className={css(style.dropzone.button)}>
             <i
               className={`la la-plus ${css(style.dropzone.buttonIcon)}`}
@@ -36,29 +40,38 @@ const RenderDropzone = props => (
 )
 
 const RenderTitle = props => {
-  console.log(props)
   if (props.state.upload.file) {
     return (
-      <Col className="d-flex flex-column justify-content-center">
-        <Row className={css(style.form.row)}>
-          <span className={css(style.dropzone.titleSpan)}>
-            {props.state.upload.file.name}
-          </span>
+      <Col className="d-flex flex-column justify-content-center" xs="9">
+        <Row>
+          <Col>
+            <span className={css(style.dropzone.fileTitleSpan)}>
+              {props.state.upload.file.name}
+            </span>
+          </Col>
         </Row>
       </Col>
     )
   }
 
   return (
-    <Col className="d-flex flex-column justify-content-center">
+    <Col
+      className="d-flex flex-column justify-content-center"
+      style={{ padding: 0 }}
+      xs="auto"
+    >
       <Row className={css(style.form.row)}>
-        <span className={css(style.dropzone.titleSpan)}>Add your file</span>
+        <Col>
+          <span className={css(style.dropzone.titleSpan)}>Add your file</span>
+        </Col>
       </Row>
       <Row className={css(style.form.row)}>
-        <span className={css(style.dropzone.descSpan)}>
-          Maximum{' '}
-          <span className={css(style.dropzone.boldSpan)}>2.00GB / 12h</span>
-        </span>
+        <Col>
+          <span className={css(style.dropzone.descSpan)}>
+            Maximum{' '}
+            <span className={css(style.dropzone.boldSpan)}>2.00GB / 12h</span>
+          </span>
+        </Col>
       </Row>
     </Col>
   )

@@ -1,5 +1,9 @@
 export const dropzoneBoxStyle = {
   box: {},
+  row: {
+    width: `100%`,
+    margin: 0
+  },
   wrapper: {
     cursor: `pointer`,
     background: `#edf2f6 url('/img/upload_bg.png')`,
@@ -26,12 +30,21 @@ export const dropzoneBoxStyle = {
     fontSize: `22px`,
     fontWeight: `600`,
     display: `block`,
-    width: `120px`
+    textAlign: `center`
+  },
+  fileTitleSpan: {
+    fontSize: `22px`,
+    fontWeight: `600`,
+    display: `block`,
+    whiteSpace: `nowrap`,
+    overflow: `hidden`,
+    textOverflow: `ellipsis`
   },
   descSpan: {
     fontSize: `12px`,
     width: `130px`,
-    display: `block`
+    display: `block`,
+    textAlign: `center`
   },
   boldSpan: {
     fontWeight: `600`
