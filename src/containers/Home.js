@@ -35,7 +35,7 @@ export class HomeContainer extends React.Component {
 
     return (
       <Components.partials.Container fluid noPadding minHeight bg={`home`}>
-        <Components.partials.Navbar />
+        <Components.partials.Navbar {...this.props} homePath={'/'} />
         <Components.partials.Container fluid noPadding fullHeight>
           <Components.Home.Home />
         </Components.partials.Container>

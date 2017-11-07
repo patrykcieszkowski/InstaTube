@@ -45,10 +45,18 @@ export const collapseStyle = {
     }
   },
   mainList: {
-    maxWidth: `500px`,
     width: `100%`,
     '@media only screen and (min-width : 1200px)': {
       zIndex: 99
+    },
+    '@media only screen and (min-width : 1200px) and (max-width : 1399px)': {
+      maxWidth: `500px`
+    },
+    '@media only screen and (min-width : 1400px) and (max-width : 1799px)': {
+      maxWidth: `600px`
+    },
+    '@media only screen and (min-width : 1800px)': {
+      maxWidth: `700px`
     }
   },
   mainListItem: {
@@ -72,6 +80,9 @@ export const collapseStyle = {
   },
   linkHighlight: {
     color: `#4d5bd8`
+  },
+  activeLink: {
+    color: `#e1306c`
   }
 }
 
