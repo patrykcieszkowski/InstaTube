@@ -12,8 +12,8 @@ export const RegisterForm = props => (
 
     <FormGroup className={css(style.form.group)}>
       <Input
-        placeholder="password"
-        type="Password"
+        placeholder="Password"
+        type="password"
         className={css(style.inputs.input)}
       />
     </FormGroup>

@@ -12,7 +12,7 @@ export const LoginForm = props => (
     </FormGroup>
     <FormGroup className={css(style.form.group)}>
       <Input
-        placeholder="password"
+        placeholder="Password"
         type="password"
         className={css(style.inputs.input)}
       />
