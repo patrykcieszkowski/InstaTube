@@ -45,11 +45,15 @@ export const mainStyle = {
   },
   lgSize: {
     width: `calc(100% - 20px)`,
-    '@media only screen and (min-width : 1600px)': {
-      width: `calc(100% - 850px)`
+
+    '@media only screen and (min-width : 1600px) ': {
+      width: `calc(58%)`
     },
-    '@media only screen and (min-width : 1200px) and (max-width : 1599px)': {
-      width: `calc(100% - 800px)`
+    '@media only screen and (min-width : 1800px)': {
+      width: `calc(57% + 50px)`
+    },
+    '@media only screen and (min-width : 1900px)': {
+      width: `calc(56% + 50px)`
     }
   },
   mdSize: {
