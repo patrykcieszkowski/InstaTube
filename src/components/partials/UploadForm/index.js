@@ -3,7 +3,6 @@ import { css } from 'aphrodite'
 import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import attrAccept from 'attr-accept'
-
 import copyToClipboard from 'copy-to-clipboard'
 
 import style from './style'
