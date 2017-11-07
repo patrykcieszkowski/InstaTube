@@ -41,6 +41,7 @@ const stateStyle = {
     margin: `0`
   },
   button: {
+    cursor: `pointer`,
     background: `#e1306c`,
     border: `2px solid #e1306c`,
     color: `white`,

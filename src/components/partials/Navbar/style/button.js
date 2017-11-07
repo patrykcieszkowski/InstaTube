@@ -1,5 +1,6 @@
 export const buttonStyle = {
   button: {
+    cursor: `pointer`,
     position: `relative`,
     flexShrink: 0,
     borderRadius: `50%`,
@@ -15,6 +16,7 @@ export const buttonStyle = {
     fontSize: `26px`
   },
   userButtonLogged: {
+    cursor: `pointer`,
     width: `80px`,
     borderRadius: `30px`,
     '@media (min-width: 1200px)': {

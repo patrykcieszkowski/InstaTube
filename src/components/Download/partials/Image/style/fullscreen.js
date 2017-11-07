@@ -28,6 +28,7 @@ export const fullscreenStyle = {
     left: `calc(50% - 50px)`
   },
   closeButton: {
+    cursor: `pointer`,
     position: `absolute`,
     display: `block`,
     bottom: `-50px`,

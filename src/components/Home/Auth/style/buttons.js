@@ -4,6 +4,7 @@ const buttonStyle = {
     padding: `10px`
   },
   login: {
+    cursor: `pointer`,
     background: `white`,
     border: `2px solid #e6eaee`,
     color: `#868e96`,
@@ -16,6 +17,7 @@ const buttonStyle = {
     }
   },
   signup: {
+    cursor: `pointer`,
     background: `#e1306c`,
     color: `white`,
     fontSize: `18px`,
@@ -43,6 +45,7 @@ const buttonStyle = {
     }
   },
   facebook: {
+    cursor: `pointer`,
     background: `#3b5998`,
     border: `none`,
     '@media (min-width: 1200px)': {
@@ -55,6 +58,7 @@ const buttonStyle = {
     }
   },
   instagram: {
+    cursor: `pointer`,
     backgroundColor: `#cd486b`,
     background: `radial-gradient(bottom, #fbad50, #e95950, #cd486b)`,
     border: `none`,

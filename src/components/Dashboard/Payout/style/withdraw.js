@@ -13,6 +13,7 @@ const withdrawStyle = {
     padding: `10px 15px`
   },
   button: {
+    cursor: `pointer`,
     display: `block`,
     color: `white`,
     textAlign: `center`,

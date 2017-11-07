@@ -12,6 +12,7 @@ export const signupStyle = {
     color: '#3f295a'
   },
   signupButton: {
+    cursor: `pointer`,
     display: `block`,
     color: `white`,
     textAlign: `center`,

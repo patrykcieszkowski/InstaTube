@@ -1,5 +1,6 @@
 const buttonStyle = {
   button: {
+    cursor: `pointer`,
     width: `100%`,
     padding: `5px`,
     background: `#e1306c`,

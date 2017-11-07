@@ -4,6 +4,7 @@ export const headerStyle = {
     color: `#3f295a`
   },
   closeButton: {
+    cursor: `pointer`,
     position: `absolute`,
     zIndex: 101
   },
