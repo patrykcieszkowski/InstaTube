@@ -7,6 +7,7 @@ export const uploadedStyle = {
     borderRadius: `5px`,
     margin: `3px 0`,
     padding: `5px`,
+    transition: `all 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
     '@media (max-width: 1199px)': {
       background: `white`
     },
@@ -17,6 +18,9 @@ export const uploadedStyle = {
   },
   boxActive: {
     background: `white`
+  },
+  boxHidden: {
+    opacity: 0
   },
   titleBlock: {
     padding: `0 5px`
