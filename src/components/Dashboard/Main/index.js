@@ -44,7 +44,7 @@ export class Main extends React.Component {
             xl=""
             className={css(style.uploaded.wrapper, style.main.colWrapper)}
           >
-            <Row>
+            <Row className={css(style.uploaded.mainRow)}>
               <Col xs="12">
                 <h3 className={css(style.shared.h3)}>Uploaded files</h3>
               </Col>

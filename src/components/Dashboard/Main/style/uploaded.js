@@ -1,4 +1,7 @@
 export const uploadedStyle = {
+  mainRow: {
+    margin: `0 -10px`
+  },
   wrapper: {
     padding: `10px`,
     paddingTop: `0px`
