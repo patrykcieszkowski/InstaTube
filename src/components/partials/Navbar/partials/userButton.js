@@ -37,11 +37,6 @@ const UserButtonLogged = props => (
       aria-hidden="true"
       title="expand"
     />
-    <span
-      className={`${css(style.button.userButtonLoggedSpan)} d-none d-lg-block`}
-    >
-      hello@none.pl
-    </span>
     <i
       className={`la la-angle-down ${css(
         style.button.icon,

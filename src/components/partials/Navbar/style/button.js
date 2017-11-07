@@ -24,11 +24,6 @@ export const buttonStyle = {
       padding: `0 15px`
     }
   },
-  userButtonLoggedSpan: {
-    fontSize: `16px`,
-    color: `white`,
-    padding: `0 5px`
-  },
   userButtonLoggedIcon: {
     padding: `0 5px`
   },
