@@ -4,6 +4,7 @@ import { css } from 'aphrodite'
 import { Link } from 'react-router-dom'
 
 import UserButton from './partials/userButton'
+import UserDropdown from './partials/UserDropdown'
 
 import style from './style'
 
@@ -56,7 +57,7 @@ export class NavbarComponent extends React.Component {
 
         <div className={`d-none d-xl-flex ${css(style.navbar.userNavbar)}`}>
           <RenderTransferBox {...this.props} />
-          <RenderUserButton
+          <UserDropdown
             {...this.props}
             state={this.state}
             dashboard={this.props.dashboard}
@@ -229,60 +230,5 @@ const RenderSignOutBox = props => {
     </Link>
   )
 }
-
-const RenderUserButton = props => (
-  <div className={css(style.navbar.userButtonBox)}>
-    <div>
-      <UserButton
-        logged={props.dashboard}
-        onClickHandler={props.onClickHandler}
-      />
-      {props.state.profileOpen}
-    </div>
-    <div
-      className={css(
-        style.collapse.userCollapseBox,
-        props.state.profileOpen ? style.collapse.userCollapseBoxActive : ''
-      )}
-    >
-      <div
-        className={`${css(
-          style.collapse.wrapper,
-          style.collapse.userCollapseWrapper
-        )} d-none d-xl-block`}
-      >
-        <ul className={`${css(style.collapse.collapseList)}`}>
-          <li className={css(style.collapse.item)}>
-            <Link
-              to="/dashboard/profile"
-              className={css(style.collapse.link)}
-              onClick={props.onClickHandler}
-            >
-              Profile
-            </Link>
-          </li>
-          <li className={css(style.collapse.item)}>
-            <Link
-              to={`/`}
-              className={css(style.collapse.link)}
-              onClick={props.onClickHandler}
-            >
-              Logout
-            </Link>
-          </li>
-          <li className={css(style.collapse.item)}>
-            <Link
-              to="/dashboard/payout"
-              className={css(style.collapse.link)}
-              onClick={props.onClickHandler}
-            >
-              Payouts
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-)
 
 export default NavbarComponent
