@@ -24,9 +24,23 @@ export class UploadedList extends React.Component {
       ...this.state,
       items: [
         ...this.state.items.slice(0, index),
+        {
+          ...this.state.items[index],
+          hide: true
+        },
         ...this.state.items.slice(index + 1)
       ]
     })
+
+    setTimeout(() =>
+      this.setState({
+        ...this.state,
+        items: [
+          ...this.state.items.slice(0, index),
+          ...this.state.items.slice(index + 1)
+        ]
+      })
+    , 500)
   }
 
   onDateActionHover(index, state, e) {
