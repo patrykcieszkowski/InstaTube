@@ -25,7 +25,11 @@ export const fullscreenStyle = {
   timer: {
     position: `absolute`,
     top: `-50px`,
-    left: `calc(50% - 50px)`
+    left: `calc(50% - 50px)`,
+    '@media (min-width: 1200px)': {
+      top: `40px`,
+      left: `40px`
+    }      
   },
   closeButton: {
     cursor: `pointer`,
@@ -39,7 +43,23 @@ export const fullscreenStyle = {
     fontSize: `50px`,
     textAlign: `center`,
     color: `white`,
-    textDecoration: `none`
+    textDecoration: `none`,
+    '@media (min-width: 1200px)': {
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      width: `100%`,
+      height: `100%`,
+      padding: `60px`
+    }      
+  },
+  closeIcon: {
+    '@media (min-width: 1200px)': {
+      position: `absolute`,
+      top: `60px`,
+      right: `60px`
+    }      
   }
 }
 

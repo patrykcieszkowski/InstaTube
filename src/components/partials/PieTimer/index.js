@@ -68,6 +68,7 @@ export class PieTimer extends React.Component {
           width: this.state.size + 6,
           height: this.state.size + 6
         }}
+        className={this.props.renderClassName || ''}
       >
         <svg
           width={this.state.size + 6}
