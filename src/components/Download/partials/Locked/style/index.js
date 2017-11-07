@@ -42,6 +42,7 @@ const style = {
     paddingRight: `25px`
   },
   buttonUnlock: {
+    cursor: `pointer`,
     display: `block`,
     padding: `8px 15px`,
     background: `#e1306c`,

@@ -6,6 +6,7 @@ export const boxStyle = {
     margin: `0`
   },
   box: {
+    cursor: `pointer`,
     border: `1px solid #e6eaee`,
     borderRadius: `5px`,
     paddingTop: `20px`,

@@ -16,6 +16,7 @@ export const headerStyle = {
     color: `#3f295a`
   },
   button: {
+    cursor: `pointer`,
     display: `block`,
     width: `100%`,
     color: `white`,

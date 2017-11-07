@@ -4,6 +4,7 @@ export const imageStyle = {
     position: `relative`
   },
   enlargeButton: {
+    cursor: `pointer`,
     position: `absolute`,
     display: `block`,
     top: `0`,

@@ -29,6 +29,7 @@ export const infoStyle = {
     color: `#292931`
   },
   button: {
+    cursor: `pointer`,
     width: `230px`,
     margin: `0 auto`,
     display: `block`,

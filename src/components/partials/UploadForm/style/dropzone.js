@@ -1,6 +1,7 @@
 export const dropzoneBoxStyle = {
   box: {},
   wrapper: {
+    cursor: `pointer`,
     background: `#edf2f6 url('/img/upload_bg.png')`,
     backgroundRepeat: `no-repeat`,
     backgroundPosition: `center`,

@@ -6,6 +6,7 @@ export const formStyle = {
     marginBottom: `10px`
   },
   submitButton: {
+    cursor: `pointer`,
     display: `block`,
     width: `100%`,
     background: `#e1306c`,

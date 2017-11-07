@@ -28,6 +28,7 @@ export const signupStyle = {
     }
   },
   signupButton: {
+    cursor: `pointer`,
     display: `block`,
     width: `270px`,
     color: `white`,
@@ -54,6 +55,7 @@ export const signupStyle = {
     color: `#2a2a2a`
   },
   loginLink: {
+    cursor: `pointer`,
     margin: `0 4px`,
     marginRight: 0,
     fontWeight: `600`,
