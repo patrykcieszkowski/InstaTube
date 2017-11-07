@@ -15,6 +15,17 @@ const secondsToTime = secs => {
     .filter((v, i) => v[0] !== '00' || i > 1)
 }
 
+function isChildOf(child, parent) {
+  if (child.parentNode === parent) {
+    return true
+  } else if (child.parentNode === null) {
+    return false
+  } else {
+    return isChildOf(child.parentNode, parent)
+  }
+}
+
 export default {
-  secondsToTime
+  secondsToTime,
+  isChildOf
 }
