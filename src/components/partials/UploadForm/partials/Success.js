@@ -35,6 +35,7 @@ export const Success = props => (
         type="text"
         className={css(style.status.input)}
         value={`http://in.pl/asdd21`}
+        readOnly={true}
       />
     </Row>
     <Row className={css(style.status.buttonWrapper)}>
