@@ -24,8 +24,8 @@ export class Upload extends React.Component {
         error: false
       },
       validity: {
-        hour: 1,
-        minute: 0
+        hour: 0,
+        minute: 1
       },
       displayTime: 1,
       links: {
@@ -95,7 +95,7 @@ export class Upload extends React.Component {
       ...this.state,
       validity: {
         ...this.state.validity,
-        [type]: type === 'hour' ? e.target.value : e.target.value * 15
+        [type]: e.target.value
       }
     })
   }
