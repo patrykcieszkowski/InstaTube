@@ -14,7 +14,7 @@ export class UserDropdown extends React.Component {
   onClickDocument(e) {
     if (
       utils.isChildOf(e.target, this.refs.wrapper) ||
-      !this.props.state.profileOpen
+      !this.props.state.profileDropdownOpen
     ) {
       return
     }
@@ -30,12 +30,12 @@ export class UserDropdown extends React.Component {
             logged={this.props.dashboard}
             onClickHandler={this.props.onClickHandler}
           />
-          {this.props.state.profileOpen}
+          {this.props.state.profileDropdownOpen}
         </div>
         <div
           className={css(
             style.collapse.userCollapseBox,
-            this.props.state.profileOpen
+            this.props.state.profileDropdownOpen
               ? style.collapse.userCollapseBoxActive
               : ''
           )}

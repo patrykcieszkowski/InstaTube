@@ -13,7 +13,8 @@ export class NavbarComponent extends React.Component {
     super()
     this.state = {
       mainOpen: false,
-      profileOpen: false
+      profileOpen: false,
+      profileDropdownOpen: false
     }
   }
 
@@ -32,8 +33,9 @@ export class NavbarComponent extends React.Component {
   render() {
     const profileIconClick = () =>
       this.props.dashboard
-        ? this.toggleMenu.call(this, 'profile')
+        ? this.toggleMenu.call(this, 'profileDropdown')
         : this.props.history.push('/auth')
+
     return [
       <Navbar
         key={0}
@@ -53,7 +55,7 @@ export class NavbarComponent extends React.Component {
           />
         </button>
 
-        <UserButton onClickHandler={profileIconClick} className={`d-xl-none`} />
+        <UserButton logged={this.props.dashboard} onClickHandler={this.toggleMenu.bind(this, 'profile')} className={`d-xl-none`} />
 
         <div className={`d-none d-xl-flex ${css(style.navbar.userNavbar)}`}>
           <RenderTransferBox {...this.props} />
