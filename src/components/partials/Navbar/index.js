@@ -29,16 +29,17 @@ export class NavbarComponent extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return [
       <Navbar
         key={0}
         className={`${css(
           style.navbar.wrapper
-        )} flex-lg-row-reverse flex-lg-nowrap justify-content-lg-center`}
+        )} flex-xl-row-reverse flex-xl-nowrap justify-content-xl-center`}
       >
         <button
           type="button"
-          className={`${css(style.button.button)} d-lg-none`}
+          className={`${css(style.button.button)} d-xl-none`}
           onClick={this.toggleMenu.bind(this, 'main')}
         >
           <i
@@ -66,7 +67,7 @@ export class NavbarComponent extends React.Component {
         <Collapse
           isOpen={this.state.profileOpen}
           navbar
-          className={`${css(style.collapse.wrapper)} d-lg-none`}
+          className={`${css(style.collapse.wrapper)} d-xl-none`}
         >
           <Nav navbar className="ml-auto">
             <NavItem className={css(style.collapse.item)}>
@@ -100,15 +101,22 @@ export class NavbarComponent extends React.Component {
           <Nav
             className={`${css(
               style.collapse.mainList
-            )} ml-auto d-lg-flex flex-lg-row justify-content-lg-around`}
+            )} ml-auto d-xl-flex flex-xl-row justify-content-xl-around`}
             navbar
           >
+            <RenderDashboardButton {...this.props} />
             <NavItem
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to={`${this.props.homePath || ''}/help`}
-                className={css(style.collapse.link)}
+                to={`${this.props.homePath}/help`}
+                className={css(
+                  style.collapse.link,
+                  this.props.location.pathname ===
+                  `${this.props.homePath}/help`.replace('//', '/')
+                    ? style.collapse.activeLink
+                    : ''
+                )}
                 onClick={this.onItemClick.bind(this, 'main')}
               >
                 Help
@@ -118,8 +126,14 @@ export class NavbarComponent extends React.Component {
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to={`${this.props.homePath || ''}/about`}
-                className={css(style.collapse.link)}
+                to={`${this.props.homePath}/about`.replace('//', '/')}
+                className={css(
+                  style.collapse.link,
+                  this.props.location.pathname ===
+                  `${this.props.homePath}/about`.replace('//', '/')
+                    ? style.collapse.activeLink
+                    : ''
+                )}
                 onClick={this.onItemClick.bind(this, 'main')}
               >
                 About us
@@ -132,11 +146,18 @@ export class NavbarComponent extends React.Component {
                 to={this.props.dashboard ? '/dashboard/premium' : '/auth'}
                 className={css(
                   style.collapse.link,
-                  style.collapse.linkHighlight
+                  this.props.dashboard ? style.collapse.linkHighlight : '',
+                  this.props.location.pathname === '/auth'
+                    ? style.collapse.activeLink
+                    : ''
                 )}
                 onClick={this.onItemClick.bind(this, 'main')}
               >
-                Go Premium!
+                {this.props.dashboard
+                  ? `Go Premium!`
+                  : this.props.location.pathname === '/auth'
+                    ? 'Got Pro?'
+                    : 'Login'}
               </Link>
             </NavItem>
           </Nav>
@@ -148,6 +169,28 @@ export class NavbarComponent extends React.Component {
       />
     ]
   }
+}
+
+const RenderDashboardButton = props => {
+  if (!props.dashboard) {
+    return null
+  }
+
+  return (
+    <NavItem className={css(style.collapse.item, style.collapse.mainListItem)}>
+      <Link
+        to={`/dashboard`}
+        className={css(
+          style.collapse.link,
+          props.location.pathname === `/dashboard`
+            ? style.collapse.activeLink
+            : ''
+        )}
+      >
+        Dashboard
+      </Link>
+    </NavItem>
+  )
 }
 
 const RenderTransferBox = props => {
