@@ -6,11 +6,11 @@ const textSpan = {
 
 export const historyStyle = {
   mainRow: {
-    height: `100%`
+    height: `100%`,
+    maxHeight: `450px`
   },
   wrapper: {
-    padding: `0 30px`,
-    height: `calc(100% - 200px)`
+    padding: `0 30px`
   },
   contentWrapper: {
     height: `100%`,
