@@ -10,19 +10,20 @@ export const collapseStyle = {
     }
   },
   userCollapseBox: {
-    top: `30px`,
     position: `absolute`,
-    width: `100%`,
+    left: `-55px`,
+    top: `55px`,
+    width: `210px`,
     maxHeight: `0px`,
     overflow: `hidden`,
     borderRadius: `0 0 6px 6px`,
-    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`
+    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`,
+    transition: `all 0.2s cubic-bezier(0.77, 0, 0.175, 1)`
   },
   userCollapseBoxActive: {
     maxHeight: `300px`
   },
   userCollapseWrapper: {
-    paddingTop: `30px`,
     background: `#f2f6f7`,
     ':after': {
       display: `none`
