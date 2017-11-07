@@ -23,7 +23,7 @@ export class Auth extends React.Component {
           >
             <Row className={css(style.sider.box)} />
           </Column>
-          <Col xs="12" xl="12" className={css(style.content.wrapper)}>
+          <Col xs="12" xl={6} className={css(style.content.wrapper)}>
             <Row>
               <SidebarHeader title={`Remind Password`} md={false} paddingTop />
             </Row>
