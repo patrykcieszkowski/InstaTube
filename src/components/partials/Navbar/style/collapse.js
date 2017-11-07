@@ -76,10 +76,16 @@ export const collapseStyle = {
     display: `block`,
     width: `100%`,
     textAlign: `center`,
-    fontWeight: 600
+    fontWeight: 600,
+    ':hover': {
+      color: `#e1306c`
+    }
   },
   linkHighlight: {
-    color: `#4d5bd8`
+    color: `#4d5bd8`,
+    ':hover': {
+      color: `#4d5bd8`
+    }
   },
   activeLink: {
     color: `#e1306c`
