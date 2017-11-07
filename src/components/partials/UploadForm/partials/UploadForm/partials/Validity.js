@@ -15,8 +15,8 @@ const RenderValidity = props => (
       <Col xs="5" className={css(style.sliders.wrapper)}>
         <input
           type="range"
-          min="1"
-          max="100"
+          min="0"
+          max="24"
           value={props.state.validity.hour}
           onChange={props.onValidityHourChange}
           className={css(style.sliders.slider)}
@@ -30,9 +30,9 @@ const RenderValidity = props => (
       <Col xs="4" className={css(style.sliders.wrapper)}>
         <input
           type="range"
-          min="0"
-          max="4"
-          value={props.state.validity.minute / 15}
+          min="1"
+          max="59"
+          value={props.state.validity.minute}
           onChange={props.onValidityMinuteChange}
           className={css(style.sliders.slider)}
         />
