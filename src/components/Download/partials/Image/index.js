@@ -24,11 +24,12 @@ export class Image extends React.Component {
 
     return (
       <PieTimer
-        style={{
+        renderClassName={css(style.fullscreen.timer)}
+        /* style={{
           position: `absolute`,
           top: `-50px`,
           right: `calc(50% - 50px)`
-        }}
+        }} */
         timerInit={this.props.timerInit}
         stroke={12}
         size={94}
@@ -117,7 +118,7 @@ export class Image extends React.Component {
             onClick={this.onCloseClick.bind(this)}
             className={css(style.fullscreen.closeButton)}
           >
-            <i className={`la la-close`} aria-hidden="true" title="close" />
+            <i className={`la la-close ${css(style.fullscreen.closeIcon)}`} aria-hidden="true" title="close" />
           </a>
         </Col>
       </Row>
