@@ -110,7 +110,7 @@ export class NavbarComponent extends React.Component {
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to={`${this.props.homePath}/help`}
+                to={`${this.props.homePath}/help`.replace('//', '/')}
                 className={css(
                   style.collapse.link,
                   this.props.location.pathname ===
