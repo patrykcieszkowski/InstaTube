@@ -10,6 +10,11 @@ const buttonStyle = {
     color: `#868e96`,
     fontSize: `18px`,
     fontWeight: `600`,
+    ':hover': {
+      borderColor: `#e1306c`,
+      background: 'white',
+      color: '#e1306c'
+    },
     // color: `#e6eaee`
     '@media (min-width: 1200px)': {
       paddingRight: `2px`,
