@@ -25,7 +25,7 @@ const RenderDropzone = props => (
           : ''}`}
       >
         <Col xs="3" className={`d-flex justify-content-center`}>
-          <button type="button" className={css(style.dropzone.button)}>
+          <button type="button" className={`${css(style.dropzone.button)} d-flex align-items-center justify-content-center`}>
             <i
               className={`la la-plus ${css(style.dropzone.buttonIcon)}`}
               aria-hidden="true"
