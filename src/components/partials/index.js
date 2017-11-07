@@ -6,6 +6,7 @@ import Container from './Container'
 import PieTimer from './PieTimer'
 import ScrollArea from './ScrollArea'
 import Col from './Col'
+import Tabs from './Tabs'
 
 export default {
   Navbar,
@@ -15,5 +16,6 @@ export default {
   Container,
   PieTimer,
   ScrollArea,
-  Col
+  Col,
+  Tabs
 }

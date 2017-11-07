@@ -139,7 +139,7 @@ export const LoginForm = props => (
             style.login.remindWrapper
           )}`}
         >
-          <Link to={`/nav/auth/remind`} className={css(style.links.remind)}>
+          <Link to={`/auth/remind`} className={css(style.links.remind)}>
             Forgot password?
           </Link>
         </Col>

@@ -3,9 +3,9 @@ import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
 import { Scrollbars } from 'react-custom-scrollbars'
 
-import Column from '../../partials/Col'
-import ScrollArea from '../../partials/ScrollArea'
-import SidebarHeader from '../../partials/SidebarHeader'
+import Column from '../../Col'
+import ScrollArea from '../../ScrollArea'
+import SidebarHeader from '../../SidebarHeader'
 import HelpBox from './partials/HelpBox'
 import style from './style'
 
@@ -61,15 +61,7 @@ export class Help extends React.Component {
     return (
       <Container fluid className={css(style.main.container)}>
         <Row className={css(style.main.wrapper)}>
-          <Column
-            xl="auto"
-            xxxxl="3"
-            className={`d-none d-xl-flex align-items-start ${css(
-              style.sider.wrapper
-            )}`}
-          >
-            <Row className={`${css(style.sider.box)}`} />
-          </Column>
+          <RenderSider {...this.props} />
           <Col className={css(style.content.wrapper)}>
             <Row>
               <SidebarHeader
@@ -162,6 +154,24 @@ export class Help extends React.Component {
       </Container>
     )
   }
+}
+
+const RenderSider = props => {
+  if (!props.xl) {
+    return null
+  }
+
+  return (
+    <Column
+      xl="auto"
+      xxxxl="3"
+      className={`d-none d-xl-flex align-items-center ${css(
+        style.sider.wrapper
+      )}`}
+    >
+      <Row className={`${css(style.sider.box)}`} />
+    </Column>
+  )
 }
 
 export default Help

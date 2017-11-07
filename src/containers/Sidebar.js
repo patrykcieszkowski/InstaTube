@@ -5,10 +5,34 @@ import Components from '../components'
 
 export class SidebarContainer extends React.Component {
   render() {
-    // const screenProps = {}
-    const match = matchPath(this.props.location.pathname, {
-      path: `${this.props.homePath || ''}/nav/(.*)`
-    }) || { isExact: false }
+    const match =
+      this.props.location.pathname !== this.props.homePath
+        ? matchPath(this.props.location.pathname, {
+            path: `${this.props.homePath}/(.*)`.replace('//', '/')
+          }) || { isExact: false }
+        : { isExact: false }
+
+    const currentRoute = this.props.routeList.find(
+      a =>
+        match.url
+          ? match.url.replace(this.props.homePath, '') === a.path
+          : false
+    )
+    const sizeChart = {
+      md: this.props.md,
+      sm: this.props.sm,
+      lg: this.props.lg,
+      xl: this.props.xl || !(this.props.md || this.props.sm || this.props.lg)
+    }
+
+    if (currentRoute) {
+      sizeChart.md = currentRoute.size === 'md'
+      sizeChart.sm = currentRoute.size === 'sm'
+      sizeChart.lg = currentRoute.size === 'lg'
+      sizeChart.xl =
+        currentRoute.size === 'xl' ||
+        !['md', 'sm', 'lg'].includes(currentRoute.size)
+    }
 
     return (
       <Components.partials.SidebarContainer
@@ -16,24 +40,21 @@ export class SidebarContainer extends React.Component {
         stickToTop={this.props.stickToTop}
         stickToTopXLG={this.props.stickToTopXLG}
         fullHeight={this.props.fullHeight}
-        md={this.props.md}
-        sm={this.props.sm}
+        {...sizeChart}
       >
         <Switch>
           {this.props.routeList.map((route, index) => (
             <Route
               key={index}
               exact={route.exact}
-              path={`${this.props.homePath || ''}/nav${route.path}`}
+              path={`${this.props.homePath}${route.path}`.replace('//', '/')}
               title={route.title}
               render={props => (
                 <Components.partials.SidebarContent
-                  md={this.props.md}
-                  sm={this.props.sm}
                   title={route.title}
                   homePath={this.props.homePath || '/'}
                 >
-                  <route.component {...props} />
+                  <route.component {...sizeChart} {...props} />
                 </Components.partials.SidebarContent>
               )}
             />

@@ -71,22 +71,19 @@ export class NavbarComponent extends React.Component {
           <Nav navbar className="ml-auto">
             <NavItem className={css(style.collapse.item)}>
               <Link
-                to="/dashboard/nav/profile"
+                to="/dashboard/profile"
                 className={css(style.collapse.link)}
               >
                 Profile
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
-              <Link to="/about" className={css(style.collapse.link)}>
+              <Link to={`/`} className={css(style.collapse.link)}>
                 Logout
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
-              <Link
-                to="/dashboard/nav/payout"
-                className={css(style.collapse.link)}
-              >
+              <Link to="/dashboard/payout" className={css(style.collapse.link)}>
                 Payouts
               </Link>
             </NavItem>
@@ -110,7 +107,7 @@ export class NavbarComponent extends React.Component {
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to="/nav/help"
+                to={`${this.props.homePath || ''}/help`}
                 className={css(style.collapse.link)}
                 onClick={this.onItemClick.bind(this, 'main')}
               >
@@ -121,7 +118,7 @@ export class NavbarComponent extends React.Component {
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to="/nav/about"
+                to={`${this.props.homePath || ''}/about`}
                 className={css(style.collapse.link)}
                 onClick={this.onItemClick.bind(this, 'main')}
               >
@@ -132,9 +129,7 @@ export class NavbarComponent extends React.Component {
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to={
-                  this.props.dashboard ? '/dashboard/nav/premium' : '/nav/auth'
-                }
+                to={this.props.dashboard ? '/dashboard/premium' : '/auth'}
                 className={css(
                   style.collapse.link,
                   style.collapse.linkHighlight
@@ -187,7 +182,7 @@ const RenderSignOutBox = props => {
       )} justify-content-center align-items-center`}
     >
       <i
-        className={`la  la-sign-out ${css(style.navbar.signoutIcon)}`}
+        className={`la la-sign-out ${css(style.navbar.signoutIcon)}`}
         aria-hidden="true"
         title="sign out"
       />
@@ -215,23 +210,17 @@ const RenderUserButton = props => (
       >
         <ul className={`${css(style.collapse.collapseList)}`}>
           <li className={css(style.collapse.item)}>
-            <Link
-              to="/dashboard/nav/profile"
-              className={css(style.collapse.link)}
-            >
+            <Link to="/dashboard/profile" className={css(style.collapse.link)}>
               Profile
             </Link>
           </li>
           <li className={css(style.collapse.item)}>
-            <Link to="/about" className={css(style.collapse.link)}>
+            <Link to={`/`} className={css(style.collapse.link)}>
               Logout
             </Link>
           </li>
           <li className={css(style.collapse.item)}>
-            <Link
-              to="/dashboard/nav/payout"
-              className={css(style.collapse.link)}
-            >
+            <Link to="/dashboard/payout" className={css(style.collapse.link)}>
               Payouts
             </Link>
           </li>

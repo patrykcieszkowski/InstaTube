@@ -13,7 +13,7 @@ const RenderLinks = props => (
         className={css(style.links.wrapper, style.links.instagramLinkWrapper)}
       >
         <Link
-          to="/nav/auth"
+          to="/auth"
           onClick={props.onInstagramClick}
           className={css(
             style.links.link,
@@ -25,7 +25,7 @@ const RenderLinks = props => (
       </Col>
       <Col className={css(style.links.wrapper, style.links.PPVLinkWrapper)}>
         <Link
-          to="/nav/auth"
+          to="/auth"
           onClick={props.onPPVClick}
           className={css(
             style.links.link,

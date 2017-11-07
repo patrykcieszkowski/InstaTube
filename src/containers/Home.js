@@ -5,21 +5,31 @@ import Sidebar from './Sidebar'
 
 export class HomeContainer extends React.Component {
   render() {
-    // const { screenProps } = this.props
-
     const sidebarRouteList = [
-      { title: 'Help', path: '/help', component: Components.Home.Help },
-      { title: 'About us', path: '/about', component: Components.Home.About },
+      {
+        title: 'Help',
+        path: '/help',
+        component: Components.partials.Tabs.Help,
+        size: `xl`
+      },
+      {
+        title: 'About us',
+        path: '/about',
+        component: Components.partials.Tabs.About,
+        size: `xl`
+      },
       {
         title: 'Login',
         path: '/auth',
         component: Components.Home.Auth.Auth,
-        exact: true
+        exact: true,
+        size: `xl`
       },
       {
         title: 'Remind',
         path: '/auth/remind',
-        component: Components.Home.Auth.Remind
+        component: Components.Home.Auth.Remind,
+        size: `xl`
       }
     ]
 
@@ -34,6 +44,7 @@ export class HomeContainer extends React.Component {
           routeList={sidebarRouteList}
           stickToTopXLG
           fullHeight
+          homePath={'/'}
         />
       </Components.partials.Container>
     )

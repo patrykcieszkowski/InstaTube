@@ -32,15 +32,24 @@ export const mainStyle = {
   },
   active: {
     // transform: translate3d(300px, 0, 0)
-    transform: `none`
+    transform: `none !important`
   },
-  lgSize: {
+  xlSize: {
     width: `calc(100% - 20px)`,
     '@media only screen and (min-width : 1600px)': {
       width: `calc(100% - 530px)`
     },
     '@media only screen and (min-width : 1200px) and (max-width : 1599px)': {
       width: `calc(100% - 480px)`
+    }
+  },
+  lgSize: {
+    width: `calc(100% - 20px)`,
+    '@media only screen and (min-width : 1600px)': {
+      width: `calc(100% - 850px)`
+    },
+    '@media only screen and (min-width : 1200px) and (max-width : 1599px)': {
+      width: `calc(100% - 800px)`
     }
   },
   mdSize: {
