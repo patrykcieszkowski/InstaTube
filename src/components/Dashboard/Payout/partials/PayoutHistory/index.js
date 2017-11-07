@@ -15,7 +15,12 @@ export const PayoutHistory = props => (
       <PayoutHistoryTitles />
     </Col>
     <Col xs="12" className={css(style.history.contentWrapper)}>
-      <ScrollArea style={{ width: '100%', height: `100%` }}>
+      <ScrollArea 
+        style={{ width: '100%', height: `100%` }}
+        autoHide={true}
+        autoHideTimeout={1000}
+        autoHideDuration={200}
+      >
         <PayoutHistoryItem key={1} />
         <PayoutHistoryItem key={2} />
       </ScrollArea>
