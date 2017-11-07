@@ -34,7 +34,6 @@ export const Success = props => (
       <input
         type="text"
         className={css(style.status.input)}
-        disabled
         value={`http://in.pl/asdd21`}
       />
     </Row>
