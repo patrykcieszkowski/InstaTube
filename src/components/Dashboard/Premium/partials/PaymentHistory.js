@@ -12,7 +12,7 @@ export const PaymentHistory = props => (
       <h4 className={css(style.history.h4)}>history</h4>
     </Col>
     <Col xs="12" className={`${css(style.history.contentWrapper)}`}>
-      <ScrollArea 
+      <ScrollArea
         style={{ width: '100%', height: `calc(100% - 220px)` }}
         autoHide={true}
         autoHideTimeout={1000}
