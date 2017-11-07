@@ -9,7 +9,10 @@ export const buttonStyle = {
     width: `54px`,
     margin: `15px 10px`,
     zIndex: 100,
-    backgroundColor: `#e1306c`
+    backgroundColor: `#e1306c`,
+    '@media (min-width: 1200px)': {
+      margin: `0 10px`
+    }
   },
   icon: {
     color: `white`,

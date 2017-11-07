@@ -29,7 +29,10 @@ export class NavbarComponent extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    const profileIconClick = () =>
+      this.props.dashboard
+        ? this.toggleMenu.call(this, 'profile')
+        : this.props.history.push('/auth')
     return [
       <Navbar
         key={0}
@@ -49,17 +52,15 @@ export class NavbarComponent extends React.Component {
           />
         </button>
 
-        <UserButton
-          toggleMenu={this.toggleMenu.bind(this, 'profile')}
-          className={`d-xl-none`}
-        />
+        <UserButton onClickHandler={profileIconClick} className={`d-xl-none`} />
 
         <div className={`d-none d-xl-flex ${css(style.navbar.userNavbar)}`}>
           <RenderTransferBox {...this.props} />
           <RenderUserButton
             {...this.props}
             state={this.state}
-            toggleMenu={this.toggleMenu.bind(this, 'profile')}
+            dashboard={this.props.dashboard}
+            onClickHandler={profileIconClick}
           />
           <RenderSignOutBox {...this.props} />
         </div>
@@ -109,7 +110,7 @@ export class NavbarComponent extends React.Component {
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to={`${this.props.homePath}/help`}
+                to={`${this.props.homePath}/help`.replace('//', '/')}
                 className={css(
                   style.collapse.link,
                   this.props.location.pathname ===
@@ -153,11 +154,7 @@ export class NavbarComponent extends React.Component {
                 )}
                 onClick={this.onItemClick.bind(this, 'main')}
               >
-                {this.props.dashboard
-                  ? `Go Premium!`
-                  : this.props.location.pathname === '/auth'
-                    ? 'Got Pro?'
-                    : 'Login'}
+                {this.props.dashboard ? `Go Premium!` : `Login`}
               </Link>
             </NavItem>
           </Nav>
@@ -236,7 +233,10 @@ const RenderSignOutBox = props => {
 const RenderUserButton = props => (
   <div className={css(style.navbar.userButtonBox)}>
     <div>
-      <UserButton toggleMenu={props.toggleMenu} />
+      <UserButton
+        logged={props.dashboard}
+        onClickHandler={props.onClickHandler}
+      />
       {props.state.profileOpen}
     </div>
     <div
@@ -253,17 +253,29 @@ const RenderUserButton = props => (
       >
         <ul className={`${css(style.collapse.collapseList)}`}>
           <li className={css(style.collapse.item)}>
-            <Link to="/dashboard/profile" className={css(style.collapse.link)}>
+            <Link
+              to="/dashboard/profile"
+              className={css(style.collapse.link)}
+              onClick={props.onClickHandler}
+            >
               Profile
             </Link>
           </li>
           <li className={css(style.collapse.item)}>
-            <Link to={`/`} className={css(style.collapse.link)}>
+            <Link
+              to={`/`}
+              className={css(style.collapse.link)}
+              onClick={props.onClickHandler}
+            >
               Logout
             </Link>
           </li>
           <li className={css(style.collapse.item)}>
-            <Link to="/dashboard/payout" className={css(style.collapse.link)}>
+            <Link
+              to="/dashboard/payout"
+              className={css(style.collapse.link)}
+              onClick={props.onClickHandler}
+            >
               Payouts
             </Link>
           </li>

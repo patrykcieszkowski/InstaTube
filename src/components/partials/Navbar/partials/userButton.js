@@ -4,13 +4,13 @@ import { css } from 'aphrodite'
 import style from '../style'
 
 export const UserButton = props =>
-  !props.logged ? UserButtonLogged(props) : UserButtonRegular(props)
+  props.logged ? UserButtonLogged(props) : UserButtonRegular(props)
 
 const UserButtonRegular = props => (
   <button
     type="button"
     className={`${props.className || ''} ${css(style.button.button)}`}
-    onClick={props.toggleMenu.bind(this, 'profile')}
+    onClick={props.onClickHandler}
   >
     <i
       className={`la la-user ${css(style.button.icon)}`}
@@ -27,7 +27,7 @@ const UserButtonLogged = props => (
       style.button.button,
       style.button.userButtonLogged
     )} d-flex justify-content-center align-items-center`}
-    onClick={props.toggleMenu.bind(this, 'profile')}
+    onClick={props.onClickHandler}
   >
     <i
       className={`la la-user ${css(
