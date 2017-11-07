@@ -19,6 +19,19 @@ const uploadFilesList = require('../../../json/dashboard-upload-files.json')
 const paymentList = require('../../../json/dashboard-payment-history.json')
 
 export class Main extends React.Component {
+  constructor(props) {
+    super(props)
+    const state = {}
+    state.showUploadForm = false
+    this.state = state
+  }
+
+  onShowUploadClick() {
+    this.setState({
+      showUploadForm: !this.state.showUploadForm
+    })
+  }
+
   render() {
     return (
       <Container fluid>
@@ -27,14 +40,16 @@ export class Main extends React.Component {
         </Row>
         <Row className={css(style.main.mainRow)}>
           <Col xs="12" className={`d-xl-none`}>
-            <Link to="#" className={css(style.header.button)}>
-              Add new file
+            <Link to="#" className={css(style.header.button)} onClick={this.onShowUploadClick.bind(this)}>
+              { this.state.showUploadForm ? 'Hide Upload Form' : 'Add new file' }
             </Link>
           </Col>
           <Col
             xl="auto"
-            className={`d-none d-xl-flex align-items-center ${css(
-              style.main.colWrapper
+            className={`d-flex align-items-center ${css(
+              style.main.colWrapper,
+              style.uploadform.wrapper,
+              !this.state.showUploadForm ? style.uploadform.hide : '',
             )}`}
           >
             <UploadForm dashboard />
