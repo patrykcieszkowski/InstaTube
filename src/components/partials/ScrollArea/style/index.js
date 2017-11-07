@@ -25,6 +25,7 @@ export default StyleSheet.create({
     width: `calc(100% - 12px)`,
     overflow: `-moz-scrollbars-none`,
     paddingRight: `4px`,
+    transition: `all 0.2s cubic-bezier(0.77, 0, 0.175, 1)`,
     '::-webkit-scrollbar': {
       width: `0px`,
       background: `transparent`
@@ -32,5 +33,8 @@ export default StyleSheet.create({
     '::-webkit-scrollbar-thumb': {
       background: `transparent`
     }
+  },
+  hideTrack: {
+    paddingRight: `0`
   }
 })

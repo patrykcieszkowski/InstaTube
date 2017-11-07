@@ -29,10 +29,7 @@ export class Auth extends React.Component {
           <Col className={css(style.content.wrapper)}>
             <ScrollArea
               style={{ width: '100%', height: `100%` }}
-              renderClassName={'row'}
-              autoHide={true}
-              autoHideTimeout={1000}
-              autoHideDuration={200}
+              renderClassName="row"
             >
               <Column
                 xs="12"
