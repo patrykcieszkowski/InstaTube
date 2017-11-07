@@ -31,7 +31,7 @@ export class Main extends React.Component {
   render() {
     return (
       <Container fluid fullHeight minHeight>
-        <Row className={css(style.grid.content)}>
+        <Row className={css(style.main.content)}>
           <Col xs="12" className={`d-lg-none ${css(style.timer.wrapper)}`}>
             <Row className={css(style.timer.row)} />
             <PieTimer
