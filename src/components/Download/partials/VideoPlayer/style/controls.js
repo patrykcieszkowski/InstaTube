@@ -1,3 +1,22 @@
+const sliderThumbStyle = {
+  appearance: `none`,
+  borderColor: `#e1306c`,
+  borderStyle: `solid`,
+  borderRadius: `50%`,
+  marginTop: `-8px`,
+  background: `#e2e6ea`,
+  cursor: `pointer`
+}
+
+const sliderTrackstyle = {
+  width: `100%`,
+  height: `8px`,
+  borderRadius: `5px`,
+  background: `#e2e6ea`,
+  border: `none`,
+  cursor: `pointer`
+}
+
 export const controlStyle = {
   wrapper: {
     background: `linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 12%, rgba(0,0,0, 0) 25%, rgba(0,0,0,0.25) 69%, rgba(0, 0, 0, 0.7) 91%)`,
@@ -64,16 +83,35 @@ export const controlStyle = {
   slider: {
     appearance: `none`,
     width: `100%`,
-    height: `8px`,
     borderRadius: `5px`,
+
+    '::-webkit-slider-runnable-track': {
+      ...sliderTrackstyle
+    },
+    '::-moz-range-track': {
+      '-moz-appearance': `none`,
+      ...sliderTrackstyle
+    },
     '::-webkit-slider-thumb': {
-      appearance: `none`,
       width: `24px`,
       height: `24px`,
-      borderRadius: `50%`,
-      border: `6px solid #e1306c`,
-      background: `#e2e6ea`,
-      cursor: `pointer`
+      borderWidth: `6px`,
+      '-webkit-appearance': `none`,
+      ...sliderThumbStyle
+    },
+    '::-moz-range-thumb': {
+      width: `18px`,
+      height: `18px`,
+      borderWidth: `6px`,
+      '-moz-appearance': `none`,
+      ...sliderThumbStyle
+    },
+    ':-moz-focusring': {
+      outline: `1px solid white`,
+      outlineOffset: `-1px`
+    },
+    ':focus': {
+      outline: `none`
     }
   }
 }
