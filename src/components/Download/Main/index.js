@@ -19,7 +19,7 @@ export class Main extends React.Component {
   }
 
   onTimerComplete () {
-    console.log('hello')
+    this.props.history.push('/')
   }
 
   onTimerProgress (timer) {
@@ -41,43 +41,27 @@ export class Main extends React.Component {
       />,
       <Container key={1} fluid fullHeight minHeight>
         <Row className={css(style.main.content)}>
-          <Col xs='12' className={`d-lg-none ${css(style.timer.wrapper)}`}>
-            <Row className={css(style.timer.row)} />
+          <Col
+            xs='12'
+            xl='3'
+            className={`
+              ${css(style.timer.wrapper)}
+              d-xl-flex justify-content-xl-end 
+            `}
+          >
+            <Row className={`${css(style.timer.row)} d-xl-none`} />
             <PieTimer
               ref='timer'
-              style={{
-                position: `absolute`,
-                top: `calc(50% - 50px)`,
-                right: `calc(50% - 50px)`
-              }}
+              renderClassName={css(style.timer.timer)}
               onComplete={this.onTimerComplete.bind(this)}
               onProgress={this.onTimerProgress.bind(this)}
-              timeout={120}
+              timeout={30}
               stroke={12}
               size={94}
             />
           </Col>
-
-          <Col
-            xl='3'
-            className={`d-none d-xl-flex justify-content-end ${css(
-              style.timer.wrapper
-            )}`}
-          >
-            <PieTimer
-              ref='timer'
-              style={{
-                position: `relative`
-              }}
-              onComplete={this.onTimerComplete.bind(this)}
-              onProgress={this.onTimerProgress.bind(this)}
-              timeout={120}
-              stroke={12}
-              size={118}
-            />
-          </Col>
           <Col xs='12' xl='6'>
-            <Media timer={this.state.timer} />
+            <Media timer={this.state.timer} premium />
           </Col>
           <Col
             xl='3'
