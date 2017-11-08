@@ -4,7 +4,7 @@ import Components from '../components'
 import Sidebar from './Sidebar'
 
 export class HomeContainer extends React.Component {
-  render() {
+  render () {
     const sidebarRouteList = [
       {
         title: 'Help',
@@ -21,14 +21,14 @@ export class HomeContainer extends React.Component {
       {
         title: 'Login',
         path: '/auth',
-        component: Components.Home.Auth.Auth,
+        component: Components.partials.Tabs.Auth.Auth,
         exact: true,
         size: `xl`
       },
       {
         title: 'Remind',
         path: '/auth/remind',
-        component: Components.Home.Auth.Remind,
+        component: Components.partials.Tabs.Auth.Remind,
         size: `xl`
       }
     ]
@@ -44,6 +44,7 @@ export class HomeContainer extends React.Component {
           routeList={sidebarRouteList}
           stickToTopXLG
           fullHeight
+          navBG
           homePath={'/'}
         />
       </Components.partials.Container>

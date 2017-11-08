@@ -30,6 +30,9 @@ export const mainStyle = {
       height: `100%`
     }
   },
+  zIndex: {
+    zIndex: 999999999
+  },
   active: {
     // transform: translate3d(300px, 0, 0)
     transform: `none !important`
@@ -65,7 +68,7 @@ export const mainStyle = {
   smSize: {
     width: `calc(100% - 20px)`,
     '@media only screen and (min-width : 1200px)': {
-      width: `600px`
+      width: `530px`
     }
   }
 }

@@ -1,11 +1,10 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Row, Col } from 'reactstrap'
 
 import style from './style'
 
 export class VideoPlayer extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     const state = {}
     state.videoProgress = 0
@@ -16,7 +15,7 @@ export class VideoPlayer extends React.Component {
     this.state = state
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.refs.videoplayer.addEventListener(
       'timeupdate',
       this.onProgress.bind(this),
@@ -44,14 +43,14 @@ export class VideoPlayer extends React.Component {
     )
   }
 
-  onPlayPause() {
+  onPlayPause () {
     this.setState({
       ...this.state,
       isPlaying: !this.refs.videoplayer.paused
     })
   }
 
-  onProgress() {
+  onProgress () {
     this.setState({
       ...this.state,
       videoProgress:
@@ -59,7 +58,7 @@ export class VideoPlayer extends React.Component {
     })
   }
 
-  onVolumeClick() {
+  onVolumeClick () {
     if (!this.refs.videoplayer) {
       return
     }
@@ -71,7 +70,7 @@ export class VideoPlayer extends React.Component {
     })
   }
 
-  onFullscreenClick() {
+  onFullscreenClick () {
     if (!this.refs.videoplayer) {
       return
     }
@@ -100,7 +99,7 @@ export class VideoPlayer extends React.Component {
     })
   }
 
-  onMouseMove() {
+  onMouseMove () {
     this.setState({ ...this.state, showControls: true })
     clearTimeout(this.hoverTimeout)
 
@@ -110,7 +109,7 @@ export class VideoPlayer extends React.Component {
     )
   }
 
-  onPlayPauseClick() {
+  onPlayPauseClick () {
     if (!this.refs.videoplayer) {
       return
     }
@@ -122,7 +121,7 @@ export class VideoPlayer extends React.Component {
     }
   }
 
-  onSeekChange(e) {
+  onSeekChange (e) {
     if (!this.refs.videoplayer) {
       return
     }
@@ -131,21 +130,22 @@ export class VideoPlayer extends React.Component {
     this.refs.videoplayer.currentTime = vidTime
   }
 
-  render() {
+  render () {
     return (
-      <figure className={css(style.main.wrapper)} ref="videoplayerWrapper">
-        <video className={css(style.video.video)} ref="videoplayer">
-          <source src="https://www.w3schools.com/tags/movie.mp4" />
+      <figure className={css(style.main.wrapper)} ref='videoplayerWrapper'>
+        <video className={css(style.video.video)} ref='videoplayer'>
+          <source src='https://www.w3schools.com/tags/movie.mp4' />
         </video>
         <div
           className={css(
             style.controls.wrapper,
+            this.state.isFullscreen ? style.controls.fullscreen : '',
             !this.state.showControls ? style.controls.hideControls : ''
           )}
         >
           <div className={css(style.controls.playWrapper)}>
             <a
-              href="#play"
+              href='#play'
               onClick={this.onPlayPauseClick.bind(this)}
               className={css(style.controls.playButton)}
             >
@@ -153,15 +153,15 @@ export class VideoPlayer extends React.Component {
                 className={`la la-${!this.state.isPlaying
                   ? 'play'
                   : 'pause'} ${css(style.controls.playButtonIcon)}`}
-                aria-hidden="true"
-                title="play"
+                aria-hidden='true'
+                title='play'
               />
             </a>
           </div>
           <div className={css(style.controls.bottomControlsWrapper)}>
             <div className={css(style.controls.bottomControls)}>
               <a
-                href="#mute"
+                href='#mute'
                 onClick={this.onVolumeClick.bind(this)}
                 className={css(style.controls.bottomControlsButton)}
               >
@@ -169,28 +169,28 @@ export class VideoPlayer extends React.Component {
                   className={`la la-volume${this.state.isMuted
                     ? '-off'
                     : '-up'} `}
-                  aria-hidden="true"
-                  title="mute"
+                  aria-hidden='true'
+                  title='mute'
                 />
               </a>
               <a
-                href="#fullscreen"
+                href='#fullscreen'
                 onClick={this.onFullscreenClick.bind(this)}
                 className={css(style.controls.bottomControlsButton)}
               >
                 <i
                   className={`la la-arrows `}
-                  aria-hidden="true"
-                  title="fullscreen"
+                  aria-hidden='true'
+                  title='fullscreen'
                 />
               </a>
             </div>
             <div className={css(style.controls.sliderWrapper)}>
               <input
                 onChange={this.onSeekChange.bind(this)}
-                type="range"
-                min="1"
-                max="100"
+                type='range'
+                min='1'
+                max='100'
                 value={this.state.videoProgress}
                 className={css(style.controls.slider)}
               />

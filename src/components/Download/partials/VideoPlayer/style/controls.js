@@ -10,6 +10,9 @@ export const controlStyle = {
     left: 0,
     opacity: 1,
     transition: `0.5s`,
+    zIndex: 10
+  },
+  fullscreen: {
     zIndex: 2147483647
   },
   hideControls: {

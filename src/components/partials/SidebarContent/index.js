@@ -1,16 +1,19 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Row, Col } from 'reactstrap'
+import { Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import style from './style'
 
 export class SidebarContent extends React.Component {
-  render() {
+  render () {
     return (
       <Row className={css(style.content.wrapper)}>
         <Link
           to={this.props.homePath}
+          style={{
+            display: this.props.close ? `block` : `none`
+          }}
           className={css(
             style.header.closeButton,
             this.props.md
@@ -20,8 +23,8 @@ export class SidebarContent extends React.Component {
         >
           <i
             className={`la la-close ${css(style.header.closeIcon)}`}
-            aria-hidden="true"
-            title="close"
+            aria-hidden='true'
+            title='close'
           />
         </Link>
         {this.props.children}
