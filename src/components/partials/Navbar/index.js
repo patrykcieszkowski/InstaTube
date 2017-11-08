@@ -147,7 +147,7 @@ export class NavbarComponent extends React.Component {
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to={this.props.dashboard ? '/dashboard/premium' : '/auth'}
+                to={this.props.dashboard ? '/dashboard/premium' : `${this.props.homePath}/auth`.replace('//', '/')}
                 className={css(
                   style.collapse.link,
                   this.props.dashboard ? style.collapse.linkHighlight : '',
