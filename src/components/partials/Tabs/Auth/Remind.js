@@ -3,10 +3,9 @@ import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
 
 import style from './style'
-import Column from '../../partials/Col'
-import SidebarHeader from '../../partials/SidebarHeader'
-import SignupInfo from '../partials/SignupInfo'
-import ScrollArea from '../../partials/ScrollArea'
+import Column from '../../Col'
+import SidebarHeader from '../../SidebarHeader'
+import ScrollArea from '../../ScrollArea'
 import RemindForm from './partials/RemindForm'
 
 export class Auth extends React.Component {

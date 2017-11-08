@@ -5,10 +5,10 @@ import { Scrollbars } from 'react-custom-scrollbars'
 
 import style from './style'
 
-import Column from '../../partials/Col'
+import Column from '../../Col'
 
-import SidebarHeader from '../../partials/SidebarHeader'
-import ScrollArea from '../../partials/ScrollArea'
+import SidebarHeader from '../../SidebarHeader'
+import ScrollArea from '../../ScrollArea'
 import LoginForm from './partials/LoginForm'
 import RegisterForm from './partials/RegisterForm'
 
@@ -17,15 +17,7 @@ export class Auth extends React.Component {
     return (
       <Container fluid>
         <Row className={css(style.main.wrapper)}>
-          <Column
-            xl="auto"
-            xxxxl="3"
-            className={`d-none d-xl-flex align-items-start ${css(
-              style.sider.wrapper
-            )}`}
-          >
-            <Row className={css(style.sider.box)} />
-          </Column>
+          <RenderSider {...this.props} />
           <Col className={css(style.content.wrapper)}>
             <ScrollArea
               style={{ width: '100%', height: `100%` }}
@@ -69,6 +61,24 @@ export class Auth extends React.Component {
       </Container>
     )
   }
+}
+
+const RenderSider = props => {
+  if (!props.xl) {
+    return null
+  }
+
+  return (
+    <Column
+      xl="auto"
+      xxxxl="3"
+      className={`d-none d-xl-flex ${css(
+        style.sider.wrapper
+      )}`}
+    >
+      <Row className={`${css(style.sider.box)}`} />
+    </Column>
+  )
 }
 
 export default Auth

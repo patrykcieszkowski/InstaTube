@@ -12,12 +12,14 @@ export class SidebarContainer extends React.Component {
           }) || { isExact: false }
         : { isExact: false }
 
-    const currentRoute = this.props.routeList.find(
-      a =>
-        match.url
-          ? match.url.replace(this.props.homePath, '') === a.path
-          : false
-    )
+    const currentRoute =
+      this.props.routeList.find(
+        a =>
+          match.url
+            ? match.url.replace(this.props.homePath, '') === a.path
+            : false
+      ) || {}
+
     const sizeChart = {
       md: this.props.md,
       sm: this.props.sm,
@@ -40,6 +42,10 @@ export class SidebarContainer extends React.Component {
         stickToTop={this.props.stickToTop}
         stickToTopXLG={this.props.stickToTopXLG}
         fullHeight={this.props.fullHeight}
+        zIndex={currentRoute.zIndex === undefined ? false : currentRoute.zIndex}
+        navigation={
+          currentRoute.navigation === undefined ? true : currentRoute.navigation
+        }
         {...sizeChart}
       >
         <Switch>
@@ -51,6 +57,7 @@ export class SidebarContainer extends React.Component {
               title={route.title}
               render={props => (
                 <Components.partials.SidebarContent
+                  close={route.close === undefined ? true : route.close}
                   title={route.title}
                   homePath={this.props.homePath || '/'}
                 >
