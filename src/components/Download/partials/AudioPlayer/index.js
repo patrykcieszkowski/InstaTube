@@ -122,9 +122,9 @@ export class AudioPlayer extends React.Component {
 }
 
 const RenderSlider = props => {
-  // if (!props.premium) {
-  //   return null
-  // }
+  if (!props.premium) {
+    return null
+  }
 
   return (
     <div className={css(style.controls.sliderWrapper)}>
