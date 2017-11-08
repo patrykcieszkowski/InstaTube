@@ -1,7 +1,10 @@
 export const imageStyle = {
   wrapper: {},
   box: {
-    position: `relative`
+    position: `relative`,
+    '@media (min-width: 1200px)': {
+      padding: 0
+    }
   },
   enlargeButton: {
     cursor: `pointer`,
