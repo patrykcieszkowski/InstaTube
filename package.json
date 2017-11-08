@@ -33,8 +33,7 @@
   "lint-staged": {
     "*.js": [
       "prettier --write --single-quote --no-semi",
-      "standard --fix",
-      "space-before-function-paren --never",
+      "standard --fix space-before-function-paren --never",
       "git add"
     ]
   },
