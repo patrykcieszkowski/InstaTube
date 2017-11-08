@@ -10,10 +10,16 @@ export class AudioPlayer extends React.Component {
     const state = {}
     state.isPlaying = false
     state.isMuted = false
+    state.audioProgress = 0
     this.state = state
   }
 
   componentDidMount() {
+    this.refs.audioplayer.addEventListener(
+      'timeupdate',
+      this.onProgress.bind(this),
+      false
+    )
     this.refs.audioplayer.addEventListener(
       'ended',
       this.onPlayPause.bind(this),
@@ -60,11 +66,28 @@ export class AudioPlayer extends React.Component {
     })
   }
 
+  onProgress() {
+    this.setState({
+      ...this.state,
+      audioProgress:
+        this.refs.audioplayer.currentTime / this.refs.audioplayer.duration * 100
+    })
+  }
+
+  onSeekChange(e) {
+    if (!this.refs.audioplayer || !this.props.premium) {
+      return
+    }
+
+    var vidTime = this.refs.audioplayer.duration * (e.target.value / 100)
+    this.refs.audioplayer.currentTime = vidTime
+  }
+
   render() {
     return (
       <figure>
         <audio
-          autoPlay={false}
+          autoPlay={true}
           ref="audioplayer"
           className={css(style.audio.audio)}
         >
@@ -87,10 +110,34 @@ export class AudioPlayer extends React.Component {
               />
             </a>
           </div>
+          <RenderSlider
+            value={this.state.audioProgress}
+            onChange={this.onSeekChange.bind(this)}
+            premium={this.props.premium}
+          />
         </div>
       </figure>
     )
   }
+}
+
+const RenderSlider = props => {
+  // if (!props.premium) {
+  //   return null
+  // }
+
+  return (
+    <div className={css(style.controls.sliderWrapper)}>
+      <input
+        onChange={props.onChange}
+        type="range"
+        min="1"
+        max="100"
+        value={props.value}
+        className={css(style.controls.slider)}
+      />
+    </div>
+  )
 }
 
 export default AudioPlayer
