@@ -4,7 +4,7 @@ import Components from '../components'
 import Sidebar from './Sidebar'
 
 export class HomeContainer extends React.Component {
-  render() {
+  render () {
     const sidebarRouteList = [
       {
         title: 'Help',
@@ -44,6 +44,7 @@ export class HomeContainer extends React.Component {
           routeList={sidebarRouteList}
           stickToTopXLG
           fullHeight
+          navBG
           homePath={'/'}
         />
       </Components.partials.Container>

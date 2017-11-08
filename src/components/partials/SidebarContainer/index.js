@@ -8,6 +8,7 @@ const renderClassName = props =>
     css(style.main.container),
     css(props.stickToTop ? style.main.stickToTop : ''),
     css(props.stickToTopXLG ? style.main['xlg-stickToTop'] : ''),
+    css(props.zIndex ? style.main.zIndex : ''),
     css(props.fullHeight ? style.main.fullHeight : ''),
     css(props.md ? style.main.mdSize : ''),
     css(props.sm ? style.main.smSize : ''),
@@ -20,12 +21,12 @@ const renderClassName = props =>
     .join(' ')
 
 export class SidebarContainer extends React.Component {
-  render() {
+  render () {
     return (
       <div className={renderClassName(this.props)}>
         <div
           className={css(
-            style.nav.background,
+            this.props.navigation ? style.nav.background : '',
             this.props.stickToTopXLG ? style.nav.active : ''
           )}
         />
