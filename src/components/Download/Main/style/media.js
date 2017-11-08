@@ -13,10 +13,22 @@ export const mediaStyle = {
     width: `100%`,
     borderRadius: `5px`,
     overflow: `hidden`,
-    margin: `0 5px`
+    margin: `0 0`
   },
   image: {
     width: `100%`
+  },
+  videoWrapper: {
+    width: `100%`,
+    borderRadius: `5px`,
+    overflow: `hidden`,
+    margin: `0 5px`
+  },
+  audioWrapper: {
+    width: `100%`,
+    borderRadius: `5px`,
+    overflow: `hidden`,
+    margin: `0 5px`
   },
   titleH2: {
     fontSize: `28px`,

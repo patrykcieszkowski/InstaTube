@@ -9,23 +9,16 @@ import Image from '../../partials/Image'
 import style from '../style'
 
 export class Media extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     console.log(this.props)
   }
 
-  render() {
+  render () {
     return (
       <Row className={css(style.media.wrapper)}>
-        <Col xs="12" className={css(style.media.box)}>
-          <h2 className={css(style.media.titleH2)}>How to nothing</h2>
-        </Col>
-        <Col className={css(style.media.box, style.media.imageWrapper)}>
-          {<Video />}
-          {/* <Audio /> */}
-
-          {/* <Image timerInit={this.props.timer} /> */}
-        </Col>
-        <Col xs="12" className={css(style.media.box)}>
+        <RenderTitle media={{ type: 'audio' }} title={`How to nothing`} />
+        <RenderMedia media={{ type: 'audio' }} />
+        <Col xs='12' className={css(style.media.box)}>
           <Row className={css(style.media.descRow)}>
             <Col className={css(style.media.descHeaderWrapper)}>
               <h4 className={css(style.media.descH4)}>Description</h4>
@@ -48,6 +41,43 @@ export class Media extends React.Component {
         </Col>
       </Row>
     )
+  }
+}
+
+const RenderTitle = props => {
+  if (props.media.type === 'audio') {
+    return null
+  }
+
+  return (
+    <Col xs='12' className={css(style.media.box)}>
+      <h2 className={css(style.media.titleH2)}>{props.title}</h2>
+    </Col>
+  )
+}
+
+const RenderMedia = props => {
+  switch (props.media.type) {
+    case 'audio':
+      return (
+        <Col className={css(style.media.box, style.media.audioWrapper)}>
+          <Audio />
+        </Col>
+      )
+    case 'video':
+      return (
+        <Col className={css(style.media.box, style.media.videoWrapper)}>
+          <Video />
+        </Col>
+      )
+    case 'image':
+      return (
+        <Col className={css(style.media.box, style.media.imageWrapper)}>
+          <Image timerInit={this.props.timer} />
+        </Col>
+      )
+    default:
+      return null
   }
 }
 
