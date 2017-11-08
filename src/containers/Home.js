@@ -21,14 +21,14 @@ export class HomeContainer extends React.Component {
       {
         title: 'Login',
         path: '/auth',
-        component: Components.Home.Auth.Auth,
+        component: Components.partials.Tabs.Auth.Auth,
         exact: true,
         size: `xl`
       },
       {
         title: 'Remind',
         path: '/auth/remind',
-        component: Components.Home.Auth.Remind,
+        component: Components.partials.Tabs.Auth.Remind,
         size: `xl`
       }
     ]
