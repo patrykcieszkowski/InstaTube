@@ -133,7 +133,7 @@ export class VideoPlayer extends React.Component {
   render() {
     return (
       <figure className={css(style.main.wrapper)} ref="videoplayerWrapper">
-        <video className={css(style.video.video)} ref="videoplayer">
+        <video className={css(style.video.video)} ref="videoplayer" autoPlay={true}>
           <source src="https://www.w3schools.com/tags/movie.mp4" />
         </video>
         <div
