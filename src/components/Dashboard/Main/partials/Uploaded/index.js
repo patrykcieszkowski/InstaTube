@@ -17,9 +17,7 @@ export class UploadedList extends React.Component {
     this.state = state
   }
 
-  onDeleteItemClick(index, e) {
-    e.preventDefault()
-
+  onDeleteConfirm(index) {
     this.setState({
       ...this.state,
       items: [
@@ -41,6 +39,22 @@ export class UploadedList extends React.Component {
         ]
       })
     , 500)
+  }
+
+  onDeleteItemClick(index, e) {
+    e.preventDefault()
+
+    this.props.openAlert({
+      text: `Are you sure you want to delete?`,
+      success: {
+        text: `Yes`,
+        onClick: this.onDeleteConfirm.bind(this, index)
+      },
+      cancel: {
+        text: `Cancel`,
+        onClick: () => {}
+      }
+    })
   }
 
   onDateActionHover(index, state, e) {

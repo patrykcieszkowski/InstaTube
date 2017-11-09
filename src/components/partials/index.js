@@ -7,6 +7,7 @@ import PieTimer from './PieTimer'
 import ScrollArea from './ScrollArea'
 import Col from './Col'
 import Tabs from './Tabs'
+import Alert from './Alert'
 
 export default {
   Navbar,
@@ -17,5 +18,6 @@ export default {
   PieTimer,
   ScrollArea,
   Col,
-  Tabs
+  Tabs,
+  Alert
 }
