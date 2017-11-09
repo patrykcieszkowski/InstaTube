@@ -32,14 +32,41 @@ const viewsStyle = {
     margin: 0
   },
   input: {
-    background: `white`,
-    border: `3px solid #edf2f6`,
+    color: `white`,
+    background: `#e1306c`,
+    border: `3px solid #e1306c`,
     padding: `8px 15px`,
     fontSize: `14px`,
-    fontWeight: `100`
+    fontWeight: `100`,
+    '::-webkit-input-placeholder': {
+      color: `white`
+    },
+    ':-moz-placeholder': {
+      color: `white`
+    },
+    '::-moz-placeholder': {
+      color: `white`
+    },
+    ':-ms-input-placeholder': {
+      color: `white`
+    }
   },
   active: {
-    background: `#edf2f6`
+    background: `white`,
+    borderColor: `#e1306c`,
+    color: `#e1306c`,
+    '::-webkit-input-placeholder': {
+      color: `#e1306c`
+    },
+    ':-moz-placeholder': {
+      color: `#e1306c`
+    },
+    '::-moz-placeholder': {
+      color: `#e1306c`
+    },
+    ':-ms-input-placeholder': {
+      color: `#e1306c`
+    }
   },
   checkbox: {
     display: `none`
