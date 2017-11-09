@@ -222,7 +222,7 @@ const CopyBlockColumn = ({ props }) => (
           type="text"
           dir="rtl"
           readOnly={true}
-          value={props.item.url}
+          value={props.item.url || ''}
           className={css(style.uploaded.copyInput)}
         />
       </Column>
