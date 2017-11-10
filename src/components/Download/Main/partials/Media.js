@@ -1,6 +1,9 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
+/* eslint-disable no-unused-vars */
+import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import Video from '../../partials/VideoPlayer'
 import Audio from '../../partials/AudioPlayer'
@@ -8,37 +11,20 @@ import Image from '../../partials/Image'
 
 import style from '../style'
 
+@inject('media')
+@observer
 export class Media extends React.Component {
-  componentDidMount () {
-    console.log(this.props)
+  constructor (props) {
+    super(props)
+    this.media = this.props.media.media
   }
 
   render () {
     return (
       <Row className={css(style.media.wrapper)}>
-        <RenderTitle media={{ type: 'audio' }} title={`How to nothing`} />
-        <RenderMedia media={{ type: 'audio' }} />
-        <Col xs='12' className={css(style.media.box)}>
-          <Row className={css(style.media.descRow)}>
-            <Col className={css(style.media.descHeaderWrapper)}>
-              <h4 className={css(style.media.descH4)}>Description</h4>
-            </Col>
-          </Row>
-          <Row className={css(style.media.descRow)}>
-            <Col className={css(style.media.descParagraphWrapper)}>
-              <p className={css(style.media.descParagraph)}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                sit amet viverra mauris. Proin augue lacus, sagittis a ex sit
-                amet, consequat blandit dui. Nam sit amet imperdiet ipsum.
-                Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                Aliquam congue commodo urna et iaculis. In commodo, neque ac
-                porta lacinia, purus risus pretium ligula, quis fermentum elit
-                nibh vitae libero. Aenean vitae nunc sed nibh dignissim porta in
-                eu felis. Duis fringilla a nulla vitae ullamcorper.
-              </p>
-            </Col>
-          </Row>
-        </Col>
+        <RenderTitle media={this.media} />
+        <RenderMedia media={this.media} />
+        <RenderDescription description={this.media.message || null} />
       </Row>
     )
   }
@@ -51,7 +37,7 @@ const RenderTitle = props => {
 
   return (
     <Col xs='12' className={css(style.media.box)}>
-      <h2 className={css(style.media.titleH2)}>{props.title}</h2>
+      <h2 className={css(style.media.titleH2)}>{props.name}</h2>
     </Col>
   )
 }
@@ -61,24 +47,45 @@ const RenderMedia = props => {
     case 'audio':
       return (
         <Col className={css(style.media.box, style.media.audioWrapper)}>
-          <Audio />
+          <Audio media={props.media} />
         </Col>
       )
     case 'video':
       return (
         <Col className={css(style.media.box, style.media.videoWrapper)}>
-          <Video />
+          <Video media={props.media} />
         </Col>
       )
     case 'image':
       return (
         <Col className={css(style.media.box, style.media.imageWrapper)}>
-          <Image timerInit={this.props.timer} />
+          <Image timerInit={this.props.timer} media={props.media} />
         </Col>
       )
     default:
       return null
   }
+}
+
+const RenderDescription = props => {
+  if (!props.description) {
+    return null
+  }
+
+  return (
+    <Col xs='12' className={css(style.media.box)}>
+      <Row className={css(style.media.descRow)}>
+        <Col className={css(style.media.descHeaderWrapper)}>
+          <h4 className={css(style.media.descH4)}>Description</h4>
+        </Col>
+      </Row>
+      <Row className={css(style.media.descRow)}>
+        <Col className={css(style.media.descParagraphWrapper)}>
+          <p className={css(style.media.descParagraph)}>{props.description}</p>
+        </Col>
+      </Row>
+    </Col>
+  )
 }
 
 export default Media

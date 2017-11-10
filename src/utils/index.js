@@ -12,7 +12,7 @@ const secondsToTime = secs => {
     [seconds, ['s', 'sec']]
   ]
     .map(v => (v[0] < 10 ? ['0' + v[0], v[1]] : v))
-    .filter((v, i) => v[0] !== '00' || i > 1)
+    .filter((v, i) => v[0] !== '00' || i > 2)
 }
 
 function isChildOf(child, parent) {

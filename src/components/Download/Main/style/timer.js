@@ -16,6 +16,16 @@ const timerStyle = {
     right: `0px`,
     margin: `0 -15px`,
     position: `relative`
+  },
+  timer: {
+    position: `absolute`,
+    top: `calc(50% - 50px)`,
+    right: `calc(50% - 50px)`,
+    '@media only screen and (min-width : 1200px)': {
+      position: `relative`,
+      top: `auto`,
+      right: `auto`
+    }
   }
 }
 
