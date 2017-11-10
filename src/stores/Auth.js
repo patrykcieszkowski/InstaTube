@@ -6,26 +6,26 @@ class Auth {
     autoStore("auth", this)
   }
 
-  @observable auth = null
+  @observable auth = false
 
   @computed get isAuthenticated() {
-    return !!(this.auth)
+    return this.auth
+  }
+
+  @action setAuthenticationStatus(status) {
+    this.auth = !!(status)
   }
 
   @action login() {
     // login action
   }
 
-  @computed get getToken() {
-    if (!this.auth) {
-      return null
-    }
-
-    return this.authorization.match(/(?:Bearer\s+)?(\w+\.\w+\.\w+)/)[1]
+  @action register() {
+    // register action
   }
 
-  @action setToken(token) {
-    this.auth = `Bearer ${token}`
+  @action remind() {
+    // remind action
   }
 }
 
