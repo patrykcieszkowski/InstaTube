@@ -7,6 +7,7 @@ import premium from './Premium'
 import auth from './Auth'
 import user from './User'
 import media from './Media'
+import uploadform from './UploadForm'
 
 export default {
   help,
@@ -17,5 +18,6 @@ export default {
   premium,
   auth,
   user,
-  media
+  media,
+  uploadform
 }

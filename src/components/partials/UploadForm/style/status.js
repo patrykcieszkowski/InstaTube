@@ -14,6 +14,13 @@ const stateStyle = {
   success: {
     background: `#71bc29`
   },
+  error: {
+    background: `#f02e30`,
+    marginBottom: `5px`
+  },
+  progress: {
+    background: `#2196f3`
+  },
   h4: {
     color: `white`,
     fontSize: `24px`,
