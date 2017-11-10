@@ -15,9 +15,6 @@ import Uploaded from './partials/Uploaded'
 import UploadedListTitles from './partials/Uploaded/partials/titlesRow'
 import style from './style'
 
-const uploadFilesList = require('../../../json/dashboard-upload-files.json')
-const paymentList = require('../../../json/dashboard-payment-history.json')
-
 export class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -74,7 +71,7 @@ export class Main extends React.Component {
                     overflowX: `hidden`
                   }}
                 >
-                  <Uploaded items={uploadFilesList} />
+                  <Uploaded />
                 </ScrollArea>
               </Col>
             </Row>
@@ -92,7 +89,7 @@ export class Main extends React.Component {
             </Col>
             <Col xs="12" className={css(style.payments.content)}>
               <ScrollArea style={{ width: '100%', height: `382px` }}>
-                <Payments items={paymentList} />
+                <Payments />
               </ScrollArea>
             </Col>
           </Col>
