@@ -4,6 +4,7 @@ import payments from './Payments'
 import uploads from './Uploads'
 import payouts from './Payouts'
 import premium from './Premium'
+import auth from './Auth'
 
 export default {
   help,
@@ -11,5 +12,6 @@ export default {
   payments,
   uploads,
   payouts,
-  premium
+  premium,
+  auth
 }
