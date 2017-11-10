@@ -7,6 +7,7 @@ import { inject, observer } from 'mobx-react'
 import ScrollArea from '../../partials/ScrollArea'
 import UploadForm from '../../partials/UploadForm'
 import Container from '../../partials/Container'
+import Alert from '../../partials/Alert'
 
 import Header from './partials/Header'
 import Payments from './partials/Payments'
@@ -23,7 +24,39 @@ export class Main extends React.Component {
     super(props)
     const state = {}
     state.showUploadForm = false
+    state.alert = {
+      active: false,
+    }
     this.state = state
+  }
+
+  alertToggle() {
+    this.setState({
+      ...this.state,
+      alert: {
+        ...this.state.alert,
+        active: !this.state.alert.active
+      }
+    })
+  }
+
+  openAlert(args) {
+    this.setState({
+      ...this.state,
+      alert: {
+        ...this.alert,
+        active: true,
+        success: {
+          text: args.success.text,
+          onClick: () => { this.alertToggle(); args.success.onClick() }
+        },
+        cancel: {
+          text: args.cancel.text,
+          onClick: () => { this.alertToggle(); args.cancel.onClick() }
+        },
+        text: args.text
+      }
+    })
   }
 
   onShowUploadClick() {
@@ -74,7 +107,7 @@ export class Main extends React.Component {
                     overflowX: `hidden`
                   }}
                 >
-                  <Uploaded />
+                  <Uploaded openAlert={this.openAlert.bind(this)}  />
                 </ScrollArea>
               </Col>
             </Row>
@@ -97,6 +130,7 @@ export class Main extends React.Component {
             </Col>
           </Col>
         </Row>
+        <Alert {...this.state.alert} />
       </Container>
     )
   }

@@ -6,6 +6,7 @@ import payouts from './Payouts'
 import premium from './Premium'
 import auth from './Auth'
 import user from './User'
+import media from './Media'
 
 export default {
   help,
@@ -15,5 +16,6 @@ export default {
   payouts,
   premium,
   auth,
-  user
+  user,
+  media
 }

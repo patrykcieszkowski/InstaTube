@@ -20,9 +20,24 @@ export class UploadedList extends React.Component {
     this.all = this.props.uploads.all
   }
 
+  onDeleteConfirm(index) {
+    this.props.uploads.deleteItem(index)
+  }
+
   onDeleteItemClick(index, e) {
     e.preventDefault()
-    this.props.uploads.deleteItem(index)
+
+    this.props.openAlert({
+      text: `Are you sure you want to delete?`,
+      success: {
+        text: `Yes`,
+        onClick: this.onDeleteConfirm.bind(this, index)
+      },
+      cancel: {
+        text: `Cancel`,
+        onClick: () => {}
+      }
+    })
   }
 
   onDateActionHover(index, state, e) {

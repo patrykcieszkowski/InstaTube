@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap'
 import style from './style'
 
 export class AudioPlayer extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     const state = {}
     state.isPlaying = false
@@ -14,7 +14,7 @@ export class AudioPlayer extends React.Component {
     this.state = state
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.refs.audioplayer.addEventListener(
       'timeupdate',
       this.onProgress.bind(this),
@@ -37,7 +37,7 @@ export class AudioPlayer extends React.Component {
     )
   }
 
-  onInitialPlay() {
+  onInitialPlay () {
     this.onPlayPause.call(this)
     if (!this.props.onPlay) {
       return
@@ -46,14 +46,14 @@ export class AudioPlayer extends React.Component {
     this.props.onPlay()
   }
 
-  onPlayPause() {
+  onPlayPause () {
     this.setState({
       ...this.state,
       isPlaying: !this.refs.audioplayer.paused
     })
   }
 
-  onVolumeClick(e) {
+  onVolumeClick (e) {
     e.preventDefault()
     if (!this.refs.audioplayer) {
       return
@@ -66,7 +66,7 @@ export class AudioPlayer extends React.Component {
     })
   }
 
-  onProgress() {
+  onProgress () {
     this.setState({
       ...this.state,
       audioProgress:
@@ -74,7 +74,7 @@ export class AudioPlayer extends React.Component {
     })
   }
 
-  onSeekChange(e) {
+  onSeekChange (e) {
     if (!this.refs.audioplayer || !this.props.premium) {
       return
     }
@@ -83,21 +83,17 @@ export class AudioPlayer extends React.Component {
     this.refs.audioplayer.currentTime = vidTime
   }
 
-  render() {
+  render () {
     return (
       <figure>
-        <audio
-          autoPlay={true}
-          ref="audioplayer"
-          className={css(style.audio.audio)}
-        >
-          <source src="http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg" />
+        <audio autoPlay ref='audioplayer' className={css(style.audio.audio)}>
+          <source src={this.props.media.src} />
         </audio>
         <div className={css(style.main.wrapper)}>
-          <h2 className={css(style.main.h2)}>test title</h2>
+          <h2 className={css(style.main.h2)}>{this.props.media.name}</h2>
           <div>
             <a
-              href="#mute"
+              href='#mute'
               onClick={this.onVolumeClick.bind(this)}
               className={css(style.controls.muteButton)}
             >
@@ -105,8 +101,8 @@ export class AudioPlayer extends React.Component {
                 className={`la la-volume${this.state.isMuted
                   ? '-off'
                   : '-up'} `}
-                aria-hidden="true"
-                title="mute"
+                aria-hidden='true'
+                title='mute'
               />
             </a>
           </div>
@@ -130,9 +126,9 @@ const RenderSlider = props => {
     <div className={css(style.controls.sliderWrapper)}>
       <input
         onChange={props.onChange}
-        type="range"
-        min="1"
-        max="100"
+        type='range'
+        min='1'
+        max='100'
         value={props.value}
         className={css(style.controls.slider)}
       />
