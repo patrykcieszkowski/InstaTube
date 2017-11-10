@@ -10,6 +10,7 @@ import errors from './errors'
 import main from './main'
 import status from './status'
 import ppv from './ppv'
+import progress from './progress'
 
 export default {
   form: StyleSheet.create(form),
@@ -21,5 +22,6 @@ export default {
   errors: StyleSheet.create(errors),
   main: StyleSheet.create(main),
   status: StyleSheet.create(status),
-  ppv: StyleSheet.create(ppv)
+  ppv: StyleSheet.create(ppv),
+  progress: StyleSheet.create(progress)
 }

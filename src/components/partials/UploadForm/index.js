@@ -4,15 +4,20 @@ import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import attrAccept from 'attr-accept'
 import copyToClipboard from 'copy-to-clipboard'
+import { inject, observer } from 'mobx-react'
 
 import style from './style'
 
 import UploadForm from './partials/UploadForm'
 import Success from './partials/Success'
+import Error from './partials/Error'
+import Progress from './partials/Progress'
 
 const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
 const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
 
+@inject('uploadform')
+@observer
 export class Upload extends React.Component {
   constructor() {
     super()
@@ -174,26 +179,49 @@ export class Upload extends React.Component {
       })
     }
 
-    this.setState({
-      ...this.state,
-      success: true
-    })
+    this.props.uploadform.upload({
+      message: this.state.message,
+      views: this.state.views,
+      viewType: this.state.viewTypes,
+      displayTime: this.state.displayTime,
+      validity: this.state.validity
+    }, this.state.upload.file)
   }
 
   onCopyLinkClick(e) {
     e.preventDefault()
-    copyToClipboard('http://in.pl/asdd21')
+
+    if (!this.props.uploadform.response) {
+      return
+    }
+
+    copyToClipboard(this.props.uploadform.response.url)
+  }
+
+  onResetStoreClick(e) {
+    e.preventDefault()
+    this.props.uploadform.reset()
   }
 
   render() {
     return (
       <Row className={css(style.main.wrapper)}>
-        <Success
-          onCopyLinkClick={this.onCopyLinkClick.bind(this)}
-          style={{ display: !this.state.success ? `none` : `block` }}
+        <RenderError 
+          onClick={this.onResetStoreClick.bind(this)}
+          {...this.props.uploadform}      
         />
-        <UploadForm
-          style={{ display: this.state.success ? `none` : `block` }}
+        <RenderProgress
+          {...this.props.uploadform}
+        />
+        <RenderSuccess
+          onCopyLinkClick={this.onCopyLinkClick.bind(this)}
+          {...this.props.uploadform}            
+        />
+        <RenderUploadForm
+          request={this.props.uploadform.request}
+          response={this.props.uploadform.response}
+          error={this.props.uploadform.error}
+        
           onFormSubmit={this.onFormSubmit.bind(this)}
           onDropRejected={this.onDropRejected.bind(this)}
           onDropAccepted={this.onDropAccepted.bind(this)}
@@ -215,6 +243,52 @@ export class Upload extends React.Component {
       </Row>
     )
   }
+}
+
+const RenderError = props => {
+  if (!props.error || props.request || props.response) {
+    return null
+  }
+
+  return (
+    <Error
+      onClick={props.onClick}
+    />    
+  )
+}
+
+const RenderProgress = props => {
+  if (!props.request || props.error) {
+    return null
+  }
+
+  return (
+    <Progress />
+  )
+}
+
+const RenderSuccess = props => {
+  if (!props.response || props.error) {
+    return null
+  }
+
+  return (
+    <Success
+      onCopyLinkClick={props.onCopyLinkClick}
+    />
+  )
+}
+
+const RenderUploadForm = props => {
+  if (props.request || props.response || props.error) {
+    return null
+  }
+
+  return (
+    <UploadForm
+      {...props}
+    />
+  )
 }
 
 export default Upload
