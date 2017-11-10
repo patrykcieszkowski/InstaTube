@@ -1,10 +1,22 @@
 import React from 'react'
+import { inject, observer } from 'mobx-react'
+import { Redirect } from 'react-router-dom'
 
 import Components from '../components'
 import Sidebar from './Sidebar'
 
+@inject('media')
+@observer
 export class DownloadContainer extends React.Component {
+  componentWillMount () {
+    this.props.media.fetch(this.props.match.params.mediaId)
+  }
+
   render () {
+    if (!this.props.match.params.mediaId) {
+      ;<Redirect to='/' />
+    }
+
     const sidebarRouteList = [
       {
         title: 'Help',
