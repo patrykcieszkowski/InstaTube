@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import { inject, observer } from 'mobx-react'
 
 import ScrollArea from '../../partials/ScrollArea'
 import UploadForm from '../../partials/UploadForm'
@@ -16,9 +17,8 @@ import Uploaded from './partials/Uploaded'
 import UploadedListTitles from './partials/Uploaded/partials/titlesRow'
 import style from './style'
 
-const uploadFilesList = require('../../../json/dashboard-upload-files.json')
-const paymentList = require('../../../json/dashboard-payment-history.json')
-
+@inject('user')
+@observer
 export class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -69,7 +69,7 @@ export class Main extends React.Component {
     return (
       <Container fluid>
         <Row className={css(style.header.wrapper)}>
-          <Header />
+          <Header user={this.props.user.dashboard} />
         </Row>
         <Row className={css(style.main.mainRow)}>
           <Col xs="12" className={`d-xl-none`}>
@@ -107,7 +107,7 @@ export class Main extends React.Component {
                     overflowX: `hidden`
                   }}
                 >
-                  <Uploaded items={uploadFilesList} openAlert={this.openAlert.bind(this)}  />
+                  <Uploaded openAlert={this.openAlert.bind(this)}  />
                 </ScrollArea>
               </Col>
             </Row>
@@ -125,7 +125,7 @@ export class Main extends React.Component {
             </Col>
             <Col xs="12" className={css(style.payments.content)}>
               <ScrollArea style={{ width: '100%', height: `382px` }}>
-                <Payments items={paymentList} />
+                <Payments />
               </ScrollArea>
             </Col>
           </Col>

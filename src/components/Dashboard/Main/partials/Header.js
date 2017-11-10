@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 
 import style from '../style'
 
-export const DashboardHeader = () => (
+export const DashboardHeader = (props) => (
   <Col xs="12">
     <Row>
       <Col className={`d-none d-xl-flex`}>
         <span className={css(style.header.welcomeMessage)}>
-          We are happy to see you again Piotr Szymański
+          We are happy to see you again { props.user.name }
         </span>
       </Col>
       <Col
