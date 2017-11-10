@@ -1,10 +1,25 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { inject } from 'mobx-react'
 
 import Components from '../components'
 import Sidebar from './Sidebar'
 
+@inject('auth', 'user')
 export class DashboardContiner extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentWillMount() {
+    if (!this.props.auth.isAuthenticated) {
+      console.log('not supposed to be here')
+    }
+
+    this.props.user.fetchDashboard()
+    this.props.user.fetchProfile()
+  }
+
   render() {
     const sidebarRouteList = [
       {

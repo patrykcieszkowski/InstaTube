@@ -1,4 +1,4 @@
-import { observable } from 'mobx'
+import { observable, computed, action } from 'mobx'
 import autoStore from './autoStore'
 
 class Auth {
@@ -29,5 +29,5 @@ class Auth {
   }
 }
 
-const AuthStore = window.AuthStore = new Auth
+const AuthStore = window.AuthStore = new Auth()
 export default AuthStore
