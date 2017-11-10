@@ -6,14 +6,14 @@ import store from 'store'
   save it's state onto the browser's localStorage
 */
 
-const autoStore = function(_this) {
+const autoStore = function(key, _this) {
   let initialRun = true
 
   // will run on change
   mobx.autorun(() => {
     // on load check if there's an existing store on localStorage and extend the store
     if (initialRun) {
-      const existingStore = store.get("store")
+      const existingStore = store.get(key)
       
       if (existingStore) {
         mobx.extendObservable(_this, existingStore)
@@ -21,7 +21,7 @@ const autoStore = function(_this) {
     }
 
     // from then on serialize and save to localStorage
-    store.set("store", mobx.toJS(_this))
+    store.set(key, mobx.toJS(_this))
   })
 
   initialRun = false

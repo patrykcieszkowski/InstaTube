@@ -5,6 +5,7 @@ import uploads from './Uploads'
 import payouts from './Payouts'
 import premium from './Premium'
 import auth from './Auth'
+import user from './User'
 
 export default {
   help,
@@ -13,5 +14,6 @@ export default {
   uploads,
   payouts,
   premium,
-  auth
+  auth,
+  user
 }
