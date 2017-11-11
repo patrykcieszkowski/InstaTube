@@ -14,7 +14,7 @@ import ScrollArea from '../../ScrollArea'
 import LoginForm from './partials/LoginForm'
 import RegisterForm from './partials/RegisterForm'
 
-@inject('user')
+@inject('auth')
 @observer
 export class Auth extends React.Component {
   constructor (props) {
@@ -55,9 +55,35 @@ export class Auth extends React.Component {
       return
     }
 
-    this.props.user.login({
+    this.props.auth.login({
       email: this.state.login.email,
       passowrd: this.state.login.passowrd
+    })
+  }
+
+  onRegisterFormSubmit (e) {
+    e.preventDefault()
+
+    if (
+      !this.state.register.email ||
+      !this.state.register.password ||
+      !this.state.register.confirm_password
+    ) {
+      this.setState({
+        ...this.state,
+        register: {
+          ...(this.state.register || {}),
+          error: `All fields are required`
+        }
+      })
+
+      return
+    }
+
+    this.props.auth.register({
+      email: this.state.register.email,
+      passowrd: this.state.register.passowrd,
+      confirm_password: this.state.register.confirm_password
     })
   }
 
@@ -104,7 +130,10 @@ export class Auth extends React.Component {
                   />
                   <SidebarHeader title={`Register`} className={`d-xl-none`} />
                 </Row>
-                <RegisterForm />
+                <RegisterForm
+                  onTextChange={this.onTextChange.bind(this, 'register')}
+                  onSubmit={this.onRegisterFormSubmit.bind(this)}
+                />
               </Column>
             </ScrollArea>
           </Col>
