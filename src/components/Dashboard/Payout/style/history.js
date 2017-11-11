@@ -10,7 +10,8 @@ export const historyStyle = {
     maxHeight: `450px`
   },
   wrapper: {
-    padding: `0 30px`
+    padding: `0 30px`,
+    paddingBottom: `30px`
   },
   contentWrapper: {
     height: `100%`,
