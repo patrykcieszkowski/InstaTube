@@ -1,7 +1,9 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
+/* eslint-disable no-unused-vars */
 import { inject, observer } from 'mobx-react'
+/* eslint-disable no-unused-vars */
 
 import style from '../../style'
 
@@ -13,30 +15,31 @@ import PayoutHistoryItem from './partials/listItem.js'
 @inject('payouts')
 @observer
 class PayoutHistory extends React.Component {
-  constructor(props) {
-    super(props)
-    this.all = this.props.payouts.all
+  componentWillMount () {
+    this.props.payouts.fetch()
   }
 
-  render() {
+  render () {
     return (
       <Row className={css(style.history.mainRow)}>
-        <Col xs="12" className={css(style.history.titleWrapper)}>
+        <Col xs='12' className={css(style.history.titleWrapper)}>
           <PayoutHistoryTitles />
         </Col>
-        <Col xs="12" className={css(style.history.contentWrapper)}>
+        <Col xs='12' className={css(style.history.contentWrapper)}>
           <ScrollArea
             style={{ width: '100%', height: `100%` }}
-            autoHide={true}
+            autoHide
             autoHideTimeout={1000}
             autoHideDuration={200}
           >
-            { this.all.slice().map((item, index) => (
-              <PayoutHistoryItem item={item} key={index} />
-            )) }
+            {this.props.payouts.all
+              .slice()
+              .map((item, index) => (
+                <PayoutHistoryItem item={item} key={index} />
+              ))}
           </ScrollArea>
         </Col>
-      </Row>  
+      </Row>
     )
   }
 }
