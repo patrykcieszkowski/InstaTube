@@ -14,11 +14,6 @@ import Withdraw from './partials/Withdraw'
 @inject('user')
 @observer
 export class Payout extends React.Component {
-  constructor (props) {
-    super(props)
-    this.dashboard = this.props.user.dashboard
-  }
-
   render () {
     return (
       <Container fluid className={css(style.main.container)}>
@@ -30,7 +25,7 @@ export class Payout extends React.Component {
             <PayoutHistory />
           </Col>
           <Col xs='12' className={css(style.withdraw.wrapper)}>
-            <Withdraw dashboard={this.dashboard} />
+            <Withdraw dashboard={this.props.user.dashboard} />
           </Col>
         </Row>
       </Container>
