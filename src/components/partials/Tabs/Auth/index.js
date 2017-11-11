@@ -1,7 +1,9 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
-import { Scrollbars } from 'react-custom-scrollbars'
+/* eslint-disable no-unused-vars */
+import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import style from './style'
 
@@ -12,8 +14,54 @@ import ScrollArea from '../../ScrollArea'
 import LoginForm from './partials/LoginForm'
 import RegisterForm from './partials/RegisterForm'
 
+@inject('user')
+@observer
 export class Auth extends React.Component {
-  render() {
+  constructor (props) {
+    super(props)
+    const state = {
+      login: {
+        error: null
+      },
+      register: {
+        error: null
+      }
+    }
+    this.state = state
+  }
+
+  onTextChange (type, e) {
+    this.setState({
+      ...this.state,
+      [type]: {
+        ...(this.state[type] || {}),
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
+  onLoginFormSubmit (e) {
+    e.preventDefault()
+
+    if (!this.state.login.email || !this.state.login.password) {
+      this.setState({
+        ...this.state,
+        login: {
+          ...(this.state.login || {}),
+          error: `All fields are required`
+        }
+      })
+
+      return
+    }
+
+    this.props.user.login({
+      email: this.state.login.email,
+      passowrd: this.state.login.passowrd
+    })
+  }
+
+  render () {
     return (
       <Container fluid>
         <Row className={css(style.main.wrapper)}>
@@ -21,27 +69,30 @@ export class Auth extends React.Component {
           <Col className={css(style.content.wrapper)}>
             <ScrollArea
               style={{ width: '100%', height: `100%` }}
-              renderClassName="row"
+              renderClassName='row'
             >
               <Column
-                xs="12"
-                xl="12"
-                xxl="6"
-                xxxl="5"
-                xxxxl="5"
+                xs='12'
+                xl='12'
+                xxl='6'
+                xxxl='5'
+                xxxxl='5'
                 className={css(style.content.colWrapper)}
               >
                 <Row>
                   <SidebarHeader title={`Login`} paddingTop paddingBottom />
                 </Row>
-                <LoginForm />
+                <LoginForm
+                  onTextChange={this.onTextChange.bind(this, 'login')}
+                  onSubmit={this.onLoginFormSubmit.bind(this)}
+                />
               </Column>
               <Column
-                xs="12"
-                xl="12"
-                xxl="6"
-                xxxl="5"
-                xxxxl="5"
+                xs='12'
+                xl='12'
+                xxl='6'
+                xxxl='5'
+                xxxxl='5'
                 className={css(style.content.colWrapper)}
               >
                 <Row>
@@ -70,11 +121,9 @@ const RenderSider = props => {
 
   return (
     <Column
-      xl="auto"
-      xxxxl="3"
-      className={`d-none d-xl-flex ${css(
-        style.sider.wrapper
-      )}`}
+      xl='auto'
+      xxxxl='3'
+      className={`d-none d-xl-flex ${css(style.sider.wrapper)}`}
     >
       <Row className={`${css(style.sider.box)}`} />
     </Column>
