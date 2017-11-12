@@ -1,3 +1,4 @@
+/* global FB */
 import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
@@ -43,6 +44,8 @@ export class Auth extends React.Component {
   onLoginFormSubmit (e) {
     e.preventDefault()
 
+    console.log(this.state.login)
+
     if (!this.state.login.email || !this.state.login.password) {
       this.setState({
         ...this.state,
@@ -59,6 +62,23 @@ export class Auth extends React.Component {
       email: this.state.login.email,
       passowrd: this.state.login.passowrd
     })
+  }
+
+  onFacebookLogin (e) {
+    e.preventDefault()
+
+    FB.login(res => {
+      this.props.auth.setAuthenticationStatus(
+        'facebook',
+        res.authResponse.accessToken
+      )
+      this.props.auth.validateFacebookToken()
+    })
+  }
+
+  onInstagramLogin (e) {
+    e.preventDefault()
+    this.props.auth.signInWithInstagram(window.location.href)
   }
 
   onRegisterFormSubmit (e) {
@@ -109,6 +129,8 @@ export class Auth extends React.Component {
                   <SidebarHeader title={`Login`} paddingTop paddingBottom />
                 </Row>
                 <LoginForm
+                  onFacebookLogin={this.onFacebookLogin.bind(this)}
+                  onInstagramLogin={this.onInstagramLogin.bind(this)}
                   onTextChange={this.onTextChange.bind(this, 'login')}
                   onSubmit={this.onLoginFormSubmit.bind(this)}
                 />

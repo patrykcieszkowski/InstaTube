@@ -15,7 +15,7 @@ const secondsToTime = secs => {
     .filter((v, i) => v[0] !== '00' || i > 2)
 }
 
-function isChildOf(child, parent) {
+const isChildOf = (child, parent) => {
   if (child.parentNode === parent) {
     return true
   } else if (child.parentNode === null) {
@@ -25,7 +25,16 @@ function isChildOf(child, parent) {
   }
 }
 
+const parseHashParams = hash => {
+  return hash.split('&').reduce((result, item) => {
+    const parts = item.split('=')
+    result[parts[0]] = parts[1]
+    return result
+  }, {})
+}
+
 export default {
   secondsToTime,
-  isChildOf
+  isChildOf,
+  parseHashParams
 }

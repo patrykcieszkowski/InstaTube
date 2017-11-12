@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import Components from '../components'
 import Sidebar from './Sidebar'
 
-@inject('media')
+@inject('auth', 'media')
 @observer
 export class DownloadContainer extends React.Component {
   componentWillMount () {
@@ -14,7 +14,7 @@ export class DownloadContainer extends React.Component {
 
   render () {
     if (!this.props.match.params.mediaId) {
-      ;<Redirect to='/' />
+      return <Redirect to='/' />
     }
 
     const sidebarRouteList = [
@@ -33,6 +33,7 @@ export class DownloadContainer extends React.Component {
       {
         title: 'Login',
         path: '/auth',
+        to: this.props.auth.auth.local ? '/dashboard' : null,
         component: Components.partials.Tabs.Auth.Auth,
         exact: true,
         size: `lg`
@@ -40,6 +41,7 @@ export class DownloadContainer extends React.Component {
       {
         title: 'Remind',
         path: '/auth/remind',
+        to: this.props.auth.auth.local ? '/dashboard' : null,
         component: Components.partials.Tabs.Auth.Remind,
         size: `lg`
       },
@@ -53,6 +55,8 @@ export class DownloadContainer extends React.Component {
         zIndex: true
       }
     ]
+
+    const authTabs = []
 
     return (
       <Components.partials.Container fluid noPadding minHeight bg={`dashboard`}>

@@ -1,26 +1,34 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
+/* eslint-disable no-unused-vars */
 import { inject } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import Components from '../components'
 import Sidebar from './Sidebar'
 
-@inject('auth', 'user')
+@inject('uploads', 'payments', 'auth', 'user')
 export class DashboardContiner extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
   }
 
-  componentWillMount() {
-    if (!this.props.auth.isAuthenticated) {
-      console.log('not supposed to be here')
+  componentWillMount () {
+    if (!this.props.auth.auth.local) {
+      return
     }
 
     this.props.user.fetchDashboard()
     this.props.user.fetchProfile()
+    this.props.uploads.fetch()
+    this.props.payments.fetch()
   }
 
-  render() {
+  render () {
+    if (!this.props.auth.auth.local) {
+      return <Redirect to='/' />
+    }
+
     const sidebarRouteList = [
       {
         title: 'Help',

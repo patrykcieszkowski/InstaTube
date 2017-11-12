@@ -16,6 +16,15 @@ class User {
 
   @action
   fetchProfile() {
+    /*
+    const API_URL = process.env.REACT_APP_API_URL    
+    axios.get(`${API_URL}/profile`)
+      .then((res) => {
+      this.dashboard = res
+    })
+      .catch(console.log)
+    */
+
     // fetch request here
     this.profile = {
       name: 'Piotr',
@@ -30,9 +39,9 @@ class User {
   @action
   postProfile(data) {
     // update request
-    const uri = '/'
+    const API_URL = process.env.REACT_APP_API_URL
     this.profile = { ...data, password: null, password_confirm: null }
-    axios.post(uri, data)
+    axios.post(`${API_URL}/profile`, data)
   }
 
   @computed
@@ -42,8 +51,16 @@ class User {
 
   @action
   fetchDashboard() {
+    /*
+    const API_URL = process.env.REACT_APP_API_URL    
+    axios.get(`${API_URL}/dashboard`)
+      .then((res) => {
+      this.dashboard = res
+    })
+      .catch(console.log)
+    
+    */
     // fetch request here
-
     this.dashboard = {
       transfer: '453',
       withdraw: '58423',

@@ -1,9 +1,20 @@
 import React from 'react'
 import Components from '../components'
 import Sidebar from './Sidebar'
+/* eslint-disable no-unused-vars */
+import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
+import { Redirect } from 'react-router-dom'
+
+@inject('auth')
+@observer
 export class HomeContainer extends React.Component {
   render () {
+    if (this.props.auth.auth.local) {
+      return <Redirect to='/dashboard' />
+    }
+
     const sidebarRouteList = [
       {
         title: 'Help',

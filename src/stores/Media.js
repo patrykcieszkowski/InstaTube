@@ -6,6 +6,14 @@ class Media {
 
   @action
   fetch(mediaId) {
+    /*
+    const API_URL = process.env.REACT_APP_API_URL    
+    axios.get(`${API_URL}/media`, { mediaId })
+      .then((res) => {
+      this.all = res
+    })
+      .catch(console.log)
+    */
     // fetch action
     this.media = {
       active: true,

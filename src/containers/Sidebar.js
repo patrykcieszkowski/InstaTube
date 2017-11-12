@@ -1,15 +1,15 @@
 import React from 'react'
-import { Switch, Route, matchPath } from 'react-router-dom'
+import { Switch, Route, matchPath, Redirect } from 'react-router-dom'
 
 import Components from '../components'
 
 export class SidebarContainer extends React.Component {
-  render() {
+  render () {
     const match =
       this.props.location.pathname !== this.props.homePath
         ? matchPath(this.props.location.pathname, {
-            path: `${this.props.homePath}/(.*)`.replace('//', '/')
-          }) || { isExact: false }
+          path: `${this.props.homePath}/(.*)`.replace('//', '/')
+        }) || { isExact: false }
         : { isExact: false }
 
     const currentRoute =
@@ -49,23 +49,36 @@ export class SidebarContainer extends React.Component {
         {...sizeChart}
       >
         <Switch>
-          {this.props.routeList.map((route, index) => (
-            <Route
-              key={index}
-              exact={route.exact}
-              path={`${this.props.homePath}${route.path}`.replace('//', '/')}
-              title={route.title}
-              render={props => (
-                <Components.partials.SidebarContent
-                  close={route.close === undefined ? true : route.close}
-                  title={route.title}
-                  homePath={this.props.homePath || '/'}
-                >
-                  <route.component {...sizeChart} {...props} />
-                </Components.partials.SidebarContent>
-              )}
-            />
-          ))}
+          {this.props.routeList.map((route, index) => {
+            const RouteComponent = !route.to ? Route : Redirect
+            return (
+              <RouteComponent
+                key={index}
+                exact={route.exact}
+                path={
+                  route.to
+                    ? null
+                    : `${this.props.homePath}${route.path}`.replace('//', '/')
+                }
+                from={
+                  !route.to
+                    ? null
+                    : `${this.props.homePath}${route.path}`.replace('//', '/')
+                }
+                to={!route.to ? null : route.to}
+                title={route.title}
+                render={props => (
+                  <Components.partials.SidebarContent
+                    close={route.close === undefined ? true : route.close}
+                    title={route.title}
+                    homePath={this.props.homePath || '/'}
+                  >
+                    <route.component {...sizeChart} {...props} />
+                  </Components.partials.SidebarContent>
+                )}
+              />
+            )
+          })}
         </Switch>
       </Components.partials.SidebarContainer>
     )

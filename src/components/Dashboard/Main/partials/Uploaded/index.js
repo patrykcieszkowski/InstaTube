@@ -15,16 +15,16 @@ import utils from '../../../../../utils'
 @inject('uploads')
 @observer
 export class UploadedList extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.all = this.props.uploads.all
   }
 
-  onDeleteConfirm(index) {
+  onDeleteConfirm (index) {
     this.props.uploads.deleteItem(index)
   }
 
-  onDeleteItemClick(index, e) {
+  onDeleteItemClick (index, e) {
     e.preventDefault()
 
     this.props.openAlert({
@@ -40,34 +40,42 @@ export class UploadedList extends React.Component {
     })
   }
 
-  onDateActionHover(index, state, e) {
+  onDateActionHover (index, state, e) {
     e.preventDefault()
     this.props.uploads.setDateAction(index, state)
   }
 
-  onCopyActionToggle(index, e) {
+  onCopyActionToggle (index, e) {
     e.preventDefault()
     this.props.uploads.setCopyAction(index)
   }
 
-  onCopyClick(index, e) {
+  onCopyClick (index, e) {
     e.preventDefault()
     copyToClipboard(this.all[index].url || '')
   }
 
-  render() {
-    return this.all.slice().map((item, index) => (
-      <ListItem
-        key={index}
-        index={index}
-        item={item || {}}
-        onDateActionHover={this.onDateActionHover.bind(this, index, true)}
-        onDateActionHoverOut={this.onDateActionHover.bind(this, index, false)}
-        onCopyActionToggle={this.onCopyActionToggle.bind(this, index)}
-        onCopyClick={this.onCopyClick.bind(this, index)}
-        onDeleteItemClick={this.onDeleteItemClick.bind(this, index)}
-      />
-    ))
+  onExtendItemClick (index, e) {
+    e.preventDefault()
+    this.props.uploads.extendItem(index)
+  }
+
+  render () {
+    return this.all
+      .slice()
+      .map((item, index) => (
+        <ListItem
+          key={index}
+          index={index}
+          item={item || {}}
+          onDateActionHover={this.onDateActionHover.bind(this, index, true)}
+          onDateActionHoverOut={this.onDateActionHover.bind(this, index, false)}
+          onCopyActionToggle={this.onCopyActionToggle.bind(this, index)}
+          onCopyClick={this.onCopyClick.bind(this, index)}
+          onDeleteItemClick={this.onDeleteItemClick.bind(this, index)}
+          onExtendItemClick={this.onExtendItemClick.bind(this, index)}
+        />
+      ))
   }
 }
 

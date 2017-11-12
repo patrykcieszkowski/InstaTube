@@ -12,7 +12,7 @@ export const LoginForm = props => (
         placeholder='E-mail address'
         className={css(style.inputs.input)}
         name={`email`}
-        onChange={props.onChange}
+        onChange={props.onTextChange}
       />
     </FormGroup>
     <FormGroup className={css(style.form.group)}>
@@ -21,113 +21,25 @@ export const LoginForm = props => (
         type='password'
         className={css(style.inputs.input)}
         name={`password`}
-        onChange={props.onChange}
+        onChange={props.onTextChange}
       />
     </FormGroup>
 
     <FormGroup className={`${css(style.form.group)} d-flex d-xl-none`}>
-      <Button
-        className={`d-flex justify-content-center align-items-center ${css(
-          style.buttons.button,
-          style.buttons.facebook
-        )}`}
-      >
-        <span className={`justify-content-center align-items-center`}>
-          <i
-            className={`la la-facebook-official ${css(style.buttons.icon)}`}
-            aria-hidden='true'
-            title='facebook'
-          />
-          Login with facebook
-        </span>
-      </Button>
+      <RenderFacebookButton onFacebookLogin={props.onFacebookLogin} />
     </FormGroup>
 
     <FormGroup className={`${css(style.form.group)} d-flex d-xl-none`}>
-      <Button
-        className={`d-flex justify-content-center align-items-center ${css(
-          style.buttons.button,
-          style.buttons.instagram
-        )}`}
-      >
-        <span className={`justify-content-center align-items-center`}>
-          <i
-            className={`la la-instagram ${css(style.buttons.icon)}`}
-            aria-hidden='true'
-            title='instagram'
-          />
-          Login with instagram
-        </span>
-      </Button>
+      <RenderInstagramButton onInstagramLogin={props.onInstagramLogin} />
     </FormGroup>
 
     <FormGroup className={`${css(style.form.group)} d-none d-xl-block`}>
       <Row>
         <Col xs='12' xl='6' className={css(style.buttons.facebookWrapper)}>
-          <Button
-            className={`d-flex justify-content-center align-items-center ${css(
-              style.buttons.button,
-              style.buttons.facebook
-            )}`}
-          >
-            <span
-              className={`${css(
-                style.grid.d1800None
-              )} justify-content-center align-items-center`}
-            >
-              <i
-                className={`la la-facebook-official ${css(style.buttons.icon)}`}
-                aria-hidden='true'
-                title='facebook'
-              />
-              facebook
-            </span>
-            <span
-              className={`${css(
-                style.grid.d1800
-              )} justify-content-center align-items-center`}
-            >
-              <i
-                className={`la la-facebook-official ${css(style.buttons.icon)}`}
-                aria-hidden='true'
-                title='facebook'
-              />
-              Login with facebook
-            </span>
-          </Button>
+          <RenderFacebookButton onFacebookLogin={props.onFacebookLogin} />
         </Col>
         <Col xs='12' xl='6' className={css(style.buttons.instagramWrapper)}>
-          <Button
-            className={`d-flex justify-content-center align-items-center ${css(
-              style.buttons.button,
-              style.buttons.instagram
-            )}`}
-          >
-            <span
-              className={`${css(
-                style.grid.d1800None
-              )} justify-content-center align-items-center`}
-            >
-              <i
-                className={`la la-instagram ${css(style.buttons.icon)}`}
-                aria-hidden='true'
-                title='instagram'
-              />
-              instagram
-            </span>
-            <span
-              className={`${css(
-                style.grid.d1800
-              )} justify-content-center align-items-center`}
-            >
-              <i
-                className={`la la-instagram ${css(style.buttons.icon)}`}
-                aria-hidden='true'
-                title='instagram'
-              />
-              Login with instagram
-            </span>
-          </Button>
+          <RenderInstagramButton onInstagramLogin={props.onInstagramLogin} />
         </Col>
       </Row>
     </FormGroup>
@@ -156,6 +68,76 @@ export const LoginForm = props => (
       </Row>
     </FormGroup>
   </Form>
+)
+
+const RenderFacebookButton = props => (
+  <Button
+    onClick={props.onFacebookLogin}
+    className={`d-flex justify-content-center align-items-center ${css(
+      style.buttons.button,
+      style.buttons.facebook
+    )}`}
+  >
+    <span
+      className={`${css(
+        style.grid.d1800None
+      )} justify-content-center align-items-center`}
+    >
+      <i
+        className={`la la-facebook-official ${css(style.buttons.icon)}`}
+        aria-hidden='true'
+        title='facebook'
+      />
+      facebook
+    </span>
+    <span
+      className={`${css(
+        style.grid.d1800
+      )} justify-content-center align-items-center`}
+    >
+      <i
+        className={`la la-facebook-official ${css(style.buttons.icon)}`}
+        aria-hidden='true'
+        title='facebook'
+      />
+      Login with facebook
+    </span>
+  </Button>
+)
+
+const RenderInstagramButton = props => (
+  <Button
+    onClick={props.onInstagramLogin}
+    className={`d-flex justify-content-center align-items-center ${css(
+      style.buttons.button,
+      style.buttons.instagram
+    )}`}
+  >
+    <span
+      className={`${css(
+        style.grid.d1800None
+      )} justify-content-center align-items-center`}
+    >
+      <i
+        className={`la la-instagram ${css(style.buttons.icon)}`}
+        aria-hidden='true'
+        title='instagram'
+      />
+      instagram
+    </span>
+    <span
+      className={`${css(
+        style.grid.d1800
+      )} justify-content-center align-items-center`}
+    >
+      <i
+        className={`la la-instagram ${css(style.buttons.icon)}`}
+        aria-hidden='true'
+        title='instagram'
+      />
+      Login with instagram
+    </span>
+  </Button>
 )
 
 export default LoginForm

@@ -2,14 +2,19 @@ import React from 'react'
 import { Collapse, Navbar, Nav, NavItem } from 'reactstrap'
 import { css } from 'aphrodite'
 import { Link } from 'react-router-dom'
+/* eslint-disable no-unused-vars */
+import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import UserButton from './partials/userButton'
 import UserDropdown from './partials/UserDropdown'
 
 import style from './style'
 
+@inject('auth')
+@observer
 export class NavbarComponent extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       mainOpen: false,
@@ -18,7 +23,7 @@ export class NavbarComponent extends React.Component {
     }
   }
 
-  toggleMenu(type) {
+  toggleMenu (type) {
     const key = `${type}Open`
     this.setState({
       ...this.state,
@@ -26,13 +31,17 @@ export class NavbarComponent extends React.Component {
     })
   }
 
-  onItemClick(type, e) {
+  onItemClick (type, e) {
     this.toggleMenu(type)
   }
 
-  render() {
+  onLogoutClick (e) {
+    this.props.auth.logout()
+  }
+
+  render () {
     const profileIconClick = () =>
-      this.props.dashboard
+      this.props.auth.auth.local
         ? this.toggleMenu.call(this, 'profileDropdown')
         : this.props.history.push('/auth')
 
@@ -44,28 +53,37 @@ export class NavbarComponent extends React.Component {
         )} flex-xl-row-reverse flex-xl-nowrap justify-content-xl-center`}
       >
         <button
-          type="button"
+          type='button'
           className={`${css(style.button.button)} d-xl-none`}
           onClick={this.toggleMenu.bind(this, 'main')}
         >
           <i
             className={`la la-bars ${css(style.button.icon)}`}
-            aria-hidden="true"
-            title="expand"
+            aria-hidden='true'
+            title='expand'
           />
         </button>
 
-        <UserButton logged={this.props.dashboard} onClickHandler={this.toggleMenu.bind(this, 'profile')} className={`d-xl-none`} />
+        <UserButton
+          logged={this.props.auth.auth.local}
+          onClickHandler={this.toggleMenu.bind(this, 'profile')}
+          className={`d-xl-none`}
+        />
 
         <div className={`d-none d-xl-flex ${css(style.navbar.userNavbar)}`}>
           <RenderTransferBox {...this.props} />
           <UserDropdown
             {...this.props}
             state={this.state}
-            dashboard={this.props.dashboard}
+            logged={this.props.auth.auth.local}
             onClickHandler={profileIconClick}
+            onLogoutClick={this.onLogoutClick.bind(this)}
           />
-          <RenderSignOutBox {...this.props} />
+          <RenderSignOutBox
+            logged={this.props.auth.auth.local}
+            onLogoutClick={this.onLogoutClick.bind(this)}
+            {...this.props}
+          />
         </div>
 
         <Collapse
@@ -73,22 +91,26 @@ export class NavbarComponent extends React.Component {
           navbar
           className={`${css(style.collapse.wrapper)} d-xl-none`}
         >
-          <Nav navbar className="ml-auto">
+          <Nav navbar className='ml-auto'>
             <NavItem className={css(style.collapse.item)}>
               <Link
-                to="/dashboard/profile"
+                to='/dashboard/profile'
                 className={css(style.collapse.link)}
               >
                 Profile
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
-              <Link to={`/`} className={css(style.collapse.link)}>
+              <Link
+                to={`/`}
+                onClick={this.onLogoutClick.bind(this)}
+                className={css(style.collapse.link)}
+              >
                 Logout
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
-              <Link to="/dashboard/payout" className={css(style.collapse.link)}>
+              <Link to='/dashboard/payout' className={css(style.collapse.link)}>
                 Payouts
               </Link>
             </NavItem>
@@ -147,17 +169,23 @@ export class NavbarComponent extends React.Component {
               className={css(style.collapse.item, style.collapse.mainListItem)}
             >
               <Link
-                to={this.props.dashboard ? '/dashboard/premium' : `${this.props.homePath}/auth`.replace('//', '/')}
+                to={
+                  this.props.auth.auth.local
+                    ? '/dashboard/premium'
+                    : `${this.props.homePath}/auth`.replace('//', '/')
+                }
                 className={css(
                   style.collapse.link,
-                  this.props.dashboard ? style.collapse.linkHighlight : '',
+                  this.props.auth.auth.local
+                    ? style.collapse.linkHighlight
+                    : '',
                   this.props.location.pathname === '/auth'
                     ? style.collapse.activeLink
                     : ''
                 )}
                 onClick={this.onItemClick.bind(this, 'main')}
               >
-                {this.props.dashboard ? `Go Premium!` : `Login`}
+                {this.props.auth.auth.local ? `Go Premium!` : `Login`}
               </Link>
             </NavItem>
           </Nav>
@@ -213,21 +241,22 @@ const RenderTransferBox = props => {
 }
 
 const RenderSignOutBox = props => {
-  if (!props.dashboard) {
+  if (!props.logged) {
     return null
   }
 
   return (
     <Link
-      to="/"
+      to='/'
+      onClick={props.onLogoutClick}
       className={`${css(
         style.navbar.signOutLink
       )} justify-content-center align-items-center`}
     >
       <i
         className={`la la-sign-out ${css(style.navbar.signoutIcon)}`}
-        aria-hidden="true"
-        title="sign out"
+        aria-hidden='true'
+        title='sign out'
       />
     </Link>
   )

@@ -7,8 +7,15 @@ class Payouts {
 
   @action
   fetch() {
-    // fetch action
-
+    /*
+    const API_URL = process.env.REACT_APP_API_URL    
+    axios.get(`${API_URL}/payouts`)
+      .then((res) => {
+      this.all = res
+    })
+      .catch(console.log)
+    */
+    //fetch action
     this.all = [
       {
         status: 'In progress',

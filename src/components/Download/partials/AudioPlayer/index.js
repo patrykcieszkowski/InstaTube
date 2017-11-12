@@ -47,9 +47,10 @@ export class AudioPlayer extends React.Component {
   }
 
   onPlayPause () {
+    const audioplayer = this.refs.audioplayer
     this.setState({
       ...this.state,
-      isPlaying: !this.refs.audioplayer.paused
+      isPlaying: !audioplayer ? false : !this.refs.audioplayer.paused
     })
   }
 
@@ -67,10 +68,12 @@ export class AudioPlayer extends React.Component {
   }
 
   onProgress () {
+    const audioplayer = this.refs.audioplayer
     this.setState({
       ...this.state,
-      audioProgress:
-        this.refs.audioplayer.currentTime / this.refs.audioplayer.duration * 100
+      audioProgress: !audioplayer
+        ? 0
+        : audioplayer.currentTime / audioplayer.duration * 100
     })
   }
 

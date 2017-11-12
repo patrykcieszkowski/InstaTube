@@ -7,11 +7,11 @@ import utils from '../../../../utils'
 import style from '../style'
 
 export class UserDropdown extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     document.addEventListener('click', this.onClickDocument.bind(this))
   }
 
-  onClickDocument(e) {
+  onClickDocument (e) {
     if (
       utils.isChildOf(e.target, this.refs.wrapper) ||
       !this.props.state.profileDropdownOpen
@@ -22,12 +22,12 @@ export class UserDropdown extends React.Component {
     return this.props.onClickHandler()
   }
 
-  render() {
+  render () {
     return (
-      <div className={css(style.navbar.userButtonBox)} ref="wrapper">
+      <div className={css(style.navbar.userButtonBox)} ref='wrapper'>
         <div>
           <UserButton
-            logged={this.props.dashboard}
+            logged={this.props.logged}
             onClickHandler={this.props.onClickHandler}
           />
           {this.props.state.profileDropdownOpen}
@@ -49,7 +49,7 @@ export class UserDropdown extends React.Component {
             <ul className={`${css(style.collapse.collapseList)}`}>
               <li className={css(style.collapse.item)}>
                 <Link
-                  to="/dashboard/payout"
+                  to='/dashboard/payout'
                   className={css(style.collapse.link)}
                   onClick={this.props.onClickHandler}
                 >
@@ -58,7 +58,7 @@ export class UserDropdown extends React.Component {
               </li>
               <li className={css(style.collapse.item)}>
                 <Link
-                  to="/dashboard/profile"
+                  to='/dashboard/profile'
                   className={css(style.collapse.link)}
                   onClick={this.props.onClickHandler}
                 >
@@ -69,7 +69,7 @@ export class UserDropdown extends React.Component {
                 <Link
                   to={`/`}
                   className={css(style.collapse.link)}
-                  onClick={this.props.onClickHandler}
+                  onClick={this.props.onLogoutClick}
                 >
                   Logout
                 </Link>
