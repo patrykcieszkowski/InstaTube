@@ -35,6 +35,8 @@ class App extends React.Component {
   }
 
   componentDidMount () {
+    stores.about.fetch()
+    stores.help.fetch()
     // inject facebook sdk script
     window.fbAsyncInit = () => {
       FB.init({
