@@ -5,44 +5,53 @@ class UploadForm {
   @observable request = null
   @observable error = null
   @observable response = null
-  @observable progress = 0
+  @observable progress = 20
 
   @action
   upload(data, file) {
     const uri = '/'
 
     const formData = new FormData()
-    Object.keys(data).forEach(key =>
-      formData.append(`upload[${key}]`, data[key])
-    )
-    formData.append('file', file)
+    formData.append('upload[message]', data.message)
+    formData.append('upload[houre]', data.validity.hour)
+    formData.append('upload[minutes]', data.validity.minute)
+    formData.append('upload[ppi]', !!data.viewTypes.instagram)
+    formData.append('upload[ppv]', !!data.viewTypes.ppv)
+    formData.append('upload[file]', file)
+
+    if (data.views.view)
+    {
+      formData.append('upload[nolimit]', !!data.views.view)
+    } else {
+      formData.append('upload[views]', data.views.number || 1)
+    }
 
     const config = {
-      onUploadProgress: e => {
-        this.progress = Math.floor(e.loaded * 100 / e.total)
-      }
+      // onUploadProgress: function(e) {
+      //   this.progress = Math.floor(e.loaded * 100 / e.total)
+      // },
+      headers: { 'Content-Type': 'multipart/form-data' },
     }
 
     const API_URL = process.env.REACT_APP_API_URL
+
     this.request = axios
       .post(`${API_URL}/add`, formData, config)
       .then(response => {
-        this.upload = null
         this.request = null
         this.response = response.data
         this.progress = 0
       })
       .catch(err => {
-        this.upload = null
-        this.request = null
-        this.error = err.data
+        this.request = null        
+        this.error = err.response ? err.response.data : null
         this.progress = 0
       })
   }
 
   @action
-  reset() {
-    this.upload = null
+  reset() { 
+    this.request = null    
     this.error = null
     this.response = null
     this.progress = 0
