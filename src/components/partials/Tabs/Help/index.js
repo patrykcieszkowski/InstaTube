@@ -19,8 +19,6 @@ export class Help extends React.Component {
     this.state = {
       boxes: {}
     }
-
-    this.all = props.help.all
   }
 
   onBoxClick (index, e) {
@@ -66,16 +64,16 @@ export class Help extends React.Component {
               <Col style={{ paddingLeft: 0 }}>
                 <Row>
                   <RenderList
-                    list={this.all}
+                    list={this.props.help.all}
                     startIndex={0}
-                    endIndex={this.all.length / 2}
+                    endIndex={this.props.help.all.length / 2}
                     state={this.state}
                     onBoxClick={this.onBoxClick.bind(this)}
                   />
                   <RenderList
-                    list={this.all}
-                    startIndex={this.all.length / 2}
-                    endIndex={this.all.length}
+                    list={this.props.help.all}
+                    startIndex={this.props.help.all.length / 2}
+                    endIndex={this.props.help.all.length}
                     state={this.state}
                     onBoxClick={this.onBoxClick.bind(this)}
                   />
@@ -107,7 +105,7 @@ const RenderList = props => (
             <HelpBox
               key={index}
               index={_index}
-              title={box.name}
+              title={box.title}
               state={
                 props.state.boxes[_index] || {
                   isExpanded: false
@@ -115,7 +113,7 @@ const RenderList = props => (
               }
               onClick={e => props.onBoxClick(_index, e)}
             >
-              {box.body}
+              {box.content}
             </HelpBox>
           )
         })}
