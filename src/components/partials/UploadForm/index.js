@@ -184,7 +184,8 @@ export class Upload extends React.Component {
       views: this.state.views,
       viewType: this.state.viewTypes,
       displayTime: this.state.displayTime,
-      validity: this.state.validity
+      validity: this.state.validity,
+      viewTypes: this.state.viewTypes,
     }, this.state.upload.file)
   }
 
@@ -208,7 +209,8 @@ export class Upload extends React.Component {
       <Row className={css(style.main.wrapper)}>
         <RenderError 
           onClick={this.onResetStoreClick.bind(this)}
-          {...this.props.uploadform}      
+          {...this.props.uploadform}
+          error={this.props.uploadform.error || this.state.upload.error}
         />
         <RenderProgress
           {...this.props.uploadform}
@@ -253,6 +255,7 @@ const RenderError = props => {
   return (
     <Error
       onClick={props.onClick}
+      error={props.error}
     />    
   )
 }
