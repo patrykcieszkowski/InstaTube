@@ -10,6 +10,7 @@ import style from './style'
 
 import Column from '../../Col'
 
+import Error from './partials/Error'
 import SidebarHeader from '../../SidebarHeader'
 import ScrollArea from '../../ScrollArea'
 import LoginForm from './partials/LoginForm'
@@ -43,8 +44,6 @@ export class Auth extends React.Component {
 
   onLoginFormSubmit (e) {
     e.preventDefault()
-
-    console.log(this.state.login)
 
     if (!this.state.login.email || !this.state.login.password) {
       this.setState({
@@ -108,6 +107,12 @@ export class Auth extends React.Component {
   }
 
   render () {
+    const loginResponse = this.props.auth.response.login
+    const loginError = (loginResponse && loginResponse.type === 'error') ? loginResponse.data : this.state.login.error
+
+    const registerResponse = this.props.auth.response.register
+    const registerError = (registerResponse && registerResponse.type === 'error') ? registerResponse.data : this.state.register.error
+
     return (
       <Container fluid>
         <Row className={css(style.main.wrapper)}>
@@ -128,6 +133,7 @@ export class Auth extends React.Component {
                 <Row>
                   <SidebarHeader title={`Login`} paddingTop paddingBottom />
                 </Row>
+                <RenderError error={loginError} />
                 <LoginForm
                   onFacebookLogin={this.onFacebookLogin.bind(this)}
                   onInstagramLogin={this.onInstagramLogin.bind(this)}
@@ -152,6 +158,7 @@ export class Auth extends React.Component {
                   />
                   <SidebarHeader title={`Register`} className={`d-xl-none`} />
                 </Row>
+                <RenderError error={registerError} />                
                 <RegisterForm
                   onTextChange={this.onTextChange.bind(this, 'register')}
                   onSubmit={this.onRegisterFormSubmit.bind(this)}
@@ -163,6 +170,18 @@ export class Auth extends React.Component {
       </Container>
     )
   }
+}
+
+const RenderError = props => {
+  if (!props.error) {
+    return null
+  }
+
+  return (
+    <Error
+      error={props.error}
+    />    
+  )
 }
 
 const RenderSider = props => {
