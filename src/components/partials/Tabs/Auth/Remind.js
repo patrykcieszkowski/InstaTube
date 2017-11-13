@@ -48,7 +48,10 @@ export class Auth extends React.Component {
 
   render () {
     const remindResponse = this.props.auth.response.remind
-    const remindError = (remindResponse && remindResponse.type === 'error') ? remindResponse.data : this.state.error
+    const remindError =
+      remindResponse && remindResponse.type === 'error'
+        ? remindResponse.data.content
+        : this.state.error
 
     return (
       <Container fluid>
@@ -83,11 +86,7 @@ const RenderError = props => {
     return null
   }
 
-  return (
-    <Error
-      error={props.error}
-    />    
-  )
+  return <Error error={props.error} />
 }
 
 export default Auth

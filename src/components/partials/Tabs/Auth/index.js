@@ -108,10 +108,16 @@ export class Auth extends React.Component {
 
   render () {
     const loginResponse = this.props.auth.response.login
-    const loginError = (loginResponse && loginResponse.type === 'error') ? loginResponse.data : this.state.login.error
+    const loginError =
+      loginResponse && loginResponse.type === 'error'
+        ? loginResponse.data.content
+        : this.state.login.error
 
     const registerResponse = this.props.auth.response.register
-    const registerError = (registerResponse && registerResponse.type === 'error') ? registerResponse.data : this.state.register.error
+    const registerError =
+      registerResponse && registerResponse.type === 'error'
+        ? registerResponse.data.content
+        : this.state.register.error
 
     return (
       <Container fluid>
@@ -158,7 +164,7 @@ export class Auth extends React.Component {
                   />
                   <SidebarHeader title={`Register`} className={`d-xl-none`} />
                 </Row>
-                <RenderError error={registerError} />                
+                <RenderError error={registerError} />
                 <RegisterForm
                   onTextChange={this.onTextChange.bind(this, 'register')}
                   onSubmit={this.onRegisterFormSubmit.bind(this)}
@@ -177,11 +183,7 @@ const RenderError = props => {
     return null
   }
 
-  return (
-    <Error
-      error={props.error}
-    />    
-  )
+  return <Error error={props.error} />
 }
 
 const RenderSider = props => {
