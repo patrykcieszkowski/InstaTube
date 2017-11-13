@@ -14,12 +14,6 @@ import style from './style'
 @inject('about')
 @observer
 export class About extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {}
-    this.all = props.about.all
-  }
-
   render () {
     return (
       <Container fluid>
@@ -42,13 +36,13 @@ export class About extends React.Component {
                 overflowX: `hidden`
               }}
             >
-              {this.all.map((item, index) => (
+              {this.props.about.all.slice().map((item, index) => (
                 <Row className={css(style.content.box)} key={index}>
                   <Col xs='12' className={css(style.content.header)}>
-                    <h3 className={css(style.content.h3)}>{item.name}</h3>
+                    <h3 className={css(style.content.h3)}>{item.title}</h3>
                   </Col>
                   <Col xs='12' className={css(style.content.textBox)}>
-                    <p className={css(style.content.p)}>{item.body}</p>
+                    <p className={css(style.content.p)}>{item.content}</p>
                   </Col>
                 </Row>
               ))}

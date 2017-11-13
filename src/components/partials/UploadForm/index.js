@@ -275,6 +275,7 @@ const RenderSuccess = props => {
   return (
     <Success
       onCopyLinkClick={props.onCopyLinkClick}
+      url={props.response.url}
     />
   )
 }

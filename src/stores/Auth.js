@@ -16,7 +16,7 @@ class Auth {
   }
 
   @observable
-  error = {
+  response = {
     login: null,
     register: null,
     remind: null
@@ -34,12 +34,11 @@ class Auth {
 
   @action
   login(data) {
-    /*
     const API_URL = process.env.REACT_APP_API_URL
-    axios.post(`${API_URL}/login`, data)
+    axios.post(`${API_URL}/auth/login`, data)
     .then((res) => {
       this.auth.local = true
-      this.error = {
+      this.response = {
         login: null,
         register: null,
         remind: null
@@ -52,15 +51,12 @@ class Auth {
         local: false
       }
   
-      this.error = {
-        login: err.error,
+      this.response = {
+        login: { type: 'error', data: err.data },
         register: null,
         remind: null
       }
     })
-    */
-    // login action
-    this.auth.local = true
   }
 
   @action
@@ -71,7 +67,7 @@ class Auth {
       local: false
     }
 
-    this.error = {
+    this.response = {
       login: null,
       register: null,
       remind: null
@@ -85,7 +81,7 @@ class Auth {
     axios.post(`${API_URL}/validate/facebook`, { accessToken: this.auth.facebook.accessToken })
       .then((res) => {
       this.auth.local = true
-      this.error = {
+      this.response = {
         login: null,
         register: null,
         remind: null
@@ -98,7 +94,7 @@ class Auth {
         local: false
       }
   
-      this.error = {
+      this.response = {
         login: null,
         register: null,
         remind: null
@@ -123,7 +119,7 @@ class Auth {
     axios.post(`${API_URL}/validate/instagram`, { accessToken: this.auth.instagram.accessToken })
       .then((res) => {
       this.auth.local = true
-      this.error = {
+      this.response = {
         login: null,
         register: null,
         remind: null
@@ -136,7 +132,7 @@ class Auth {
         local: false
       }
   
-      this.error = {
+      this.response = {
         login: null,
         register: null,
         remind: null
@@ -154,7 +150,7 @@ class Auth {
     axios.post(`${API_URL}/status`)
       .then((res) => {
       this.auth.local = true
-      this.error = {
+      this.response = {
         login: null,
         register: null,
         remind: null
@@ -167,7 +163,7 @@ class Auth {
         local: false
       }
   
-      this.error = {
+      this.response = {
         login: null,
         register: null,
         remind: null
@@ -181,18 +177,18 @@ class Auth {
   register(data) {
     const API_URL = process.env.REACT_APP_API_URL
     axios
-      .post(`${API_URL}/register`, data)
+      .post(`${API_URL}/auth/register`, data)
       .then(res => {
-        this.error = {
+        this.response = {
           login: null,
           register: null,
           remind: null
         }
       })
       .catch(err => {
-        this.error = {
+        this.response = {
           login: null,
-          register: err.error,
+          register: { type: 'error', data: err.data },
           remind: null
         }
       })
@@ -203,22 +199,21 @@ class Auth {
   remind(data) {
     const API_URL = process.env.REACT_APP_API_URL
     axios
-      .post(`${API_URL}/remind`, data)
+      .post(`${API_URL}/auth/forgot`, data)
       .then(res => {
-        this.error = {
+        this.response = {
           login: null,
           register: null,
-          remind: null
+          remind: { type: 'success', data: res.data }
         }
       })
       .catch(err => {
-        this.error = {
+        this.response = {
           login: null,
           register: null,
-          remind: err.error
+          remind: { type: 'error', data: err.data }
         }
       })
-    // remind action
   }
 }
 

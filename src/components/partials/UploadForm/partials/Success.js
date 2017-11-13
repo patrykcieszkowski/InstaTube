@@ -34,7 +34,7 @@ export const Success = props => (
       <input
         type="text"
         className={css(style.status.input)}
-        value={`http://in.pl/asdd21`}
+        value={props.url}
         readOnly={true}
       />
     </Row>

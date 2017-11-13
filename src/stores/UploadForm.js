@@ -21,17 +21,18 @@ class UploadForm {
       }
     }
 
-    this.request = axios.post(uri, formData, config)
+    const API_URL = process.env.REACT_APP_API_URL    
+    this.request = axios.post(`${API_URL}/add`, formData, config)
       .then((response) => {
         this.upload = null    
         this.request = null
-        this.response = response
+        this.response = response.data
         this.progress = 0
       })
       .catch((err) => {
         this.upload = null    
         this.request = null        
-        this.error = err
+        this.error = err.data
         this.progress = 0        
       })
   }
