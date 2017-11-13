@@ -5,7 +5,8 @@ import autoStore from './autoStore'
 
 class Auth {
   constructor() {
-    autoStore('auth', this)
+    const { response, ..._self } = this
+    autoStore('auth', _self)
   }
 
   @observable
@@ -34,29 +35,35 @@ class Auth {
 
   @action
   login(data) {
+    const formData = new FormData()
+    Object.keys(data).forEach(key =>
+      formData.append(`login[${key}]`, data[key])
+    )
+
     const API_URL = process.env.REACT_APP_API_URL
-    axios.post(`${API_URL}/auth/login`, data)
-    .then((res) => {
-      this.auth.local = true
-      this.response = {
-        login: null,
-        register: null,
-        remind: null
-      }
-    })
-    .catch((err) => {
-      this.auth = {
-        facebook: null,
-        instagram: null,
-        local: false
-      }
-  
-      this.response = {
-        login: { type: 'error', data: err.data },
-        register: null,
-        remind: null
-      }
-    })
+    axios
+      .post(`${API_URL}/auth/login`, formData)
+      .then(res => {
+        this.auth.local = true
+        this.response = {
+          login: null,
+          register: null,
+          remind: null
+        }
+      })
+      .catch(err => {
+        this.auth = {
+          facebook: null,
+          instagram: null,
+          local: false
+        }
+
+        this.response = {
+          login: { type: 'error', data: err.response.data },
+          register: null,
+          remind: null
+        }
+      })
   }
 
   @action
@@ -175,9 +182,14 @@ class Auth {
 
   @action
   register(data) {
+    const formData = new FormData()
+    Object.keys(data).forEach(key =>
+      formData.append(`register[${key}]`, data[key])
+    )
+
     const API_URL = process.env.REACT_APP_API_URL
     axios
-      .post(`${API_URL}/auth/register`, data)
+      .post(`${API_URL}/auth/register`, formData)
       .then(res => {
         this.response = {
           login: null,
@@ -188,7 +200,7 @@ class Auth {
       .catch(err => {
         this.response = {
           login: null,
-          register: { type: 'error', data: err.data },
+          register: { type: 'error', data: err.response.data },
           remind: null
         }
       })
@@ -197,9 +209,14 @@ class Auth {
 
   @action
   remind(data) {
+    const formData = new FormData()
+    Object.keys(data).forEach(key =>
+      formData.append(`forgot[${key}]`, data[key])
+    )
+
     const API_URL = process.env.REACT_APP_API_URL
     axios
-      .post(`${API_URL}/auth/forgot`, data)
+      .post(`${API_URL}/auth/forgot`, formData)
       .then(res => {
         this.response = {
           login: null,
@@ -211,7 +228,7 @@ class Auth {
         this.response = {
           login: null,
           register: null,
-          remind: { type: 'error', data: err.data }
+          remind: { type: 'error', data: err.response.data }
         }
       })
   }
