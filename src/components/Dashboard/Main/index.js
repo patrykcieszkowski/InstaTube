@@ -69,7 +69,10 @@ export class Main extends React.Component {
     return (
       <Container fluid>
         <Row className={css(style.header.wrapper)}>
-          <Header user={this.props.user.dashboard} />
+          <Header 
+            user={this.props.user.dashboard}
+            profile={this.props.user.profile}
+          />
         </Row>
         <Row className={css(style.main.mainRow)}>
           <Col xs="12" className={`d-xl-none`}>

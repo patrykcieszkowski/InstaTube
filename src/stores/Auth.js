@@ -5,8 +5,7 @@ import autoStore from './autoStore'
 
 class Auth {
   constructor() {
-    const { response, ..._self } = this
-    autoStore('auth', _self)
+    autoStore('auth', this)
   }
 
   @observable
