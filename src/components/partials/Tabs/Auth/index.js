@@ -59,7 +59,7 @@ export class Auth extends React.Component {
 
     this.props.auth.login({
       email: this.state.login.email,
-      passowrd: this.state.login.passowrd
+      password: this.state.login.password
     })
   }
 
@@ -101,7 +101,7 @@ export class Auth extends React.Component {
 
     this.props.auth.register({
       email: this.state.register.email,
-      passowrd: this.state.register.passowrd,
+      password: this.state.register.password,
       confirm_password: this.state.register.confirm_password
     })
   }
