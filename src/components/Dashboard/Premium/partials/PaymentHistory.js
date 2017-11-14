@@ -12,11 +12,6 @@ import ScrollArea from '../../../partials/ScrollArea'
 @inject('premium')
 @observer
 class PaymentHistory extends React.Component {
-  constructor (props) {
-    super(props)
-    this.all = this.props.premium.all
-  }
-
   componentWillMount () {
     this.props.premium.fetch()
   }
@@ -34,7 +29,7 @@ class PaymentHistory extends React.Component {
             autoHideTimeout={1000}
             autoHideDuration={200}
           >
-            {this.all
+            {this.props.premium.all
               .slice()
               .map((item, index) => (
                 <PaymentHistoryItem item={item} key={index} />
@@ -47,8 +42,11 @@ class PaymentHistory extends React.Component {
 }
 
 export const PaymentHistoryItem = ({ item }) => {
-  const statusList = ['fail', 'pending', 'complete']
-  const currentStatus = statusList[item.id_status + 1]
+  console.log(item)
+  const statusList = [['fail', 'Canceled'], ['pending', 'In Progress'], ['complete', 'Completed']]
+  const currentStatus = statusList[+item.id_status]
+
+  const date = new Date(item.end)
 
   return (
     <Row className={css(style.history.box)}>
@@ -56,17 +54,17 @@ export const PaymentHistoryItem = ({ item }) => {
         <Row>
           <Col xs='1'>
             <div
-              className={css(style.circle.circle, style.circle[currentStatus])}
+              className={css(style.circle.circle, style.circle[currentStatus[0]])}
             />
           </Col>
           <Col xs='4'>
-            <span className={css(style.history.statusSpan)}>{item.status}</span>
+            <span className={css(style.history.statusSpan)}>{ currentStatus[1] }</span>
           </Col>
           <Col xs='3'>
-            <span className={css(style.history.amountSpan)}>${item.total}</span>
+            <span className={css(style.history.amountSpan)}>${ item.amount }</span>
           </Col>
           <Col xs='4'>
-            <span className={css(style.history.dateSpan)}>{item.date}</span>
+            <span className={css(style.history.dateSpan)}>{ `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}` }</span>
           </Col>
         </Row>
       </Col>

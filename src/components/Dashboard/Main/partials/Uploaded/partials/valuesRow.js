@@ -50,7 +50,7 @@ const ItemValuesRow = props => {
             style.uploaded.nameValue
           )} d-flex align-items-center`}
         >
-          {props.item.file}
+          {props.item.name}
         </span>
       </Column>
       <Column
@@ -84,7 +84,7 @@ const ItemValuesRow = props => {
             style.uploaded.valuePrice
           )} d-flex justify-content-xl-center align-items-center`}
         >
-          {props.item.price ? `$${props.item.price}` : '-'}
+          {props.item.amount ? `$${props.item.amount}` : '-'}
         </span>
       </Column>
       <Column

@@ -12,7 +12,7 @@ const Withdraw = props => (
       className={`d-flex align-items-center justify-content-center`}
     >
       <span className={css(style.withdraw.amountSpan)}>
-        ${props.dashboard.withdraw}
+        ${props.dashboard.total}
       </span>
     </Col>
     <Col xs='12' xl='7' className={css(style.withdraw.buttonWrapper)}>

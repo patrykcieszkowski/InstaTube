@@ -16,24 +16,23 @@ class User {
 
   @action
   fetchProfile() {
-    /*
     const API_URL = process.env.REACT_APP_API_URL    
-    axios.get(`${API_URL}/profile`)
+    axios.get(`${API_URL}/customer/profile`)
       .then((res) => {
-      this.dashboard = res
+      this.dashboard = res.data
     })
       .catch(console.log)
-    */
+
 
     // fetch request here
-    this.profile = {
-      name: 'Piotr',
-      surname: 'Szymański',
-      address: 'Sienna 45',
-      zip: '45-251',
-      city: 'Warszawa',
-      bank: '548745688112546'
-    }
+    // this.profile = {
+    //   "name": "",
+    //   "surname": "",
+    //   "address": "",
+    //   "zip": "",
+    //   "city": "",
+    //   "bank": ""
+    // }
   }
 
   @action
@@ -51,23 +50,21 @@ class User {
 
   @action
   fetchDashboard() {
-    /*
     const API_URL = process.env.REACT_APP_API_URL    
-    axios.get(`${API_URL}/dashboard`)
+    axios.get(`${API_URL}/customer/data`)
       .then((res) => {
-      this.dashboard = res
+      this.dashboard = res.data[0]
     })
       .catch(console.log)
     
-    */
     // fetch request here
-    this.dashboard = {
-      transfer: '453',
-      withdraw: '58423',
-      currency: 'USD',
-      name: 'Piotr Szymański',
-      email: 'biuro@desineo.pl'
-    }
+    // this.dashboard =
+    // {
+    //   "email": "biuro@desineo.pl",
+    //   "space": "2000",
+    //   "total": "1254.00",
+    //   "currency": "USD"
+    // }
   }
 }
 

@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
+import utils from '../../../utils'
+
 import UserButton from './partials/userButton'
 import UserDropdown from './partials/UserDropdown'
 
 import style from './style'
 
-@inject('auth')
+@inject('auth', 'user')
 @observer
 export class NavbarComponent extends React.Component {
   constructor () {
@@ -115,7 +117,7 @@ export class NavbarComponent extends React.Component {
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
-              <span>Transfer available: 245MB</span>
+              <span>Transfer available: { utils.formatBytes(+this.props.user.dashboard.space) }</span>
             </NavItem>
           </Nav>
         </Collapse>
@@ -234,7 +236,9 @@ const RenderTransferBox = props => {
     >
       <span className={css(style.navbar.transferSpan)}>
         Transfer available:{' '}
-        <span className={css(style.navbar.transferSpanAmount)}>245MB</span>
+        <span className={css(style.navbar.transferSpanAmount)}>
+        { utils.formatBytes(+props.user.dashboard.space) }
+        </span>
       </span>
     </div>
   )
