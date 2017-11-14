@@ -42,7 +42,10 @@ class Auth {
 
     const API_URL = process.env.REACT_APP_API_URL
     axios
-      .post(`${API_URL}/auth/login`, formData)
+      .post(`${API_URL}/auth/login`, formData, {
+        crossDomain: true,
+        xhrFields: { withCredentials: true }
+      })
       .then(res => {
         this.auth.local = true
         this.response = {
