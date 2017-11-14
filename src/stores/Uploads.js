@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { observable, action } from 'mobx'
+import axios from 'axios'
 
 class Uploads {
   @observable all = []
