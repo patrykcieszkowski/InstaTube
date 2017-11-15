@@ -5,6 +5,12 @@ import autoStore from './autoStore'
 
 class Auth {
   constructor() {
+    this.response = {
+      login: null,
+      register: null,
+      remind: null
+    }
+
     autoStore('auth', this)
   }
 

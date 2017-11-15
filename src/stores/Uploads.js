@@ -7,11 +7,12 @@ class Uploads {
 
   @action
   fetch() {
-    const API_URL = process.env.REACT_APP_API_URL    
-    axios.get(`${API_URL}/customer/files`)
-      .then((res) => {
-      this.all = res.data
-    })
+    const API_URL = process.env.REACT_APP_API_URL
+    axios
+      .get(`${API_URL}/customer/files`)
+      .then(res => {
+        this.all = res.data
+      })
       .catch(console.log)
     //fetch action
 
@@ -93,12 +94,7 @@ class Uploads {
 
   @action
   deleteItem(index) {
-    /*
-    const API_URL = process.env.REACT_APP_API_URL    
-    axios.post(`${API_URL}/uploads/delete`, { mediaId: index })
-      .catch(console.log)
-    */
-    //fetch action
+    const item = this.all[index]
 
     this.all.replace([
       ...this.all.slice(0, index),
@@ -115,32 +111,32 @@ class Uploads {
         ...this.all.slice(index + 1)
       ])
     }, 500)
+
+    const formData = new FormData()
+    formData.append(`remove[url]`, item.url)
+
+    const API_URL = process.env.REACT_APP_API_URL
+    axios.post(`${API_URL}/uploads/delete`, formData).catch(console.log)
   }
 
   @action
   extendItem(index) {
-    /*
-    const API_URL = process.env.REACT_APP_API_URL    
-    axios.post(`${API_URL}/uploads/extend`, { mediaId: index })
-      .catch(console.log)
-    */
-    //fetch action
+    const item = this.all[index]
+
     this.all.replace([
       ...this.all.slice(0, index),
       {
-        id: 243,
-        file: 'How make makeup?',
-        views: 170,
-        seen: 50,
-        active: 1,
-        price: '2541.52',
-        earn: '560.41',
-        url: 'http://it.oz/asd231',
-        end: '2017-12-12',
-        date: '2017-12-10'
+        ...this.all[index],
+        active: 1
       },
       ...this.all.slice(index + 1)
     ])
+
+    const formData = new FormData()
+    formData.append(`extend[url]`, item.url)
+
+    const API_URL = process.env.REACT_APP_API_URL
+    axios.post(`${API_URL}/uploads/extend`, formData).catch(console.log)
   }
 
   @action

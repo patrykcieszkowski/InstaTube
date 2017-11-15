@@ -9,6 +9,7 @@ import style from './style'
 
 import SidebarHeader from '../../partials/SidebarHeader'
 import SettingsForm from './partials/SettingsForm'
+import Error from './partials/Error'
 
 @inject('user')
 @observer
@@ -30,11 +31,9 @@ export class Profile extends React.Component {
     e.preventDefault()
 
     const newData = {
-      ...this.props.user.profile,
+      ...this.props.user.profile.data,
       ...this.state
     }
-
-    console.log(newData)
 
     this.props.user.postProfile(newData)
   }
@@ -45,8 +44,9 @@ export class Profile extends React.Component {
         <Row>
           <SidebarHeader title='Profile' paddingBottom md />
         </Row>
+        <Error error={this.props.user.profile.response.error} />
         <SettingsForm
-          profile={this.props.user.profile}
+          profile={this.props.user.profile.data}
           onTextChange={this.onTextChange.bind(this)}
           onFormSubmit={this.onFormSubmit.bind(this)}
         />
