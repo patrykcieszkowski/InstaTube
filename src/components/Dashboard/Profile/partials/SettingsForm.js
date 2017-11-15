@@ -99,7 +99,7 @@ export const PasswordInputs = props => (
         placeholder='Confirm Password'
         type='password'
         className={css(style.inputs.input)}
-        name={`password_confirm`}
+        name={`confirm`}
         onChange={props.onTextChange}
       />
     </Col>
@@ -115,7 +115,7 @@ export const BankInputs = props => (
       <Input
         placeholder='Bank account number'
         className={css(style.inputs.input)}
-        name={`bank`}
+        name={`swift`}
         defaultValue={props.profile.bank}
         onChange={props.onTextChange}
       />

@@ -7,6 +7,7 @@ import store from 'store'
 */
 
 const autoStore = function(key, _this) {
+  const { response, ..._nThis } = _this
   let initialRun = true
 
   // will run on change
@@ -14,14 +15,14 @@ const autoStore = function(key, _this) {
     // on load check if there's an existing store on localStorage and extend the store
     if (initialRun) {
       const existingStore = store.get(key)
-      
+
       if (existingStore) {
-        mobx.extendObservable(_this, existingStore)
+        mobx.extendObservable(_nThis, existingStore)
       }
     }
 
     // from then on serialize and save to localStorage
-    store.set(key, mobx.toJS(_this))
+    store.set(key, mobx.toJS(_nThis))
   })
 
   initialRun = false
