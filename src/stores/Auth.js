@@ -89,9 +89,9 @@ class Auth {
     }
   }
 
-  @action
-  validateFacebookToken() {
-    /*
+  // @action
+  // validateFacebookToken() {
+  /*
     const API_URL = process.env.REACT_APP_API_URL
     axios.post(`${API_URL}/validate/facebook`, { accessToken: this.auth.facebook.accessToken })
       .then((res) => {
@@ -116,9 +116,9 @@ class Auth {
       }
     })
     */
-    // verify token on the server
-    this.auth.local = true
-  }
+  // verify token on the server
+  //   this.auth.local = true
+  // }
 
   @action
   signInWithInstagram(redirectURI) {

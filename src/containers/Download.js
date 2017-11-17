@@ -1,5 +1,7 @@
 import React from 'react'
+/* eslint-disable no-unused-vars */
 import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 import { Redirect } from 'react-router-dom'
 
 import Components from '../components'
@@ -46,6 +48,13 @@ export class DownloadContainer extends React.Component {
         size: `lg`
       },
       {
+        title: 'Instagram',
+        path: '/auth/instagram',
+        to: this.props.auth.auth.local ? '/dashboard' : null,
+        component: Components.partials.Tabs.Auth.Instagram,
+        size: `lg`
+      },
+      {
         title: 'Locked',
         path: '/locked',
         component: Components.Download.Locked,
@@ -55,8 +64,6 @@ export class DownloadContainer extends React.Component {
         zIndex: true
       }
     ]
-
-    const authTabs = []
 
     return (
       <Components.partials.Container fluid noPadding minHeight bg={`dashboard`}>
