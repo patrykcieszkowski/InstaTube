@@ -8,6 +8,7 @@ import Containers from './containers'
 
 class App extends React.Component {
   componentDidMount () {
+    stores.config.fetch()
     stores.about.fetch()
     stores.help.fetch()
 
