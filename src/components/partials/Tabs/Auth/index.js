@@ -16,7 +16,7 @@ import ScrollArea from '../../ScrollArea'
 import LoginForm from './partials/LoginForm'
 import RegisterForm from './partials/RegisterForm'
 
-@inject('auth')
+@inject('auth', 'config')
 @observer
 export class Auth extends React.Component {
   constructor (props) {
@@ -77,7 +77,7 @@ export class Auth extends React.Component {
 
   onInstagramLogin (e) {
     e.preventDefault()
-    this.props.auth.signInWithInstagram(window.location.href)
+    window.location.href = `https://api.instagram.com/oauth/authorize/?client_id=${this.props.config.instagram.key}&redirect_uri=${`http://it.systemxent.pl/api/auth/instagram`}&response_type=code&scope=basic+follower_list+relationships+public_content`
   }
 
   onRegisterFormSubmit (e) {

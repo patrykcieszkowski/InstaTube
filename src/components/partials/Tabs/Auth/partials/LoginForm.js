@@ -35,10 +35,7 @@ export const LoginForm = props => (
 
     <FormGroup className={`${css(style.form.group)} d-none d-xl-block`}>
       <Row>
-        <Col xs='12' xl='6' className={css(style.buttons.facebookWrapper)}>
-          <RenderFacebookButton onFacebookLogin={props.onFacebookLogin} />
-        </Col>
-        <Col xs='12' xl='6' className={css(style.buttons.instagramWrapper)}>
+        <Col xs='12' className={css(style.buttons.instagramWrapper)}>
           <RenderInstagramButton onInstagramLogin={props.onInstagramLogin} />
         </Col>
       </Row>
