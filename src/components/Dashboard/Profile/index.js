@@ -9,6 +9,8 @@ import style from './style'
 
 import SidebarHeader from '../../partials/SidebarHeader'
 import SettingsForm from './partials/SettingsForm'
+import PasswordForm from './partials/PasswordForm'
+import ScrollArea from '../../partials/ScrollArea'
 import Error from './partials/Error'
 
 @inject('user')
@@ -20,22 +22,35 @@ export class Profile extends React.Component {
     this.state = state
   }
 
-  onTextChange (e) {
+  onTextChange (type, e) {
     this.setState({
       ...this.state,
-      [e.target.name]: e.target.value
+      [type]: {
+        ...this.state[type],
+        [e.target.name]: e.target.value
+      }
     })
   }
 
-  onFormSubmit (e) {
+  onSettingsFormSubmit (e) {
     e.preventDefault()
 
     const newData = {
       ...this.props.user.profile.data,
-      ...this.state
+      ...this.state.settings
     }
 
     this.props.user.postProfile(newData)
+  }
+
+  onPasswordFormSubmit (e) {
+    e.preventDefault()
+
+    const newData = {
+      ...this.state.password
+    }
+
+    this.props.user.postPassword(newData)
   }
 
   render () {
@@ -44,12 +59,25 @@ export class Profile extends React.Component {
         <Row>
           <SidebarHeader title='Profile' paddingBottom md />
         </Row>
-        <Error error={this.props.user.profile.response.error} />
-        <SettingsForm
-          profile={this.props.user.profile.data}
-          onTextChange={this.onTextChange.bind(this)}
-          onFormSubmit={this.onFormSubmit.bind(this)}
-        />
+        <ScrollArea
+          style={{
+            width: `100%`,
+            height: `calc(100% - 80px)`,
+            overflowX: `hidden`
+          }}
+        >
+          <Error error={this.props.user.profile.response.error} />
+          <SettingsForm
+            profile={this.props.user.profile.data}
+            onTextChange={this.onTextChange.bind(this, 'settings')}
+            onFormSubmit={this.onSettingsFormSubmit.bind(this)}
+          />
+          <Error error={this.props.user.password.response.error} />
+          <PasswordForm
+            onTextChange={this.onTextChange.bind(this, 'password')}
+            onFormSubmit={this.onPasswordFormSubmit.bind(this)}
+          />
+        </ScrollArea>
       </Container>
     )
   }
