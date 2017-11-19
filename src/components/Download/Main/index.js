@@ -1,10 +1,10 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
-import { matchPath } from 'react-router-dom'
-/* eslint-disable non-used-vars */
+import { matchPath, Redirect } from 'react-router-dom'
+/* eslint-disable no-unused-vars */
 import { inject, observer } from 'mobx-react'
-/* eslint-enable non-used-vars */
+/* eslint-enable no-unused-vars */
 
 import style from './style'
 
@@ -35,10 +35,42 @@ export class Main extends React.Component {
     })
   }
 
+  renderTimer () {
+    if (!this.props.media.media.premium) {
+      return null
+    }
+
+    return (
+      <PieTimer
+        ref='timer'
+        renderClassName={css(style.timer.timer)}
+        onComplete={this.onTimerComplete.bind(this)}
+        onProgress={this.onTimerProgress.bind(this)}
+        timeout={this.props.media.media.display}
+        stroke={12}
+        size={118}
+      />
+    )
+  }
+
   render () {
     const isLocked = matchPath(this.props.location.pathname, {
       path: `${this.props.match.url}/locked`.replace('//', '/')
     })
+
+    if (!this.props.media.media && !this.props.media.error) {
+      return null
+    }
+
+    if (this.props.media.error) {
+      return <Redirect to={`/`} />
+    }
+
+    if (!isLocked && !this.props.media.media.unlock) {
+      return (
+        <Redirect to={`${this.props.match.url}/locked`.replace('//', '/')} />
+      )
+    }
 
     return [
       <div
@@ -56,15 +88,7 @@ export class Main extends React.Component {
             )} d-xl-flex justify-content-xl-end`}
           >
             <Row className={`${css(style.timer.row)} d-lg-none `} />
-            <PieTimer
-              ref='timer'
-              renderClassName={css(style.timer.timer)}
-              onComplete={this.onTimerComplete.bind(this)}
-              onProgress={this.onTimerProgress.bind(this)}
-              timeout={parseInt(this.media.display)}
-              stroke={12}
-              size={118}
-            />
+            {this.renderTimer()}
           </Col>
           <Col xs='12' xl='6'>
             <Media timer={this.state.timer} />

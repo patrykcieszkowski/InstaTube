@@ -1,7 +1,6 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
-import { Link } from 'react-router-dom'
 
 import style from './style'
 
@@ -26,6 +25,36 @@ const Locked = props => (
         </span>
       </Col>
     </Row>
+    <RenderPaymentType {...props} />
+  </div>
+)
+
+const RenderPaymentType = props => {
+  if (props.media.instagram) {
+    return (
+      <Row className={css(style.wrapper)}>
+        <Col xs='12' className={css(style.box)}>
+          <span className={css(style.spanUnlock)}>
+            You can easily unlock it by{' '}
+            <span className={css(style.spanUnlockColor)}>
+              leaving Instagram like
+            </span>
+          </span>
+        </Col>
+        <Col xs='12' className={css(style.box, style.buttonUnlockBox)}>
+          <a
+            href='#pay'
+            onClick={props.onPPIClick}
+            className={css(style.buttonUnlock)}
+          >
+            PayByLike
+          </a>
+        </Col>
+      </Row>
+    )
+  }
+
+  return (
     <Row className={css(style.wrapper)}>
       <Col xs='12' className={css(style.box)}>
         <span className={css(style.spanUnlock)}>
@@ -34,15 +63,16 @@ const Locked = props => (
         </span>
       </Col>
       <Col xs='12' className={css(style.box, style.buttonUnlockBox)}>
-        <Link
-          to={`${props.homePath || ''}/auth`.replace('//', '/')}
+        <a
+          href='#pay'
+          onClick={props.onPPVSubmit}
           className={css(style.buttonUnlock)}
         >
           Unlock Content Now!
-        </Link>
+        </a>
       </Col>
     </Row>
-  </div>
-)
+  )
+}
 
 export default Locked

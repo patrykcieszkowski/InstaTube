@@ -10,6 +10,12 @@ class App extends React.Component {
   componentDidMount () {
     stores.about.fetch()
     stores.help.fetch()
+
+    if (stores.auth.auth.local) {
+      stores.user.fetchDashboard()
+      stores.user.fetchProfile()
+    }
+
     // inject facebook sdk script
     window.fbAsyncInit = () => {
       FB.init({

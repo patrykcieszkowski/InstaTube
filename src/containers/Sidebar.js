@@ -73,7 +73,11 @@ export class SidebarContainer extends React.Component {
                     title={route.title}
                     homePath={this.props.homePath || '/'}
                   >
-                    <route.component {...sizeChart} {...props} />
+                    <route.component
+                      {...sizeChart}
+                      {...props}
+                      match={this.props.match}
+                    />
                   </Components.partials.SidebarContent>
                 )}
               />

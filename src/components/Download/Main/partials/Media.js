@@ -14,17 +14,14 @@ import style from '../style'
 @inject('media')
 @observer
 export class Media extends React.Component {
-  constructor (props) {
-    super(props)
-    this.media = this.props.media.media
-  }
-
   render () {
     return (
       <Row className={css(style.media.wrapper)}>
-        <RenderTitle media={this.media} />
-        <RenderMedia media={this.media} />
-        <RenderDescription description={this.media.message || null} />
+        <RenderTitle media={this.props.media.media} />
+        <RenderMedia {...this.props} media={this.props.media.media} />
+        <RenderDescription
+          description={this.props.media.media.message || null}
+        />
       </Row>
     )
   }
@@ -43,6 +40,7 @@ const RenderTitle = props => {
 }
 
 const RenderMedia = props => {
+  console.log(props)
   switch (props.media.type) {
     case 'audio':
       return (
@@ -59,7 +57,7 @@ const RenderMedia = props => {
     case 'image':
       return (
         <Col className={css(style.media.box, style.media.imageWrapper)}>
-          <Image timerInit={this.props.timer} media={props.media} />
+          <Image timerInit={props.timer} media={props.media} />
         </Col>
       )
     default:
