@@ -9,6 +9,10 @@ class User {
     response: {}
   }
   @observable
+  password = {
+    response: {}
+  }
+  @observable
   dashboard = {
     data: {},
     response: {}
@@ -55,10 +59,31 @@ class User {
     axios
       .post(`${API_URL}/actions/profile`, formData)
       .then(res => {
-        this.profile.data = { ...data, password: null, password_confirm: null }
+        this.profile.data = { ...data }
       })
       .catch(err => {
         this.profile.response = {
+          error: err.response ? err.response.data : null
+        }
+      })
+  }
+
+  @action
+  postPassword(data) {
+    const formData = new FormData()
+    Object.keys(data).forEach(key =>
+      formData.append(`passowrd[${key}]`, data[key])
+    )
+
+    // update request
+    const API_URL = process.env.REACT_APP_API_URL
+    axios
+      .post(`${API_URL}/actions/password`, formData)
+      .then(res => {
+        this.password.data = { ...data, password: null, confirm: null }
+      })
+      .catch(err => {
+        this.password.response = {
           error: err.response ? err.response.data : null
         }
       })

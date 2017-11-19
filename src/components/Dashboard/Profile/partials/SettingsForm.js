@@ -14,10 +14,6 @@ export const SettingsForm = props => (
     </FormGroup>
 
     <FormGroup className={css(style.form.group)}>
-      <PasswordInputs onTextChange={props.onTextChange} />
-    </FormGroup>
-
-    <FormGroup className={css(style.form.group)}>
       <BankInputs profile={props.profile} onTextChange={props.onTextChange} />
     </FormGroup>
 
@@ -74,32 +70,6 @@ export const PersonalInputs = props => (
         className={css(style.inputs.input)}
         name={`city`}
         defaultValue={props.profile.city}
-        onChange={props.onTextChange}
-      />
-    </Col>
-  </Row>
-)
-
-export const PasswordInputs = props => (
-  <Row className={css(style.form.row)}>
-    <Col xs='12' className={css(style.labels.wrapper)}>
-      <h4 className={css(style.labels.h4)}>password</h4>
-    </Col>
-    <Col xs='12' className={css(style.inputs.wrapper)}>
-      <Input
-        placeholder='Password'
-        type='password'
-        className={css(style.inputs.input)}
-        name={`password`}
-        onChange={props.onTextChange}
-      />
-    </Col>
-    <Col xs='12' className={css(style.inputs.wrapper)}>
-      <Input
-        placeholder='Confirm Password'
-        type='password'
-        className={css(style.inputs.input)}
-        name={`confirm`}
         onChange={props.onTextChange}
       />
     </Col>
