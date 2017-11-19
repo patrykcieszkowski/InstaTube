@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 /* eslint-disable no-unused-vars */
 import { inject } from 'mobx-react'
 /* eslint-enable no-unused-vars */
@@ -7,12 +7,8 @@ import { inject } from 'mobx-react'
 import Components from '../components'
 import Sidebar from './Sidebar'
 
-@inject('uploads', 'payments', 'auth', 'user')
+@inject('uploads', 'payments', 'auth', 'user', 'social')
 export class DashboardContiner extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
   componentWillMount () {
     if (!this.props.auth.auth.local) {
       return
@@ -22,6 +18,7 @@ export class DashboardContiner extends React.Component {
     this.props.user.fetchProfile()
     this.props.uploads.fetch()
     this.props.payments.fetch()
+    this.props.social.fetch()
   }
 
   render () {
@@ -58,6 +55,12 @@ export class DashboardContiner extends React.Component {
         title: 'Go Premium!',
         path: '/premium',
         component: Components.Dashboard.Premium,
+        size: 'md'
+      },
+      {
+        title: 'Social Network',
+        path: '/social',
+        component: Components.Dashboard.Social,
         size: 'md'
       }
     ]

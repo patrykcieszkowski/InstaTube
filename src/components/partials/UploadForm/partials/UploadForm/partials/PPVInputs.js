@@ -9,15 +9,38 @@ export const InstagramInput = props => {
     return null
   }
 
+  if (props.instagramAccounts && props.instagramAccounts.length > 0) {
+    return (
+      <FormGroup className={css(style.form.group, style.views.box)}>
+        <Row className={css(style.form.row)}>
+          <Col xs className={css(style.ppv.inputWrapper)}>
+            <select
+              onChange={props.onInstagramInputChange}
+              value={props.state.viewTypes.instagram}
+              type='text'
+              className={css(style.ppv.select)}
+            >
+              {props.instagramAccounts.slice().map((a, index) => (
+                <option key={index} value={a}>
+                  @{a}
+                </option>
+              ))}
+            </select>
+          </Col>
+        </Row>
+      </FormGroup>
+    )
+  }
+
   return (
     <FormGroup className={css(style.form.group, style.views.box)}>
       <Row className={css(style.form.row)}>
-        <Col xs={true} className={css(style.ppv.inputWrapper)}>
+        <Col xs className={css(style.ppv.inputWrapper)}>
           <Input
             onChange={props.onInstagramInputChange}
             value={props.state.viewTypes.instagram}
-            type="text"
-            placeholder="@nickname"
+            type='text'
+            placeholder='@nickname'
             className={css(style.ppv.input)}
           />
         </Col>
@@ -35,24 +58,24 @@ export const PPVInput = props => {
     <FormGroup className={css(style.form.group, style.views.box)}>
       <Row className={css(style.form.row)}>
         <Col
-          xs="1"
+          xs='1'
           className={`d-flex align-items-center justify-content-center`}
         >
           <i
             className={`la la-dollar ${css(style.ppv.dollarIcon)}`}
-            aria-hidden="true"
-            title="dollar"
+            aria-hidden='true'
+            title='dollar'
           />
         </Col>
         <Col
-          xs={true}
+          xs
           className={css(style.ppv.inputWrapper, style.ppv.inputPPVWrapper)}
         >
           <Input
             onChange={props.onPPVInputChange}
             value={props.state.viewTypes.ppv}
-            type="text"
-            placeholder="0.00"
+            type='text'
+            placeholder='0.00'
             className={css(style.ppv.input)}
           />
         </Col>

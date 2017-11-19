@@ -1,10 +1,11 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Row } from 'reactstrap'
 import attrAccept from 'attr-accept'
 import copyToClipboard from 'copy-to-clipboard'
+/* eslint-disable no-unused-vars */
 import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import style from './style'
 
@@ -13,13 +14,15 @@ import Success from './partials/Success'
 import Error from './partials/Error'
 import Progress from './partials/Progress'
 
+/* eslint-disable no-unused-vars */
 const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
 const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
+/* eslint-enable no-unused-vars */
 
 @inject('uploadform')
 @observer
 export class Upload extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       filename: '',
@@ -49,7 +52,7 @@ export class Upload extends React.Component {
     }
   }
 
-  onDropRejected(files) {
+  onDropRejected (files) {
     this.setState({
       ...this.state,
       upload: {
@@ -61,7 +64,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onDropAccepted(files) {
+  onDropAccepted (files) {
     this.setState({
       ...this.state,
       upload: {
@@ -71,21 +74,21 @@ export class Upload extends React.Component {
     })
   }
 
-  onFilenameChange(e) {
+  onFilenameChange (e) {
     this.setState({
       ...this.state,
       filename: e.target.value
     })
   }
 
-  onMessageChange(e) {
+  onMessageChange (e) {
     this.setState({
       ...this.state,
       message: e.target.value
     })
   }
 
-  toggleCheckbox() {
+  toggleCheckbox () {
     this.setState({
       ...this.state,
       views: {
@@ -95,7 +98,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onValidityChange(type, e) {
+  onValidityChange (type, e) {
     this.setState({
       ...this.state,
       validity: {
@@ -105,14 +108,14 @@ export class Upload extends React.Component {
     })
   }
 
-  onDisplayTimeChange(e) {
+  onDisplayTimeChange (e) {
     this.setState({
       ...this.state,
       displayTime: e.target.value
     })
   }
 
-  onLinkClick(type, e) {
+  onLinkClick (type, e) {
     if (!this.props.dashboard) {
       return
     }
@@ -127,7 +130,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onViewsNumberChange(e) {
+  onViewsNumberChange (e) {
     if (e.target.value !== '' && !e.target.value.match(/^\d+$/)) {
       return e.preventDefault()
     }
@@ -144,7 +147,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onPPVInputChange(e) {
+  onPPVInputChange (e) {
     if (e.target.value !== '' && !e.target.value.match(/^(\d+\.?\d*|\.\d+)$/)) {
       return e.preventDefault()
     }
@@ -158,7 +161,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onInstagramInputChange(e) {
+  onInstagramInputChange (e) {
     this.setState({
       ...this.state,
       viewTypes: {
@@ -168,7 +171,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onFormSubmit(e) {
+  onFormSubmit (e) {
     e.preventDefault()
     if (!this.state.upload.file) {
       return this.setState({
@@ -179,17 +182,20 @@ export class Upload extends React.Component {
       })
     }
 
-    this.props.uploadform.upload({
-      message: this.state.message,
-      views: this.state.views,
-      viewType: this.state.viewTypes,
-      displayTime: this.state.displayTime,
-      validity: this.state.validity,
-      viewTypes: this.state.viewTypes,
-    }, this.state.upload.file)
+    this.props.uploadform.upload(
+      {
+        message: this.state.message,
+        views: this.state.views,
+        viewType: this.state.viewTypes,
+        displayTime: this.state.displayTime,
+        validity: this.state.validity,
+        viewTypes: this.state.viewTypes
+      },
+      this.state.upload.file
+    )
   }
 
-  onCopyLinkClick(e) {
+  onCopyLinkClick (e) {
     e.preventDefault()
 
     if (!this.props.uploadform.response) {
@@ -199,31 +205,29 @@ export class Upload extends React.Component {
     copyToClipboard(this.props.uploadform.response.url)
   }
 
-  onResetStoreClick(e) {
+  onResetStoreClick (e) {
     e.preventDefault()
     this.props.uploadform.reset()
   }
 
-  render() {
+  render () {
     return (
       <Row className={css(style.main.wrapper)}>
-        <RenderError 
+        <RenderError
           onClick={this.onResetStoreClick.bind(this)}
           {...this.props.uploadform}
           error={this.props.uploadform.error || this.state.upload.error}
         />
-        <RenderProgress
-          {...this.props.uploadform}
-        />
+        <RenderProgress {...this.props.uploadform} />
         <RenderSuccess
           onCopyLinkClick={this.onCopyLinkClick.bind(this)}
-          {...this.props.uploadform}            
+          {...this.props.uploadform}
         />
         <RenderUploadForm
           request={this.props.uploadform.request}
           response={this.props.uploadform.response}
           error={this.props.uploadform.error}
-        
+          instagramAccounts={this.props.instagramAccounts}
           onFormSubmit={this.onFormSubmit.bind(this)}
           onDropRejected={this.onDropRejected.bind(this)}
           onDropAccepted={this.onDropAccepted.bind(this)}
@@ -252,12 +256,7 @@ const RenderError = props => {
     return null
   }
 
-  return (
-    <Error
-      onClick={props.onClick}
-      error={props.error}
-    />    
-  )
+  return <Error onClick={props.onClick} error={props.error} />
 }
 
 const RenderProgress = props => {
@@ -265,9 +264,7 @@ const RenderProgress = props => {
     return null
   }
 
-  return (
-    <Progress />
-  )
+  return <Progress />
 }
 
 const RenderSuccess = props => {
@@ -276,10 +273,7 @@ const RenderSuccess = props => {
   }
 
   return (
-    <Success
-      onCopyLinkClick={props.onCopyLinkClick}
-      url={props.response.url}
-    />
+    <Success onCopyLinkClick={props.onCopyLinkClick} url={props.response.url} />
   )
 }
 
@@ -288,11 +282,7 @@ const RenderUploadForm = props => {
     return null
   }
 
-  return (
-    <UploadForm
-      {...props}
-    />
-  )
+  return <UploadForm {...props} />
 }
 
 export default Upload

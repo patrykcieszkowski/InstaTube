@@ -12,6 +12,14 @@ export const ppvStyle = {
     fontSize: `14px`,
     fontWeight: `100`
   },
+  select: {
+    background: `white`,
+    border: `3px solid #edf2f6`,
+    width: `100%`,
+    height: `50px`,
+    fontSize: `14px`,
+    fontWeight: `100`
+  },
   dollarIcon: {
     fontSize: `32px`,
     fontWeight: `600`
