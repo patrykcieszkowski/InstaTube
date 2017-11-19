@@ -40,6 +40,12 @@ export class HomeContainer extends React.Component {
         path: '/auth/remind',
         component: Components.partials.Tabs.Auth.Remind,
         size: `xl`
+      },
+      {
+        title: 'Instagram',
+        path: '/auth/instagram',
+        component: Components.partials.Tabs.Auth.Instagram,
+        size: `xl`
       }
     ]
 
