@@ -7,7 +7,6 @@ import store from 'store'
 */
 
 const autoStore = function(key, _this) {
-  const { response, ..._nThis } = _this
   let initialRun = true
 
   // will run on change
@@ -17,10 +16,11 @@ const autoStore = function(key, _this) {
       const existingStore = store.get(key)
 
       if (existingStore) {
-        mobx.extendObservable(_nThis, existingStore)
+        mobx.extendObservable(_this, existingStore)
       }
     }
 
+    const { response, ..._nThis } = _this
     // from then on serialize and save to localStorage
     store.set(key, mobx.toJS(_nThis))
   })
