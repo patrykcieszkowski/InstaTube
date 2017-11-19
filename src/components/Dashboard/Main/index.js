@@ -2,7 +2,9 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
+/* eslint-disable no-unused-vars */
 import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import ScrollArea from '../../partials/ScrollArea'
 import UploadForm from '../../partials/UploadForm'
@@ -17,20 +19,20 @@ import Uploaded from './partials/Uploaded'
 import UploadedListTitles from './partials/Uploaded/partials/titlesRow'
 import style from './style'
 
-@inject('user')
+@inject('user', 'social')
 @observer
 export class Main extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     const state = {}
     state.showUploadForm = false
     state.alert = {
-      active: false,
+      active: false
     }
     this.state = state
   }
 
-  alertToggle() {
+  alertToggle () {
     this.setState({
       ...this.state,
       alert: {
@@ -40,7 +42,7 @@ export class Main extends React.Component {
     })
   }
 
-  openAlert(args) {
+  openAlert (args) {
     this.setState({
       ...this.state,
       alert: {
@@ -48,61 +50,74 @@ export class Main extends React.Component {
         active: true,
         success: {
           text: args.success.text,
-          onClick: () => { this.alertToggle(); args.success.onClick() }
+          onClick: () => {
+            this.alertToggle()
+            args.success.onClick()
+          }
         },
         cancel: {
           text: args.cancel.text,
-          onClick: () => { this.alertToggle(); args.cancel.onClick() }
+          onClick: () => {
+            this.alertToggle()
+            args.cancel.onClick()
+          }
         },
         text: args.text
       }
     })
   }
 
-  onShowUploadClick() {
+  onShowUploadClick () {
     this.setState({
       showUploadForm: !this.state.showUploadForm
     })
   }
 
-  render() {
+  render () {
     return (
       <Container fluid>
         <Row className={css(style.header.wrapper)}>
-          <Header 
+          <Header
             user={this.props.user.dashboard}
             profile={this.props.user.profile}
           />
         </Row>
         <Row className={css(style.main.mainRow)}>
-          <Col xs="12" className={`d-xl-none`}>
-            <Link to="#" className={css(style.header.button)} onClick={this.onShowUploadClick.bind(this)}>
-              { this.state.showUploadForm ? 'Hide Upload Form' : 'Add new file' }
+          <Col xs='12' className={`d-xl-none`}>
+            <Link
+              to='#'
+              className={css(style.header.button)}
+              onClick={this.onShowUploadClick.bind(this)}
+            >
+              {this.state.showUploadForm ? 'Hide Upload Form' : 'Add new file'}
             </Link>
           </Col>
           <Col
-            xl="auto"
+            xl='auto'
             className={`d-flex align-items-center ${css(
               style.main.colWrapper,
               style.uploadform.wrapper,
-              !this.state.showUploadForm ? style.uploadform.hide : '',
+              !this.state.showUploadForm ? style.uploadform.hide : ''
             )}`}
           >
-            <UploadForm dashboard />
+            <UploadForm
+              dashboard
+              instagramAccounts={this.props.social.data.response.instagram.data}
+            />
           </Col>
           <Col
-            xs="12"
-            xl=""
+            xs='12'
+            xl=''
             className={css(style.uploaded.wrapper, style.main.colWrapper)}
           >
             <Row className={css(style.uploaded.mainRow)}>
-              <Col xs="12">
+              <Col xs='12'>
                 <h3 className={css(style.shared.h3)}>Uploaded files</h3>
               </Col>
-              <Col xs="12" className={`d-none d-xl-block`}>
+              <Col xs='12' className={`d-none d-xl-block`}>
                 <UploadedListTitles />
               </Col>
-              <Col xs="12">
+              <Col xs='12'>
                 <ScrollArea
                   style={{
                     width: '100%',
@@ -110,23 +125,23 @@ export class Main extends React.Component {
                     overflowX: `hidden`
                   }}
                 >
-                  <Uploaded openAlert={this.openAlert.bind(this)}  />
+                  <Uploaded openAlert={this.openAlert.bind(this)} />
                 </ScrollArea>
               </Col>
             </Row>
           </Col>
           <Col
-            xs="12"
-            xl="3"
+            xs='12'
+            xl='3'
             className={css(style.payments.wrapper, style.main.colWrapper)}
           >
-            <Col xs="12">
+            <Col xs='12'>
               <h3 className={css(style.shared.h3)}>Payment history</h3>
             </Col>
-            <Col xs="12" className={`d-none d-xl-block`}>
+            <Col xs='12' className={`d-none d-xl-block`}>
               <PaymentsListTitles />
             </Col>
-            <Col xs="12" className={css(style.payments.content)}>
+            <Col xs='12' className={css(style.payments.content)}>
               <ScrollArea style={{ width: '100%', height: `382px` }}>
                 <Payments />
               </ScrollArea>

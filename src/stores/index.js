@@ -8,6 +8,7 @@ import auth from './Auth'
 import user from './User'
 import media from './Media'
 import uploadform from './UploadForm'
+import social from './Social'
 
 export default {
   help,
@@ -19,5 +20,6 @@ export default {
   auth,
   user,
   media,
-  uploadform
+  uploadform,
+  social
 }
