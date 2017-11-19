@@ -11,9 +11,14 @@ import SidebarHeader from '../../partials/SidebarHeader'
 import PayoutHistory from './partials/PayoutHistory'
 import Withdraw from './partials/Withdraw'
 
-@inject('user')
+@inject('user', 'payouts')
 @observer
 export class Payout extends React.Component {
+  onWithdrawClick (e) {
+    e.preventDefault()
+    this.props.payouts.withdraw()
+  }
+
   render () {
     return (
       <Container fluid className={css(style.main.container)}>
@@ -25,7 +30,11 @@ export class Payout extends React.Component {
             <PayoutHistory />
           </Col>
           <Col xs='12' className={css(style.withdraw.wrapper)}>
-            <Withdraw dashboard={this.props.user.dashboard} />
+            <Withdraw
+              dashboard={this.props.user.dashboard}
+              error={this.props.payouts.withdrawResponse.error}
+              onWithdrawClick={this.onWithdrawClick.bind(this)}
+            />
           </Col>
         </Row>
       </Container>

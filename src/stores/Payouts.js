@@ -5,19 +5,20 @@ import axios from 'axios'
 /* eslint-disable no-unused-vars */
 class Payouts {
   @observable all = []
+  @observable withdrawResponse = {}
 
   @action
   fetch() {
-    
-    const API_URL = process.env.REACT_APP_API_URL    
-    axios.get(`${API_URL}/customer/payouts`)
-      .then((res) => {
-      this.all = res
-    })
+    const API_URL = process.env.REACT_APP_API_URL
+    axios
+      .get(`${API_URL}/customer/payouts`)
+      .then(res => {
+        this.all = res
+      })
       .catch(console.log)
-    
+
     //fetch action
-    
+
     // this.all = [
     //   {
     //     "amount": "40.00",
@@ -38,6 +39,16 @@ class Payouts {
     //     "start": "2017-11-14 00:00:00"
     //   }
     // ]
+  }
+
+  @action
+  withdraw() {
+    const API_URL = process.env.REACT_APP_API_URL
+    axios.post(`${API_URL}/actions/withdraw`).catch(err => {
+      this.withdrawResponse = {
+        error: err.response ? err.response.data.content : null
+      }
+    })
   }
 }
 
