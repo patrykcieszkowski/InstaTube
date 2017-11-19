@@ -67,6 +67,15 @@ export class UserDropdown extends React.Component {
               </li>
               <li className={css(style.collapse.item)}>
                 <Link
+                  to='/dashboard/social'
+                  className={css(style.collapse.link)}
+                  onClick={this.props.onClickHandler}
+                >
+                  Social Networks
+                </Link>
+              </li>
+              <li className={css(style.collapse.item)}>
+                <Link
                   to={`/`}
                   className={css(style.collapse.link)}
                   onClick={this.props.onLogoutClick}
