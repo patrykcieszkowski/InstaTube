@@ -41,7 +41,7 @@ export class Upload extends React.Component {
         ppv: false
       },
       views: {
-        view: false,
+        view: true,
         number: 1
       },
       success: false,
