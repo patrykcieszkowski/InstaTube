@@ -5,7 +5,7 @@ import { Form, FormGroup, Input, Button, Col } from 'reactstrap'
 import style from '../style'
 
 export const RegisterForm = props => (
-  <Form className={css(style.form.form)}>
+  <Form className={css(style.form.form)} onSubmit={props.onSubmit}>
     <FormGroup className={css(style.form.group)}>
       <Input
         placeholder='E-mail address'
@@ -30,7 +30,7 @@ export const RegisterForm = props => (
         placeholder='Confirm password'
         type='password'
         className={css(style.inputs.input)}
-        name={`confirm_password`}
+        name={`confirm`}
         onChange={props.onTextChange}
       />
     </FormGroup>
@@ -39,7 +39,7 @@ export const RegisterForm = props => (
       <Col xs='12' xl='6' style={{ padding: 0 }}>
         <Button
           className={css(style.buttons.button, style.buttons.signup)}
-          onClick={props.onSubmit}
+          type='submit'
         >
           Sign me up!
         </Button>

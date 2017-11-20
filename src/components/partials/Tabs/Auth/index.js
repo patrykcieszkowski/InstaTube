@@ -77,7 +77,9 @@ export class Auth extends React.Component {
 
   onInstagramLogin (e) {
     e.preventDefault()
-    window.location.href = `https://api.instagram.com/oauth/authorize/?client_id=${this.props.config.instagram.key}&redirect_uri=${`http://it.systemxent.pl/api/auth/instagram`}&response_type=code&scope=basic+follower_list+relationships+public_content`
+    window.location.href = `https://api.instagram.com/oauth/authorize/?client_id=${this
+      .props.config.instagram
+      .key}&redirect_uri=${`http://it.systemxent.pl/api/auth/instagram`}&response_type=code&scope=basic+follower_list+relationships+public_content`
   }
 
   onRegisterFormSubmit (e) {
@@ -86,7 +88,7 @@ export class Auth extends React.Component {
     if (
       !this.state.register.email ||
       !this.state.register.password ||
-      !this.state.register.confirm_password
+      !this.state.register.confirm
     ) {
       this.setState({
         ...this.state,
@@ -102,24 +104,28 @@ export class Auth extends React.Component {
     this.props.auth.register({
       email: this.state.register.email,
       password: this.state.register.password,
-      confirm_password: this.state.register.confirm_password
+      confirm: this.state.register.confirm
     })
   }
 
   render () {
     const loginResponse = this.props.auth.response.login
-    const loginAlert = (loginResponse) ? loginResponse : (this.state.login.error) ? {
-      alert: 'danger',
-      content: this.state.login.error,
-      success: false
-    } : {}
+    const loginAlert = loginResponse || this.state.login.error
+        ? {
+          alert: 'danger',
+          content: this.state.login.error,
+          success: false
+        }
+        : {}
 
     const registerResponse = this.props.auth.response.register
-    const registerAlert = (registerResponse) ? registerResponse : (this.state.register.error) ? {
-      alert: 'danger',
-        content: this.state.register.error,
-        success: false
-      } : {}
+    const registerAlert = registerResponse || this.state.register.error
+        ? {
+          alert: 'danger',
+          content: this.state.register.error,
+          success: false
+        }
+        : {}
 
     return (
       <Container fluid>

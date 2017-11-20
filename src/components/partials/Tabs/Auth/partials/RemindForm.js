@@ -5,7 +5,10 @@ import { Form, FormGroup, Input, Button } from 'reactstrap'
 import style from '../style'
 
 export const RemindForm = props => (
-  <Form className={css(style.form.form, (props.alert.success) ? style.form.hide : '')} onSubmit={props.onFormSubmit}>
+  <Form
+    className={css(style.form.form, props.alert.success ? style.form.hide : '')}
+    onSubmit={props.onFormSubmit}
+  >
     <FormGroup className={css(style.form.group)}>
       <Input
         placeholder='E-mail address'
@@ -16,7 +19,10 @@ export const RemindForm = props => (
     </FormGroup>
 
     <FormGroup className={css(style.form.group)}>
-      <Button className={css(style.buttons.button, style.buttons.remind)}>
+      <Button
+        type='submit'
+        className={css(style.buttons.button, style.buttons.remind)}
+      >
         Submit
       </Button>
     </FormGroup>

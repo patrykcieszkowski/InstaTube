@@ -8,8 +8,8 @@ export const ResetPasswordForm = props => (
   <Form className={css(style.form.form)} onSubmit={props.onFormSubmit}>
     <FormGroup className={css(style.form.group)}>
       <Input
-        placeholder='Password'
-        type='password'
+        placeholder="Password"
+        type="password"
         className={css(style.inputs.input)}
         name={`password`}
         onChange={props.onTextChange}
@@ -17,8 +17,8 @@ export const ResetPasswordForm = props => (
     </FormGroup>
     <FormGroup className={css(style.form.group)}>
       <Input
-        placeholder='Confirm Password'
-        type='password'
+        placeholder="Confirm Password"
+        type="password"
         className={css(style.inputs.input)}
         name={`confirm`}
         onChange={props.onTextChange}
@@ -26,7 +26,10 @@ export const ResetPasswordForm = props => (
     </FormGroup>
 
     <FormGroup className={css(style.form.group)}>
-      <Button className={css(style.buttons.button, style.buttons.remind)}>
+      <Button
+        type="submit"
+        className={css(style.buttons.button, style.buttons.remind)}
+      >
         Reset
       </Button>
     </FormGroup>
