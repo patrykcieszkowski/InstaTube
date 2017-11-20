@@ -53,6 +53,7 @@ class App extends React.Component {
           <Switch>
             <Route path='/dashboard' component={Containers.Dashboard} />
             <Route path='/m/:mediaId' component={Containers.Download} />
+            <Route path='/auth/recovery/:token' component={Containers.Home} />
             <Route path='/' component={Containers.Home} />
           </Switch>
         </BrowserRouter>

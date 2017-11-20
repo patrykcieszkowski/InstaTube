@@ -43,7 +43,7 @@ export class HomeContainer extends React.Component {
       },
       {
         title: 'Reset',
-        path: '/auth/reset',
+        path: '/auth/recovery/:token',
         component: Components.partials.Tabs.Auth.Reset,
         size: `xl`
       },

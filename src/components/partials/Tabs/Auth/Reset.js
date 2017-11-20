@@ -5,8 +5,6 @@ import { Container, Row, Col } from 'reactstrap'
 import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
-import utils from '../../../../utils'
-
 import Error from './partials/Error'
 import style from './style'
 import Column from '../../Col'
@@ -25,14 +23,7 @@ export class Reset extends React.Component {
   }
 
   componentWillMount () {
-    const hashParams = utils.parseHashParams(window.location.hash.substr(1))
-
-    this.setState({
-      ...this.state,
-      hashParams
-    })
-
-    if (!hashParams.token) {
+    if (!this.props.match.params.token) {
       window.location.href = '/auth/remind'      
     }
   }
@@ -59,7 +50,7 @@ export class Reset extends React.Component {
     this.props.auth.reset({
       password: this.state.password,
       confirm: this.state.confirm,
-      token: this.state.hashParams.token
+      token: this.props.match.params.token
     })
   }
 
