@@ -4,14 +4,16 @@ import axios from 'axios'
 
 class Premium {
   @observable all = []
+  @observable error = null
 
   @action
   fetch() {
-    const API_URL = process.env.REACT_APP_API_URL    
-    axios.get(`${API_URL}/customer/premiums`)
-      .then((res) => {
-      this.all = res.data || []
-    })
+    const API_URL = process.env.REACT_APP_API_URL
+    axios
+      .get(`${API_URL}/customer/premiums`)
+      .then(res => {
+        this.all = res.data || []
+      })
       .catch(console.log)
 
     // this.all = [
@@ -34,6 +36,21 @@ class Premium {
     //     "end": "2017-11-13 00:00:00"
     //   }
     // ]
+  }
+
+  @action
+  buy() {
+    const API_URL = process.env.REACT_APP_API_URL
+    axios
+      .post(`${API_URL}/payment/create`)
+      .then(res => {
+        if (res.data.success) {
+          window.location.href = res.data.content
+        }
+      })
+      .catch(err => {
+        this.error = err.response.data
+      })
   }
 }
 
