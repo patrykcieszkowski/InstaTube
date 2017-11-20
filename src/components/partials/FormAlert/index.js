@@ -5,16 +5,14 @@ import { Col, Row } from 'reactstrap'
 import style from './style'
 
 const RenderAlert = props => {
-  if (!props.alert) {
-    return null
-  }
+  const alert = props.alert || 'hide'
 
   return (
-    <Row className={css(style.alert.fileAlertWrapper, style.alert[props.alert])}>
+    <Row className={css(style.alert.fileAlertWrapper, style.alert[alert])}>
       <Col className={css(style.alert.fileAlertBox)} xs='10'>
         <span
           className={css(style.alert.fileAlertSpan)}
-          dangerouslySetInnerHTML={{ __html: props.content }}
+          dangerouslySetInnerHTML={{ __html: props.content || '' }}
         />
       </Col>
     </Row>

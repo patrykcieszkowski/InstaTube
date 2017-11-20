@@ -2,9 +2,17 @@ export const alertStyle = {
   fileAlertWrapper: {
     margin: 0,
     padding: `8px 15px`,
-    
     borderRadius: `5px`,
-    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`
+    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`,
+    transition: `all 0.2s`,
+    maxHeight: `999px`,
+    overflow: `hidden`
+  },
+  hide: {
+    maxHeight: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
+    boxShadow: `none`
   },
   danger: {
     background: `#f02e30`    

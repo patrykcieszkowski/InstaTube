@@ -84,10 +84,6 @@ export class Auth extends React.Component {
 }
 
 const RenderAlert = props => {
-  if (!props.alert) {
-    return null
-  }
-
   return <Alert {...props} />
 }
 
