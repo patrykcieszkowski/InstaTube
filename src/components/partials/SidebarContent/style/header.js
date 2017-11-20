@@ -1,7 +1,10 @@
 export const headerStyle = {
   closeIcon: {
     fontSize: `38px`,
-    color: `#3f295a`
+    color: `#3f295a`,
+    ':hover': {
+      color: `#E1306A`
+    }
   },
   closeButton: {
     cursor: `pointer`,
