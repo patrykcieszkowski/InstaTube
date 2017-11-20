@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
 /* eslint-disable no-unused-vars */
-import { inject, observable } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
 import style from './style'
@@ -13,7 +13,7 @@ import PremiumInfo from './partials/PremiumInfo'
 import PaymentHistory from './partials/PaymentHistory'
 
 @inject('premium')
-@observable
+@observer
 export class Premium extends React.Component {
   onBuyPremiumClick (e) {
     e.preventDefault()
@@ -33,7 +33,7 @@ export class Premium extends React.Component {
         </Row>
         <Row className={`${css(style.main.mainRow)}`}>
           <Col xs='12' className={css(style.info.wrapper)}>
-            <PremiumInfo />
+            <PremiumInfo onClick={this.onBuyPremiumClick.bind(this)} />
           </Col>
           <Col xs='12' className={css(style.history.wrapper)}>
             <PaymentHistory />

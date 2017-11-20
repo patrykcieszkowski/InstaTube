@@ -38,11 +38,11 @@ class Premium {
     // ]
   }
 
-  @aciton
+  @action
   buy() {
     const API_URL = process.env.REACT_APP_API_URL
     axios
-      .get(`${API_URL}/payment/create`)
+      .post(`${API_URL}/payment/create`)
       .then(res => {
         if (res.data.success) {
           window.location.href = res.data.content
