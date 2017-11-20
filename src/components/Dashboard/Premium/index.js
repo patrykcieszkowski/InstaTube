@@ -1,6 +1,9 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
+/* eslint-disable no-unused-vars */
+import { inject, observable } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import style from './style'
 
@@ -9,23 +12,30 @@ import SidebarHeader from '../../partials/SidebarHeader'
 import PremiumInfo from './partials/PremiumInfo'
 import PaymentHistory from './partials/PaymentHistory'
 
+@inject('premium')
+@observable
 export class Premium extends React.Component {
-  render() {
+  onBuyPremiumClick (e) {
+    e.preventDefault()
+    this.props.premium.buy()
+  }
+
+  render () {
     return (
       <Container fluid className={css(style.main.container)}>
         <Row>
           <SidebarHeader
-            title="Go Premium!"
+            title='Go Premium!'
             paddingBottom
             testStyle={{ color: `#4f5bd5` }}
-            md={true}
+            md
           />
         </Row>
         <Row className={`${css(style.main.mainRow)}`}>
-          <Col xs="12" className={css(style.info.wrapper)}>
+          <Col xs='12' className={css(style.info.wrapper)}>
             <PremiumInfo />
           </Col>
-          <Col xs="12" className={css(style.history.wrapper)}>
+          <Col xs='12' className={css(style.history.wrapper)}>
             <PaymentHistory />
           </Col>
         </Row>
