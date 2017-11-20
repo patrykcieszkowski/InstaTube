@@ -6,7 +6,7 @@ import { Form, FormGroup, Input, Button, Row, Col } from 'reactstrap'
 import style from '../style'
 
 export const LoginForm = props => (
-  <Form className={css(style.form.form)}>
+  <Form className={css(style.form.form)} onSubmit={props.onSubmit}>
     <FormGroup className={css(style.form.group)}>
       <Input
         placeholder='E-mail address'
@@ -45,8 +45,8 @@ export const LoginForm = props => (
       <Row>
         <Col xs='12' xl='6'>
           <Button
+            type="submit"
             className={css(style.buttons.button, style.buttons.login)}
-            onClick={props.onSubmit}
           >
             Sign In
           </Button>
