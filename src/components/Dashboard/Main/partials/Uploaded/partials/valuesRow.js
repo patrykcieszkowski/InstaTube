@@ -224,7 +224,7 @@ const CopyBlockColumn = ({ props }) => (
           type="text"
           dir="rtl"
           readOnly
-          value={props.item.url || ''}
+          value={`http://${window.location.hostname}/m/${props.item.url}`}
           className={css(style.uploaded.copyInput)}
         />
       </Column>
