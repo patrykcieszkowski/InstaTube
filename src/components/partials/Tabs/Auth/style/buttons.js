@@ -42,7 +42,12 @@ const buttonStyle = {
     border: `2px solid #e1306c`,
     color: `white`,
     fontSize: `18px`,
-    fontWeight: `600`
+    fontWeight: `600`,
+    transition: `all 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)`,
+    ':hover': {
+      color: '#e1306c',
+      background: 'white'
+    }
   },
   facebookWrapper: {
     '@media (min-width: 1200px)': {
