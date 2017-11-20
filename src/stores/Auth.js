@@ -26,7 +26,7 @@ class Auth {
     login: null,
     register: null,
     remind: null,
-    recovery: null    
+    recovery: null
   }
 
   @computed
@@ -80,6 +80,9 @@ class Auth {
     const API_URL = process.env.REACT_APP_API_URL
     axios
       .post(`${API_URL}/auth/extend`)
+      .then(() => {
+        this.auth.local = true
+      })
       .catch(() => {
         this.logout()
       })
@@ -211,11 +214,19 @@ class Auth {
     axios
       .post(`${API_URL}/auth/register`, formData)
       .then(res => {
+        if (res.data.success) {
+          this.auth = {
+            ...this.auth,
+            local: true
+          }
+        }
+
         this.response = {
           login: null,
-          register: (res.status === 204) ? {...res.data, alert: "info"} : res.data,
+          register:
+            res.status === 204 ? { ...res.data, alert: 'info' } : res.data,
           remind: null,
-          recovery: null      
+          recovery: null
         }
       })
       .catch(err => {
@@ -223,7 +234,7 @@ class Auth {
           login: null,
           register: err.response.data,
           remind: null,
-          recovery: null      
+          recovery: null
         }
       })
     // register action
@@ -243,7 +254,8 @@ class Auth {
         this.response = {
           login: null,
           register: null,
-          remind: (res.status === 204) ? {...res.data, alert: "info"} : res.data,
+          remind:
+            res.status === 204 ? { ...res.data, alert: 'info' } : res.data,
           recovery: null
         }
       })
@@ -252,7 +264,7 @@ class Auth {
           login: null,
           register: null,
           remind: err.response.data,
-          recovery: null 
+          recovery: null
         }
       })
   }
@@ -271,7 +283,8 @@ class Auth {
         this.response = {
           login: null,
           register: null,
-          recovery: (res.status === 204) ? {...res.data, alert: "info"} : res.data,
+          recovery:
+            res.status === 204 ? { ...res.data, alert: 'info' } : res.data
         }
       })
       .catch(err => {
