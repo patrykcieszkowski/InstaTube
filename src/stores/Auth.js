@@ -68,7 +68,7 @@ class Auth {
         }
 
         this.response = {
-          login: { type: 'error', data: err.response.data },
+          login: err.response.data,
           register: null,
           remind: null
         }
@@ -213,7 +213,7 @@ class Auth {
       .then(res => {
         this.response = {
           login: null,
-          register: null,
+          register: (res.status === 204) ? {...res.data, alert: "info"} : res.data,
           remind: null,
           recovery: null      
         }
@@ -221,7 +221,7 @@ class Auth {
       .catch(err => {
         this.response = {
           login: null,
-          register: { type: 'error', data: err.response.data },
+          register: err.response.data,
           remind: null,
           recovery: null      
         }
@@ -243,15 +243,15 @@ class Auth {
         this.response = {
           login: null,
           register: null,
-          remind: { type: 'success', data: res.data },
-          recovery: null      
+          remind: (res.status === 204) ? {...res.data, alert: "info"} : res.data,
+          recovery: null
         }
       })
       .catch(err => {
         this.response = {
           login: null,
           register: null,
-          remind: { type: 'error', data: err.response.data },
+          remind: err.response.data,
           recovery: null 
         }
       })
@@ -271,7 +271,7 @@ class Auth {
         this.response = {
           login: null,
           register: null,
-          recovery: res.data
+          recovery: (res.status === 204) ? {...res.data, alert: "info"} : res.data,
         }
       })
       .catch(err => {

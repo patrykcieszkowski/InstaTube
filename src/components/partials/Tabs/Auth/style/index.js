@@ -9,7 +9,6 @@ import sider from './sider'
 import login from './login'
 import main from './main'
 import content from './content'
-import errors from './errors'
 
 export default {
   inputs: StyleSheet.create(inputs),
@@ -20,6 +19,5 @@ export default {
   sider: StyleSheet.create(sider),
   login: StyleSheet.create(login),
   main: StyleSheet.create(main),
-  content: StyleSheet.create(content),
-  errors: StyleSheet.create(errors)
+  content: StyleSheet.create(content)
 }

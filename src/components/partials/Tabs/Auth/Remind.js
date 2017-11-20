@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
-import Error from './partials/Error'
+import Alert from '../../FormAlert'
 import style from './style'
 import Column from '../../Col'
 import SidebarHeader from '../../SidebarHeader'
@@ -48,10 +48,11 @@ export class Auth extends React.Component {
 
   render () {
     const remindResponse = this.props.auth.response.remind
-    const remindError =
-      remindResponse && remindResponse.type === 'error'
-        ? remindResponse.data.content
-        : this.state.error
+    const remindAlert = (remindResponse) ? remindResponse : (this.state.error) ? {
+      alert: 'danger',
+      content: this.state.error,
+      success: false
+    } : {}
 
     return (
       <Container fluid>
@@ -69,8 +70,9 @@ export class Auth extends React.Component {
             <Row>
               <SidebarHeader title={`Remind Password`} md={false} paddingTop />
             </Row>
-            <RenderError error={remindError} />
+            <RenderAlert {...remindAlert} />
             <RemindForm
+              alert={remindAlert}
               onTextChange={this.onTextChange.bind(this)}
               onFormSubmit={this.onFormSubmit.bind(this)}
             />
@@ -81,12 +83,12 @@ export class Auth extends React.Component {
   }
 }
 
-const RenderError = props => {
-  if (!props.error) {
+const RenderAlert = props => {
+  if (!props.alert) {
     return null
   }
 
-  return <Error error={props.error} />
+  return <Alert {...props} />
 }
 
 export default Auth

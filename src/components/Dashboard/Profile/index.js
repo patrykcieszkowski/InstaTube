@@ -11,7 +11,7 @@ import SidebarHeader from '../../partials/SidebarHeader'
 import SettingsForm from './partials/SettingsForm'
 import PasswordForm from './partials/PasswordForm'
 import ScrollArea from '../../partials/ScrollArea'
-import Error from './partials/Error'
+import Alert from '../../partials/FormAlert'
 
 @inject('user')
 @observer
@@ -66,13 +66,13 @@ export class Profile extends React.Component {
             overflowX: `hidden`
           }}
         >
-          <Error error={this.props.user.profile.response.error} />
+          <Alert {...this.props.user.profile.response} />
           <SettingsForm
             profile={this.props.user.profile.data}
             onTextChange={this.onTextChange.bind(this, 'settings')}
             onFormSubmit={this.onSettingsFormSubmit.bind(this)}
           />
-          <Error error={this.props.user.password.response.error} />
+          <Alert {...this.props.user.password.response} />
           <PasswordForm
             onTextChange={this.onTextChange.bind(this, 'password')}
             onFormSubmit={this.onPasswordFormSubmit.bind(this)}
