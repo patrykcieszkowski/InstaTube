@@ -4,23 +4,33 @@ import { Form, FormGroup, Input, Button } from 'reactstrap'
 
 import style from '../style'
 
-export const RemindForm = props => (
+export const ResetPasswordForm = props => (
   <Form className={css(style.form.form)} onSubmit={props.onFormSubmit}>
     <FormGroup className={css(style.form.group)}>
       <Input
-        placeholder='E-mail address'
+        placeholder='Password'
+        type='password'
         className={css(style.inputs.input)}
-        name={`email`}
+        name={`password`}
+        onChange={props.onTextChange}
+      />
+    </FormGroup>
+    <FormGroup className={css(style.form.group)}>
+      <Input
+        placeholder='Confirm Password'
+        type='password'
+        className={css(style.inputs.input)}
+        name={`confirm`}
         onChange={props.onTextChange}
       />
     </FormGroup>
 
     <FormGroup className={css(style.form.group)}>
       <Button className={css(style.buttons.button, style.buttons.remind)}>
-        Submit
+        Reset
       </Button>
     </FormGroup>
   </Form>
 )
 
-export default RemindForm
+export default ResetPasswordForm

@@ -48,6 +48,12 @@ export class DownloadContainer extends React.Component {
         size: `lg`
       },
       {
+        title: 'Reset',
+        path: '/auth/reset',
+        component: Components.partials.Tabs.Auth.Reset,
+        size: `xl`
+      },
+      {
         title: 'Instagram',
         path: '/auth/instagram',
         to: this.props.auth.auth.local ? '/dashboard' : null,

@@ -25,7 +25,8 @@ class Auth {
   response = {
     login: null,
     register: null,
-    remind: null
+    remind: null,
+    recovery: null    
   }
 
   @computed
@@ -95,7 +96,8 @@ class Auth {
     this.response = {
       login: null,
       register: null,
-      remind: null
+      remind: null,
+      recovery: null
     }
   }
 
@@ -212,14 +214,16 @@ class Auth {
         this.response = {
           login: null,
           register: null,
-          remind: null
+          remind: null,
+          recovery: null      
         }
       })
       .catch(err => {
         this.response = {
           login: null,
           register: { type: 'error', data: err.response.data },
-          remind: null
+          remind: null,
+          recovery: null      
         }
       })
     // register action
@@ -239,14 +243,42 @@ class Auth {
         this.response = {
           login: null,
           register: null,
-          remind: { type: 'success', data: res.data }
+          remind: { type: 'success', data: res.data },
+          recovery: null      
         }
       })
       .catch(err => {
         this.response = {
           login: null,
           register: null,
-          remind: { type: 'error', data: err.response.data }
+          remind: { type: 'error', data: err.response.data },
+          recovery: null 
+        }
+      })
+  }
+
+  @action
+  reset(data) {
+    const formData = new FormData()
+    Object.keys(data).forEach(key =>
+      formData.append(`recovery[${key}]`, data[key])
+    )
+
+    const API_URL = process.env.REACT_APP_API_URL
+    axios
+      .post(`${API_URL}/auth/recovery`, formData)
+      .then(res => {
+        this.response = {
+          login: null,
+          register: null,
+          recovery: res.data
+        }
+      })
+      .catch(err => {
+        this.response = {
+          login: null,
+          register: null,
+          recovery: err.response.data
         }
       })
   }

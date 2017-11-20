@@ -42,6 +42,12 @@ export class HomeContainer extends React.Component {
         size: `xl`
       },
       {
+        title: 'Reset',
+        path: '/auth/reset',
+        component: Components.partials.Tabs.Auth.Reset,
+        size: `xl`
+      },
+      {
         title: 'Instagram',
         path: '/auth/instagram',
         component: Components.partials.Tabs.Auth.Instagram,
