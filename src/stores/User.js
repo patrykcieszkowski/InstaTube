@@ -62,9 +62,7 @@ class User {
         this.profile.data = { ...data }
       })
       .catch(err => {
-        this.profile.response = {
-          error: err.response ? err.response.data : null
-        }
+        this.profile.response = err.response ? err.response.data : null
       })
   }
 
@@ -81,11 +79,10 @@ class User {
       .post(`${API_URL}/actions/password`, formData)
       .then(res => {
         this.password.data = { ...data, password: null, confirm: null }
+        this.password.response = res.data
       })
       .catch(err => {
-        this.password.response = {
-          error: err.response ? err.response.data : null
-        }
+        this.password.response = err.response ? err.response.data : null
       })
   }
 

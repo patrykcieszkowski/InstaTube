@@ -12,7 +12,7 @@ import utils from '../../../../utils'
 import ScrollArea from '../../ScrollArea'
 import SidebarHeader from '../../SidebarHeader'
 import Column from '../../Col'
-import Error from './partials/Error'
+import Alert from '../../FormAlert'
 import RegisterInstagramForm from './partials/RegisterInstagramForm'
 
 @inject('auth')
@@ -84,10 +84,11 @@ export class InstagramAuth extends React.Component {
     }
 
     const registerResponse = this.props.auth.response.register
-    const registerError =
-      registerResponse && registerResponse.type === 'error'
-        ? registerResponse.data.content
-        : this.state.register.error
+    const registerError = (registerResponse) ? registerResponse : {
+      success: false,
+      alert: 'danger',
+      content: this.state.register.error
+    }
 
     return (
       <Container fluid>
@@ -118,7 +119,7 @@ export class InstagramAuth extends React.Component {
                     className={`d-xl-none`}
                   />
                 </Row>
-                <RenderError error={registerError} />
+                <RenderAlert {...registerError} />
                 <RegisterInstagramForm
                   onTextChange={this.onTextChange.bind(this, 'register')}
                   onSubmit={this.onRegisterFormSubmit.bind(this)}
@@ -132,12 +133,12 @@ export class InstagramAuth extends React.Component {
   }
 }
 
-const RenderError = props => {
-  if (!props.error) {
+const RenderAlert = props => {
+  if (!props.alert) {
     return null
   }
 
-  return <Error error={props.error} />
+  return <Alert {...props} />
 }
 
 const RenderSider = props => {

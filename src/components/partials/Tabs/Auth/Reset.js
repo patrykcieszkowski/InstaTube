@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
-import Error from './partials/Error'
+import Alert from '../../FormAlert'
 import style from './style'
 import Column from '../../Col'
 import SidebarHeader from '../../SidebarHeader'
@@ -56,10 +56,11 @@ export class Reset extends React.Component {
 
   render () {
     const resetResponse = this.props.auth.response.recovery
-    const resetError =
-      resetResponse && !resetResponse.success && resetResponse.content
-        ? resetResponse.content
-        : this.state.error
+    const resetAlert = (resetResponse) ? resetResponse : (this.state.error) ? {
+      alert: 'danger',
+      content: this.state.error,
+      success: false
+    } : {}
 
     return (
       <Container fluid>
@@ -77,7 +78,7 @@ export class Reset extends React.Component {
             <Row>
               <SidebarHeader title={`Reset Password`} md={false} paddingTop />
             </Row>
-            <RenderError error={resetError} />
+            <RenderAlert {...resetAlert} />
             <ResetPasswordForm
               onTextChange={this.onTextChange.bind(this)}
               onFormSubmit={this.onFormSubmit.bind(this)}
@@ -89,12 +90,12 @@ export class Reset extends React.Component {
   }
 }
 
-const RenderError = props => {
-  if (!props.error) {
+const RenderAlert = props => {
+  if (!props.alert) {
     return null
   }
 
-  return <Error error={props.error} />
+  return <Alert {...props} />
 }
 
 export default Reset

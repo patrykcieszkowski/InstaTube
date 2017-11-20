@@ -10,7 +10,7 @@ import style from './style'
 
 import Column from '../../Col'
 
-import Error from './partials/Error'
+import Alert from '../../FormAlert'
 import SidebarHeader from '../../SidebarHeader'
 import ScrollArea from '../../ScrollArea'
 import LoginForm from './partials/LoginForm'
@@ -108,16 +108,18 @@ export class Auth extends React.Component {
 
   render () {
     const loginResponse = this.props.auth.response.login
-    const loginError =
-      loginResponse && loginResponse.type === 'error'
-        ? loginResponse.data.content
-        : this.state.login.error
+    const loginAlert = (loginResponse) ? loginResponse : (this.state.login.error) ? {
+      alert: 'danger',
+      content: this.state.login.error,
+      success: false
+    } : {}
 
     const registerResponse = this.props.auth.response.register
-    const registerError =
-      registerResponse && registerResponse.type === 'error'
-        ? registerResponse.data.content
-        : this.state.register.error
+    const registerAlert = (registerResponse) ? registerResponse : (this.state.register.error) ? {
+      alert: 'danger',
+        content: this.state.register.error,
+        success: false
+      } : {}
 
     return (
       <Container fluid>
@@ -139,7 +141,7 @@ export class Auth extends React.Component {
                 <Row>
                   <SidebarHeader title={`Login`} paddingTop paddingBottom />
                 </Row>
-                <RenderError error={loginError} />
+                <RenderAlert {...loginAlert} />
                 <LoginForm
                   onFacebookLogin={this.onFacebookLogin.bind(this)}
                   onInstagramLogin={this.onInstagramLogin.bind(this)}
@@ -164,7 +166,7 @@ export class Auth extends React.Component {
                   />
                   <SidebarHeader title={`Register`} className={`d-xl-none`} />
                 </Row>
-                <RenderError error={registerError} />
+                <RenderAlert {...registerAlert} />
                 <RegisterForm
                   onTextChange={this.onTextChange.bind(this, 'register')}
                   onSubmit={this.onRegisterFormSubmit.bind(this)}
@@ -178,12 +180,12 @@ export class Auth extends React.Component {
   }
 }
 
-const RenderError = props => {
-  if (!props.error) {
+const RenderAlert = props => {
+  if (!props.alert) {
     return null
   }
 
-  return <Error error={props.error} />
+  return <Alert {...props} />
 }
 
 const RenderSider = props => {
