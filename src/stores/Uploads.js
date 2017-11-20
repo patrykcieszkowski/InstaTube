@@ -116,7 +116,7 @@ class Uploads {
     formData.append(`remove[url]`, item.url)
 
     const API_URL = process.env.REACT_APP_API_URL
-    axios.post(`${API_URL}/uploads/delete`, formData).catch(console.log)
+    axios.post(`${API_URL}/actions/remove`, formData).catch(console.log)
   }
 
   @action
@@ -136,7 +136,7 @@ class Uploads {
     formData.append(`extend[url]`, item.url)
 
     const API_URL = process.env.REACT_APP_API_URL
-    axios.post(`${API_URL}/uploads/extend`, formData).catch(console.log)
+    axios.post(`${API_URL}/actions/extend`, formData).catch(console.log)
   }
 
   @action
