@@ -28,6 +28,19 @@ const withdrawStyle = {
       background: 'white',
       color: '#e1306c'
     }
+  },
+  provisionSpan: {
+    color: `#8c9194`,
+    fontSize: `11px`,
+    fontWeight: 100
+  },
+  totalSpan: {
+    color: `#e1306c`,
+    fontSize: `11px`,
+    fontWeight: 100
+  },
+  totalSpanAmount: {
+    fontWeight: 600
   }
 }
 
