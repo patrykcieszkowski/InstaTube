@@ -80,7 +80,7 @@ class Auth {
     axios
       .post(`${API_URL}/auth/extend`)
       .catch(() => {
-        logout()
+        this.logout()
       })
   }
 
