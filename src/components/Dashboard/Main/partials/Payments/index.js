@@ -11,14 +11,9 @@ import style from '../../style'
 @inject('payments')
 @observer
 export class PaymentsList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.all = this.props.payments.all
-  }
-
   render() {
     return (
-      this.all.map((item, index) => 
+      this.props.payments.all.map((item, index) => 
         <PaymentsListItem item={item} key={index} />
       )
     )

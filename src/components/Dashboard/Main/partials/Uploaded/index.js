@@ -15,11 +15,6 @@ import utils from '../../../../../utils'
 @inject('uploads')
 @observer
 export class UploadedList extends React.Component {
-  constructor (props) {
-    super(props)
-    this.all = this.props.uploads.all
-  }
-
   onDeleteConfirm (index) {
     this.props.uploads.deleteItem(index)
   }
@@ -52,7 +47,7 @@ export class UploadedList extends React.Component {
 
   onCopyClick (index, e) {
     e.preventDefault()
-    copyToClipboard(this.all[index].url || '')
+    copyToClipboard(this.props.uploads.all[index].url || '')
   }
 
   onExtendItemClick (index, e) {
@@ -61,7 +56,7 @@ export class UploadedList extends React.Component {
   }
 
   render () {
-    return this.all
+    return this.props.uploads.all
       .slice()
       .map((item, index) => (
         <ListItem

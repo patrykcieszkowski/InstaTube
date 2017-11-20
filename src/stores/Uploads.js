@@ -11,7 +11,7 @@ class Uploads {
     axios
       .get(`${API_URL}/customer/files`)
       .then(res => {
-        this.all = res.data
+        this.all = res.data || []
       })
       .catch(console.log)
     //fetch action

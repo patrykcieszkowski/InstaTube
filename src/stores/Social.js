@@ -6,6 +6,7 @@ class Social {
   @observable
   data = {
     response: {
+      data: [],
       instagram: {}
     },
     error: null
@@ -13,18 +14,12 @@ class Social {
 
   @action
   fetch() {
-    // const API_URL = process.env.REACT_APP_API_URL
-    // axios.post(`${API_URL}/customer/social`)
-    //   .then((res) => {
-    //   this.data.response = res.data
-    // })
-    //   .catch(console.log)
-
-    this.data.response.instagram = {
-      data: ['abc', 'def'],
-      apikey: 'key',
-      url: 'url'
-    }
+    const API_URL = process.env.REACT_APP_API_URL
+    axios.get(`${API_URL}/customer/social`)
+      .then((res) => {
+      this.data.response = res.data
+    })
+      .catch(console.log)
   }
 }
 

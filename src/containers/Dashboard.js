@@ -14,11 +14,14 @@ export class DashboardContiner extends React.Component {
       return
     }
 
-    this.props.user.fetchDashboard()
     this.props.user.fetchProfile()
     this.props.uploads.fetch()
     this.props.payments.fetch()
     this.props.social.fetch()
+
+    setInterval(() => {
+      this.props.uploads.fetch()
+    }, 1000 * 60 * 5)
   }
 
   render () {

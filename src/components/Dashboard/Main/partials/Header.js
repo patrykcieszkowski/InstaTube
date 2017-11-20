@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom'
 
 import style from '../style'
 
-export const DashboardHeader = (props) => (
+export const DashboardHeader = (props) => {
+  return (
   <Col xs="12">
     <Row>
       <Col className={`d-none d-xl-flex`}>
         <span className={css(style.header.welcomeMessage)}>
-          We are happy to see you again { `${props.profile.name} ${props.profile.surname}` }
+          We are happy to see you again { `${props.name} ${props.surname}` }
         </span>
       </Col>
       <Col
@@ -28,7 +29,7 @@ export const DashboardHeader = (props) => (
         xl=""
         className={`d-flex justify-content-center align-items-center`}
       >
-        <span className={css(style.header.amountSpan)}>${ props.user.total }</span>
+        <span className={css(style.header.amountSpan)}>${ props.total }</span>
       </Col>
       <Col
         xs="12"
@@ -41,6 +42,6 @@ export const DashboardHeader = (props) => (
       </Col>
     </Row>
   </Col>
-)
+)}
 
 export default DashboardHeader

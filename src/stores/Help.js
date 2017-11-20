@@ -10,7 +10,7 @@ class Help {
     const API_URL = process.env.REACT_APP_API_URL    
     axios.get(`${API_URL}/article/help`)
       .then((res) => {
-      this.all = res.data
+      this.all = res.data || []
     })
       .catch(console.log)
   }

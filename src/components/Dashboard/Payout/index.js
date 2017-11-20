@@ -31,7 +31,7 @@ export class Payout extends React.Component {
           </Col>
           <Col xs='12' className={css(style.withdraw.wrapper)}>
             <Withdraw
-              dashboard={this.props.user.dashboard}
+              {...this.props.user.dashboard.data}
               error={this.props.payouts.withdrawResponse.error}
               onWithdrawClick={this.onWithdrawClick.bind(this)}
             />

@@ -13,8 +13,14 @@ class App extends React.Component {
     stores.help.fetch()
 
     if (stores.auth.auth.local) {
-      stores.user.fetchDashboard()
+      stores.auth.extend()      
       stores.user.fetchProfile()
+      stores.user.fetchDashboard()
+
+      setInterval(() => {
+        stores.auth.extend()      
+        stores.user.fetchDashboard()
+      }, 1000 * 60 * 5)
     }
 
     // inject facebook sdk script
@@ -37,6 +43,8 @@ class App extends React.Component {
       fjs.parentNode.insertBefore(js, fjs)
     })(document, 'script', 'facebook-jssdk')
   }
+
+
 
   render () {
     return (

@@ -13,7 +13,7 @@ class Payouts {
     axios
       .get(`${API_URL}/customer/payouts`)
       .then(res => {
-        this.all = res
+        this.all = res.data || []
       })
       .catch(console.log)
 

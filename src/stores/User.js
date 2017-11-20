@@ -32,7 +32,7 @@ class User {
     axios
       .get(`${API_URL}/customer/profile`)
       .then(res => {
-        this.dashboard.data = res.data
+        this.profile.data = res.data
       })
       .catch(console.log)
 
@@ -100,7 +100,7 @@ class User {
     axios
       .get(`${API_URL}/customer/data`)
       .then(res => {
-        this.dashboard.data = res.data[0]
+        this.dashboard.data = res.data
       })
       .catch(console.log)
 

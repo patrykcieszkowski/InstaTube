@@ -10,7 +10,7 @@ export const PayoutHistoryTitles = props => (
       <span className={css(style.history.titleSpan)}>Nickname</span>
     </Col>
     <Col xs='6'>
-      <span className={css(style.history.titleSpan)}>Site</span>
+      <span className={css(style.history.titleSpan, style.history.titleDateSpan)}>Date</span>
     </Col>
   </Row>
 )

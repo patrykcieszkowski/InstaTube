@@ -75,6 +75,16 @@ class Auth {
   }
 
   @action
+  extend() {
+    const API_URL = process.env.REACT_APP_API_URL
+    axios
+      .post(`${API_URL}/auth/extend`)
+      .catch(() => {
+        logout()
+      })
+  }
+
+  @action
   logout() {
     this.auth = {
       facebook: null,

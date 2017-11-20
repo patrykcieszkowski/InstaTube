@@ -32,7 +32,7 @@ class SocialHistory extends React.Component {
             autoHideTimeout={1000}
             autoHideDuration={200}
           >
-            {this.props.social.data.response.instagram.data
+            {this.props.social.data.response.data
               .slice()
               .map((item, index) => (
                 <SocialHistoryItem key={index} item={item} site={`instagram`} />

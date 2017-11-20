@@ -36,9 +36,17 @@ export const historyStyle = {
     color: `#adadad`,
     fontWeight: `100`
   },
+  titleDateSpan: {
+    textAlign: `center`
+  },
   valueSpan: {
     ...textSpan,
     fontWeight: `100`
+  },
+  dateSpan: {
+    ...textSpan,
+    fontWeight: `100`,
+    textAlign: `center`
   }
 }
 

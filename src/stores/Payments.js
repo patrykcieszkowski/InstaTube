@@ -10,7 +10,7 @@ class Payments {
     const API_URL = process.env.REACT_APP_API_URL    
     axios.get(`${API_URL}/customer/payments`)
       .then((res) => {
-      this.all = res.data
+      this.all = res.data || []
     })
       .catch(console.log)
 

@@ -8,9 +8,9 @@ class Premium {
   @action
   fetch() {
     const API_URL = process.env.REACT_APP_API_URL    
-    axios.get(`${API_URL}/customer/premium`)
+    axios.get(`${API_URL}/customer/premiums`)
       .then((res) => {
-      this.all = res
+      this.all = res.data || []
     })
       .catch(console.log)
 

@@ -42,7 +42,6 @@ class PaymentHistory extends React.Component {
 }
 
 export const PaymentHistoryItem = ({ item }) => {
-  console.log(item)
   const statusList = [['fail', 'Canceled'], ['pending', 'In Progress'], ['complete', 'Completed']]
   const currentStatus = statusList[+item.id_status]
 

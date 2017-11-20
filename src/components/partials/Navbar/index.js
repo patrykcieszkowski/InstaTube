@@ -117,7 +117,7 @@ export class NavbarComponent extends React.Component {
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
-              <span>Transfer available: { utils.formatBytes(+this.props.user.dashboard.space) }</span>
+              <span>Transfer available: { utils.formatBytes(+this.props.user.dashboard.data.space) }</span>
             </NavItem>
           </Nav>
         </Collapse>
@@ -237,7 +237,7 @@ const RenderTransferBox = props => {
       <span className={css(style.navbar.transferSpan)}>
         Transfer available:{' '}
         <span className={css(style.navbar.transferSpanAmount)}>
-        { utils.formatBytes(+props.user.dashboard.space) }
+        { utils.formatBytes(+props.user.dashboard.data.space) }
         </span>
       </span>
     </div>

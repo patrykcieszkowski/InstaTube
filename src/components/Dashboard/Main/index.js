@@ -74,12 +74,14 @@ export class Main extends React.Component {
   }
 
   render () {
+    // console.log(this.props.user.profile)
+    // console.log(this.props.user.dashboard)
     return (
       <Container fluid>
         <Row className={css(style.header.wrapper)}>
           <Header
-            user={this.props.user.dashboard}
-            profile={this.props.user.profile}
+            {...this.props.user.dashboard.data}
+            {...this.props.user.profile.data}
           />
         </Row>
         <Row className={css(style.main.mainRow)}>
