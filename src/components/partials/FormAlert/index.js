@@ -5,7 +5,7 @@ import { Col, Row } from 'reactstrap'
 import style from './style'
 
 const RenderAlert = props => {
-  const alert = props.alert || 'hide'
+  const alert = props.content && props.alert ? props.alert : 'hide'
 
   return (
     <Row className={css(style.alert.fileAlertWrapper, style.alert[alert])}>
