@@ -6,7 +6,7 @@ import style from '../../../style'
 
 export const PayoutHistoryItem = ({ item }) => {
   const statusList = [['fail', 'Canceled'], ['pending', 'In Progress'], ['complete', 'Completed']]
-  const currentStatus = statusList[+item.id_status]
+  const currentStatus = statusList[+item.status]
 
   const date = new Date(item.start)
 
