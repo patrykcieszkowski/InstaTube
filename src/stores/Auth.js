@@ -115,6 +115,8 @@ class Auth {
         remind: null,
         recovery: null
       }
+
+      window.location.href = '/'
     })
   }
 
