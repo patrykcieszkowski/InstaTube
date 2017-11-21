@@ -71,7 +71,7 @@ class User {
   postPassword(data) {
     const formData = new FormData()
     Object.keys(data).forEach(key =>
-      formData.append(`passowrd[${key}]`, data[key])
+      formData.append(`password[${key}]`, data[key])
     )
 
     // update request
