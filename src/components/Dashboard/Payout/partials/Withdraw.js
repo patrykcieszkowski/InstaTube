@@ -22,7 +22,7 @@ const Withdraw = props => (
         </Col>
         <Col
           xs='12'
-          className={`d-flex align-items-center justify-content-end`}
+          className={`d-flex align-items-center justify-content-center`}
         >
           <span className={css(style.withdraw.provisionSpan)}>
             PROVISION: <span>{props.provision}</span>

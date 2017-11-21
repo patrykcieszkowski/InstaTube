@@ -84,24 +84,38 @@ class Auth {
         this.auth.local = true
       })
       .catch(() => {
-        this.logout()
+        this.auth = {
+          facebook: null,
+          instagram: null,
+          local: false
+        }
+
+        this.response = {
+          login: null,
+          register: null,
+          remind: null,
+          recovery: null
+        }
       })
   }
 
   @action
   logout() {
-    this.auth = {
-      facebook: null,
-      instagram: null,
-      local: false
-    }
+    const API_URL = process.env.REACT_APP_API_URL
+    axios.post(`${API_URL}/auth/logout`).then(() => {
+      this.auth = {
+        facebook: null,
+        instagram: null,
+        local: false
+      }
 
-    this.response = {
-      login: null,
-      register: null,
-      remind: null,
-      recovery: null
-    }
+      this.response = {
+        login: null,
+        register: null,
+        remind: null,
+        recovery: null
+      }
+    })
   }
 
   // @action
