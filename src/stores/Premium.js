@@ -12,7 +12,7 @@ class Premium {
     axios
       .get(`${API_URL}/customer/premiums`)
       .then(res => {
-        this.all = res.data || []
+        this.all = Array.isArray(res.data) ? res.data : []
       })
       .catch(console.log)
 

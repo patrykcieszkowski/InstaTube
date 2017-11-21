@@ -7,11 +7,12 @@ class Payments {
 
   @action
   fetch() {
-    const API_URL = process.env.REACT_APP_API_URL    
-    axios.get(`${API_URL}/customer/payments`)
-      .then((res) => {
-      this.all = res.data || []
-    })
+    const API_URL = process.env.REACT_APP_API_URL
+    axios
+      .get(`${API_URL}/customer/payments`)
+      .then(res => {
+        this.all = Array.isArray(res.data) ? res.data : []
+      })
       .catch(console.log)
 
     //fetch action

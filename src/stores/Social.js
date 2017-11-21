@@ -15,10 +15,13 @@ class Social {
   @action
   fetch() {
     const API_URL = process.env.REACT_APP_API_URL
-    axios.get(`${API_URL}/customer/social`)
-      .then((res) => {
-      this.data.response = res.data
-    })
+    axios
+      .get(`${API_URL}/customer/social`)
+      .then(res => {
+        if (res.data.data) {
+          this.data.response = res.data
+        }
+      })
       .catch(console.log)
   }
 }
