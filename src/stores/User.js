@@ -60,6 +60,7 @@ class User {
       .post(`${API_URL}/actions/profile`, formData)
       .then(res => {
         this.profile.data = { ...data }
+        this.profile.response = res.data
       })
       .catch(err => {
         this.profile.response = err.response ? err.response.data : null
