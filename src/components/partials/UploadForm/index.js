@@ -227,6 +227,7 @@ export class Upload extends React.Component {
           request={this.props.uploadform.request}
           response={this.props.uploadform.response}
           error={this.props.uploadform.error}
+          currency={this.props.currency}
           instagramAccounts={this.props.instagramAccounts}
           onFormSubmit={this.onFormSubmit.bind(this)}
           onDropRejected={this.onDropRejected.bind(this)}

@@ -21,8 +21,8 @@ export const InstagramInput = props => {
               className={css(style.ppv.select)}
             >
               {props.instagramAccounts.slice().map((a, index) => (
-                <option key={index} value={a}>
-                  @{a}
+                <option key={index} value={a.name}>
+                  @{a.name}
                 </option>
               ))}
             </select>
@@ -61,11 +61,7 @@ export const PPVInput = props => {
           xs='1'
           className={`d-flex align-items-center justify-content-center`}
         >
-          <i
-            className={`la la-dollar ${css(style.ppv.dollarIcon)}`}
-            aria-hidden='true'
-            title='dollar'
-          />
+          <span className={css(style.ppv.dollarIcon)}>{props.currency}</span>
         </Col>
         <Col
           xs
