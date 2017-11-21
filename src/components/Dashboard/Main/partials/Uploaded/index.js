@@ -15,11 +15,17 @@ import utils from '../../../../../utils'
 @inject('uploads')
 @observer
 export class UploadedList extends React.Component {
-  onDeleteConfirm (index) {
+  componentDidMount() {
+    setInterval(() => {
+      this.forceUpdate.call(this)
+    }, 500)
+  }
+
+  onDeleteConfirm(index) {
     this.props.uploads.deleteItem(index)
   }
 
-  onDeleteItemClick (index, e) {
+  onDeleteItemClick(index, e) {
     e.preventDefault()
 
     this.props.openAlert({
@@ -35,27 +41,27 @@ export class UploadedList extends React.Component {
     })
   }
 
-  onDateActionHover (index, state, e) {
+  onDateActionHover(index, state, e) {
     e.preventDefault()
     this.props.uploads.setDateAction(index, state)
   }
 
-  onCopyActionToggle (index, e) {
+  onCopyActionToggle(index, e) {
     e.preventDefault()
     this.props.uploads.setCopyAction(index)
   }
 
-  onCopyClick (index, e) {
+  onCopyClick(index, e) {
     e.preventDefault()
     copyToClipboard(this.props.uploads.all[index].url || '')
   }
 
-  onExtendItemClick (index, e) {
+  onExtendItemClick(index, e) {
     e.preventDefault()
     this.props.uploads.extendItem(index)
   }
 
-  render () {
+  render() {
     return this.props.uploads.all
       .slice()
       .map((item, index) => (
