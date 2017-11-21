@@ -21,9 +21,13 @@ export const historyStyle = {
     margin: 0,
     padding: 0,
     borderRadius: `5px`,
+    transition: `opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
     ':hover': {
       background: `#f3f5f7`
     }
+  },
+  boxHidden: {
+    opacity: 0
   },
   innerWrapper: {
     padding: `15px`
@@ -47,6 +51,19 @@ export const historyStyle = {
     ...textSpan,
     fontWeight: `100`,
     textAlign: `center`
+  },
+  actionIcon: {
+    textDecoration: `none`,
+    fontSize: `20px`,
+    padding: `2px 4px`,
+    paddingLeft: `2px`,
+    color: `#3f295a`
+  },
+  actionIconTrash: {
+    // color: `#ff2828`
+  },
+  actionIconExtend: {
+    color: `#88d362`
   }
 }
 

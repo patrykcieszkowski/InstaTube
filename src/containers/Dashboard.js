@@ -15,6 +15,7 @@ export class DashboardContiner extends React.Component {
     }
 
     this.props.user.fetchProfile()
+    this.props.user.fetchDashboard()
     this.props.uploads.fetch()
     this.props.payments.fetch()
     this.props.social.fetch()

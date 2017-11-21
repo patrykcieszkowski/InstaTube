@@ -104,7 +104,7 @@ export class Main extends React.Component {
           >
             <UploadForm
               dashboard
-              instagramAccounts={this.props.social.data.response.data}
+              instagramAccounts={this.props.social.data.data.data}
               currency={this.props.user.dashboard.data.currency}
             />
           </Col>

@@ -19,6 +19,11 @@ class SocialHistory extends React.Component {
     this.props.social.fetch()
   }
 
+  onDeleteItemClick (login, e) {
+    e.preventDefault()
+    this.props.social.delete({ login })
+  }
+
   render () {
     return (
       <Row className={css(style.history.mainRow)}>
@@ -32,10 +37,18 @@ class SocialHistory extends React.Component {
             autoHideTimeout={1000}
             autoHideDuration={200}
           >
-            {this.props.social.data.response.data
+            {this.props.social.data.data.data
               .slice()
               .map((item, index) => (
-                <SocialHistoryItem key={index} item={item} site={`instagram`} />
+                <SocialHistoryItem
+                  key={index}
+                  item={item}
+                  site={`instagram`}
+                  onDeleteItemClick={this.onDeleteItemClick.bind(
+                    this,
+                    item.name
+                  )}
+                />
               ))}
           </ScrollArea>
         </Col>
