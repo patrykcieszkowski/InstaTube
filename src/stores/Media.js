@@ -19,12 +19,12 @@ class Media {
       .then(res => {
         this.media = {
           ...res.data,
-          display: +res.data.display,
+          display: res.data.display ? +res.data.display : null,
           views: +res.data.views,
           nolimit: !!res.data.nolimit,
           unlock: !res.data.hasOwnProperty('unlock') ? true : !!res.data.unlock,
           amount: !res.data.amount ? undefined : parseFloat(res.data.amount),
-          premium: res.data.hasOwnProperty('unlock')
+          premium: res.data.hasOwnProperty('display')
         }
       })
       .catch(err => {

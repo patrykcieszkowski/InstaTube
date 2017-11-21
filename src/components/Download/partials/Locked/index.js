@@ -59,7 +59,9 @@ const RenderPaymentType = props => {
       <Col xs='12' className={css(style.box)}>
         <span className={css(style.spanUnlock)}>
           You can easily unlock it by paying{' '}
-          <span className={css(style.spanUnlockColor)}>$5.00</span>
+          <span className={css(style.spanUnlockColor)}>
+            5.00{props.media.currency}
+          </span>
         </span>
       </Col>
       <Col xs='12' className={css(style.box, style.buttonUnlockBox)}>
