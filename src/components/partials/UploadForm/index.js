@@ -19,7 +19,7 @@ const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
 const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
 /* eslint-enable no-unused-vars */
 
-@inject('uploadform')
+@inject('uploadform', 'auth')
 @observer
 export class Upload extends React.Component {
   constructor () {
@@ -228,6 +228,8 @@ export class Upload extends React.Component {
           response={this.props.uploadform.response}
           error={this.props.uploadform.error}
           currency={this.props.currency}
+
+          authState={this.props.auth.auth.local}
           instagramAccounts={this.props.instagramAccounts}
           onFormSubmit={this.onFormSubmit.bind(this)}
           onDropRejected={this.onDropRejected.bind(this)}

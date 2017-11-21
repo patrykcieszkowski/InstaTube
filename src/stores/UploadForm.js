@@ -14,6 +14,7 @@ class UploadForm {
     const formData = new FormData()
     formData.append('upload[message]', data.message)
     formData.append('upload[houre]', data.validity.hour)
+    formData.append('upload[display]', data.displayTime)
     formData.append('upload[minutes]', data.validity.minute)
     formData.append('upload[ppi]', !!data.viewTypes.instagram)
     formData.append('upload[ppv]', !!data.viewTypes.ppv)

@@ -16,7 +16,7 @@ const RenderValidity = props => (
         <input
           type="range"
           min="0"
-          max="24"
+          max={props.authState ? `23` : `11`}
           value={props.state.validity.hour}
           onChange={props.onValidityHourChange}
           className={css(style.sliders.slider)}
