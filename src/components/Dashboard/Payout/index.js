@@ -16,7 +16,10 @@ import Withdraw from './partials/Withdraw'
 export class Payout extends React.Component {
   onWithdrawClick (e) {
     e.preventDefault()
-    this.props.payouts.withdraw()
+    this.props.payouts.withdraw().then(() => {
+      this.props.payouts.fetch()
+      this.props.user.dashboard.fetch()
+    })
   }
 
   render () {

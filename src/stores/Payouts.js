@@ -13,7 +13,7 @@ class Payouts {
     axios
       .get(`${API_URL}/customer/payouts`)
       .then(res => {
-        this.all = (Array.isArray(res.data)) ? res.data : []
+        this.all = Array.isArray(res.data) ? res.data : []
       })
       .catch(console.log)
 
@@ -44,10 +44,17 @@ class Payouts {
   @action
   withdraw() {
     const API_URL = process.env.REACT_APP_API_URL
-    axios.post(`${API_URL}/actions/withdraw`).catch(err => {
-      this.withdrawResponse = {
-        error: err.response ? err.response.data.content : null
-      }
+
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${API_URL}/actions/withdraw`)
+        .then(res => resolve())
+        .catch(err => {
+          this.withdrawResponse = {
+            error: err.response ? err.response.data.content : null
+          }
+          reject()
+        })
     })
   }
 }
