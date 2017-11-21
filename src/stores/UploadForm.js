@@ -16,12 +16,11 @@ class UploadForm {
     formData.append('upload[houre]', data.validity.hour)
     formData.append('upload[display]', data.displayTime)
     formData.append('upload[minutes]', data.validity.minute)
-    formData.append('upload[ppi]', !!data.viewTypes.instagram)
+    formData.append('upload[ppi]', data.viewTypes.instagram)
     formData.append('upload[ppv]', !!data.viewTypes.ppv)
     formData.append('upload[file]', file)
 
-    if (data.views.view)
-    {
+    if (data.views.view) {
       formData.append('upload[nolimit]', !!data.views.view)
     } else {
       formData.append('upload[views]', data.views.number || 1)
@@ -31,7 +30,7 @@ class UploadForm {
       // onUploadProgress: function(e) {
       //   this.progress = Math.floor(e.loaded * 100 / e.total)
       // },
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: { 'Content-Type': 'multipart/form-data' }
     }
 
     const API_URL = process.env.REACT_APP_API_URL
@@ -44,15 +43,15 @@ class UploadForm {
         this.progress = 0
       })
       .catch(err => {
-        this.request = null        
+        this.request = null
         this.error = err.response ? err.response.data : null
         this.progress = 0
       })
   }
 
   @action
-  reset() { 
-    this.request = null    
+  reset() {
+    this.request = null
     this.error = null
     this.response = null
     this.progress = 0
