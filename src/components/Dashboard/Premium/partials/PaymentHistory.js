@@ -1,28 +1,28 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
-/* eslint-disable no-user-vars */
+/* eslint-disable no-unused-vars */
 import { inject, observer } from 'mobx-react'
-/* eslint-enable no-user-vars */
+/* eslint-enable no-unused-vars */
 
 import style from '../style'
 
 import ScrollArea from '../../../partials/ScrollArea'
 
-@inject('premium')
+@inject('premium', 'user')
 @observer
 class PaymentHistory extends React.Component {
-  componentWillMount() {
+  componentWillMount () {
     this.props.premium.fetch()
   }
 
-  render() {
+  render () {
     return (
       <Row className={`${css(style.main.mainRow)}`}>
-        <Col xs="12" className={`${css(style.history.titleWrapper)}`}>
+        <Col xs='12' className={`${css(style.history.titleWrapper)}`}>
           <h4 className={css(style.history.h4)}>history</h4>
         </Col>
-        <Col xs="12" className={`${css(style.history.contentWrapper)}`}>
+        <Col xs='12' className={`${css(style.history.contentWrapper)}`}>
           <ScrollArea
             style={{ width: '100%', height: `calc(100% - 220px)` }}
             autoHide
@@ -32,7 +32,11 @@ class PaymentHistory extends React.Component {
             {this.props.premium.all
               .slice()
               .map((item, index) => (
-                <PaymentHistoryItem item={item} key={index} />
+                <PaymentHistoryItem
+                  item={item}
+                  key={index}
+                  currency={this.props.user.dashboard.data.currency}
+                />
               ))}
           </ScrollArea>
         </Col>
@@ -41,7 +45,7 @@ class PaymentHistory extends React.Component {
   }
 }
 
-export const PaymentHistoryItem = ({ item }) => {
+export const PaymentHistoryItem = ({ item, ...props }) => {
   const statusList = [
     ['fail', 'Canceled'],
     ['pending', 'In Progress'],
@@ -53,9 +57,9 @@ export const PaymentHistoryItem = ({ item }) => {
 
   return (
     <Row className={css(style.history.box)}>
-      <Col xs="12" className={css(style.history.innerWrapper)}>
+      <Col xs='12' className={css(style.history.innerWrapper)}>
         <Row>
-          <Col xs="1">
+          <Col xs='1'>
             <div
               className={css(
                 style.circle.circle,
@@ -63,17 +67,18 @@ export const PaymentHistoryItem = ({ item }) => {
               )}
             />
           </Col>
-          <Col xs="4">
+          <Col xs='4'>
             <span className={css(style.history.statusSpan)}>
               {currentStatus[1]}
             </span>
           </Col>
-          <Col xs="3">
+          <Col xs='3'>
             <span className={css(style.history.amountSpan)}>
-              ${item.amount}
+              {item.amount}
+              {props.currency}
             </span>
           </Col>
-          <Col xs="4">
+          <Col xs='4'>
             <span
               className={css(style.history.dateSpan)}
             >{`${date.getDate()}-${date.getMonth() +

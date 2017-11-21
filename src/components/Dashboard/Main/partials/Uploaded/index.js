@@ -1,18 +1,12 @@
 import React from 'react'
-import { css } from 'aphrodite'
-import { Row, Col } from 'reactstrap'
 import copyToClipboard from 'copy-to-clipboard'
 /* eslint-disable no-unused-vars */
 import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
-import style from '../../style'
-
 import ListItem from './partials/listItem'
 
-import utils from '../../../../../utils'
-
-@inject('uploads')
+@inject('uploads', 'user')
 @observer
 export class UploadedList extends React.Component {
   componentDidMount() {
@@ -69,6 +63,7 @@ export class UploadedList extends React.Component {
           key={index}
           index={index}
           item={item || {}}
+          currency={this.props.user.dashboard.data.currency}
           onDateActionHover={this.onDateActionHover.bind(this, index, true)}
           onDateActionHoverOut={this.onDateActionHover.bind(this, index, false)}
           onCopyActionToggle={this.onCopyActionToggle.bind(this, index)}

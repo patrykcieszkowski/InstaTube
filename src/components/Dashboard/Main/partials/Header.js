@@ -30,7 +30,8 @@ export const DashboardHeader = props => {
           className={`d-flex justify-content-center align-items-center`}
         >
           <span className={css(style.header.amountSpan)}>
-            ${props.withdraw}
+            {props.withdraw}
+            {props.currency}
           </span>
         </Col>
         <Col

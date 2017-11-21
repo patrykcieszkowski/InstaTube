@@ -12,7 +12,7 @@ import SidebarHeader from '../../partials/SidebarHeader'
 import PremiumInfo from './partials/PremiumInfo'
 import PaymentHistory from './partials/PaymentHistory'
 
-@inject('premium')
+@inject('premium', 'user')
 @observer
 export class Premium extends React.Component {
   onBuyPremiumClick (e) {
@@ -33,7 +33,10 @@ export class Premium extends React.Component {
         </Row>
         <Row className={`${css(style.main.mainRow)}`}>
           <Col xs='12' className={css(style.info.wrapper)}>
-            <PremiumInfo onClick={this.onBuyPremiumClick.bind(this)} />
+            <PremiumInfo
+              onClick={this.onBuyPremiumClick.bind(this)}
+              currency={this.props.user.dashboard.data.currency}
+            />
           </Col>
           <Col xs='12' className={css(style.history.wrapper)}>
             <PaymentHistory />

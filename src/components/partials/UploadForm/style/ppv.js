@@ -21,7 +21,7 @@ export const ppvStyle = {
     fontWeight: `100`
   },
   dollarIcon: {
-    fontSize: `32px`,
+    fontSize: `16px`,
     fontWeight: `600`
   }
 }

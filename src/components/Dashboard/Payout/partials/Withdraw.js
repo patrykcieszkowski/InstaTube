@@ -17,7 +17,8 @@ const Withdraw = props => (
           className={`d-flex align-items-center justify-content-center`}
         >
           <span className={css(style.withdraw.amountSpan)}>
-            ${props.withdraw}
+            {props.withdraw}
+            {props.currency}
           </span>
         </Col>
         <Col
@@ -26,7 +27,7 @@ const Withdraw = props => (
         >
           <span className={css(style.withdraw.provisionSpan)}>
             PROVISION: <span>{props.provision}</span>
-            USD
+            {props.currency}
           </span>
         </Col>
       </Row>
@@ -51,7 +52,7 @@ const Withdraw = props => (
             <span className={css(style.withdraw.totalSpanAmount)}>
               {props.total}
             </span>
-            USD
+            {props.currency}
           </span>
         </Col>
       </Row>
