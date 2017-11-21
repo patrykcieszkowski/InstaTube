@@ -12,7 +12,7 @@ import ScrollArea from '../../../../partials/ScrollArea'
 import PayoutHistoryTitles from './partials/titleRow.js'
 import PayoutHistoryItem from './partials/listItem.js'
 
-@inject('payouts')
+@inject('payouts', 'user')
 @observer
 class PayoutHistory extends React.Component {
   componentWillMount () {
@@ -35,7 +35,11 @@ class PayoutHistory extends React.Component {
             {this.props.payouts.all
               .slice()
               .map((item, index) => (
-                <PayoutHistoryItem item={item} key={index} />
+                <PayoutHistoryItem
+                  item={item}
+                  key={index}
+                  currency={this.props.user.dashboard.data.currency}
+                />
               ))}
           </ScrollArea>
         </Col>

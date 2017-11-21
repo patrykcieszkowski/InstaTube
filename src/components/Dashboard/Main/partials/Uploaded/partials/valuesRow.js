@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Row, Col } from 'reactstrap'
+import { Row } from 'reactstrap'
 
 import Column from '../../../../../partials/Col'
 
@@ -84,7 +84,7 @@ const ItemValuesRow = props => {
             style.uploaded.valuePrice
           )} d-flex justify-content-xl-center align-items-center`}
         >
-          {props.item.amount ? `$${props.item.amount}` : '-'}
+          {props.item.amount ? `${props.item.amount}${props.currency}` : '-'}
         </span>
       </Column>
       <Column
@@ -100,7 +100,7 @@ const ItemValuesRow = props => {
             props.item.earn && props.item.active ? style.uploaded.earnValue : ''
           )} d-flex justify-content-xl-center align-items-center`}
         >
-          {props.item.earn ? `$${props.item.earn}` : '-'}
+          {props.item.earn ? `${props.item.earn}${props.currency}` : '-'}
         </span>
       </Column>
       <ActionExpireColumn props={props} parsedTime={parsedTime} />
