@@ -18,10 +18,6 @@ export class Locked extends React.Component {
   onPPVSubmit (e) {
     e.preventDefault()
 
-    if (!this.props.auth.auth.local) {
-      return (window.location.href = '/auth')
-    }
-
     const data = {
       email: this.props.user.dashboard.email,
       hash: this.props.match.params.mediaId,
@@ -33,11 +29,6 @@ export class Locked extends React.Component {
 
   onPPIClick (e) {
     e.preventDefault()
-
-    if (!this.props.auth.auth.local) {
-      return (window.location.href = '/auth')
-    }
-
     const { instagram } = this.props.media.media
     window.location.href = `https://api.instagram.com/oauth/authorize/?client_id=${instagram.apikey}&redirect_uri=${instagram.url}&response_type=code&scope=public_content+follower_list`
   }
