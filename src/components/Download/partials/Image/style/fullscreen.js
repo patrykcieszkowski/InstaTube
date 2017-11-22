@@ -6,8 +6,10 @@ export const fullscreenStyle = {
     zIndex: 99999,
     top: 0,
     left: 0,
-    width: `100%`,
+    bottom: 0,
     height: `100%`,
+    width: `100%`,
+    maxHeight: `100%`,
     transition: `0.2s`,
     opacity: 0
   },
@@ -18,9 +20,16 @@ export const fullscreenStyle = {
     display: `none`
   },
   box: {
+    height: `100%`,
+    width: `100%`,
     position: `relative`,
     padding: 0,
     margin: 0
+  },
+  image: {
+    maxHeight: `100%`,
+    height: `auto`,
+    maxWidth: `100%`
   },
   timer: {
     position: `absolute`,
@@ -29,7 +38,7 @@ export const fullscreenStyle = {
     '@media (min-width: 1200px)': {
       top: `40px`,
       left: `40px`
-    }      
+    }
   },
   closeButton: {
     cursor: `pointer`,
@@ -52,14 +61,14 @@ export const fullscreenStyle = {
       width: `100%`,
       height: `100%`,
       padding: `60px`
-    }      
+    }
   },
   closeIcon: {
     '@media (min-width: 1200px)': {
       position: `absolute`,
       top: `60px`,
       right: `60px`
-    }      
+    }
   }
 }
 

@@ -104,12 +104,16 @@ export class Image extends React.Component {
         )}`}
         key={1}
       >
-        <Col className={css(style.fullscreen.box)}>
+        <Col
+          className={`${css(
+            style.fullscreen.box
+          )} d-flex align-items-center justify-content-center`}
+        >
           {this.renderTimer()}
           <img
             src={this.props.media.src}
             className={css(
-              style.image.image,
+              style.fullscreen.image,
               this.props.blur ? style.image.blur : ''
             )}
           />
