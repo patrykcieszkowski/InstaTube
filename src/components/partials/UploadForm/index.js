@@ -19,7 +19,7 @@ const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
 const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
 /* eslint-enable no-unused-vars */
 
-@inject('uploadform')
+@inject('uploadform', 'auth')
 @observer
 export class Upload extends React.Component {
   constructor () {
@@ -171,6 +171,16 @@ export class Upload extends React.Component {
     })
   }
 
+  onInstagramSelectChange (option) {
+    this.setState({
+      ...this.state,
+      viewTypes: {
+        ...this.state.viewTypes,
+        instagram: option.value
+      }
+    })
+  }
+
   onFormSubmit (e) {
     e.preventDefault()
     if (!this.state.upload.file) {
@@ -228,6 +238,7 @@ export class Upload extends React.Component {
           response={this.props.uploadform.response}
           error={this.props.uploadform.error}
           currency={this.props.currency}
+          authState={this.props.auth.auth.local}
           instagramAccounts={this.props.instagramAccounts}
           onFormSubmit={this.onFormSubmit.bind(this)}
           onDropRejected={this.onDropRejected.bind(this)}
@@ -237,6 +248,7 @@ export class Upload extends React.Component {
           onInstagramClick={this.onLinkClick.bind(this, 'instagram')}
           onPPVClick={this.onLinkClick.bind(this, 'ppv')}
           onPPVInputChange={this.onPPVInputChange.bind(this)}
+          onInstagramSelectChange={this.onInstagramSelectChange.bind(this)}
           onInstagramInputChange={this.onInstagramInputChange.bind(this)}
           onDisplayTimeChange={this.onDisplayTimeChange.bind(this)}
           onValidityMinuteChange={this.onValidityChange.bind(this, 'minute')}

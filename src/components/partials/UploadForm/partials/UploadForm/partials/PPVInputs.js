@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { FormGroup, Col, Row, Input } from 'reactstrap'
+import Select from 'react-select'
 
 import style from '../../../style'
 
@@ -14,18 +15,14 @@ export const InstagramInput = props => {
       <FormGroup className={css(style.form.group, style.views.box)}>
         <Row className={css(style.form.row)}>
           <Col xs className={css(style.ppv.inputWrapper)}>
-            <select
-              onChange={props.onInstagramInputChange}
+            <Select
+              placeholder='@nickname'
               value={props.state.viewTypes.instagram}
-              type='text'
-              className={css(style.ppv.select)}
-            >
-              {props.instagramAccounts.slice().map((a, index) => (
-                <option key={index} value={a.name}>
-                  @{a.name}
-                </option>
-              ))}
-            </select>
+              onChange={props.onInstagramSelectChange}
+              options={props.instagramAccounts
+                .slice()
+                .map((a, index) => ({ value: a.name, label: a.name }))}
+            />
           </Col>
         </Row>
       </FormGroup>

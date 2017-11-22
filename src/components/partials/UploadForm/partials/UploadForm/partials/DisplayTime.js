@@ -29,7 +29,7 @@ const RenderDisplayTime = props => {
           <input
             type="range"
             min="1"
-            max="100"
+            max="30"
             value={props.state.displayTime}
             onChange={props.onDisplayTimeChange}
             className={css(style.sliders.slider)}
@@ -37,7 +37,7 @@ const RenderDisplayTime = props => {
         </Col>
         <Col xs="2" className={css(style.sliders.labelWrapper)}>
           <span className={css(style.sliders.label)}>
-            {props.state.displayTime}h
+            {props.state.displayTime}sec
           </span>
         </Col>
       </Row>

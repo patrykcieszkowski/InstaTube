@@ -69,7 +69,9 @@ const RenderTitle = props => {
         <Col>
           <span className={css(style.dropzone.descSpan)}>
             Maximum{' '}
-            <span className={css(style.dropzone.boldSpan)}>2.00GB / 12h</span>
+            <span className={css(style.dropzone.boldSpan)}>
+              2.00GB / { props.authState ? `24h` : `12h` }
+            </span>
           </span>
         </Col>
       </Row>
