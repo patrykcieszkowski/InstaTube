@@ -122,7 +122,7 @@ export class VideoPlayer extends React.Component {
   }
 
   onSeekChange (e) {
-    if (!this.refs.videoplayer || !this.props.premium) {
+    if (!this.refs.videoplayer || !this.props.media.unlock) {
       return
     }
 
@@ -188,7 +188,7 @@ export class VideoPlayer extends React.Component {
             <RenderSlider
               value={this.state.videoProgress}
               onChange={this.onSeekChange.bind(this)}
-              premium={this.props.premium}
+              unlock={this.props.media.unlock}
             />
           </div>
         </div>
@@ -198,7 +198,7 @@ export class VideoPlayer extends React.Component {
 }
 
 const RenderSlider = props => {
-  if (!props.premium) {
+  if (!props.unlock) {
     return null
   }
 

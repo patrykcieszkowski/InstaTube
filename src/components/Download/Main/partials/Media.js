@@ -34,7 +34,7 @@ const RenderTitle = props => {
 
   return (
     <Col xs='12' className={css(style.media.box)}>
-      <h2 className={css(style.media.titleH2)}>{props.name}</h2>
+      <h2 className={css(style.media.titleH2)}>{props.media.name}</h2>
     </Col>
   )
 }

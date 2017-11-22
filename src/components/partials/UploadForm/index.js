@@ -19,7 +19,7 @@ const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
 const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
 /* eslint-enable no-unused-vars */
 
-@inject('uploadform', 'auth')
+@inject('uploadform', 'uploads', 'auth')
 @observer
 export class Upload extends React.Component {
   constructor () {
@@ -121,12 +121,17 @@ export class Upload extends React.Component {
     }
 
     e.preventDefault()
-    const links = JSON.parse(JSON.stringify(this.state.links))
-    Object.keys(links).forEach(a => (links[a] = !!(a === type && !links[a])))
+    const links = { ...this.state.links }
+    const viewTypes = { ...this.state.viewTypes }
+    Object.keys(links).forEach(a => {
+      links[a] = !!(a === type && !links[a])
+      viewTypes[a] = links[a] ? viewTypes[a] : a === 'ppv' ? 0 : ''
+    })
 
     this.setState({
       ...this.state,
-      links
+      links,
+      viewTypes
     })
   }
 
@@ -192,7 +197,8 @@ export class Upload extends React.Component {
       })
     }
 
-    this.props.uploadform.upload(
+    this.props.uploadform
+      .upload(
       {
         message: this.state.message,
         views: this.state.views,
@@ -201,8 +207,9 @@ export class Upload extends React.Component {
         validity: this.state.validity,
         viewTypes: this.state.viewTypes
       },
-      this.state.upload.file
-    )
+        this.state.upload.file
+      )
+      .then(() => this.props.uploads.fetch())
   }
 
   onCopyLinkClick (e) {
