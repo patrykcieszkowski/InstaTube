@@ -70,7 +70,7 @@ export const uploadedStyle = {
       height: `40px`
     }
   },
-  copyBlock: {
+  popupBlock: {
     position: `absolute`,
     right: 0,
     transition: `all 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
@@ -80,7 +80,6 @@ export const uploadedStyle = {
     borderRadius: `5px`,
     padding: 0,
     opacity: 0,
-    transition: `0.2s`,
     bottom: 0,
     '@media (min-width: 1200px)': {
       height: `40px`,
@@ -88,19 +87,19 @@ export const uploadedStyle = {
       top: 0
     }
   },
-  copyBlockActive: {
+  popupBlockActive: {
     transform: `none`,
     opacity: 1
   },
-  copyBlockWrapper: {
+  popupBlockWrapper: {
     flex: 1,
     margin: 0,
     padding: `0 5px`
   },
-  copyInputWrapper: {
-    padding: 0
+  popupInputWrapper: {
+    padding: `5px 0`
   },
-  copyInput: {
+  popupInput: {
     background: `none`,
     border: `none`,
     fontSize: `14px`,
@@ -109,9 +108,15 @@ export const uploadedStyle = {
     fontWeight: `600`,
     direction: `rtl`,
     width: `100%`,
+    height: `100%`,
     '@media (min-width: 1280px)': {
       direction: `ltr`
     }
+  },
+  namePopupInput: {
+    background: `white`,
+    borderRadius: `2px 0`,
+    padding: `0 10px`
   },
   actionIconBox: {
     padding: 0
