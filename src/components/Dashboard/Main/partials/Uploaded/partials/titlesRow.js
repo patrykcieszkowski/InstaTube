@@ -80,7 +80,7 @@ export const UploadedListTitles = props => (
         style.grid['d-xxxxl-block']
       )} d-xl-none`}
     >
-      <span className={css(style.uploaded.titleBlockSpan)}>DTime Left</span>
+      <span className={css(style.uploaded.titleBlockSpan)}>Time Left</span>
     </Column>
     <Column
       xl="3"
