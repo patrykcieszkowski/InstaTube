@@ -17,7 +17,7 @@ class UploadForm {
     formData.append('upload[display]', data.displayTime)
     formData.append('upload[minutes]', data.validity.minute)
     formData.append('upload[ppi]', data.viewTypes.instagram)
-    formData.append('upload[ppv]', !!data.viewTypes.ppv)
+    formData.append('upload[ppv]', data.viewTypes.ppv)
     formData.append('upload[file]', file)
 
     if (data.views.view) {
@@ -35,18 +35,22 @@ class UploadForm {
 
     const API_URL = process.env.REACT_APP_API_URL
 
-    this.request = axios
-      .post(`${API_URL}/add`, formData, config)
-      .then(response => {
-        this.request = null
-        this.response = response.data
-        this.progress = 0
-      })
-      .catch(err => {
-        this.request = null
-        this.error = err.response ? err.response.data : null
-        this.progress = 0
-      })
+    return new Promise((resolve, reject) => {
+      this.request = axios
+        .post(`${API_URL}/add`, formData, config)
+        .then(res => {
+          this.request = null
+          this.response = res.data
+          this.progress = 0
+          return resolve(res)
+        })
+        .catch(err => {
+          this.request = null
+          this.error = err.response ? err.response.data : null
+          this.progress = 0
+          return reject(err)
+        })
+    })
   }
 
   @action

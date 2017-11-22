@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Row, Col } from 'reactstrap'
 
 import style from './style'
 
@@ -38,7 +37,7 @@ export class AudioPlayer extends React.Component {
   }
 
   onInitialPlay () {
-    this.onPlayPause.call(this)
+    this.onPlayPause()
     if (!this.props.onPlay) {
       return
     }
@@ -78,7 +77,7 @@ export class AudioPlayer extends React.Component {
   }
 
   onSeekChange (e) {
-    if (!this.refs.audioplayer || !this.props.premium) {
+    if (!this.refs.audioplayer || !this.props.media.unlock) {
       return
     }
 
@@ -112,7 +111,7 @@ export class AudioPlayer extends React.Component {
           <RenderSlider
             value={this.state.audioProgress}
             onChange={this.onSeekChange.bind(this)}
-            premium={this.props.premium}
+            unlock={this.props.media.unlock}
           />
         </div>
       </figure>
@@ -121,7 +120,7 @@ export class AudioPlayer extends React.Component {
 }
 
 const RenderSlider = props => {
-  if (!props.premium) {
+  if (!props.unlock) {
     return null
   }
 
