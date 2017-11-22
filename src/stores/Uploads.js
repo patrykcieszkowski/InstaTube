@@ -11,85 +11,9 @@ class Uploads {
     axios
       .get(`${API_URL}/customer/files`)
       .then(res => {
-        this.all = Array.isArray(res.data) ? res.data : []
+        this.all.replace(Array.isArray(res.data) ? res.data : this.all.slice())
       })
       .catch(console.log)
-    //fetch action
-
-    // this.all = [
-    //   {
-    //     "id": "47",
-    //     "name": "22279935_684810011726723_4273574299935798236_n",
-    //     "url": "01d6d387",
-    //     "views": "9999",
-    //     "amount": "0.00",
-    //     "currency": "USD",
-    //     "end": "2017-11-14 16:42:19",
-    //     "active": "1",
-    //     "viewed": "0",
-    //     "total": null
-    //   },
-    //   {
-    //     "id": "48",
-    //     "name": "ebay_print",
-    //     "url": "70bbc9",
-    //     "views": "9999",
-    //     "amount": "0.00",
-    //     "currency": "USD",
-    //     "end": "2017-11-14 17:40:35",
-    //     "active": "1",
-    //     "viewed": "0",
-    //     "total": null
-    //   },
-    //   {
-    //     "id": "50",
-    //     "name": "vpptoplogo",
-    //     "url": "9d15",
-    //     "views": "9999",
-    //     "amount": "0.00",
-    //     "currency": "USD",
-    //     "end": "2017-11-14 21:39:06",
-    //     "active": "1",
-    //     "viewed": "0",
-    //     "total": null
-    //   },
-    //   {
-    //     "id": "51",
-    //     "name": "botanic-garden-preview-1",
-    //     "url": "66917e",
-    //     "views": "9999",
-    //     "amount": "0.00",
-    //     "currency": "",
-    //     "end": "2017-11-14 23:56:05",
-    //     "active": "1",
-    //     "viewed": "0",
-    //     "total": null
-    //   },
-    //   {
-    //     "id": "52",
-    //     "name": "tenor",
-    //     "url": "66e9d520",
-    //     "views": "1",
-    //     "amount": "2.00",
-    //     "currency": "USD",
-    //     "end": "2017-11-15 00:05:12",
-    //     "active": "1",
-    //     "viewed": "0",
-    //     "total": "4.00"
-    //   },
-    //   {
-    //     "id": "53",
-    //     "name": "tenor",
-    //     "url": "614573b6",
-    //     "views": "1",
-    //     "amount": "0.00",
-    //     "currency": "",
-    //     "end": "2017-11-15 00:11:31",
-    //     "active": "1",
-    //     "viewed": "0",
-    //     "total": null
-    //   }
-    // ]
   }
 
   @action
@@ -123,20 +47,24 @@ class Uploads {
   extendItem(index) {
     const item = this.all[index]
 
-    this.all.replace([
-      ...this.all.slice(0, index),
-      {
-        ...this.all[index],
-        active: 1
-      },
-      ...this.all.slice(index + 1)
-    ])
-
     const formData = new FormData()
     formData.append(`extend[url]`, item.url)
 
     const API_URL = process.env.REACT_APP_API_URL
-    axios.post(`${API_URL}/actions/extend`, formData).catch(console.log)
+    axios
+      .post(`${API_URL}/actions/extend`, formData)
+      .then(res => {
+        this.all.replace([
+          ...this.all.slice(0, index),
+          {
+            ...this.all[index],
+            active: 1,
+            end: res.data.end
+          },
+          ...this.all.slice(index + 1)
+        ])
+      })
+      .catch(console.log)
   }
 
   @action
@@ -145,7 +73,10 @@ class Uploads {
       ...this.all.slice(0, index),
       {
         ...this.all[index],
-        actionDateToggle: state ? !this.all[index].copyActionToggle : state
+        actionDateToggle: state
+          ? !this.all[index].copyActionToggle ||
+            this.all[index].nameActionToggle
+          : state
       },
       ...this.all.slice(index + 1)
     ])
@@ -161,6 +92,40 @@ class Uploads {
       },
       ...this.all.slice(index + 1)
     ])
+  }
+
+  @action
+  setNamePopupAction = index => {
+    this.all.replace([
+      ...this.all.slice(0, index),
+      {
+        ...this.all[index],
+        nameActionToggle: !this.all[index].nameActionToggle
+      },
+      ...this.all.slice(index + 1)
+    ])
+  }
+
+  @action
+  setName = data => {
+    const item = this.all[data.index]
+
+    this.all.replace([
+      ...this.all.slice(0, data.index),
+      {
+        ...this.all[data.index],
+        name: data.name,
+        nameActionToggle: false
+      },
+      ...this.all.slice(data.index + 1)
+    ])
+
+    const formData = new FormData()
+    formData.append(`edit[name]`, data.name)
+    formData.append(`edit[url]`, item.url)
+
+    const API_URL = process.env.REACT_APP_API_URL
+    axios.post(`${API_URL}/actions/name`, formData).catch(console.log)
   }
 }
 
