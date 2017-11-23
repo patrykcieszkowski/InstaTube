@@ -22,6 +22,10 @@ export class Profile extends React.Component {
     this.state = state
   }
 
+  componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+  }
+
   onTextChange (type, e) {
     this.setState({
       ...this.state,

@@ -22,6 +22,10 @@ export class Auth extends React.Component {
     this.state = state
   }
 
+  componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+  }
+
   onTextChange (e) {
     this.setState({
       ...this.state,
@@ -48,11 +52,13 @@ export class Auth extends React.Component {
 
   render () {
     const remindResponse = this.props.auth.response.remind
-    const remindAlert = (remindResponse) ? remindResponse : (this.state.error) ? {
-      alert: 'danger',
-      content: this.state.error,
-      success: false
-    } : {}
+    const remindAlert = remindResponse || this.state.error
+        ? {
+          alert: 'danger',
+          content: this.state.error,
+          success: false
+        }
+        : {}
 
     return (
       <Container fluid>

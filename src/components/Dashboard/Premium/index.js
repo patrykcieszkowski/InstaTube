@@ -15,6 +15,10 @@ import PaymentHistory from './partials/PaymentHistory'
 @inject('premium', 'user')
 @observer
 export class Premium extends React.Component {
+  componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+  }
+
   onBuyPremiumClick (e) {
     e.preventDefault()
     this.props.premium.buy()

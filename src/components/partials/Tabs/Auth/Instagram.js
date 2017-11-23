@@ -30,6 +30,8 @@ export class InstagramAuth extends React.Component {
   }
 
   componentWillMount () {
+    document.title = `Instagram - ${this.props.homeTitle}`
+
     const hashParams = utils.parseHashParams(window.location.hash.substr(1))
 
     this.setState({

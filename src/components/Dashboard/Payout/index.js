@@ -14,6 +14,10 @@ import Withdraw from './partials/Withdraw'
 @inject('user', 'payouts')
 @observer
 export class Payout extends React.Component {
+  componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+  }
+
   onWithdrawClick (e) {
     e.preventDefault()
     this.props.payouts.withdraw().then(() => {
