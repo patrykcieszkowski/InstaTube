@@ -222,6 +222,37 @@ export class Upload extends React.Component {
     copyToClipboard(this.props.uploadform.response.url)
   }
 
+  onBackLinkClick (e) {
+    e.preventDefault()
+    this.setState({
+      filename: '',
+      message: '',
+      upload: {
+        file: null,
+        error: false
+      },
+      validity: {
+        hour: 0,
+        minute: 1
+      },
+      displayTime: 1,
+      links: {
+        instagram: false,
+        ppv: false
+      },
+      views: {
+        view: true,
+        number: 1
+      },
+      success: false,
+      viewTypes: {
+        ppv: 0,
+        instagram: ''
+      }
+    })
+    this.props.uploadform.reset()
+  }
+
   onResetStoreClick (e) {
     e.preventDefault()
     this.props.uploadform.reset()
@@ -238,6 +269,7 @@ export class Upload extends React.Component {
         <RenderProgress {...this.props.uploadform} />
         <RenderSuccess
           onCopyLinkClick={this.onCopyLinkClick.bind(this)}
+          onBackLinkClick={this.onBackLinkClick.bind(this)}
           {...this.props.uploadform}
         />
         <RenderUploadForm
@@ -292,9 +324,7 @@ const RenderSuccess = props => {
     return null
   }
 
-  return (
-    <Success onCopyLinkClick={props.onCopyLinkClick} url={props.response.url} />
-  )
+  return <Success {...props} url={props.response.url} />
 }
 
 const RenderUploadForm = props => {

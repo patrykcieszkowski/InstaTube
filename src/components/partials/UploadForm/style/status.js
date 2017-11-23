@@ -45,7 +45,7 @@ const stateStyle = {
     color: `#3f295a`
   },
   buttonWrapper: {
-    margin: `0`
+    margin: `5px 0`
   },
   button: {
     cursor: `pointer`,
@@ -55,6 +55,10 @@ const stateStyle = {
     fontSize: `18px`,
     fontWeight: `600`,
     width: `100%`
+  },
+  resetButton: {
+    background: `#fdc741`,
+    borderColor: `#fdc741`
   }
 }
 
