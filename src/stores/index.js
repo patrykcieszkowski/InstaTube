@@ -1,5 +1,6 @@
 import help from './Help'
 import about from './About'
+import rules from './Rules'
 import payments from './Payments'
 import uploads from './Uploads'
 import payouts from './Payouts'
@@ -14,6 +15,7 @@ import config from './Config'
 export default {
   help,
   about,
+  rules,
   payments,
   uploads,
   payouts,

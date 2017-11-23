@@ -29,6 +29,12 @@ export class HomeContainer extends React.Component {
         size: `xl`
       },
       {
+        title: 'Rules',
+        path: '/rules',
+        component: Components.partials.Tabs.Rules,
+        size: `xl`
+      },
+      {
         title: 'Login',
         path: '/auth',
         component: Components.partials.Tabs.Auth.Auth,

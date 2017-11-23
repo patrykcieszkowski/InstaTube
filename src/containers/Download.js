@@ -33,6 +33,12 @@ export class DownloadContainer extends React.Component {
         size: `lg`
       },
       {
+        title: 'Rules',
+        path: '/rules',
+        component: Components.partials.Tabs.Rules,
+        size: `lg`
+      },
+      {
         title: 'Login',
         path: '/auth',
         to: this.props.auth.auth.local ? '/dashboard' : null,

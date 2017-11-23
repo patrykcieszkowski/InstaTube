@@ -10,15 +10,16 @@ class App extends React.Component {
   componentDidMount () {
     stores.config.fetch()
     stores.about.fetch()
+    stores.rules.fetch()
     stores.help.fetch()
 
     if (stores.auth.auth.local) {
-      stores.auth.extend()      
+      stores.auth.extend()
       stores.user.fetchProfile()
       stores.user.fetchDashboard()
 
       setInterval(() => {
-        stores.auth.extend()      
+        stores.auth.extend()
         stores.user.fetchDashboard()
       }, 1000 * 60 * 5)
     }
@@ -43,8 +44,6 @@ class App extends React.Component {
       fjs.parentNode.insertBefore(js, fjs)
     })(document, 'script', 'facebook-jssdk')
   }
-
-
 
   render () {
     return (
