@@ -11,7 +11,7 @@ const style = {
     background: `rgba(255, 255, 255, 0.7)`,
     paddingTop: `170px`,
     '@media only screen and (min-width : 1200px)': {
-      padding: `0 100px`,
+      padding: `0 50px`,
       background: `none`,
       top: `auto`,
       left: `auto`,
@@ -22,6 +22,7 @@ const style = {
   },
   wrapper: {
     margin: 0,
+    padding: `0 50px`,
     '@media only screen and (min-width : 1200px)': {
       marginBottom: `80px`
     }
@@ -63,7 +64,7 @@ const style = {
     color: `#e1306c`
   },
   buttonUnlockBox: {
-    paddingTop: `20px`,
+    paddingTop: `10px`,
     paddingLeft: `25px`,
     paddingRight: `25px`,
     '@media only screen and (min-width : 1200px)': {
@@ -82,6 +83,23 @@ const style = {
     borderRadius: `5px`,
     '@media only screen and (min-width : 1200px)': {
       fontSize: `24px`
+    }
+  },
+  inputWrapper: {
+    paddingTop: `20px`,
+    paddingLeft: `35px`,
+    paddingRight: `35px`
+  },
+  input: {
+    width: `100%`,
+    display: `block`,
+    padding: `8px 15px`,
+    border: `2px solid #edf2f6`,
+    borderRadius: `5px`,
+    fontSize: `14px`,
+    background: `#edf2f6`,
+    '@media (min-width: 1200px)': {
+      background: `white`
     }
   }
 }

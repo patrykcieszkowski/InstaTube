@@ -2,15 +2,29 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
 
+import Payment from '../Payment'
+
 import style from './style'
 
-const Locked = props => (
-  <div
-    className={`${css(
-      style.container
-    )} d-xl-flex justify-content-xl-center align-items-xl-center flex-column`}
-  >
-    <Row className={css(style.wrapper)}>
+const Locked = props => {
+  return (
+    <div
+      className={`${css(
+        style.container
+      )} d-xl-flex justify-content-xl-center align-items-xl-center flex-column`}
+    >
+      <RenderPaymentStage {...props} />
+    </div>
+  )
+}
+
+const RenderPaymentStage = props => {
+  if (props.state.ppv) {
+    return <Payment {...props} />
+  }
+
+  return [
+    <Row className={css(style.wrapper)} key={0}>
       <Col xs='12' className={css(style.box)}>
         <i
           className={`la la-lock ${css(style.lockIcon)}`}
@@ -24,10 +38,10 @@ const Locked = props => (
           <span className={css(style.spanLockedColor)}>locked</span> by user
         </span>
       </Col>
-    </Row>
-    <RenderPaymentType {...props} />
-  </div>
-)
+    </Row>,
+    <RenderPaymentType {...props} key={1} />
+  ]
+}
 
 const RenderPaymentType = props => {
   if (props.media.instagram) {
@@ -60,7 +74,8 @@ const RenderPaymentType = props => {
         <span className={css(style.spanUnlock)}>
           You can easily unlock it by paying{' '}
           <span className={css(style.spanUnlockColor)}>
-            5.00{props.media.currency}
+            {props.media.amount}
+            {props.media.currency}
           </span>
         </span>
       </Col>
