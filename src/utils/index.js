@@ -33,13 +33,8 @@ const parseHashParams = hash => {
   }, {})
 }
 
-const formatBytes = bytes => {
-  return (bytes / 1073741824).toFixed(3) + ' GB'
-}
-
 export default {
   secondsToTime,
   isChildOf,
-  parseHashParams,
-  formatBytes
+  parseHashParams
 }
