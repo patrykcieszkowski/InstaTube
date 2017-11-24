@@ -26,20 +26,25 @@ export const Error = props => (
           style.status.col
         )} d-flex justify-content-center align-items-center`}
       >
-        <h4 className={css(style.status.h4)}>Uups! There was an error!</h4>
+        <RenderErrorHeader {...props} />
       </Col>
       <Col xs="1" className={css(style.status.col)} />
     </Row>
 
     <Row className={css(style.status.buttonWrapper)}>
-      <Button
-        className={css(style.status.button)}
-        onClick={props.onClick}
-      >
+      <Button className={css(style.status.button)} onClick={props.onClick}>
         Try again
       </Button>
     </Row>
   </Col>
 )
+
+const RenderErrorHeader = props => {
+  if (props.error) {
+    return <h4 className={css(style.status.h4)}>{props.error}</h4>
+  }
+
+  return <h4 className={css(style.status.h4)}>Uups! There was an error!</h4>
+}
 
 export default Error
