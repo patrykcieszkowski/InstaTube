@@ -38,7 +38,7 @@ const UserButtonLogged = props => (
       title="expand"
     />
     <i
-      className={`la la-angle-down ${css(
+      className={`la ${props.open ? `la-angle-up` : `la-angle-down`} ${css(
         style.button.icon,
         style.button.userButtonLoggedIcon,
         style.button.userButtonLoggedDropIcon
