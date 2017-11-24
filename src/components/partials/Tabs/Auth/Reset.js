@@ -58,7 +58,8 @@ export class Reset extends React.Component {
 
   render () {
     const resetResponse = this.props.auth.response.recovery
-    const resetAlert = resetResponse || this.state.error
+    const resetAlert =
+      resetResponse || this.state.error
         ? {
           alert: 'danger',
           content: this.state.error,
@@ -78,7 +79,7 @@ export class Reset extends React.Component {
           >
             <Row className={css(style.sider.box)} />
           </Column>
-          <Col xs='12' xl={6} className={css(style.content.wrapper)}>
+          <Col xs='10' xl={6} className={css(style.content.wrapper)}>
             <Row>
               <SidebarHeader title={`Reset Password`} md={false} paddingTop />
             </Row>

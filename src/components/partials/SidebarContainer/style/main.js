@@ -1,7 +1,8 @@
 export const mainStyle = {
   container: {
     background: 'white',
-    position: 'fixed',
+    position: 'absolute',
+    overflow: `hidden`,
     padding: `0`,
     boxShadow: `0px 0px 17px 0px rgba(0,0,0,0.15)`,
     top: `10px`,

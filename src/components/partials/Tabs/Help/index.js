@@ -6,7 +6,6 @@ import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
 import Column from '../../Col'
-import ScrollArea from '../../ScrollArea'
 import SidebarHeader from '../../SidebarHeader'
 import HelpBox from './partials/HelpBox'
 import style from './style'
@@ -56,15 +55,7 @@ export class Help extends React.Component {
                 paddingBottom
               />
             </Row>
-            <ScrollArea
-              style={{
-                width: '100%',
-                height: `calc(100% - 80px)`,
-                margin: 0,
-                overflowX: `hidden`
-              }}
-              className={'row'}
-            >
+            <Row>
               <Col style={{ paddingLeft: 0 }}>
                 <Row>
                   <RenderList
@@ -83,7 +74,7 @@ export class Help extends React.Component {
                   />
                 </Row>
               </Col>
-            </ScrollArea>
+            </Row>
           </Col>
         </Row>
       </Container>
