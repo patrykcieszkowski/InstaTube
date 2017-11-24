@@ -28,6 +28,7 @@ export class UserDropdown extends React.Component {
         <div>
           <UserButton
             logged={this.props.logged}
+            open={this.props.open}
             onClickHandler={this.props.onClickHandler}
           />
           {this.props.state.profileDropdownOpen}
