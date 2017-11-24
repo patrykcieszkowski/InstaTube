@@ -2,14 +2,9 @@ import { StyleSheet } from 'aphrodite'
 
 const style = {
   container: {
-    position: `absolute`,
     height: `100%`,
     width: `100%`,
-    top: `0px`,
-    left: `0px`,
-    margin: `0`,
-    background: `rgba(255, 255, 255, 0.7)`,
-    paddingTop: `170px`,
+    padding: `0 15px`,
     '@media only screen and (min-width : 1200px)': {
       padding: `0 50px`,
       background: `none`,
@@ -22,8 +17,8 @@ const style = {
   },
   wrapper: {
     margin: 0,
-    padding: `0 50px`,
     '@media only screen and (min-width : 1200px)': {
+      padding: `0 50px`,
       marginBottom: `80px`
     }
   },

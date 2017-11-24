@@ -23,10 +23,9 @@ const Payment = props => {
     <ScrollArea
       style={{
         width: `100%`,
-        height: `calc(100% - 80px)`,
-        overflowX: `hidden`
+        height: `100%`
       }}
-      renderClassName={`d-flex align-items-center justify-content-center row`}
+      renderClassName={`d-flex align-items-xl-center justify-content-xl-center`}
     >
       <Row style={{ margin: 0 }}>
         <Col xs='12' className={css(style.image.wrapper)}>
