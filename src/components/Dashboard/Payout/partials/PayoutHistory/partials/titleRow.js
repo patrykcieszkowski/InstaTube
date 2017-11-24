@@ -6,7 +6,7 @@ import style from '../../../style'
 
 export const PayoutHistoryTitles = props => (
   <Row>
-    <Col xs="1" />
+    <Col xs="1" className={`d-none d-xl-block`} />
     <Col xs="4">
       <span className={css(style.history.titleSpan)}>Status</span>
     </Col>

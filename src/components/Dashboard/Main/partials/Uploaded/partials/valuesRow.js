@@ -217,6 +217,7 @@ const NamepBlockColumn = ({ props }) => (
     xs='12'
     className={`${css(
       style.uploaded.popupBlock,
+      style.uploaded.popupNameBlock,
       props.item.nameActionToggle ? style.uploaded.popupBlockActive : ''
     )} d-flex align-items-center`}
   >
@@ -240,7 +241,7 @@ const NamepBlockColumn = ({ props }) => (
         xxxl='1'
         className={`${css(
           style.uploaded.actionIconBox
-        )} d-lg-flex align-items-center`}
+        )} d-none d-lg-flex align-items-center`}
       >
         <a href='#save' onClick={props.onNameSave}>
           <i
@@ -259,6 +260,7 @@ const NamepBlockColumn = ({ props }) => (
       </Column>
 
       <Column
+        xs='2'
         xl='auto'
         xxxl='1'
         className={`${css(
@@ -274,6 +276,7 @@ const NamepBlockColumn = ({ props }) => (
         </a>
       </Column>
       <Column
+        xs='2'
         xl='auto'
         xxxl='1'
         className={`${css(
@@ -313,6 +316,7 @@ const CopyBlockColumn = ({ props }) => (
       </Column>
 
       <Column
+        xs='2'
         xl='auto'
         xxxl='1'
         className={`${css(
@@ -328,6 +332,7 @@ const CopyBlockColumn = ({ props }) => (
         </a>
       </Column>
       <Column
+        xs='2'
         xl='auto'
         xxxl='1'
         className={`${css(
