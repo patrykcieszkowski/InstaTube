@@ -87,6 +87,14 @@ export const uploadedStyle = {
       top: 0
     }
   },
+  popupNameBlock: {
+    bottom: 'auto',
+    top: '28px',
+    '@media (min-width: 1200px)': {
+      bottom: 0,
+      top: 'auto'
+    }
+  },
   popupBlockActive: {
     transform: `none`,
     opacity: 1
@@ -116,7 +124,8 @@ export const uploadedStyle = {
   namePopupInput: {
     background: `white`,
     borderRadius: `2px 0`,
-    padding: `0 10px`
+    padding: `0 10px`,
+    direction: `ltr`
   },
   actionIconBox: {
     padding: 0
