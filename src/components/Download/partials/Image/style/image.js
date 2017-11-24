@@ -22,7 +22,10 @@ export const imageStyle = {
   },
   image: {
     width: `100%`,
-    borderRadius: `5px`
+    borderRadius: `5px`,
+    '@media print': {
+      opacity: 0
+    }
   },
   blur: {
     filter: `blur(3px)`

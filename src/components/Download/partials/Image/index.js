@@ -82,6 +82,7 @@ export class Image extends React.Component {
               style.image.image,
               this.props.blur ? style.image.blur : ''
             )}
+            style={{ opacity: +!this.state.fullscreen.show }}
           />
         </Col>
         <a

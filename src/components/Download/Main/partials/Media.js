@@ -40,7 +40,6 @@ const RenderTitle = props => {
 }
 
 const RenderMedia = props => {
-  console.log(props)
   switch (props.media.type) {
     case 'audio':
       return (

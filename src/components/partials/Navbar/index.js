@@ -43,11 +43,23 @@ export class NavbarComponent extends React.Component {
     const profileIconClick = () =>
       this.props.auth.auth.local
         ? this.toggleMenu('profileDropdown')
-        : this.props.history.push('/auth')
+        : this.props.history.push(
+            `${this.props.homePath}/auth`.replace('//', '/')
+          )
+
+    const profileIconClickMobile = () =>
+      this.props.auth.auth.local
+        ? this.toggleMenu('profile')
+        : this.props.history.push(
+            `${this.props.homePath}/auth`.replace('//', '/')
+          )
 
     return [
+      <Link to='/' key={0} className={css(style.logo.wrapper)}>
+        <img src='/img/logo.png' alt='logo' />
+      </Link>,
       <Navbar
-        key={0}
+        key={1}
         className={`${css(
           style.navbar.wrapper
         )} flex-xl-row-reverse flex-xl-nowrap justify-content-xl-center`}
@@ -66,7 +78,7 @@ export class NavbarComponent extends React.Component {
 
         <UserButton
           logged={this.props.auth.auth.local}
-          onClickHandler={this.toggleMenu.bind(this, 'profile')}
+          onClickHandler={profileIconClickMobile}
           className={`d-xl-none`}
         />
 
@@ -101,17 +113,25 @@ export class NavbarComponent extends React.Component {
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
+              <Link to='/dashboard/payout' className={css(style.collapse.link)}>
+                Payouts
+              </Link>
+            </NavItem>
+            <NavItem className={css(style.collapse.item)}>
+              <Link
+                to={`/dashboard/social`}
+                className={css(style.collapse.link)}
+              >
+                Social
+              </Link>
+            </NavItem>
+            <NavItem className={css(style.collapse.item)}>
               <Link
                 to={`/`}
                 onClick={this.onLogoutClick.bind(this)}
                 className={css(style.collapse.link)}
               >
                 Logout
-              </Link>
-            </NavItem>
-            <NavItem className={css(style.collapse.item)}>
-              <Link to='/dashboard/payout' className={css(style.collapse.link)}>
-                Payouts
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
@@ -194,7 +214,7 @@ export class NavbarComponent extends React.Component {
         </Collapse>
       </Navbar>,
       <div
-        key={1}
+        key={2}
         className={css(this.props.bg ? style.navbar.backgroundBlock : '')}
       />
     ]

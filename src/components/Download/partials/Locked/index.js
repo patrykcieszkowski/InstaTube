@@ -11,7 +11,7 @@ const Locked = props => {
     <div
       className={`${css(
         style.container
-      )} d-xl-flex justify-content-xl-center align-items-xl-center flex-column`}
+      )} d-flex justify-content-center align-items-center flex-column`}
     >
       <RenderPaymentStage {...props} />
     </div>
@@ -61,7 +61,7 @@ const RenderPaymentType = props => {
             onClick={props.onPPIClick}
             className={css(style.buttonUnlock)}
           >
-            PayByLike
+            Follow For View
           </a>
         </Col>
       </Row>

@@ -8,45 +8,45 @@ import style from '../style'
 export const PaymentForm = props => (
   <Form className={css(style.form.form)} onSubmit={props.onFormSubmit}>
     <Row className={css(style.form.row)}>
-      <Col xs='12' xl='6' className={css(style.inputs.wrapper)}>
+      <Col xs="12" xl="6" className={css(style.inputs.wrapper)}>
         <Input
-          placeholder='Full Name'
+          placeholder="Full Name"
           className={css(style.inputs.input)}
           name={`name`}
           value={props.state.name}
           onChange={props.onTextChange}
         />
       </Col>
-      <Col xs='12' xl='6' className={css(style.inputs.wrapper)}>
+      <Col xs="12" xl="6" className={css(style.inputs.wrapper)}>
         <Input
-          placeholder='Email'
+          placeholder="Email"
           className={css(style.inputs.input)}
           name={`email`}
           value={props.state.email}
           onChange={props.onTextChange}
         />
       </Col>
-      <Col xs='12' className={css(style.inputs.wrapper)}>
+      <Col xs="12" className={css(style.inputs.wrapper)}>
         <Input
-          placeholder='Card Number'
+          placeholder="Card Number"
           className={css(style.inputs.input)}
           name={`number`}
           value={props.state.number}
           onChange={props.onTextChange}
         />
       </Col>
-      <Col xs='12' xl='3' className={css(style.inputs.wrapper)}>
+      <Col xs="6" xl="3" className={css(style.inputs.wrapper)}>
         <Input
-          placeholder='MM'
+          placeholder="MM"
           className={css(style.inputs.input, style.inputs.center)}
           name={`mm`}
           value={props.state.mm}
           onChange={props.onTextChange}
         />
       </Col>
-      <Col xs='12' xl='3' className={css(style.inputs.wrapper)}>
+      <Col xs="6" xl="3" className={css(style.inputs.wrapper)}>
         <Input
-          placeholder='YY'
+          placeholder="YY"
           className={css(style.inputs.input, style.inputs.center)}
           name={`yy`}
           value={props.state.yy}
@@ -55,9 +55,9 @@ export const PaymentForm = props => (
       </Col>
       <Col />
 
-      <Col xs='12' xl='3' className={css(style.inputs.wrapper)}>
+      <Col xs="12" xl="3" className={css(style.inputs.wrapper)}>
         <Input
-          placeholder='CCV'
+          placeholder="CCV"
           className={css(style.inputs.input, style.inputs.center)}
           name={`ccv`}
           value={props.state.ccv}
@@ -68,14 +68,14 @@ export const PaymentForm = props => (
 
     <FormGroup>
       <input
-        type='checkbox'
-        id='payment_rules_checkbox'
+        type="checkbox"
+        id="payment_rules_checkbox"
         checked={props.state.rules}
         onChange={props.onRulesClick}
         className={css(style.checkbox.checkbox)}
       />
       <label
-        htmlFor='payment_rules_checkbox'
+        htmlFor="payment_rules_checkbox"
         className={css(style.checkbox.label)}
       >
         <span
@@ -84,7 +84,7 @@ export const PaymentForm = props => (
           )}
         >
           I accept the{' '}
-          <Link to='/rules' className={css(style.checkbox.link)}>
+          <Link to="/rules" className={css(style.checkbox.link)}>
             rules
           </Link>{' '}
           on the site

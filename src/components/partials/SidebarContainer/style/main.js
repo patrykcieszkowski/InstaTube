@@ -10,7 +10,10 @@ export const mainStyle = {
     right: `0`,
     transition: `all 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
     transform: `translate3d(100%, 0, 0)`,
-    marginTop: `80px`
+    marginTop: `130px`,
+    '@media only screen and (min-width : 1200px)': {
+      marginTop: `80px`
+    }
   },
   stickToTop: {
     top: `0px`,
