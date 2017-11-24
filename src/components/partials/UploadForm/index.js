@@ -22,7 +22,7 @@ const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
 @inject('uploadform', 'uploads', 'auth')
 @observer
 export class Upload extends React.Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       filename: '',
@@ -52,7 +52,7 @@ export class Upload extends React.Component {
     }
   }
 
-  onDropRejected (files) {
+  onDropRejected(files) {
     this.setState({
       ...this.state,
       upload: {
@@ -64,7 +64,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onDropAccepted (files) {
+  onDropAccepted(files) {
     this.setState({
       ...this.state,
       upload: {
@@ -74,21 +74,21 @@ export class Upload extends React.Component {
     })
   }
 
-  onFilenameChange (e) {
+  onFilenameChange(e) {
     this.setState({
       ...this.state,
       filename: e.target.value
     })
   }
 
-  onMessageChange (e) {
+  onMessageChange(e) {
     this.setState({
       ...this.state,
       message: e.target.value
     })
   }
 
-  toggleCheckbox () {
+  toggleCheckbox() {
     this.setState({
       ...this.state,
       views: {
@@ -98,7 +98,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onValidityChange (type, e) {
+  onValidityChange(type, e) {
     this.setState({
       ...this.state,
       validity: {
@@ -108,14 +108,14 @@ export class Upload extends React.Component {
     })
   }
 
-  onDisplayTimeChange (e) {
+  onDisplayTimeChange(e) {
     this.setState({
       ...this.state,
       displayTime: e.target.value
     })
   }
 
-  onLinkClick (type, e) {
+  onLinkClick(type, e) {
     if (!this.props.dashboard) {
       return
     }
@@ -135,7 +135,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onViewsNumberChange (e) {
+  onViewsNumberChange(e) {
     if (e.target.value !== '' && !e.target.value.match(/^\d+$/)) {
       return e.preventDefault()
     }
@@ -152,7 +152,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onPPVInputChange (e) {
+  onPPVInputChange(e) {
     if (e.target.value !== '' && !e.target.value.match(/^(\d+\.?\d*|\.\d+)$/)) {
       return e.preventDefault()
     }
@@ -166,7 +166,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onInstagramInputChange (e) {
+  onInstagramInputChange(e) {
     this.setState({
       ...this.state,
       viewTypes: {
@@ -176,7 +176,7 @@ export class Upload extends React.Component {
     })
   }
 
-  onInstagramSelectChange (option) {
+  onInstagramSelectChange(option) {
     this.setState({
       ...this.state,
       viewTypes: {
@@ -186,25 +186,30 @@ export class Upload extends React.Component {
     })
   }
 
-  onFormSubmit (e) {
+  onFormSubmit(e) {
     e.preventDefault()
 
     this.props.uploadform
       .upload(
-      {
-        message: this.state.message,
-        views: this.state.views,
-        viewType: this.state.viewTypes,
-        displayTime: this.state.displayTime,
-        validity: this.state.validity,
-        viewTypes: this.state.viewTypes
-      },
+        {
+          message: this.state.message,
+          views: this.state.views,
+          viewType: this.state.viewTypes,
+          displayTime: this.state.displayTime,
+          validity: this.state.validity,
+          viewTypes: this.state.viewTypes
+        },
         this.state.upload.file
       )
-      .then(() => this.props.uploads.fetch())
+      .then(() => {
+        if (this.props.auth.auth.local) {
+          this.props.uploads.fetch()
+          this.props.user.fetchDashboard()
+        }
+      })
   }
 
-  onCopyLinkClick (e) {
+  onCopyLinkClick(e) {
     e.preventDefault()
 
     if (!this.props.uploadform.response) {
@@ -214,7 +219,7 @@ export class Upload extends React.Component {
     copyToClipboard(this.props.uploadform.response.url)
   }
 
-  onBackLinkClick (e) {
+  onBackLinkClick(e) {
     e.preventDefault()
     this.setState({
       filename: '',
@@ -245,12 +250,12 @@ export class Upload extends React.Component {
     this.props.uploadform.reset()
   }
 
-  onResetStoreClick (e) {
+  onResetStoreClick(e) {
     e.preventDefault()
     this.props.uploadform.reset()
   }
 
-  render () {
+  render() {
     return (
       <Row className={css(style.main.wrapper)}>
         <RenderError

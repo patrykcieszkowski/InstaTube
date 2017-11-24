@@ -22,6 +22,7 @@ export class Premium extends React.Component {
   onBuyPremiumClick (e) {
     e.preventDefault()
     this.props.premium.buy()
+    this.props.user.fetchDashboard()
   }
 
   render () {
