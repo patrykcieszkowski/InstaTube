@@ -1,6 +1,7 @@
 export const mainStyle = {
   wrapper: {
-    position: `relative`
+    position: `relative`,
+    overflowY: `hidden`
   },
   noPadding: {
     padding: `0px`
