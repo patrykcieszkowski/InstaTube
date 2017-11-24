@@ -62,6 +62,11 @@ const buttonStyle = {
       fontSize: `13px`
     }
   },
+  instagramWrapper: {
+    '@media (min-width: 1200px)': {
+      paddingLeft: `2px`
+    }
+  },
   instagram: {
     cursor: `pointer`,
     backgroundColor: `#cd486b`,

@@ -1,4 +1,3 @@
-/* global FB */
 import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row, Col } from 'reactstrap'
@@ -70,13 +69,12 @@ export class Auth extends React.Component {
   onFacebookLogin (e) {
     e.preventDefault()
 
-    FB.login(res => {
-      this.props.auth.setAuthenticationStatus(
-        'facebook',
-        res.authResponse.accessToken
-      )
-      this.props.auth.validateFacebookToken()
-    })
+    console.log(this.props.config.facebook.url)
+    if (!this.props.config.facebook) {
+      return
+    }
+
+    window.location.href = this.props.config.facebook.url
   }
 
   onInstagramLogin (e) {
@@ -138,7 +136,7 @@ export class Auth extends React.Component {
   render () {
     const loginResponse = this.props.auth.response.login
     const loginAlert =
-      loginResponse ? loginResponse : this.state.login.error
+      loginResponse || this.state.login.error
         ? {
           alert: 'danger',
           content: this.state.login.error,
@@ -148,7 +146,7 @@ export class Auth extends React.Component {
 
     const registerResponse = this.props.auth.response.register
     const registerAlert =
-      registerResponse ? registerResponse : this.state.register.error
+      registerResponse || this.state.register.error
         ? {
           alert: 'danger',
           content: this.state.register.error,
