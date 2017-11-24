@@ -52,7 +52,8 @@ export class Auth extends React.Component {
 
   render () {
     const remindResponse = this.props.auth.response.remind
-    const remindAlert = remindResponse || this.state.error
+    const remindAlert =
+      remindResponse || this.state.error
         ? {
           alert: 'danger',
           content: this.state.error,
@@ -72,7 +73,7 @@ export class Auth extends React.Component {
           >
             <Row className={css(style.sider.box)} />
           </Column>
-          <Col xs='12' xl={6} className={css(style.content.wrapper)}>
+          <Col xs='10' xl={6} className={css(style.content.wrapper)}>
             <Row>
               <SidebarHeader title={`Remind Password`} md={false} paddingTop />
             </Row>

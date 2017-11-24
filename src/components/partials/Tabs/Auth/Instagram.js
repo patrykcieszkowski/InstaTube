@@ -9,7 +9,6 @@ import { inject, observer } from 'mobx-react'
 import style from './style'
 import utils from '../../../../utils'
 
-import ScrollArea from '../../ScrollArea'
 import SidebarHeader from '../../SidebarHeader'
 import Column from '../../Col'
 import Alert from '../../FormAlert'
@@ -121,13 +120,10 @@ export class InstagramAuth extends React.Component {
         <Row className={css(style.main.wrapper)}>
           <RenderSider {...this.props} />
           <Col className={css(style.content.wrapper)}>
-            <ScrollArea
-              style={{ width: '100%', height: `100%` }}
-              renderClassName='row'
-            >
+            <Row>
               <Column
-                xs='12'
-                xl='12'
+                xs='10'
+                xl='10'
                 xxl='6'
                 xxxl='5'
                 xxxxl='5'
@@ -153,7 +149,7 @@ export class InstagramAuth extends React.Component {
                   rulesValue={this.state.register.rules}
                 />
               </Column>
-            </ScrollArea>
+            </Row>
           </Col>
         </Row>
       </Container>

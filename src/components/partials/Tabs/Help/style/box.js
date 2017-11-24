@@ -33,7 +33,8 @@ export const boxStyle = {
   },
   content: {
     paddingTop: `10px`,
-    transition: `0.5s`
+    transition: `0.5s`,
+    overflow: `hidden`
   },
   p: {
     color: `#1c1c1d`,

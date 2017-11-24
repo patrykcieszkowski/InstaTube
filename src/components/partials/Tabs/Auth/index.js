@@ -12,7 +12,6 @@ import Column from '../../Col'
 
 import Alert from '../../FormAlert'
 import SidebarHeader from '../../SidebarHeader'
-import ScrollArea from '../../ScrollArea'
 import LoginForm from './partials/LoginForm'
 import RegisterForm from './partials/RegisterForm'
 
@@ -138,7 +137,8 @@ export class Auth extends React.Component {
 
   render () {
     const loginResponse = this.props.auth.response.login
-    const loginAlert = loginResponse || this.state.login.error
+    const loginAlert =
+      loginResponse || this.state.login.error
         ? {
           alert: 'danger',
           content: this.state.login.error,
@@ -147,7 +147,8 @@ export class Auth extends React.Component {
         : {}
 
     const registerResponse = this.props.auth.response.register
-    const registerAlert = registerResponse || this.state.register.error
+    const registerAlert =
+      registerResponse || this.state.register.error
         ? {
           alert: 'danger',
           content: this.state.register.error,
@@ -160,10 +161,7 @@ export class Auth extends React.Component {
         <Row className={css(style.main.wrapper)}>
           <RenderSider {...this.props} />
           <Col className={css(style.content.wrapper)}>
-            <ScrollArea
-              style={{ width: '100%', height: `100%` }}
-              renderClassName='row'
-            >
+            <Row>
               <Column
                 xs='12'
                 xl='12'
@@ -208,7 +206,7 @@ export class Auth extends React.Component {
                   rulesValue={this.state.register.rules}
                 />
               </Column>
-            </ScrollArea>
+            </Row>
           </Col>
         </Row>
       </Container>
