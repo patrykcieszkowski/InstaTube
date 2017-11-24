@@ -18,17 +18,18 @@ import RegisterInstagramForm from './partials/RegisterInstagramForm'
 @inject('auth')
 @observer
 export class InstagramAuth extends React.Component {
-  constructor() {
+  constructor () {
     super()
     const state = {
       register: {
-        error: null
+        error: null,
+        rules: false
       }
     }
     this.state = state
   }
 
-  componentWillMount() {
+  componentWillMount () {
     const hashParams = utils.parseHashParams(window.location.hash.substr(1))
 
     this.setState({
@@ -41,7 +42,7 @@ export class InstagramAuth extends React.Component {
     }
   }
 
-  onTextChange(type, e) {
+  onTextChange (type, e) {
     this.setState({
       ...this.state,
       [type]: {
@@ -51,8 +52,20 @@ export class InstagramAuth extends React.Component {
     })
   }
 
-  onRegisterFormSubmit(e) {
+  onRegisterFormSubmit (e) {
     e.preventDefault()
+
+    if (!this.state.register.rules) {
+      this.setState({
+        ...this.state,
+        register: {
+          ...(this.state.register || {}),
+          error: `You have to accept the rules!`
+        }
+      })
+
+      return
+    }
 
     if (
       !this.state.register.email ||
@@ -78,19 +91,28 @@ export class InstagramAuth extends React.Component {
     })
   }
 
-  render() {
+  onRulesClick (e) {
+    e.preventDefault()
+    this.setState({
+      ...this.state,
+      register: {
+        ...this.state.register,
+        rules: !this.state.register.rules
+      }
+    })
+  }
+
+  render () {
     if (!this.state.hashParams.instagram_token) {
-      return <Redirect to="/" />
+      return <Redirect to='/' />
     }
 
     const registerResponse = this.props.auth.response.register
-    const registerAlert = registerResponse
-      ? registerResponse
-      : {
-          success: false,
-          alert: 'danger',
-          content: this.state.register.error
-        }
+    const registerAlert = registerResponse || {
+      success: false,
+      alert: 'danger',
+      content: this.state.register.error
+    }
 
     return (
       <Container fluid>
@@ -99,14 +121,14 @@ export class InstagramAuth extends React.Component {
           <Col className={css(style.content.wrapper)}>
             <ScrollArea
               style={{ width: '100%', height: `100%` }}
-              renderClassName="row"
+              renderClassName='row'
             >
               <Column
-                xs="12"
-                xl="12"
-                xxl="6"
-                xxxl="5"
-                xxxxl="5"
+                xs='12'
+                xl='12'
+                xxl='6'
+                xxxl='5'
+                xxxxl='5'
                 className={css(style.content.colWrapper)}
               >
                 <Row>
@@ -125,6 +147,8 @@ export class InstagramAuth extends React.Component {
                 <RegisterInstagramForm
                   onTextChange={this.onTextChange.bind(this, 'register')}
                   onSubmit={this.onRegisterFormSubmit.bind(this)}
+                  onRulesClick={this.onRulesClick.bind(this)}
+                  rulesValue={this.state.register.rules}
                 />
               </Column>
             </ScrollArea>
@@ -146,8 +170,8 @@ const RenderSider = props => {
 
   return (
     <Column
-      xl="auto"
-      xxxxl="3"
+      xl='auto'
+      xxxxl='3'
       className={`d-none d-xl-flex ${css(style.sider.wrapper)}`}
     >
       <Row className={`${css(style.sider.box)}`} />

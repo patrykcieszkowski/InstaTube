@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
-import utils from '../../../utils'
-
 import UserButton from './partials/userButton'
 import UserDropdown from './partials/UserDropdown'
 
@@ -44,7 +42,7 @@ export class NavbarComponent extends React.Component {
   render () {
     const profileIconClick = () =>
       this.props.auth.auth.local
-        ? this.toggleMenu.call(this, 'profileDropdown')
+        ? this.toggleMenu('profileDropdown')
         : this.props.history.push('/auth')
 
     return [
@@ -117,7 +115,9 @@ export class NavbarComponent extends React.Component {
               </Link>
             </NavItem>
             <NavItem className={css(style.collapse.item)}>
-              <span>Transfer available: { utils.formatBytes(+this.props.user.dashboard.data.space) }</span>
+              <span>
+                Transfer available: {this.props.user.dashboard.data.space} GB
+              </span>
             </NavItem>
           </Nav>
         </Collapse>
@@ -237,7 +237,7 @@ const RenderTransferBox = props => {
       <span className={css(style.navbar.transferSpan)}>
         Transfer available:{' '}
         <span className={css(style.navbar.transferSpanAmount)}>
-        { utils.formatBytes(+props.user.dashboard.data.space) }
+          {props.user.dashboard.data.space} GB
         </span>
       </span>
     </div>

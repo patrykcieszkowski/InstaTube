@@ -4,6 +4,10 @@ import axios from 'axios'
 
 class Media {
   @observable media = null
+  @observable
+  payment = {
+    response: null
+  }
   @observable error = null
 
   @observable

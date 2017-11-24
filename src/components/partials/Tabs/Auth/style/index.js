@@ -9,6 +9,7 @@ import sider from './sider'
 import login from './login'
 import main from './main'
 import content from './content'
+import checkbox from './checkbox'
 
 export default {
   inputs: StyleSheet.create(inputs),
@@ -19,5 +20,6 @@ export default {
   sider: StyleSheet.create(sider),
   login: StyleSheet.create(login),
   main: StyleSheet.create(main),
-  content: StyleSheet.create(content)
+  content: StyleSheet.create(content),
+  checkbox: StyleSheet.create(checkbox)
 }

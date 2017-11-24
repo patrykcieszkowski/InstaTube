@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Form, FormGroup, Input, Button, Col } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 import style from '../style'
 
@@ -35,6 +36,31 @@ export const RegisterForm = props => (
       />
     </FormGroup>
 
+    <FormGroup>
+      <input
+        type='checkbox'
+        id='register_rules_checkbox'
+        checked={props.rulesValue}
+        onChange={props.onRulesClick}
+        className={css(style.checkbox.checkbox)}
+      />
+      <label
+        htmlFor='register_rules_checkbox'
+        className={css(style.checkbox.label)}
+      >
+        <span
+          className={css(
+            props.rulesValue ? style.checkbox.spanChecked : style.checkbox.span
+          )}
+        >
+          I accept the{' '}
+          <Link to='/rules' className={css(style.checkbox.link)}>
+            rules
+          </Link>{' '}
+          on the site
+        </span>
+      </label>
+    </FormGroup>
     <FormGroup className={css(style.form.group)}>
       <Col xs='12' xl='6' style={{ padding: 0 }}>
         <Button

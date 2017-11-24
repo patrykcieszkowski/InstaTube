@@ -44,6 +44,12 @@ export class DashboardContiner extends React.Component {
         size: 'lg'
       },
       {
+        title: 'Rules',
+        path: '/rules',
+        component: Components.partials.Tabs.Rules,
+        size: 'lg'
+      },
+      {
         title: 'Profile',
         path: '/profile',
         component: Components.Dashboard.Profile,
