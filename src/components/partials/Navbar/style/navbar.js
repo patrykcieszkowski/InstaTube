@@ -19,9 +19,12 @@ export const navbarStyle = {
     display: `block`,
     top: 0,
     left: 0,
-    height: `80px`,
+    height: `130px`,
     width: `100%`,
-    backgroundColor: `white`
+    backgroundColor: `white`,
+    '@media only screen and (min-width : 1200px)': {
+      height: `80px`
+    }
   },
   userButtonBox: {
     margin: `0px 10px`,
