@@ -246,6 +246,12 @@ class Auth {
         }
       })
       .catch(err => {
+        this.auth = {
+          facebook: null,
+          instagram: null,
+          local: false
+        }
+
         this.response = {
           login: null,
           register: err.response.data,
