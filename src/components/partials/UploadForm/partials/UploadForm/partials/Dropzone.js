@@ -10,7 +10,7 @@ const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
 const RenderDropzone = props => (
   <FormGroup className={css(style.form.group)}>
     <Dropzone
-      maxSize={20000000}
+      maxSize={2000000000}
       accept={ATTR_ACCEPT_ALL}
       multiple={false}
       onDropRejected={props.onDropRejected}
