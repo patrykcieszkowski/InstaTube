@@ -1,6 +1,8 @@
 const stateStyle = {
   col: {
-    padding: 0
+    '@media (min-width: 1200px)': {
+      padding: 0
+    }
   },
   wrapper: {
     padding: 0
@@ -25,7 +27,11 @@ const stateStyle = {
     color: `white`,
     fontSize: `24px`,
     fontWeight: `600`,
-    margin: 0
+    margin: 0,
+    textAlign: `center`,
+    '@media (min-width: 1200px)': {
+      textAlign: `left`
+    }
   },
   icon: {
     color: `white`,

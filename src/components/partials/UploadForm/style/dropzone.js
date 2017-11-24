@@ -20,6 +20,7 @@ export const dropzoneBoxStyle = {
     height: `54px`,
     width: `54px`,
     margin: `10px 5px`,
+    flexShrink: 0,
     backgroundColor: `#e1306c`
   },
   buttonIcon: {

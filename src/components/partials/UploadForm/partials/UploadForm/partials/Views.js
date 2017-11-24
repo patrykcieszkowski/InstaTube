@@ -25,7 +25,11 @@ const RenderViews = props => (
           disabled={props.state.views.view}
         />
       </Col>
-      <Col className='d-flex flex-column justify-content-center'>
+      <Col
+        className={`d-flex flex-column justify-content-center ${css(
+          style.views.checkboxWrapper
+        )}`}
+      >
         <input
           type='checkbox'
           id='views_checkbox'

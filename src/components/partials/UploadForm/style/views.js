@@ -1,5 +1,5 @@
 export const viewStyleSpan = {
-  fontSize: `18px`,
+  fontSize: `16px`,
   fontWeight: `100`,
   display: `inline-block`,
   color: `#3f295a`,
@@ -16,6 +16,9 @@ export const viewStyleSpan = {
     color: `white`,
     borderRadius: `4px`,
     cursor: `pointer`
+  },
+  '@media (min-width: 1200px)': {
+    fontSize: `18px`
   }
 }
 
@@ -66,6 +69,12 @@ const viewsStyle = {
     },
     ':-ms-input-placeholder': {
       color: `#e1306c`
+    }
+  },
+  checkboxWrapper: {
+    paddingLeft: `5px`,
+    '@media (min-width: 1200px)': {
+      paddingLeft: `15px`
     }
   },
   checkbox: {

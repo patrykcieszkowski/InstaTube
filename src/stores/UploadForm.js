@@ -46,7 +46,7 @@ class UploadForm {
         })
         .catch(err => {
           this.request = null
-          this.error = err.response ? err.response.data : null
+          this.error = err.response ? err.response.data.content : null
           this.progress = 0
           return reject(err)
         })

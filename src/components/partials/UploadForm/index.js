@@ -188,14 +188,6 @@ export class Upload extends React.Component {
 
   onFormSubmit (e) {
     e.preventDefault()
-    if (!this.state.upload.file) {
-      return this.setState({
-        upload: {
-          file: null,
-          error: 'You need to upload the file'
-        }
-      })
-    }
 
     this.props.uploadform
       .upload(
