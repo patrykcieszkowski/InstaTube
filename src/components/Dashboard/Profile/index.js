@@ -63,25 +63,17 @@ export class Profile extends React.Component {
         <Row>
           <SidebarHeader title='Profile' paddingBottom md />
         </Row>
-        <ScrollArea
-          style={{
-            width: `100%`,
-            height: `calc(100% - 80px)`,
-            overflowX: `hidden`
-          }}
-        >
-          <Alert {...this.props.user.profile.response} />
-          <SettingsForm
-            profile={this.props.user.profile.data}
-            onTextChange={this.onTextChange.bind(this, 'settings')}
-            onFormSubmit={this.onSettingsFormSubmit.bind(this)}
-          />
-          <Alert {...this.props.user.password.response} />
-          <PasswordForm
-            onTextChange={this.onTextChange.bind(this, 'password')}
-            onFormSubmit={this.onPasswordFormSubmit.bind(this)}
-          />
-        </ScrollArea>
+        <Alert {...this.props.user.profile.response} />
+        <SettingsForm
+          profile={this.props.user.profile.data}
+          onTextChange={this.onTextChange.bind(this, 'settings')}
+          onFormSubmit={this.onSettingsFormSubmit.bind(this)}
+        />
+        <Alert {...this.props.user.password.response} />
+        <PasswordForm
+          onTextChange={this.onTextChange.bind(this, 'password')}
+          onFormSubmit={this.onPasswordFormSubmit.bind(this)}
+        />
       </Container>
     )
   }
