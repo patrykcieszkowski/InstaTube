@@ -9,23 +9,41 @@ const RenderLinks = props => (
   <FormGroup className={css(style.form.group, style.links.box)}>
     <Row className={css(style.form.row)}>
       <Col
-        xs="7"
-        className={css(style.links.wrapper, style.links.instagramLinkWrapper)}
+        xs='7'
+        className={`${css(
+          style.links.wrapper,
+          style.links.instagramLinkWrapper
+        )} d-flex justify-content-center align-items-center`}
       >
         <Link
-          to="/auth"
+          to='/auth'
           onClick={props.onInstagramClick}
-          className={css(
+          className={`${css(
             style.links.link,
             props.state.links.instagram ? style.links.active : ''
-          )}
+          )} d-block d-xl-none`}
         >
-          Instagram follow for view
+          Instagram
+        </Link>
+        <Link
+          to='/auth'
+          onClick={props.onInstagramClick}
+          className={`${css(
+            style.links.link,
+            props.state.links.instagram ? style.links.active : ''
+          )} d-none d-xl-block`}
+        >
+          Instagram follow per view
         </Link>
       </Col>
-      <Col className={css(style.links.wrapper, style.links.PPVLinkWrapper)}>
+      <Col
+        className={`${css(
+          style.links.wrapper,
+          style.links.PPVLinkWrapper
+        )} d-flex justify-content-center align-items-center`}
+      >
         <Link
-          to="/auth"
+          to='/auth'
           onClick={props.onPPVClick}
           className={css(
             style.links.link,
