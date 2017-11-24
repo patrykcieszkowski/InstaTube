@@ -70,7 +70,9 @@ export class NavbarComponent extends React.Component {
           onClick={this.toggleMenu.bind(this, 'main')}
         >
           <i
-            className={`la la-bars ${css(style.button.icon)}`}
+            className={`la ${this.state.mainOpen
+              ? `la-close`
+              : `la-bars`} ${css(style.button.icon)}`}
             aria-hidden='true'
             title='expand'
           />
@@ -78,6 +80,7 @@ export class NavbarComponent extends React.Component {
 
         <UserButton
           logged={this.props.auth.auth.local}
+          open={this.state.profileOpen}
           onClickHandler={profileIconClickMobile}
           className={`d-xl-none`}
         />
@@ -88,6 +91,7 @@ export class NavbarComponent extends React.Component {
             {...this.props}
             state={this.state}
             logged={this.props.auth.auth.local}
+            open={this.state.profileDropdownOpen}
             onClickHandler={profileIconClick}
             onLogoutClick={this.onLogoutClick.bind(this)}
           />
