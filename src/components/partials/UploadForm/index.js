@@ -29,7 +29,7 @@ export class Upload extends React.Component {
       message: '',
       upload: {
         file: null,
-        error: false
+        error: null
       },
       validity: {
         hour: 0,
@@ -189,6 +189,21 @@ export class Upload extends React.Component {
   onFormSubmit (e) {
     e.preventDefault()
 
+    if (!this.state.upload.file && (
+      this.state.viewTypes.ppv > 0
+      || this.state.viewTypes.instagram !== ''
+      || this.state.links.instagram
+      || this.state.links.ppv
+    ))
+    {
+      return this.setState({
+        upload: {
+          file: null,
+          error: 'You can\'t use PPV options without uploading the file.'
+        }
+      })
+    }
+
     this.props.uploadform
       .upload(
       {
@@ -256,7 +271,7 @@ export class Upload extends React.Component {
         <RenderError
           onClick={this.onResetStoreClick.bind(this)}
           {...this.props.uploadform}
-          error={this.props.uploadform.error || this.state.upload.error}
+          error={this.props.uploadform.error}
         />
         <RenderProgress {...this.props.uploadform} />
         <RenderSuccess
@@ -267,6 +282,7 @@ export class Upload extends React.Component {
         <RenderUploadForm
           request={this.props.uploadform.request}
           response={this.props.uploadform.response}
+          stateError={this.state.upload.error}
           error={this.props.uploadform.error}
           currency={this.props.currency}
           authState={this.props.auth.auth.local}

@@ -5,19 +5,19 @@ import { FormGroup, Col, Row } from 'reactstrap'
 import style from '../../../style'
 
 const RenderError = props => {
-  if (!props.error) {
+  if (!props.stateError) {
     return null
   }
 
   return (
     <FormGroup
       className={css(style.form.group)}
-      style={{ display: !props.error ? `none` : `block` }}
+      style={{ display: !props.stateError ? `none` : `block` }}
     >
       <Row className={css(style.errors.fileErrorWrapper)}>
         <Col className={css(style.errors.fileErrorBox)} xs="10">
           <span className={css(style.errors.fileErrorSpan)}>
-            {props.error}
+            {props.stateError}
           </span>
         </Col>
         <Col>
