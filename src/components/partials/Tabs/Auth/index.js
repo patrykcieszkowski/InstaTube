@@ -138,7 +138,7 @@ export class Auth extends React.Component {
   render () {
     const loginResponse = this.props.auth.response.login
     const loginAlert =
-      loginResponse || this.state.login.error
+      loginResponse ? loginResponse : this.state.login.error
         ? {
           alert: 'danger',
           content: this.state.login.error,
@@ -148,7 +148,7 @@ export class Auth extends React.Component {
 
     const registerResponse = this.props.auth.response.register
     const registerAlert =
-      registerResponse || this.state.register.error
+      registerResponse ? registerResponse : this.state.register.error
         ? {
           alert: 'danger',
           content: this.state.register.error,
