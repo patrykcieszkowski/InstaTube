@@ -11,7 +11,7 @@ export const DashboardHeader = props => {
       <Row>
         <Col className={`d-none d-xl-flex`}>
           <span className={css(style.header.welcomeMessage)}>
-            We are happy to see you again {`${props.name} ${props.surname}`}
+            We are happy to see you again{ props.name && props.surname ? ` ${props.name} ${props.surname}` : '!' }
           </span>
         </Col>
         <Col
