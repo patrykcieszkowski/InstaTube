@@ -7,7 +7,10 @@ import { inject } from 'mobx-react'
 import Components from '../components'
 import Sidebar from './Sidebar'
 
-@inject('uploads', 'payments', 'auth', 'user', 'social')
+const HOME_PATH = '/dashboard'
+const HOME_NAME = 'Dashboard'
+
+@inject('uploads', 'payments', 'auth', 'user', 'social', 'config')
 export class DashboardContiner extends React.Component {
   componentWillMount () {
     if (!this.props.auth.auth.local) {
@@ -23,6 +26,14 @@ export class DashboardContiner extends React.Component {
     setInterval(() => {
       this.props.uploads.fetch()
     }, 1000 * 60 * 5)
+
+    document.title = HOME_NAME
+  }
+
+  componentWillUpdate () {
+    if (document.location.pathname === HOME_PATH) {
+      document.title = HOME_NAME
+    }
   }
 
   render () {
@@ -81,16 +92,17 @@ export class DashboardContiner extends React.Component {
           {...this.props}
           bg
           dashboard
-          homePath={`/dashboard`}
+          homePath={HOME_PATH}
         />
         <Components.partials.Container fluid noPadding minHeight fullHeight>
-          <Components.Dashboard.Main />
+          <Components.Dashboard.Main homeTitle={HOME_NAME} />
         </Components.partials.Container>
         <Sidebar
           {...this.props}
           routeList={sidebarRouteList}
-          homePath={`/dashboard`}
+          homePath={HOME_PATH}
           stickToTop
+          homeTitle={HOME_NAME}
         />
       </Components.partials.Container>
     )

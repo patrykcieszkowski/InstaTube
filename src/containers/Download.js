@@ -7,11 +7,20 @@ import { Redirect } from 'react-router-dom'
 import Components from '../components'
 import Sidebar from './Sidebar'
 
-@inject('auth', 'media')
+@inject('auth', 'media', 'config')
 @observer
 export class DownloadContainer extends React.Component {
   componentWillMount () {
     this.props.media.fetch(this.props.match.params.mediaId)
+    document.title = this.props.config.name
+  }
+
+  componentWillUpdate () {
+    if (this.props.media.media) {
+      document.title = `${this.props.media.media.name}`
+    } else {
+      document.title = this.props.config.name
+    }
   }
 
   render () {
@@ -85,7 +94,14 @@ export class DownloadContainer extends React.Component {
         />
         {/* <Components.Download.partials.Locked /> */}
         <Components.partials.Container fluid noPadding fullHeight>
-          <Components.Download.Main {...this.props} />
+          <Components.Download.Main
+            {...this.props}
+            homeTitle={
+              this.props.media.media
+                ? this.props.media.media.name
+                : this.props.config.name
+            }
+          />
         </Components.partials.Container>
         <Sidebar
           {...this.props}
@@ -93,6 +109,11 @@ export class DownloadContainer extends React.Component {
           stickToTopXLG
           fullHeight
           homePath={this.props.match.url}
+          homeTitle={
+            this.props.media.media
+              ? this.props.media.media.name
+              : this.props.config.name
+          }
         />
       </Components.partials.Container>
     )

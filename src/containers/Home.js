@@ -7,9 +7,21 @@ import { inject, observer } from 'mobx-react'
 
 import { Redirect } from 'react-router-dom'
 
-@inject('auth')
+const HOME_PATH = '/'
+
+@inject('auth', 'config')
 @observer
 export class HomeContainer extends React.Component {
+  componentWillMount () {
+    document.title = this.props.config.name
+  }
+
+  componentWillUpdate () {
+    if (document.location.pathname === HOME_PATH) {
+      document.title = this.props.config.name
+    }
+  }
+
   render () {
     if (this.props.auth.auth.local) {
       return <Redirect to='/dashboard' />
@@ -65,7 +77,7 @@ export class HomeContainer extends React.Component {
       <Components.partials.Container fluid noPadding minHeight bg={`home`}>
         <Components.partials.Navbar {...this.props} homePath={'/'} />
         <Components.partials.Container fluid noPadding fullHeight>
-          <Components.Home.Home />
+          <Components.Home.Home homeTitle={this.props.config.name} />
         </Components.partials.Container>
         <Sidebar
           {...this.props}
@@ -73,7 +85,8 @@ export class HomeContainer extends React.Component {
           stickToTopXLG
           fullHeight
           navBG
-          homePath={'/'}
+          homePath={HOME_PATH}
+          homeTitle={this.props.config.name}
         />
       </Components.partials.Container>
     )

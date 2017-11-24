@@ -21,6 +21,10 @@ export class Help extends React.Component {
     }
   }
 
+  componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+  }
+
   onBoxClick (index, e) {
     const newExpandedState = !this.state.boxes[index]
       ? true

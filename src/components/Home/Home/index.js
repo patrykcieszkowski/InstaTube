@@ -9,7 +9,11 @@ import SignupInfo from '../partials/SignupInfo'
 import style from './style'
 
 export class Home extends React.Component {
-  render() {
+  componentWillMount () {
+    document.title = this.props.homeTitle
+  }
+
+  render () {
     return (
       <Container
         fluid
@@ -19,8 +23,8 @@ export class Home extends React.Component {
       >
         <Row className={css(style.grid.mainRow)}>
           <Col
-            xs="12"
-            xl="auto"
+            xs='12'
+            xl='auto'
             className={` d-md-flex align-items-md-center `}
           >
             <Row>
@@ -29,7 +33,7 @@ export class Home extends React.Component {
               </Col>
             </Row>
           </Col>
-          <Col xs="12" xl="auto" className={css(style.signup.box)}>
+          <Col xs='12' xl='auto' className={css(style.signup.box)}>
             <Row className={css(style.signup.wrapper)}>
               <SignupInfo />
             </Row>

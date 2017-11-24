@@ -32,6 +32,10 @@ export class Main extends React.Component {
     this.state = state
   }
 
+  componentWillMount () {
+    document.title = `${this.props.homeTitle}`
+  }
+
   alertToggle () {
     this.setState({
       ...this.state,

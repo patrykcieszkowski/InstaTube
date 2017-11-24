@@ -23,8 +23,10 @@ export class Reset extends React.Component {
   }
 
   componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+
     if (!this.props.match.params.token) {
-      window.location.href = '/auth/remind'      
+      window.location.href = '/auth/remind'
     }
   }
 
@@ -56,11 +58,13 @@ export class Reset extends React.Component {
 
   render () {
     const resetResponse = this.props.auth.response.recovery
-    const resetAlert = (resetResponse) ? resetResponse : (this.state.error) ? {
-      alert: 'danger',
-      content: this.state.error,
-      success: false
-    } : {}
+    const resetAlert = resetResponse || this.state.error
+        ? {
+          alert: 'danger',
+          content: this.state.error,
+          success: false
+        }
+        : {}
 
     return (
       <Container fluid>

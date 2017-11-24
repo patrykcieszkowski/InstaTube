@@ -76,6 +76,8 @@ export class SidebarContainer extends React.Component {
                     <route.component
                       {...sizeChart}
                       {...props}
+                      title={route.title}
+                      homeTitle={this.props.homeTitle}
                       match={this.props.match}
                     />
                   </Components.partials.SidebarContent>

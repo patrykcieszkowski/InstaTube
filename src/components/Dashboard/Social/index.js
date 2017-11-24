@@ -16,6 +16,10 @@ import AddInstagram from './partials/AddInstagram'
 @inject('social')
 @observer
 export class Social extends React.Component {
+  componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+  }
+
   onClick (e) {
     e.preventDefault()
     const { instagram } = this.props.social.data.data

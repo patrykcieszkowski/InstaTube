@@ -14,6 +14,10 @@ import style from './style'
 @inject('about')
 @observer
 export class About extends React.Component {
+  componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+  }
+
   render () {
     return (
       <Container fluid>
@@ -39,13 +43,13 @@ export class About extends React.Component {
               {this.props.about.all.slice().map((item, index) => (
                 <Row className={css(style.content.box)} key={index}>
                   <Col xs='12' className={css(style.content.header)}>
-                    <h3 
+                    <h3
                       className={css(style.content.h3)}
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
                   </Col>
                   <Col xs='12' className={css(style.content.textBox)}>
-                    <p 
+                    <p
                       className={css(style.content.p)}
                       dangerouslySetInnerHTML={{ __html: item.content }}
                     />

@@ -14,6 +14,10 @@ import style from './style'
 @inject('rules')
 @observer
 export class Rules extends React.Component {
+  componentWillMount () {
+    document.title = `${this.props.title} - ${this.props.homeTitle}`
+  }
+
   render () {
     return (
       <Container fluid>
