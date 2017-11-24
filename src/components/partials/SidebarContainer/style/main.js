@@ -18,14 +18,14 @@ export const mainStyle = {
   },
   stickToTop: {
     top: `0px`,
-    paddingTop: `100px`,
+    paddingTop: `130px`,
     marginTop: `0`
   },
   'xlg-stickToTop': {
     '@media only screen and (min-width : 1200px)': {
       marginTop: `0`,
       top: `0px`,
-      paddingTop: `80px`
+      paddingTop: `130px`
     }
   },
   fullHeight: {
