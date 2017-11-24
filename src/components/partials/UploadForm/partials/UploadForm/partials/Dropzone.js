@@ -24,12 +24,17 @@ const RenderDropzone = props => (
           ? `justify-content-center`
           : ''}`}
       >
-        <Col xs="3" className={`d-flex justify-content-center`}>
-          <button type="button" className={`${css(style.dropzone.button)} d-flex align-items-center justify-content-center`}>
+        <Col xs='3' className={`d-flex justify-content-center`}>
+          <button
+            type='button'
+            className={`${css(
+              style.dropzone.button
+            )} d-flex align-items-center justify-content-center`}
+          >
             <i
               className={`la la-plus ${css(style.dropzone.buttonIcon)}`}
-              aria-hidden="true"
-              title="add"
+              aria-hidden='true'
+              title='add'
             />
           </button>
         </Col>
@@ -42,7 +47,7 @@ const RenderDropzone = props => (
 const RenderTitle = props => {
   if (props.state.upload.file) {
     return (
-      <Col className="d-flex flex-column justify-content-center" xs="9">
+      <Col className='d-flex flex-column justify-content-center' xs='9'>
         <Row>
           <Col>
             <span className={css(style.dropzone.fileTitleSpan)}>
@@ -56,9 +61,9 @@ const RenderTitle = props => {
 
   return (
     <Col
-      className="d-flex flex-column justify-content-center"
+      className='d-flex flex-column justify-content-center'
       style={{ padding: 0 }}
-      xs="auto"
+      xs='auto'
     >
       <Row className={css(style.form.row)}>
         <Col>
@@ -70,7 +75,7 @@ const RenderTitle = props => {
           <span className={css(style.dropzone.descSpan)}>
             Maximum{' '}
             <span className={css(style.dropzone.boldSpan)}>
-              2.00GB / { props.authState ? `24h` : `12h` }
+              2.00GB / {`24h`}
             </span>
           </span>
         </Col>
