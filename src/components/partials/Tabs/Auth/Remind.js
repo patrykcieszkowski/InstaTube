@@ -53,7 +53,7 @@ export class Auth extends React.Component {
   render () {
     const remindResponse = this.props.auth.response.remind
     const remindAlert =
-      remindResponse || this.state.error
+      remindResponse ? remindResponse : this.state.error
         ? {
           alert: 'danger',
           content: this.state.error,

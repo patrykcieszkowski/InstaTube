@@ -109,7 +109,7 @@ export class InstagramAuth extends React.Component {
     }
 
     const registerResponse = this.props.auth.response.register
-    const registerAlert = registerResponse || {
+    const registerAlert = registerResponse ? registerResponse : {
       success: false,
       alert: 'danger',
       content: this.state.register.error
