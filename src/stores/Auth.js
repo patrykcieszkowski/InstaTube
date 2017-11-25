@@ -116,7 +116,7 @@ class Auth {
         recovery: null
       }
 
-      window.location.href = '/'
+      // window.location.href = '/'
     })
   }
 

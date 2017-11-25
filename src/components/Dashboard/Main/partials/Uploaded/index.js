@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react'
 
 import ListItem from './partials/listItem'
 
-@inject('uploads', 'user')
+@inject('uploads', 'user', 'auth')
 @observer
 export class UploadedList extends React.Component {
   constructor (props) {
@@ -16,10 +16,17 @@ export class UploadedList extends React.Component {
     this.state = state
   }
 
-  componentDidMount () {
-    setInterval(() => {
-      this.forceUpdate()
-    }, 500)
+
+  componentDidMount() {
+    if (this.props.auth.auth.local) {
+      this.interval = setInterval(() => {
+        this.forceUpdate()
+      }, 500)
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
   }
 
   onDeleteConfirm (index) {
@@ -64,6 +71,7 @@ export class UploadedList extends React.Component {
   onExtendItemClick (index, e) {
     e.preventDefault()
     this.props.uploads.extendItem(index)
+    this.props.user.fetchDashboard()    
   }
 
   onNameToggleClick (index, e) {

@@ -17,10 +17,10 @@ class App extends React.Component {
       stores.user.fetchProfile()
       stores.user.fetchDashboard()
 
-      setInterval(() => {
-        stores.auth.extend()
-        stores.user.fetchDashboard()
-      }, 1000 * 60 * 5)
+      // setInterval(() => {
+      //   stores.auth.extend()
+      //   stores.user.fetchDashboard()
+      // }, 1000 * 60 * 5)
     }
   }
 

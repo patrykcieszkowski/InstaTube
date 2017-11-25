@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 /* eslint-disable no-unused-vars */
-import { inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
 
 import Components from '../components'
@@ -11,6 +11,7 @@ const HOME_PATH = '/dashboard'
 const HOME_NAME = 'Dashboard'
 
 @inject('uploads', 'payments', 'auth', 'user', 'social', 'config')
+@observer
 export class DashboardContiner extends React.Component {
   componentWillMount () {
     if (!this.props.auth.auth.local) {
@@ -23,11 +24,15 @@ export class DashboardContiner extends React.Component {
     this.props.payments.fetch()
     this.props.social.fetch()
 
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.props.uploads.fetch()
     }, 1000 * 60 * 5)
 
     document.title = HOME_NAME
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
   }
 
   componentWillUpdate () {
