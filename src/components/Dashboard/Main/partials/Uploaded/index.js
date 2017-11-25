@@ -9,24 +9,25 @@ import ListItem from './partials/listItem'
 @inject('uploads', 'user')
 @observer
 export class UploadedList extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     const state = {}
     state.nameEditPopup = ''
     this.state = state
   }
 
-  componentDidMount() {
+  componentDidMount () {
     setInterval(() => {
       this.forceUpdate()
     }, 500)
   }
 
-  onDeleteConfirm(index) {
+  onDeleteConfirm (index) {
     this.props.uploads.deleteItem(index)
+    this.props.user.fetchDashboard()
   }
 
-  onDeleteItemClick(index, e) {
+  onDeleteItemClick (index, e) {
     e.preventDefault()
 
     this.props.openAlert({
@@ -42,17 +43,17 @@ export class UploadedList extends React.Component {
     })
   }
 
-  onDateActionHover(index, state, e) {
+  onDateActionHover (index, state, e) {
     e.preventDefault()
     this.props.uploads.setDateAction(index, state)
   }
 
-  onCopyActionToggle(index, e) {
+  onCopyActionToggle (index, e) {
     e.preventDefault()
     this.props.uploads.setCopyAction(index)
   }
 
-  onCopyClick(index, e) {
+  onCopyClick (index, e) {
     e.preventDefault()
     copyToClipboard(
       `http://${window.location.hostname}/m/${this.props.uploads.all[index]
@@ -60,12 +61,12 @@ export class UploadedList extends React.Component {
     )
   }
 
-  onExtendItemClick(index, e) {
+  onExtendItemClick (index, e) {
     e.preventDefault()
     this.props.uploads.extendItem(index)
   }
 
-  onNameToggleClick(index, e) {
+  onNameToggleClick (index, e) {
     e.preventDefault()
     this.setState({
       ...this.state,
@@ -74,14 +75,14 @@ export class UploadedList extends React.Component {
     this.props.uploads.setNamePopupAction(index)
   }
 
-  onNameChange(index, e) {
+  onNameChange (index, e) {
     this.setState({
       ...this.state,
       nameEditPopup: e.target.value
     })
   }
 
-  onNameSave(index, e) {
+  onNameSave (index, e) {
     e.preventDefault()
     this.props.uploads.setName({
       index,
@@ -89,7 +90,7 @@ export class UploadedList extends React.Component {
     })
   }
 
-  render() {
+  render () {
     return this.props.uploads.all
       .slice()
       .map((item, index) => (
