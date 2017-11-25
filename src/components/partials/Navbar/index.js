@@ -90,6 +90,7 @@ export class NavbarComponent extends React.Component {
             state={this.state}
             open={this.state.profileDropdownOpen}
             logged={this.props.auth.auth.local}
+            open={this.state.profileDropdownOpen}
             onClickHandler={profileIconClick}
             onLogoutClick={this.onLogoutClick.bind(this)}
           />
