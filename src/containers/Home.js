@@ -78,6 +78,7 @@ export class HomeContainer extends React.Component {
         <Components.partials.Navbar {...this.props} homePath={'/'} />
         <Components.partials.Container fluid noPadding fullHeight>
           <Components.Home.Home homeTitle={this.props.config.name} />
+          <Components.partials.Alert />
         </Components.partials.Container>
         <Sidebar
           {...this.props}

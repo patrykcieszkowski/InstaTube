@@ -23,6 +23,7 @@ class Media {
       .then(res => {
         this.media = {
           ...res.data,
+          active: !!+res.data.active,
           display: res.data.display ? +res.data.display : null,
           views: +res.data.views,
           nolimit: !!res.data.nolimit,

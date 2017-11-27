@@ -1,3 +1,4 @@
+import alert from './Alert'
 import help from './Help'
 import about from './About'
 import rules from './Rules'
@@ -14,6 +15,7 @@ import social from './Social'
 import config from './Config'
 
 export default {
+  alert,
   help,
   about,
   rules,
