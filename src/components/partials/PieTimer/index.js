@@ -55,7 +55,7 @@ export class PieTimer extends React.Component {
 
         clearInterval(interval)
       }
-    }, 1000)
+    }, 500)
   }
 
   render() {
