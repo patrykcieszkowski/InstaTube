@@ -7,7 +7,7 @@ import PieTimer from '../../../partials/PieTimer'
 import style from './style'
 
 export class Image extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     const state = {}
     state.fullscreen = {
@@ -17,7 +17,7 @@ export class Image extends React.Component {
     this.state = state
   }
 
-  renderTimer () {
+  renderTimer() {
     if (!this.props.timerInit.passed) {
       return null
     }
@@ -39,7 +39,7 @@ export class Image extends React.Component {
     )
   }
 
-  onEnlargeClick () {
+  onEnlargeClick() {
     this.setState({
       fullscreen: {
         ...this.state.fullscreen,
@@ -49,7 +49,7 @@ export class Image extends React.Component {
     })
   }
 
-  onCloseClick () {
+  onCloseClick() {
     // hide fullscreen, but keep display propety (let animation finish)
     this.setState({
       fullscreen: {
@@ -72,7 +72,7 @@ export class Image extends React.Component {
     )
   }
 
-  render () {
+  render() {
     return [
       <Row key={0} className={css(style.image.wrapper)}>
         <Col className={css(style.image.box)}>
@@ -86,14 +86,14 @@ export class Image extends React.Component {
           />
         </Col>
         <a
-          href='#enlarge'
+          href="#enlarge"
           onClick={this.onEnlargeClick.bind(this)}
           className={css(style.image.enlargeButton)}
         >
           <i
             className={`la la-search-plus`}
-            aria-hidden='true'
-            title='enlarge'
+            aria-hidden="true"
+            title="enlarge"
           />
         </a>
       </Row>,
@@ -113,20 +113,21 @@ export class Image extends React.Component {
           {this.renderTimer()}
           <img
             src={this.props.media.src}
+            onLoad={this.props.onLoadComplete}
             className={css(
               style.fullscreen.image,
               this.props.blur ? style.image.blur : ''
             )}
           />
           <a
-            href='#close'
+            href="#close"
             onClick={this.onCloseClick.bind(this)}
             className={css(style.fullscreen.closeButton)}
           >
             <i
               className={`la la-close ${css(style.fullscreen.closeIcon)}`}
-              aria-hidden='true'
-              title='close'
+              aria-hidden="true"
+              title="close"
             />
           </a>
         </Col>

@@ -56,7 +56,11 @@ const RenderMedia = props => {
     case 'image':
       return (
         <Col className={css(style.media.box, style.media.imageWrapper)}>
-          <Image timerInit={props.timer} media={props.media} />
+          <Image
+            timerInit={props.timer}
+            media={props.media}
+            onLoadComplete={props.onLoadComplete}
+          />
         </Col>
       )
     default:

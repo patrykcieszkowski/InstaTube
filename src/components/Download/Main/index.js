@@ -20,8 +20,16 @@ export class Main extends React.Component {
     super(props)
     const state = {}
     state.timer = {}
+    state.loadComplete = false
     this.state = state
     this.media = this.props.media.media
+  }
+
+  onLoadComplete () {
+    this.setState({
+      ...this.state,
+      loadComplete: true
+    })
   }
 
   onTimerComplete () {
@@ -36,7 +44,7 @@ export class Main extends React.Component {
   }
 
   renderTimer () {
-    if (!this.props.media.media.premium) {
+    if (!this.props.media.media.premium || !this.state.loadComplete) {
       return null
     }
 
@@ -91,7 +99,10 @@ export class Main extends React.Component {
             {this.renderTimer()}
           </Col>
           <Col xs='12' xl='6'>
-            <Media timer={this.state.timer} />
+            <Media
+              timer={this.state.timer}
+              onLoadComplete={this.onLoadComplete.bind(this)}
+            />
           </Col>
           <Col
             xl='3'
