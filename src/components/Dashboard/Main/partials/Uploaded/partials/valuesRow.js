@@ -222,7 +222,12 @@ const NamepBlockColumn = ({ props }) => (
     )} d-flex align-items-center`}
   >
     <Row className={css(style.uploaded.popupBlockWrapper)}>
-      <Column xs className={css(style.uploaded.popupInputWrapper)}>
+      <Column
+        xs
+        className={`${css(
+          style.uploaded.popupInputWrapper
+        )} f-flex align-items-center`}
+      >
         <input
           type='text'
           value={props.stateName}

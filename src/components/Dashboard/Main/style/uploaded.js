@@ -105,7 +105,7 @@ export const uploadedStyle = {
     padding: `0 5px`
   },
   popupInputWrapper: {
-    padding: `5px 0`
+    padding: `0 0`
   },
   popupInput: {
     background: `none`,
@@ -124,6 +124,7 @@ export const uploadedStyle = {
   namePopupInput: {
     background: `white`,
     borderRadius: `2px 0`,
+    height: 'auto',
     padding: `0 10px`,
     direction: `ltr`
   },
