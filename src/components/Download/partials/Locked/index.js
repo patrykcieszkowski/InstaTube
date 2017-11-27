@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
 
-import Payment from '../Payment'
+import Payment from '../../../partials/Payment'
 
 import style from './style'
 

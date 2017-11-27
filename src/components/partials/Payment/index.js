@@ -5,12 +5,12 @@ import { Row, Col } from 'reactstrap'
 import style from './style'
 
 import PaymentForm from './partials/PaymentForm'
-import ScrollArea from '../../../partials/ScrollArea'
-import Alert from '../../../partials/FormAlert'
+import Alert from '../FormAlert'
 
 const Payment = props => {
   const paymentResponse = props.payment.response
-  const paymentAlert = paymentResponse || props.state.error
+  const paymentAlert =
+    paymentResponse || props.state.error
       ? {
         alert: 'danger',
         content: props.state.error,
@@ -19,12 +19,8 @@ const Payment = props => {
       : {}
 
   return (
-    <ScrollArea
-      style={{
-        width: `100%`,
-        height: `100%`
-      }}
-      renderClassName={`d-flex align-items-xl-center justify-content-xl-center`}
+    <Col
+      className={`d-xl-flex align-items-xl-center justify-content-xl-center`}
     >
       <Row style={{ margin: 0 }}>
         <Col xs='12' className={css(style.image.wrapper)}>
@@ -53,7 +49,7 @@ const Payment = props => {
           />
         </Col>
       </Row>
-    </ScrollArea>
+    </Col>
   )
 }
 

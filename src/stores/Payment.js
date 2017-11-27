@@ -12,7 +12,7 @@ class Payment {
 
     const API_URL = process.env.REACT_APP_API_URL
     axios
-      .post(`${API_URL}/payment/paybycard`)
+      .post(`${API_URL}/payment/paybycard`, formData)
       .then(res => {
         this.response = res.data
         if (res.data.success) {
