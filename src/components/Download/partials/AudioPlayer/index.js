@@ -21,7 +21,7 @@ export class AudioPlayer extends React.Component {
     )
     this.refs.audioplayer.addEventListener(
       'ended',
-      this.onPlayPause.bind(this),
+      this.onMediaEnd.bind(this),
       false
     )
     this.refs.audioplayer.addEventListener(
@@ -43,6 +43,11 @@ export class AudioPlayer extends React.Component {
     }
 
     this.props.onPlay()
+  }
+
+  onMediaEnd () {
+    this.onPlayPause()
+    this.props.onMediaComplete()
   }
 
   onPlayPause () {
@@ -111,7 +116,7 @@ export class AudioPlayer extends React.Component {
           <RenderSlider
             value={this.state.audioProgress}
             onChange={this.onSeekChange.bind(this)}
-            unlock={this.props.media.unlock}
+            premium={this.props.media.premium}
           />
         </div>
       </figure>
@@ -120,7 +125,7 @@ export class AudioPlayer extends React.Component {
 }
 
 const RenderSlider = props => {
-  if (!props.unlock) {
+  if (!props.premium) {
     return null
   }
 
