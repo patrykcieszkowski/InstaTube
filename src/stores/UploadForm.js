@@ -1,11 +1,12 @@
 import { observable, computed, action } from 'mobx'
 import axios from 'axios'
+import superagent from 'superagent'
 
 class UploadForm {
   @observable request = null
   @observable error = null
   @observable response = null
-  @observable progress = 20
+  @observable progress = 0
 
   @action
   upload(data, file) {
@@ -26,29 +27,34 @@ class UploadForm {
       formData.append('upload[views]', data.views.number || 1)
     }
 
+    const API_URL = process.env.REACT_APP_API_URL
     const config = {
-      // onUploadProgress: function(e) {
-      //   this.progress = Math.floor(e.loaded * 100 / e.total)
-      // },
-      headers: { 'Content-Type': 'multipart/form-data' }
+      data: formData,
+      headers: { 'Content-Type': 'multipart/form-data' },
+      onUploadProgress: function(e) {
+        this.progress = Math.floor(e.loaded * 100 / e.total)
+      }
     }
 
-    const API_URL = process.env.REACT_APP_API_URL
-
     return new Promise((resolve, reject) => {
-      this.request = axios
-        .post(`${API_URL}/add`, formData, config)
-        .then(res => {
-          this.request = null
-          this.response = res.data
-          this.progress = 0
-          return resolve(res)
+      this.request = superagent
+        .post(`${API_URL}/add`)
+        .send(formData)
+        .on('progress', e => {
+          this.progress = Math.floor(e.percent)
         })
-        .catch(err => {
+        .end((err, res) => {
+          if (err) {
+            this.request = null
+            this.error = res.body ? res.body.content : null
+            this.progress = 0
+            return reject(res.body)
+          }
+
           this.request = null
-          this.error = err.response ? err.response.data.content : null
+          this.response = res.body
           this.progress = 0
-          return reject(err)
+          return resolve(res.body)
         })
     })
   }
