@@ -28,10 +28,13 @@ const stateStyle = {
     fontSize: `24px`,
     fontWeight: `600`,
     margin: 0,
-    textAlign: `center`,
-    '@media (min-width: 1200px)': {
-      textAlign: `left`
-    }
+    textAlign: `center`
+    // '@media (min-width: 1200px)': {
+    //   textAlign: `left`
+    // }
+  },
+  iconWrapper: {
+    width: `54px`
   },
   icon: {
     color: `white`,
