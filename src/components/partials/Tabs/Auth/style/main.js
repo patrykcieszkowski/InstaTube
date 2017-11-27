@@ -1,8 +1,7 @@
 const mainStyle = {
   wrapper: {
     height: `100%`,
-    padding: `0 45px`,
-    paddingBottom: `20px`
+    padding: `0 45px`
   }
 }
 
