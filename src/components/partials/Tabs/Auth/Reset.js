@@ -59,7 +59,7 @@ export class Reset extends React.Component {
   render () {
     const resetResponse = this.props.auth.response.recovery
     const resetAlert =
-      resetResponse ? remindResponse : this.state.error
+      resetResponse ? resetResponse : this.state.error
         ? {
           alert: 'danger',
           content: this.state.error,
