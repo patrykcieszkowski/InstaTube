@@ -325,7 +325,7 @@ const RenderError = props => {
 }
 
 const RenderProgress = props => {
-  if (!props.request || props.error) {
+  if (!props.request || props.error || props.response) {
     return null
   }
 
