@@ -3,6 +3,7 @@ import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
 
 import style from '../../../style'
+import utils from '../../../../../../utils'
 
 export const PayoutHistoryItem = ({ item, ...props }) => {
   const statusList = [
@@ -12,7 +13,7 @@ export const PayoutHistoryItem = ({ item, ...props }) => {
   ]
   const currentStatus = statusList[+item.status]
 
-  const date = new Date(item.start)
+  const date = utils.dateTimeStringToDate(item.start)
 
   return (
     <Row className={css(style.history.box)}>
