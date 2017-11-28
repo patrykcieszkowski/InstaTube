@@ -15,7 +15,7 @@ import Error from './partials/Error'
 import Progress from './partials/Progress'
 
 /* eslint-disable no-unused-vars */
-const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
+const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*,video/mp4'
 const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
 /* eslint-enable no-unused-vars */
 
