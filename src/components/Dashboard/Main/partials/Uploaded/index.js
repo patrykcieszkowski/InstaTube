@@ -16,16 +16,17 @@ export class UploadedList extends React.Component {
     this.state = state
   }
 
-
-  componentDidMount() {
+  componentDidMount () {
     if (this.props.auth.auth.local) {
-      this.interval = setInterval(() => {
-        this.forceUpdate()
-      }, 500)
+      if (window.outerWidth >= 1200) {
+        this.interval = setInterval(() => {
+          this.forceUpdate()
+        }, 500)
+      }
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearInterval(this.interval)
   }
 
@@ -71,7 +72,7 @@ export class UploadedList extends React.Component {
   onExtendItemClick (index, e) {
     e.preventDefault()
     this.props.uploads.extendItem(index)
-    this.props.user.fetchDashboard()    
+    this.props.user.fetchDashboard()
   }
 
   onNameToggleClick (index, e) {
