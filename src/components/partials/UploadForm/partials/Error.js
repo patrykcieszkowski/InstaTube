@@ -1,24 +1,22 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Input, Button, Col, Row } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Button, Col, Row } from 'reactstrap'
 
 import style from '../style'
 
 export const Error = props => (
   <Col className={css(style.status.wrapper)} style={props.style}>
     <Row className={css(style.status.infoBox, style.status.error)}>
-      <Col xs="1" className={css(style.status.col)} />
+      <Col xs='1' className={css(style.status.col)} />
       <Col
-        xs="1"
-        className={`${css(
-          style.status.col
-        )}  d-flex justify-content-center align-items-center`}
+        xs='auto'
+        className={`${css(style.status.col, style.status.iconWrapper)}
+        d-flex justify-content-center align-items-center`}
       >
         <i
           className={`la la-close ${css(style.status.icon)}`}
-          aria-hidden="true"
-          title="success"
+          aria-hidden='true'
+          title='success'
         />
       </Col>
       <Col
@@ -28,7 +26,7 @@ export const Error = props => (
       >
         <RenderErrorHeader {...props} />
       </Col>
-      <Col xs="1" className={css(style.status.col)} />
+      <Col xs='1' className={css(style.status.col)} />
     </Row>
 
     <Row className={css(style.status.buttonWrapper)}>
