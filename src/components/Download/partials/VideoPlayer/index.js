@@ -23,7 +23,7 @@ export class VideoPlayer extends React.Component {
     )
     this.refs.videoplayer.addEventListener(
       'ended',
-      this.onPlayPause.bind(this),
+      this.onMediaEnd.bind(this),
       false
     )
     this.refs.videoplayer.addEventListener(
@@ -41,6 +41,11 @@ export class VideoPlayer extends React.Component {
       this.onMouseMove.bind(this),
       false
     )
+  }
+
+  onMediaEnd () {
+    this.onPlayPause()
+    this.props.onMediaComplete()
   }
 
   onPlayPause () {
@@ -188,7 +193,7 @@ export class VideoPlayer extends React.Component {
             <RenderSlider
               value={this.state.videoProgress}
               onChange={this.onSeekChange.bind(this)}
-              unlock={this.props.media.unlock}
+              premium={this.props.media.premium}
             />
           </div>
         </div>
@@ -198,7 +203,7 @@ export class VideoPlayer extends React.Component {
 }
 
 const RenderSlider = props => {
-  if (!props.unlock) {
+  if (!props.premium) {
     return null
   }
 

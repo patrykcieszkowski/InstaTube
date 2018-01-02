@@ -29,7 +29,7 @@ class Media {
           nolimit: !!res.data.nolimit,
           unlock: !res.data.hasOwnProperty('unlock') ? true : !!res.data.unlock,
           amount: !res.data.amount ? undefined : parseFloat(res.data.amount),
-          premium: res.data.hasOwnProperty('display')
+          premium: res.data.hasOwnProperty('unlock')
         }
       })
       .catch(err => {
