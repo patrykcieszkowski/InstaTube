@@ -5,7 +5,7 @@ import { inject, observer } from 'mobx-react'
 
 import LockedComponent from '../partials/Locked'
 
-@inject('media', 'user', 'auth')
+@inject('media', 'user', 'auth', 'payment')
 @observer
 export class Locked extends React.Component {
   constructor (props) {
@@ -86,11 +86,18 @@ export class Locked extends React.Component {
       })
     }
 
-    // const newData = {
-    //   ...this.state.settings
-    // }
+    const newData = {
+      name: this.state.name,
+      email: this.state.email,
+      number: this.state.number,
+      ccv: this.state.ccv,
+      mm: this.state.mm,
+      yy: this.state.yy,
+      type: 2,
+      hash: this.props.match.params.mediaId
+    }
 
-    // this.props.payment.post(newData)
+    this.props.payment.payByCard(newData)
   }
 
   onRulesClick (e) {

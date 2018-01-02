@@ -10,8 +10,7 @@ import Alert from '../../../partials/FormAlert'
 
 const Payment = props => {
   const paymentResponse = props.payment.response
-  const paymentAlert =
-    paymentResponse || props.state.error
+  const paymentAlert = paymentResponse || props.state.error
       ? {
         alert: 'danger',
         content: props.state.error,

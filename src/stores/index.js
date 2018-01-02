@@ -2,6 +2,7 @@ import help from './Help'
 import about from './About'
 import rules from './Rules'
 import payments from './Payments'
+import payment from './Payment'
 import uploads from './Uploads'
 import payouts from './Payouts'
 import premium from './Premium'
@@ -17,6 +18,7 @@ export default {
   about,
   rules,
   payments,
+  payment,
   uploads,
   payouts,
   premium,
