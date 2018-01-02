@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone'
 
 import style from '../../../style'
 
-const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
+const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*,video/mp4'
 
 const RenderDropzone = props => (
   <FormGroup className={css(style.form.group)}>
