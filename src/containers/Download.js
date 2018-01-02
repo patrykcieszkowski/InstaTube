@@ -102,6 +102,7 @@ export class DownloadContainer extends React.Component {
                 : this.props.config.name
             }
           />
+          <Components.partials.Alert />
         </Components.partials.Container>
         <Sidebar
           {...this.props}

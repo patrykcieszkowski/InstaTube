@@ -13,7 +13,7 @@ import Media from './partials/Media'
 import SignupInfo from './partials/SignupInfo'
 import PieTimer from '../../partials/PieTimer'
 
-@inject('media')
+@inject('media', 'alert')
 @observer
 export class Main extends React.Component {
   constructor (props) {
@@ -68,6 +68,24 @@ export class Main extends React.Component {
 
     if (!this.props.media.media && !this.props.media.error) {
       return null
+    }
+
+    if (
+      (this.props.media.error && this.props.media.error.active === '0') ||
+      !this.props.media.media.active
+    ) {
+      this.props.alert.setAlert({
+        active: true,
+        text:
+          this.props.media.error && this.props.media.error.content
+            ? this.props.media.error.content
+            : `Item's validity period has expired!`,
+        success: {
+          text: 'OK'
+        }
+      })
+
+      return <Redirect to={`/`} />
     }
 
     if (this.props.media.error) {

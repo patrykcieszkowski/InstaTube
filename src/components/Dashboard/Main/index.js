@@ -9,7 +9,6 @@ import { inject, observer } from 'mobx-react'
 import ScrollArea from '../../partials/ScrollArea'
 import UploadForm from '../../partials/UploadForm'
 import Container from '../../partials/Container'
-import Alert from '../../partials/Alert'
 
 import Header from './partials/Header'
 import Payments from './partials/Payments'
@@ -19,7 +18,7 @@ import Uploaded from './partials/Uploaded'
 import UploadedListTitles from './partials/Uploaded/partials/titlesRow'
 import style from './style'
 
-@inject('user', 'social')
+@inject('user', 'social', 'alert')
 @observer
 export class Main extends React.Component {
   constructor (props) {
@@ -36,38 +35,22 @@ export class Main extends React.Component {
     document.title = `${this.props.homeTitle}`
   }
 
-  alertToggle () {
-    this.setState({
-      ...this.state,
-      alert: {
-        ...this.state.alert,
-        active: !this.state.alert.active
-      }
-    })
-  }
-
   openAlert (args) {
-    this.setState({
-      ...this.state,
-      alert: {
-        ...this.alert,
-        active: true,
-        success: {
-          text: args.success.text,
-          onClick: () => {
-            this.alertToggle()
-            args.success.onClick()
-          }
-        },
-        cancel: {
-          text: args.cancel.text,
-          onClick: () => {
-            this.alertToggle()
-            args.cancel.onClick()
-          }
-        },
-        text: args.text
-      }
+    this.props.alert.setAlert({
+      active: true,
+      success: {
+        text: args.success.text,
+        onClick: () => {
+          args.success.onClick()
+        }
+      },
+      cancel: {
+        text: args.cancel.text,
+        onClick: () => {
+          args.cancel.onClick()
+        }
+      },
+      text: args.text
     })
   }
 
@@ -78,8 +61,6 @@ export class Main extends React.Component {
   }
 
   render () {
-    // console.log(this.props.user.profile)
-    // console.log(this.props.user.dashboard)
     return (
       <Container fluid>
         <Row className={css(style.header.wrapper)}>
@@ -155,7 +136,6 @@ export class Main extends React.Component {
             </Col>
           </Col>
         </Row>
-        <Alert {...this.state.alert} />
       </Container>
     )
   }
