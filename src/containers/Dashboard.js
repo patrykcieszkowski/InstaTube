@@ -13,20 +13,18 @@ const HOME_NAME = 'Dashboard'
 @inject('uploads', 'payments', 'auth', 'user', 'social', 'config')
 @observer
 export class DashboardContiner extends React.Component {
-  componentWillMount () {
-    if (!this.props.auth.auth.local) {
-      return
-    }
-
-    this.props.user.fetchProfile()
-    this.props.user.fetchDashboard()
-    this.props.uploads.fetch()
-    this.props.payments.fetch()
-    this.props.social.fetch()
-
-    this.interval = setInterval(() => {
+  componentWillMount() {
+    if (this.props.auth.auth.local) {
+      this.props.user.fetchProfile()
+      this.props.user.fetchDashboard()
       this.props.uploads.fetch()
-    }, 1000 * 60 * 5)
+      this.props.payments.fetch()
+      this.props.social.fetch()
+
+      this.interval = setInterval(() => {
+        this.props.uploads.fetch()
+      }, 1000 * 60 * 5)
+    }
 
     document.title = HOME_NAME
   }
@@ -35,15 +33,15 @@ export class DashboardContiner extends React.Component {
     clearInterval(this.interval)
   }
 
-  componentWillUpdate () {
+  componentWillUpdate() {
     if (document.location.pathname === HOME_PATH) {
       document.title = HOME_NAME
     }
   }
 
-  render () {
+  render() {
     if (!this.props.auth.auth.local) {
-      return <Redirect to='/' />
+      return <Redirect to="/" />
     }
 
     const sidebarRouteList = [
