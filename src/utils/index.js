@@ -1,3 +1,5 @@
+const dateTimeStringToDate = date => new Date(date.replace(/-/g, '/'))
+
 const secondsToTime = secs => {
   const sec_num = parseInt(secs, 10)
   const days = Math.floor(sec_num / (60 * 60 * 24))
@@ -34,6 +36,7 @@ const parseHashParams = hash => {
 }
 
 export default {
+  dateTimeStringToDate,
   secondsToTime,
   isChildOf,
   parseHashParams

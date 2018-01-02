@@ -8,6 +8,7 @@ import { inject, observer } from 'mobx-react'
 import style from '../style'
 
 import ScrollArea from '../../../partials/ScrollArea'
+import utils from '../../../../utils'
 
 @inject('premium', 'user')
 @observer
@@ -53,7 +54,7 @@ export const PaymentHistoryItem = ({ item, ...props }) => {
   ]
   const currentStatus = statusList[+item.status]
 
-  const date = new Date(item.end)
+  const date = utils.dateTimeStringToDate(item.end)
 
   return (
     <Row className={css(style.history.box)}>

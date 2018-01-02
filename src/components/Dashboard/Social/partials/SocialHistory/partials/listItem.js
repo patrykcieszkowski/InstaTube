@@ -3,11 +3,12 @@ import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
 
 import Column from '../../../../../partials/Col'
+import utils from '../../../../../../utils'
 
 import style from '../../../style'
 
 export const PayoutHistoryItem = props => {
-  const date = new Date(props.item.date)
+  const date = utils.dateTimeStringToDate(props.item.date)
   return (
     <Row
       className={css(
