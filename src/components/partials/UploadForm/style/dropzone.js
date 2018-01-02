@@ -15,6 +15,7 @@ export const dropzoneBoxStyle = {
     height: `102px`
   },
   button: {
+    cursor: `pointer`,
     borderRadius: `50%`,
     border: `none`,
     height: `54px`,
