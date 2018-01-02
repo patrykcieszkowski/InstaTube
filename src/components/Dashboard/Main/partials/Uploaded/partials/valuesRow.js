@@ -159,17 +159,6 @@ const RenderActions = props => {
           style.uploaded.valueSpan
         )} d-flex justify-content-xl-center align-items-center`}
       >
-        <a href="#extend" onClick={props.onExtendItemClick}>
-          <i
-            className={`la la-clock-o ${css(
-              style.uploaded.actionIcon,
-              style.uploaded.actionIconExtend
-            )}`}
-            aria-hidden="true"
-            title="clock"
-          />
-        </a>
-
         <a href="#delete" onClick={props.onDeleteItemClick}>
           <i
             className={`la la-trash-o ${css(
