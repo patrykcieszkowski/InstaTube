@@ -21,10 +21,10 @@ const ItemValuesRow = props => {
       onMouseOut={props.onDateActionHoverOut}
     >
       <Column
-        xs='12'
-        xl='1'
-        xxxl='auto'
-        xxxxl='auto'
+        xs="12"
+        xl="1"
+        xxxl="auto"
+        xxxxl="auto"
         className={`d-flex justify-content-xl-center align-items-center ${css(
           style.uploaded.valueBox
         )}`}
@@ -37,11 +37,11 @@ const ItemValuesRow = props => {
         />
       </Column>
       <Column
-        xs='12'
-        xl='2'
-        xxl='4'
-        xxxl='4'
-        xxxxl='4'
+        xs="12"
+        xl="2"
+        xxl="4"
+        xxxl="4"
+        xxxxl="4"
         className={css(style.uploaded.valueBox)}
         onClick={props.onNameToggleClick}
       >
@@ -56,11 +56,11 @@ const ItemValuesRow = props => {
         </span>
       </Column>
       <Column
-        xs='12'
-        xl='2'
-        xxl='1'
-        xxxl='1'
-        xxxxl='1'
+        xs="12"
+        xl="2"
+        xxl="1"
+        xxxl="1"
+        xxxxl="1"
         className={css(style.uploaded.valueBox)}
       >
         <span
@@ -75,11 +75,11 @@ const ItemValuesRow = props => {
         </span>
       </Column>
       <Column
-        xs='12'
-        xl='2'
-        xxl='2'
-        xxxl='2'
-        xxxxl='2'
+        xs="12"
+        xl="2"
+        xxl="2"
+        xxxl="2"
+        xxxxl="2"
         className={css(style.uploaded.valueBox)}
       >
         <span
@@ -92,10 +92,10 @@ const ItemValuesRow = props => {
         </span>
       </Column>
       <Column
-        xs='12'
-        xl='2'
-        xxl='1'
-        xxxxl='1'
+        xs="12"
+        xl="2"
+        xxl="1"
+        xxxxl="1"
         className={`${css(style.uploaded.valueBox)}`}
       >
         <span
@@ -118,7 +118,7 @@ const ItemValuesRow = props => {
 
 const ActionExpireColumn = ({ props, parsedTime }) => (
   <Column
-    xl='3'
+    xl="3"
     xxl
     className={`${css(
       style.uploaded.valueBox,
@@ -159,25 +159,25 @@ const RenderActions = props => {
           style.uploaded.valueSpan
         )} d-flex justify-content-xl-center align-items-center`}
       >
-        <a href='#extend' onClick={props.onExtendItemClick}>
+        <a href="#extend" onClick={props.onExtendItemClick}>
           <i
             className={`la la-clock-o ${css(
               style.uploaded.actionIcon,
               style.uploaded.actionIconExtend
             )}`}
-            aria-hidden='true'
-            title='clock'
+            aria-hidden="true"
+            title="clock"
           />
         </a>
 
-        <a href='#delete' onClick={props.onDeleteItemClick}>
+        <a href="#delete" onClick={props.onDeleteItemClick}>
           <i
             className={`la la-trash-o ${css(
               style.uploaded.actionIcon,
               style.uploaded.actionIconTrash
             )}`}
-            aria-hidden='true'
-            title='expand'
+            aria-hidden="true"
+            title="expand"
           />
         </a>
       </span>
@@ -190,22 +190,22 @@ const RenderActions = props => {
         style.uploaded.valueSpan
       )} d-flex justify-content-xl-center align-items-center`}
     >
-      <a href='#' onClick={props.onCopyActionToggle}>
+      <a href="#" onClick={props.onCopyActionToggle}>
         <i
           className={`la la-link ${css(style.uploaded.actionIcon)}`}
-          aria-hidden='true'
-          title='copy link'
+          aria-hidden="true"
+          title="copy link"
         />
       </a>
 
-      <a href='#' onClick={props.onDeleteItemClick}>
+      <a href="#" onClick={props.onDeleteItemClick}>
         <i
           className={`la la-trash-o ${css(
             style.uploaded.actionIcon,
             style.uploaded.actionIconTrash
           )}`}
-          aria-hidden='true'
-          title='expand'
+          aria-hidden="true"
+          title="expand"
         />
       </a>
     </span>
@@ -214,7 +214,7 @@ const RenderActions = props => {
 
 const NamepBlockColumn = ({ props }) => (
   <Column
-    xs='12'
+    xs="12"
     className={`${css(
       style.uploaded.popupBlock,
       style.uploaded.popupNameBlock,
@@ -229,7 +229,7 @@ const NamepBlockColumn = ({ props }) => (
         )} f-flex align-items-center`}
       >
         <input
-          type='text'
+          type="text"
           value={props.stateName}
           defaultValue={`${props.item.name}`}
           onChange={props.onNameChange}
@@ -242,57 +242,57 @@ const NamepBlockColumn = ({ props }) => (
       </Column>
 
       <Column
-        xl='auto'
-        xxxl='1'
+        xl="auto"
+        xxxl="1"
         className={`${css(
           style.uploaded.actionIconBox
         )} d-none d-lg-flex align-items-center`}
       >
-        <a href='#save' onClick={props.onNameSave}>
+        <a href="#save" onClick={props.onNameSave}>
           <i
             className={`la la-save ${css(style.uploaded.actionIcon)}`}
-            aria-hidden='true'
-            title='save link'
+            aria-hidden="true"
+            title="save link"
           />
         </a>
-        <a href='#' onClick={props.onNameToggleClick}>
+        <a href="#" onClick={props.onNameToggleClick}>
           <i
             className={`la la-close ${css(style.uploaded.actionIcon)}`}
-            aria-hidden='true'
-            title='close'
+            aria-hidden="true"
+            title="close"
           />
         </a>
       </Column>
 
       <Column
-        xs='2'
-        xl='auto'
-        xxxl='1'
+        xs="2"
+        xl="auto"
+        xxxl="1"
         className={`${css(
           style.uploaded.actionIconBox
         )} d-flex d-lg-none align-items-center`}
       >
-        <a href='#save' onClick={props.onNameSave}>
+        <a href="#save" onClick={props.onNameSave}>
           <i
             className={`la la-save ${css(style.uploaded.actionIcon)}`}
-            aria-hidden='true'
-            title='save link'
+            aria-hidden="true"
+            title="save link"
           />
         </a>
       </Column>
       <Column
-        xs='2'
-        xl='auto'
-        xxxl='1'
+        xs="2"
+        xl="auto"
+        xxxl="1"
         className={`${css(
           style.uploaded.actionIconBox
         )} d-flex d-lg-none align-items-center`}
       >
-        <a href='#' onClick={props.onNameToggleClick}>
+        <a href="#" onClick={props.onNameToggleClick}>
           <i
             className={`la la-close ${css(style.uploaded.actionIcon)}`}
-            aria-hidden='true'
-            title='close'
+            aria-hidden="true"
+            title="close"
           />
         </a>
       </Column>
@@ -302,8 +302,8 @@ const NamepBlockColumn = ({ props }) => (
 
 const CopyBlockColumn = ({ props }) => (
   <Column
-    xs='12'
-    xl='5'
+    xs="12"
+    xl="5"
     className={`${css(
       style.uploaded.popupBlock,
       props.item.copyActionToggle ? style.uploaded.popupBlockActive : ''
@@ -312,8 +312,8 @@ const CopyBlockColumn = ({ props }) => (
     <Row className={css(style.uploaded.popupBlockWrapper)}>
       <Column xs className={css(style.uploaded.popupInputWrapper)}>
         <input
-          type='text'
-          dir='rtl'
+          type="text"
+          dir="rtl"
           readOnly
           value={`http://${window.location.hostname}/m/${props.item.url}`}
           className={css(style.uploaded.popupInput)}
@@ -321,34 +321,34 @@ const CopyBlockColumn = ({ props }) => (
       </Column>
 
       <Column
-        xs='2'
-        xl='auto'
-        xxxl='1'
+        xs="2"
+        xl="auto"
+        xxxl="1"
         className={`${css(
           style.uploaded.actionIconBox
         )} d-flex align-items-center`}
       >
-        <a href='#copy' onClick={props.onCopyClick}>
+        <a href="#copy" onClick={props.onCopyClick}>
           <i
             className={`la la-copy ${css(style.uploaded.actionIcon)}`}
-            aria-hidden='true'
-            title='copy link'
+            aria-hidden="true"
+            title="copy link"
           />
         </a>
       </Column>
       <Column
-        xs='2'
-        xl='auto'
-        xxxl='1'
+        xs="2"
+        xl="auto"
+        xxxl="1"
         className={`${css(
           style.uploaded.actionIconBox
         )} d-flex align-items-center`}
       >
-        <a href='#' onClick={props.onCopyActionToggle}>
+        <a href="#" onClick={props.onCopyActionToggle}>
           <i
             className={`la la-close ${css(style.uploaded.actionIcon)}`}
-            aria-hidden='true'
-            title='close'
+            aria-hidden="true"
+            title="close"
           />
         </a>
       </Column>
@@ -358,8 +358,8 @@ const CopyBlockColumn = ({ props }) => (
 
 const DTimeLeftColumn = ({ props, parsedTime }) => (
   <Column
-    xs='12'
-    xxxxl='2'
+    xs="12"
+    xxxxl="2"
     className={`${css(
       style.uploaded.valueBox,
       style.grid['d-xxxxl-block']
@@ -368,14 +368,7 @@ const DTimeLeftColumn = ({ props, parsedTime }) => (
     <span
       className={`${css(
         style.uploaded.valueSpan
-      )} d-flex d-xl-none align-items-center`}
-    >
-      {props.item.end || 'end'}
-    </span>
-    <span
-      className={`${css(
-        style.uploaded.valueSpan
-      )} d-none d-xl-flex align-items-center justify-content-center`}
+      )} d-flex align-items-center justify-content-xl-center`}
     >
       {parsedTime
         ? parsedTime.map(val => `${val[0]}${val[1][0]}`).join(' ')
@@ -386,9 +379,9 @@ const DTimeLeftColumn = ({ props, parsedTime }) => (
 
 const ActionsColumn = ({ props }) => (
   <Column
-    xs='12'
-    xl=''
-    xxxxl='auto'
+    xs="12"
+    xl=""
+    xxxxl="auto"
     className={`${css(style.grid['d-xxxxl-block'])} d-xl-none`}
   >
     <RenderActions {...props} />
