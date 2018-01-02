@@ -1,4 +1,7 @@
 export const uploadedStyle = {
+  mainRow: {
+    margin: `0 -10px`
+  },
   wrapper: {
     padding: `10px`,
     paddingTop: `0px`
@@ -7,6 +10,7 @@ export const uploadedStyle = {
     borderRadius: `5px`,
     margin: `3px 0`,
     padding: `5px`,
+    transition: `all 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
     '@media (max-width: 1199px)': {
       background: `white`
     },
@@ -18,11 +22,28 @@ export const uploadedStyle = {
   boxActive: {
     background: `white`
   },
+  boxHidden: {
+    opacity: 0
+  },
+  titleBlock: {
+    padding: `0 5px`
+  },
+  titleWrapper: {
+    padding: 0,
+    paddingLeft: `15px`,
+    paddingRight: `35px`
+  },
   titleBlockSpan: {
-    display: `block`,
     fontSize: `12px`,
     fontWeight: `100`,
-    color: `#8c9194`
+    color: `#8c9194`,
+    textAlign: `center`
+  },
+  titleNameBlock: {
+    textAlign: `left`
+  },
+  titleStatusBlock: {
+    width: `44px`
   },
   labelSpan: {
     display: `block`,
@@ -41,46 +62,70 @@ export const uploadedStyle = {
     }
   },
   valueSpan: {
-    display: `flex`,
-    alignItems: `center`,
     padding: `1px`,
     fontSize: `14px`,
     color: `#3f295a`,
     '@media (min-width: 1200px)': {
-      justifyContent: `center`,
       height: `40px`
     }
   },
-  copyBlock: {
+  popupBlock: {
     position: `absolute`,
-    top: 0,
-    right: `-300px`,
-    height: `40px`,
+    right: 0,
+    transition: `all 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
+    transform: `translate3d(100%, 0, 0)`,
+    height: `25px`,
     background: `#edf2f6`,
     borderRadius: `5px`,
     padding: 0,
     opacity: 0,
-    transition: `0.2s`
+    bottom: 0,
+    '@media (min-width: 1200px)': {
+      height: `40px`,
+      bottom: `auto`,
+      top: 0
+    }
   },
-  copyBlockActive: {
-    right: 0,
+  popupNameBlock: {
+    bottom: 'auto',
+    top: '28px',
+    '@media (min-width: 1200px)': {
+      bottom: 0,
+      top: 'auto'
+    }
+  },
+  popupBlockActive: {
+    transform: `none`,
     opacity: 1
   },
-  copyBlockWrapper: {
+  popupBlockWrapper: {
     flex: 1,
     margin: 0,
     padding: `0 5px`
   },
-  copyInputWrapper: {
-    padding: 0
+  popupInputWrapper: {
+    padding: `0 0`
   },
-  copyInput: {
+  popupInput: {
     background: `none`,
     border: `none`,
     fontSize: `14px`,
     // width: `100%`,
     color: `#3f295a`,
-    fontWeight: `600`
+    fontWeight: `600`,
+    direction: `rtl`,
+    width: `100%`,
+    height: `100%`,
+    '@media (min-width: 1280px)': {
+      direction: `ltr`
+    }
+  },
+  namePopupInput: {
+    background: `white`,
+    borderRadius: `2px 0`,
+    height: 'auto',
+    padding: `0 10px`,
+    direction: `ltr`
   },
   actionIconBox: {
     padding: 0
@@ -98,8 +143,11 @@ export const uploadedStyle = {
   valuePrice: {
     fontWeight: `100`
   },
-  titleValue: {
-    fontWeight: `600`
+  nameValue: {
+    fontWeight: `600`,
+    whiteSpace: `nowrap`,
+    overflow: `hidden`,
+    textOverflow: `ellipsis`
   },
   fatSpan: {
     fontWeight: `600`
@@ -110,11 +158,11 @@ export const uploadedStyle = {
   },
   statusCircle: {
     display: `block`,
-    background: `#b1b6ba`,
+    background: `#67d85b`,
     borderRadius: `50%`,
-    width: `10px`,
-    height: `10px`,
-    margin: `8px 2px`
+    width: `8px`,
+    height: `8px`,
+    margin: `8px`
   },
   statusCircleOnline: {
     background: `#7eca12`
@@ -127,7 +175,10 @@ export const uploadedStyle = {
     color: `#3f295a`
   },
   actionIconTrash: {
-    color: `#ff2828`
+    // color: `#ff2828`
+  },
+  actionIconExtend: {
+    color: `#88d362`
   }
 }
 

@@ -10,6 +10,9 @@ export const controlStyle = {
     left: 0,
     opacity: 1,
     transition: `0.5s`,
+    zIndex: 10
+  },
+  fullscreen: {
     zIndex: 2147483647
   },
   hideControls: {
@@ -40,38 +43,45 @@ export const controlStyle = {
   },
   bottomControlsWrapper: {
     display: `flex`,
-    flexDirection: `column`,
-    flexBasis: `80px`
+    flexDirection: `column`
   },
   bottomControls: {
     display: `flex`,
     flexDirection: `row`,
-    justifyContent: `center`,
+    justifyContent: `space-between`,
     alignItems: `center`
   },
+  bottomControlsSide: {
+    display: `flex`,
+    flexDirection: `row`,
+    alignItems: `center`,
+    padding: `10px 5px`    
+  },
   bottomControlsButton: {
-    fontSize: `34px`,
+    position: `relative`,
+    fontSize: `24px`,
     color: `white`,
     textDecoration: `none`,
-    padding: `0 10px`
+    padding: `0 5px`
   },
-  sliderWrapper: {
-    margin: `20px 15px`
+  timerange: {
+    color: `white`,
+    fontSize: `14px`
   },
-  slider: {
-    appearance: `none`,
-    width: `100%`,
-    height: `8px`,
-    borderRadius: `5px`,
-    '::-webkit-slider-thumb': {
-      appearance: `none`,
-      width: `24px`,
-      height: `24px`,
-      borderRadius: `50%`,
-      border: `6px solid #e1306c`,
-      background: `#e2e6ea`,
-      cursor: `pointer`
-    }
+  qualityMark: {
+    position: `absolute`,
+    zIndex: 10,
+    background: `#e12f6c`,
+    top: `0px`,
+    right: `0px`,
+    color: `white`,
+    fontSize: `8px`,
+    padding: `0 3px`,
+    margin: `3px 0`
+  },
+  gearIcon: {
+    position: `relative`,
+    zIndex: 11
   }
 }
 

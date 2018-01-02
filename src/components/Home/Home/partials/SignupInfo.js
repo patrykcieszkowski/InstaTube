@@ -20,7 +20,7 @@ const SignupInfo = () => [
   <Col xs="12" key={2}>
     <Row>
       <Col xs="10">
-        <Link to="/nav/auth" className={css(style.signup.signupButton)}>
+        <Link to="/auth" className={css(style.signup.signupButton)}>
           Sign me up for FREE!
         </Link>
       </Col>
@@ -29,7 +29,7 @@ const SignupInfo = () => [
       <Col xs="10">
         <span className={css(style.signup.loginSpan)}>
           Already got an account?
-          <Link to="/nav/auth" className={css(style.signup.loginLink)}>
+          <Link to="/auth" className={css(style.signup.loginLink)}>
             Login!
           </Link>
         </span>

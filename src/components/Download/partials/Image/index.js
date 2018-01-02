@@ -24,11 +24,12 @@ export class Image extends React.Component {
 
     return (
       <PieTimer
-        style={{
+        renderClassName={css(style.fullscreen.timer)}
+        /* style={{
           position: `absolute`,
           top: `-50px`,
           right: `calc(50% - 50px)`
-        }}
+        }} */
         timerInit={this.props.timerInit}
         stroke={12}
         size={94}
@@ -76,11 +77,12 @@ export class Image extends React.Component {
       <Row key={0} className={css(style.image.wrapper)}>
         <Col className={css(style.image.box)}>
           <img
-            src="https://twistedsifter.files.wordpress.com/2017/03/point-reyes-shipwreck.jpg"
+            src={this.props.media.src}
             className={css(
               style.image.image,
               this.props.blur ? style.image.blur : ''
             )}
+            style={{ opacity: +!this.state.fullscreen.show }}
           />
         </Col>
         <a
@@ -103,12 +105,17 @@ export class Image extends React.Component {
         )}`}
         key={1}
       >
-        <Col className={css(style.fullscreen.box)}>
+        <Col
+          className={`${css(
+            style.fullscreen.box
+          )} d-flex align-items-center justify-content-center`}
+        >
           {this.renderTimer()}
           <img
-            src="https://twistedsifter.files.wordpress.com/2017/03/point-reyes-shipwreck.jpg"
+            src={this.props.media.src}
+            onLoad={this.props.onLoadComplete}
             className={css(
-              style.image.image,
+              style.fullscreen.image,
               this.props.blur ? style.image.blur : ''
             )}
           />
@@ -117,7 +124,11 @@ export class Image extends React.Component {
             onClick={this.onCloseClick.bind(this)}
             className={css(style.fullscreen.closeButton)}
           >
-            <i className={`la la-close`} aria-hidden="true" title="close" />
+            <i
+              className={`la la-close ${css(style.fullscreen.closeIcon)}`}
+              aria-hidden="true"
+              title="close"
+            />
           </a>
         </Col>
       </Row>

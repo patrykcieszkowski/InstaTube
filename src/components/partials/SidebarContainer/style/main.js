@@ -1,57 +1,85 @@
-const active = {
-  padding: `20px`,
-  width: `calc(100% - 15px)`
-}
-
 export const mainStyle = {
   container: {
     background: 'white',
-    position: 'fixed',
+    position: 'absolute',
+    overflowX: `hidden`,
     padding: `0`,
     boxShadow: `0px 0px 17px 0px rgba(0,0,0,0.15)`,
     top: `10px`,
     width: `0`,
-    bottom: `0`,
     right: `0`,
-    transition: `width 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
-    marginTop: `95px`
+    transition: `all 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
+    transform: `translate3d(100%, 0, 0)`,
+    marginTop: `130px`,
+    '@media only screen and (min-width : 1200px)': {
+      bottom: `0`,
+      marginTop: `80px`
+    }
   },
-
   stickToTop: {
     top: `0px`,
-    paddingTop: `95px`,
-    marginTop: `0`
+    paddingTop: `130px`,
+    marginTop: `0`,
+    '@media only screen and (min-width : 1200px)': {
+      paddingTop: `80px`
+    }
   },
   'xlg-stickToTop': {
     '@media only screen and (min-width : 1200px)': {
       marginTop: `0`,
       top: `0px`,
-      paddingTop: `90px`
+      paddingTop: `130px`,
+      '@media only screen and (min-width : 1200px)': {
+        paddingTop: `80px`
+      }
     }
   },
-  lgActive: {
-    ...active,
+  fullHeight: {
+    height: `calc(100% - 80px)`,
+    '@media only screen and (min-width : 1200px)': {
+      height: 'auto'
+    }
+  },
+  zIndex: {
+    zIndex: 999999999
+  },
+  active: {
+    // transform: translate3d(300px, 0, 0)
+    transform: `none !important`
+  },
+  xlSize: {
+    width: `calc(100% - 20px)`,
     '@media only screen and (min-width : 1600px)': {
-      width: `calc(100% - 510px)`
+      width: `calc(100% - 530px)`
     },
     '@media only screen and (min-width : 1200px) and (max-width : 1599px)': {
-      width: `calc(100% - 460px)`
+      width: `calc(100% - 480px)`
     }
   },
-  mdActive: {
-    ...active,
+  lgSize: {
+    width: `calc(100% - 20px)`,
+
+    '@media only screen and (min-width : 1600px) ': {
+      width: `calc(58%)`
+    },
+    '@media only screen and (min-width : 1800px)': {
+      width: `calc(57% + 50px)`
+    },
+    '@media only screen and (min-width : 1900px)': {
+      width: `calc(56% + 50px)`
+    }
+  },
+  mdSize: {
+    width: `calc(100% - 30px)`,
     '@media only screen and (min-width : 1200px)': {
       width: `630px`
     }
   },
-  smActive: {
-    ...active,
+  smSize: {
+    width: `calc(100% - 20px)`,
     '@media only screen and (min-width : 1200px)': {
-      width: `600px`
+      width: `530px`
     }
-  },
-  fullHeight: {
-    height: `100%`
   }
 }
 

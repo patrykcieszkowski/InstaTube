@@ -1,27 +1,32 @@
 import React from 'react'
-import { css } from 'aphrodite'
+import { css } from 'aphrodite/no-important'
 
 import style from './style'
 
+const renderClassName = props =>
+  [
+    css(style.main.container),
+    css(props.stickToTop ? style.main.stickToTop : ''),
+    css(props.stickToTopXLG ? style.main['xlg-stickToTop'] : ''),
+    css(props.zIndex ? style.main.zIndex : ''),
+    css(props.fullHeight ? style.main.fullHeight : ''),
+    css(props.md ? style.main.mdSize : ''),
+    css(props.sm ? style.main.smSize : ''),
+    css(props.lg ? style.main.lgSize : ''),
+    css(props.xl ? style.main.xlSize : ''),
+    css(!(props.sm || props.md || props.lg) ? style.main.xlSize : ''),
+    css(props.isOpen ? style.main.active : '')
+  ]
+    .filter(a => a)
+    .join(' ')
+
 export class SidebarContainer extends React.Component {
-  render() {
+  render () {
     return (
-      <div
-        className={css(
-          style.main.container,
-          this.props.isOpen
-            ? this.props.md
-              ? style.main.mdActive
-              : this.props.sm ? style.main.smActive : style.main.lgActive
-            : '',
-          this.props.stickToTop ? style.main.stickToTop : '',
-          this.props.stickToTopXLG ? style.main['xlg-stickToTop'] : '',
-          this.props.fullHeight ? style.main.fullHeight : ''
-        )}
-      >
+      <div className={renderClassName(this.props)}>
         <div
           className={css(
-            style.nav.background,
+            this.props.navigation ? style.nav.background : '',
             this.props.stickToTopXLG ? style.nav.active : ''
           )}
         />

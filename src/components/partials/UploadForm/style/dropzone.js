@@ -1,6 +1,11 @@
 export const dropzoneBoxStyle = {
   box: {},
+  row: {
+    width: `100%`,
+    margin: 0
+  },
   wrapper: {
+    cursor: `pointer`,
     background: `#edf2f6 url('/img/upload_bg.png')`,
     backgroundRepeat: `no-repeat`,
     backgroundPosition: `center`,
@@ -10,11 +15,13 @@ export const dropzoneBoxStyle = {
     height: `102px`
   },
   button: {
+    cursor: `pointer`,
     borderRadius: `50%`,
     border: `none`,
     height: `54px`,
     width: `54px`,
     margin: `10px 5px`,
+    flexShrink: 0,
     backgroundColor: `#e1306c`
   },
   buttonIcon: {
@@ -25,12 +32,21 @@ export const dropzoneBoxStyle = {
     fontSize: `22px`,
     fontWeight: `600`,
     display: `block`,
-    width: `120px`
+    textAlign: `center`
+  },
+  fileTitleSpan: {
+    fontSize: `22px`,
+    fontWeight: `600`,
+    display: `block`,
+    whiteSpace: `nowrap`,
+    overflow: `hidden`,
+    textOverflow: `ellipsis`
   },
   descSpan: {
     fontSize: `12px`,
     width: `130px`,
-    display: `block`
+    display: `block`,
+    textAlign: `center`
   },
   boldSpan: {
     fontWeight: `600`

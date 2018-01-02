@@ -1,14 +1,40 @@
 import React from 'react'
-import { Switch, Route, matchPath } from 'react-router-dom'
+import { Switch, Route, matchPath, Redirect } from 'react-router-dom'
 
 import Components from '../components'
 
 export class SidebarContainer extends React.Component {
-  render() {
-    // const screenProps = {}
-    const match = matchPath(this.props.location.pathname, {
-      path: `${this.props.homePath || ''}/nav/(.*)`
-    }) || { isExact: false }
+  render () {
+    const match =
+      this.props.location.pathname !== this.props.homePath
+        ? matchPath(this.props.location.pathname, {
+          path: `${this.props.homePath}/(.*)`.replace('//', '/')
+        }) || { isExact: false }
+        : { isExact: false }
+
+    const currentRoute =
+      this.props.routeList.find(
+        a =>
+          match.url
+            ? match.url.replace(this.props.homePath, '') === a.path
+            : false
+      ) || {}
+
+    const sizeChart = {
+      md: this.props.md,
+      sm: this.props.sm,
+      lg: this.props.lg,
+      xl: this.props.xl || !(this.props.md || this.props.sm || this.props.lg)
+    }
+
+    if (currentRoute) {
+      sizeChart.md = currentRoute.size === 'md'
+      sizeChart.sm = currentRoute.size === 'sm'
+      sizeChart.lg = currentRoute.size === 'lg'
+      sizeChart.xl =
+        currentRoute.size === 'xl' ||
+        !['md', 'sm', 'lg'].includes(currentRoute.size)
+    }
 
     return (
       <Components.partials.SidebarContainer
@@ -16,28 +42,49 @@ export class SidebarContainer extends React.Component {
         stickToTop={this.props.stickToTop}
         stickToTopXLG={this.props.stickToTopXLG}
         fullHeight={this.props.fullHeight}
-        md={this.props.md}
-        sm={this.props.sm}
+        zIndex={currentRoute.zIndex === undefined ? false : currentRoute.zIndex}
+        navigation={
+          currentRoute.navigation === undefined ? true : currentRoute.navigation
+        }
+        {...sizeChart}
       >
         <Switch>
-          {this.props.routeList.map((route, index) => (
-            <Route
-              key={index}
-              exact={route.exact}
-              path={`${this.props.homePath || ''}/nav${route.path}`}
-              title={route.title}
-              render={props => (
-                <Components.partials.SidebarContent
-                  md={this.props.md}
-                  sm={this.props.sm}
-                  title={route.title}
-                  homePath={this.props.homePath || '/'}
-                >
-                  <route.component {...props} />
-                </Components.partials.SidebarContent>
-              )}
-            />
-          ))}
+          {this.props.routeList.map((route, index) => {
+            const RouteComponent = !route.to ? Route : Redirect
+            return (
+              <RouteComponent
+                key={index}
+                exact={route.exact}
+                path={
+                  route.to
+                    ? null
+                    : `${this.props.homePath}${route.path}`.replace('//', '/')
+                }
+                from={
+                  !route.to
+                    ? null
+                    : `${this.props.homePath}${route.path}`.replace('//', '/')
+                }
+                to={!route.to ? null : route.to}
+                title={route.title}
+                render={props => (
+                  <Components.partials.SidebarContent
+                    close={route.close === undefined ? true : route.close}
+                    title={route.title}
+                    homePath={this.props.homePath || '/'}
+                  >
+                    <route.component
+                      {...sizeChart}
+                      {...props}
+                      title={route.title}
+                      homeTitle={this.props.homeTitle}
+                      match={this.props.match}
+                    />
+                  </Components.partials.SidebarContent>
+                )}
+              />
+            )
+          })}
         </Switch>
       </Components.partials.SidebarContainer>
     )

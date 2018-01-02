@@ -4,6 +4,7 @@ export const mainStyle = {
     height: `250px`,
     backgroundImage: `url('/img/audio_bg.png')`,
     backgroundPosition: `center`,
+    backgroundSize: `cover`,
     display: `flex`,
     justifyContent: `center`,
     alignItems: `center`,

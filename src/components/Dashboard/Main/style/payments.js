@@ -19,6 +19,12 @@ export const paymentStyle = {
     fontSize: `14px`,
     textAlign: `center`
   },
+  nameTextSpan: {
+    textAlign: `left`,
+    whiteSpace: `nowrap`,
+    overflow: `hidden`,
+    textOverflow: `ellipsis`
+  },
   idSpan: {
     color: `#3f295a`
   },

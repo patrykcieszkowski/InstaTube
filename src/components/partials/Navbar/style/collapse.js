@@ -10,19 +10,20 @@ export const collapseStyle = {
     }
   },
   userCollapseBox: {
-    top: `30px`,
     position: `absolute`,
-    width: `100%`,
+    left: `-55px`,
+    top: `55px`,
+    width: `210px`,
     maxHeight: `0px`,
     overflow: `hidden`,
     borderRadius: `0 0 6px 6px`,
-    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`
+    boxShadow: `0px 8px 17px 0px rgba(0,0,0,0.15)`,
+    transition: `all 0.2s cubic-bezier(0.77, 0, 0.175, 1)`
   },
   userCollapseBoxActive: {
     maxHeight: `300px`
   },
   userCollapseWrapper: {
-    paddingTop: `30px`,
     background: `#f2f6f7`,
     ':after': {
       display: `none`
@@ -34,7 +35,8 @@ export const collapseStyle = {
     margin: 0
   },
   main: {
-    '@media only screen and (min-width : 992px)': {
+    '@media only screen and (min-width : 1200px)': {
+      height: `80px`,
       display: `flex`,
       background: `none`,
       ':after': {
@@ -43,16 +45,22 @@ export const collapseStyle = {
     }
   },
   mainList: {
-    maxWidth: `500px`,
     width: `100%`,
     '@media only screen and (min-width : 1200px)': {
-      // marginRight: `285px`,
-      marginLeft: `calc(33.33333% + 5px)`,
       zIndex: 99
+    },
+    '@media only screen and (min-width : 1200px) and (max-width : 1399px)': {
+      maxWidth: `500px`
+    },
+    '@media only screen and (min-width : 1400px) and (max-width : 1799px)': {
+      maxWidth: `600px`
+    },
+    '@media only screen and (min-width : 1800px)': {
+      maxWidth: `700px`
     }
   },
   mainListItem: {
-    '@media only screen and (min-width : 992px)': {
+    '@media only screen and (min-width : 1200px)': {
       border: `none`
     }
   },
@@ -68,10 +76,19 @@ export const collapseStyle = {
     display: `block`,
     width: `100%`,
     textAlign: `center`,
-    fontWeight: 600
+    fontWeight: 600,
+    ':hover': {
+      color: `#e1306c`
+    }
   },
   linkHighlight: {
-    color: `#4d5bd8`
+    color: `#4d5bd8`,
+    ':hover': {
+      color: `#4d5bd8`
+    }
+  },
+  activeLink: {
+    color: `#e1306c`
   }
 }
 

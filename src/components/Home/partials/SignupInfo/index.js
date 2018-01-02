@@ -7,7 +7,7 @@ import style from './style'
 
 const SignupInfo = () => [
   <Col xs="12" key={0}>
-    <h1 className={css(style.signup.h1)}>Why should you register?</h1>
+    <h3 className={css(style.signup.h3)}>Why should you register?</h3>
   </Col>,
   <Col xs="12" key={1}>
     <ul className={css(style.signup.list)}>
@@ -19,19 +19,20 @@ const SignupInfo = () => [
   </Col>,
   <Col xs="12" key={2}>
     <Row>
-      <Col xs="10">
-        <Link to="/nav/auth" className={css(style.signup.signupButton)}>
+      <Col xs="12">
+        <Link to="/auth" className={css(style.signup.signupButton)}>
           Sign me up for FREE!
         </Link>
       </Col>
     </Row>
     <Row>
-      <Col xs="10">
+      <Col xs="9">
         <span className={css(style.signup.loginSpan)}>
           Already got an account?
-          <Link to="/nav/auth" className={css(style.signup.loginLink)}>
-            Login!
+          <Link to="/auth" className={css(style.signup.loginLink)}>
+            Login
           </Link>
+          !
         </span>
       </Col>
     </Row>

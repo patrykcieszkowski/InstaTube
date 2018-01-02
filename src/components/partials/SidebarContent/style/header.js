@@ -1,19 +1,31 @@
 export const headerStyle = {
-  box: {
-    padding: `20px 15px`
-  },
-  sider: {
-    borderRight: `1px solid #e8f1f8`,
-    width: `300px`
-  },
-  h2: {
-    fontSize: `36px`,
-    fontWeight: `100`,
-    color: `#3f295a`
-  },
   closeIcon: {
     fontSize: `38px`,
-    color: `#3f295a`
+    color: `#3f295a`,
+    ':hover': {
+      color: `#E1306A`
+    }
+  },
+  closeButton: {
+    cursor: `pointer`,
+    position: `absolute`,
+    zIndex: 101
+  },
+  lgCloseButton: {
+    top: `30px`,
+    right: `30px`,
+    '@media (min-width: 1200px)': {
+      top: `60px`,
+      right: `60px`
+    }
+  },
+  mdCloseButton: {
+    top: `30px`,
+    right: `30px`,
+    '@media (min-width: 1200px)': {
+      top: `20px`,
+      right: `60px`
+    }
   }
 }
 

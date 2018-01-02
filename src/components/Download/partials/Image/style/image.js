@@ -1,9 +1,13 @@
 export const imageStyle = {
   wrapper: {},
   box: {
-    position: `relative`
+    position: `relative`,
+    '@media (min-width: 1200px)': {
+      padding: 0
+    }
   },
   enlargeButton: {
+    cursor: `pointer`,
     position: `absolute`,
     display: `block`,
     top: `0`,
@@ -18,7 +22,10 @@ export const imageStyle = {
   },
   image: {
     width: `100%`,
-    borderRadius: `5px`
+    borderRadius: `5px`,
+    '@media print': {
+      opacity: 0
+    }
   },
   blur: {
     filter: `blur(3px)`

@@ -7,6 +7,10 @@ import views from './views'
 import links from './links'
 import sliders from './sliders'
 import errors from './errors'
+import main from './main'
+import status from './status'
+import ppv from './ppv'
+import progress from './progress'
 
 export default {
   form: StyleSheet.create(form),
@@ -15,5 +19,9 @@ export default {
   dropzone: StyleSheet.create(dropzone),
   links: StyleSheet.create(links),
   sliders: StyleSheet.create(sliders),
-  errors: StyleSheet.create(errors)
+  errors: StyleSheet.create(errors),
+  main: StyleSheet.create(main),
+  status: StyleSheet.create(status),
+  ppv: StyleSheet.create(ppv),
+  progress: StyleSheet.create(progress)
 }

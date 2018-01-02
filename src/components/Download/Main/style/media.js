@@ -13,16 +13,31 @@ export const mediaStyle = {
     width: `100%`,
     borderRadius: `5px`,
     overflow: `hidden`,
-    margin: `0 5px`
+    margin: `0 0`
   },
   image: {
     width: `100%`
+  },
+  videoWrapper: {
+    width: `100%`,
+    borderRadius: `5px`,
+    overflow: `hidden`,
+    margin: `0 5px`
+  },
+  audioWrapper: {
+    width: `100%`,
+    borderRadius: `5px`,
+    overflow: `hidden`,
+    margin: `0 5px`
   },
   titleH2: {
     fontSize: `28px`,
     fontWeight: `600`,
     textAlign: `center`,
     color: `#3C2557`,
+    whiteSpace: `nowrap`,
+    overflow: `hidden`,
+    textOverflow: `ellipsis`,
     '@media only screen and (min-width : 1200px)': {
       textAlign: `left`,
       padding: `0 5px`,

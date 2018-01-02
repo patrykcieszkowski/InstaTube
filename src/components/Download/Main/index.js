@@ -1,6 +1,10 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Row, Col } from 'reactstrap'
+import { matchPath, Redirect } from 'react-router-dom'
+/* eslint-disable no-unused-vars */
+import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import style from './style'
 
@@ -9,69 +13,129 @@ import Media from './partials/Media'
 import SignupInfo from './partials/SignupInfo'
 import PieTimer from '../../partials/PieTimer'
 
+@inject('media', 'alert')
+@observer
 export class Main extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     const state = {}
     state.timer = {}
+    state.loadComplete = false
+    state.mediaCompleted = false
     this.state = state
+    this.media = this.props.media.media
   }
 
-  onTimerComplete() {
-    console.log('hello')
+  onLoadComplete () {
+    this.setState({
+      ...this.state,
+      loadComplete: true
+    })
   }
 
-  onTimerProgress(timer) {
+  onTimerComplete () {
+    this.props.history.push('/')
+  }
+
+  onTimerProgress (timer) {
     this.setState({
       ...this.state,
       timer
     })
   }
 
-  render() {
-    return (
-      <Container fluid fullHeight minHeight>
-        <Row className={css(style.grid.content)}>
-          <Col xs="12" className={`d-lg-none ${css(style.timer.wrapper)}`}>
-            <Row className={css(style.timer.row)} />
-            <PieTimer
-              ref="timer"
-              style={{
-                position: `absolute`,
-                top: `calc(50% - 50px)`,
-                right: `calc(50% - 50px)`
-              }}
-              onComplete={this.onTimerComplete.bind(this)}
-              onProgress={this.onTimerProgress.bind(this)}
-              timeout={120}
-              stroke={12}
-              size={94}
-            />
-          </Col>
+  onMediaComplete () {
+    this.setState({
+      ...this.state,
+      mediaCompleted: true
+    })
+  }
 
+  renderTimer () {
+    if (!this.props.media.media.premium || !this.state.loadComplete) {
+      return null
+    }
+
+    return (
+      <PieTimer
+        ref='timer'
+        renderClassName={css(style.timer.timer)}
+        onComplete={this.onTimerComplete.bind(this)}
+        onProgress={this.onTimerProgress.bind(this)}
+        timeout={this.props.media.media.display}
+        stroke={12}
+        size={118}
+      />
+    )
+  }
+
+  render () {
+    const isLocked = matchPath(this.props.location.pathname, {
+      path: `${this.props.match.url}/locked`.replace('//', '/')
+    })
+
+    if (!this.props.media.media && !this.props.media.error) {
+      return null
+    }
+
+    if (
+      (this.props.media.error && !this.props.media.error.success) ||
+      !this.props.media.media.active
+    ) {
+      this.props.alert.setAlert({
+        active: true,
+        text:
+          this.props.media.error && this.props.media.error.content
+            ? this.props.media.error.content
+            : `Item's validity period has expired!`,
+        success: {
+          text: 'OK'
+        }
+      })
+
+      return <Redirect to={`/`} />
+    }
+
+    if (
+      this.props.media.error ||
+      (!this.props.media.media.premium && this.state.mediaCompleted)
+    ) {
+      return <Redirect to={`/`} />
+    }
+
+    if (!isLocked && !this.props.media.media.unlock) {
+      return (
+        <Redirect to={`${this.props.match.url}/locked`.replace('//', '/')} />
+      )
+    }
+
+    return [
+      <div
+        key={0}
+        style={{ display: isLocked ? `block` : `none` }}
+        className={css(style.main.overlay)}
+      />,
+      <Container key={1} fluid fullHeight minHeight>
+        <Row className={css(style.main.content)}>
           <Col
-            xl="3"
-            className={`d-none d-xl-flex justify-content-end ${css(
+            xs='12'
+            xl='3'
+            className={`${css(
               style.timer.wrapper
-            )}`}
+            )} d-xl-flex justify-content-xl-end`}
           >
-            <PieTimer
-              ref="timer"
-              style={{
-                position: `relative`
-              }}
-              onComplete={this.onTimerComplete.bind(this)}
-              onProgress={this.onTimerProgress.bind(this)}
-              timeout={120}
-              stroke={12}
-              size={118}
+            <Row className={`${css(style.timer.row)} d-lg-none `} />
+            {this.renderTimer()}
+          </Col>
+          <Col xs='12' xl='6'>
+            <Media
+              timer={this.state.timer}
+              onLoadComplete={this.onLoadComplete.bind(this)}
+              onMediaComplete={this.onMediaComplete.bind(this)}
             />
           </Col>
-          <Col xs="12" xl="6">
-            <Media timer={this.state.timer} />
-          </Col>
           <Col
-            xl="3"
+            xl='3'
             className={`d-none d-xl-flex align-items-center ${css(
               style.signup.wrapper
             )}`}
@@ -82,7 +146,7 @@ export class Main extends React.Component {
           </Col>
         </Row>
       </Container>
-    )
+    ]
   }
 }
 

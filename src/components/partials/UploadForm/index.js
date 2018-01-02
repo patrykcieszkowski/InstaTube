@@ -1,36 +1,100 @@
 import React from 'react'
 import { css } from 'aphrodite'
-import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap'
-import { Link } from 'react-router-dom'
-import Dropzone from 'react-dropzone'
+import { Row } from 'reactstrap'
+import attrAccept from 'attr-accept'
+import copyToClipboard from 'copy-to-clipboard'
+/* eslint-disable no-unused-vars */
+import { inject, observer } from 'mobx-react'
+/* eslint-enable no-unused-vars */
 
 import style from './style'
 
-export class UploadForm extends React.Component {
+import UploadForm from './partials/UploadForm'
+import Success from './partials/Success'
+import Error from './partials/Error'
+import Progress from './partials/Progress'
+
+/* eslint-disable no-unused-vars */
+const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*,video/mp4'
+const ATTR_ACCEPT_MEDIA = 'video/*,audio/*'
+/* eslint-enable no-unused-vars */
+
+@inject('uploadform', 'uploads', 'auth', 'user')
+@observer
+export class Upload extends React.Component {
   constructor() {
     super()
     this.state = {
-      files: [],
-      viewNumberCheckbox: false,
-      validity: {
-        hour: 1,
-        minute: 0
+      filename: '',
+      message: '',
+      upload: {
+        file: null,
+        error: null
       },
-      displayTime: 1
+      validity: {
+        hour: 0,
+        minute: 1
+      },
+      displayTime: 1,
+      links: {
+        instagram: false,
+        ppv: false
+      },
+      views: {
+        view: true,
+        number: 1
+      },
+      success: false,
+      viewTypes: {
+        ppv: 0,
+        instagram: ''
+      }
     }
   }
 
-  onDrop(files) {
+  onDropRejected(files) {
     this.setState({
       ...this.state,
-      files
+      upload: {
+        file: null,
+        error: attrAccept(files[0], ATTR_ACCEPT_ALL)
+          ? 'File is too large'
+          : 'Invalid media format'
+      }
+    })
+  }
+
+  onDropAccepted(files) {
+    this.setState({
+      ...this.state,
+      upload: {
+        file: files[0],
+        error: false
+      }
+    })
+  }
+
+  onFilenameChange(e) {
+    this.setState({
+      ...this.state,
+      filename: e.target.value
+    })
+  }
+
+  onMessageChange(e) {
+    this.setState({
+      ...this.state,
+      message: e.target.value
     })
   }
 
   toggleCheckbox() {
     this.setState({
       ...this.state,
-      viewNumberCheckbox: !this.state.viewNumberCheckbox
+      views: {
+        ...this.state.views,
+        view: !this.state.views.view
+      }
     })
   }
 
@@ -39,7 +103,7 @@ export class UploadForm extends React.Component {
       ...this.state,
       validity: {
         ...this.state.validity,
-        [type]: type === 'hour' ? e.target.value : e.target.value * 15
+        [type]: e.target.value
       }
     })
   }
@@ -51,190 +115,237 @@ export class UploadForm extends React.Component {
     })
   }
 
+  onLinkClick(type, e) {
+    if (!this.props.dashboard) {
+      return
+    }
+
+    e.preventDefault()
+    const links = { ...this.state.links }
+    const viewTypes = { ...this.state.viewTypes }
+    Object.keys(links).forEach(a => {
+      links[a] = !!(a === type && !links[a])
+      viewTypes[a] = links[a] ? viewTypes[a] : a === 'ppv' ? 0 : ''
+    })
+
+    this.setState({
+      ...this.state,
+      links,
+      viewTypes
+    })
+  }
+
+  onViewsNumberChange(e) {
+    if (e.target.value !== '' && !e.target.value.match(/^\d+$/)) {
+      return e.preventDefault()
+    }
+
+    this.setState({
+      ...this.state,
+      views: {
+        ...this.state.views,
+        number:
+          +e.target.value < 1
+            ? e.target.value.length ? 1 : ''
+            : +e.target.value > 999 ? 999 : e.target.value
+      }
+    })
+  }
+
+  onPPVInputChange(e) {
+    if (e.target.value !== '' && !e.target.value.match(/^(\d+\.?\d*|\.\d+)$/)) {
+      return e.preventDefault()
+    }
+
+    this.setState({
+      ...this.state,
+      viewTypes: {
+        ...this.state.viewTypes,
+        ppv: e.target.value
+      }
+    })
+  }
+
+  onInstagramInputChange(e) {
+    this.setState({
+      ...this.state,
+      viewTypes: {
+        ...this.state.viewTypes,
+        instagram: e.target.value
+      }
+    })
+  }
+
+  onInstagramSelectChange(option) {
+    this.setState({
+      ...this.state,
+      viewTypes: {
+        ...this.state.viewTypes,
+        instagram: option.value
+      }
+    })
+  }
+
+  onFormSubmit(e) {
+    e.preventDefault()
+
+    if (!this.state.upload.file && (
+      this.state.viewTypes.ppv > 0
+      || this.state.viewTypes.instagram !== ''
+      || this.state.links.instagram
+      || this.state.links.ppv
+    ))
+    {
+      return this.setState({
+        upload: {
+          file: null,
+          error: 'You can\'t use PPV options without uploading the file.'
+        }
+      })
+    }
+
+    this.props.uploadform
+      .upload(
+        {
+          message: this.state.message,
+          views: this.state.views,
+          viewType: this.state.viewTypes,
+          displayTime: this.state.displayTime,
+          validity: this.state.validity,
+          viewTypes: this.state.viewTypes
+        },
+        this.state.upload.file
+      )
+      .then(() => {
+        if (this.props.auth.auth.local) {
+          this.props.uploads.fetch()
+          this.props.user.fetchDashboard()
+        }
+      })
+  }
+
+  onCopyLinkClick(e) {
+    e.preventDefault()
+
+    if (!this.props.uploadform.response) {
+      return
+    }
+
+    copyToClipboard(this.props.uploadform.response.url)
+  }
+
+  onBackLinkClick(e) {
+    e.preventDefault()
+    this.setState({
+      filename: '',
+      message: '',
+      upload: {
+        file: null,
+        error: false
+      },
+      validity: {
+        hour: 0,
+        minute: 1
+      },
+      displayTime: 1,
+      links: {
+        instagram: false,
+        ppv: false
+      },
+      views: {
+        view: true,
+        number: 1
+      },
+      success: false,
+      viewTypes: {
+        ppv: 0,
+        instagram: ''
+      }
+    })
+    this.props.uploadform.reset()
+  }
+
+  onResetStoreClick(e) {
+    e.preventDefault()
+    this.props.uploadform.reset()
+  }
+
   render() {
     return (
-      <Form className={css(style.form.form)}>
-        <FormGroup className={css(style.form.group)}>
-          <Dropzone
-            onDrop={this.onDrop.bind(this)}
-            className={`${css(
-              style.dropzone.wrapper
-            )} d-flex align-items-center justify-content-center`}
-          >
-            <Row className={css(style.form.row)}>
-              <Col className="justify-content-center">
-                <button type="button" className={css(style.dropzone.button)}>
-                  <i
-                    className={`la la-plus ${css(style.dropzone.buttonIcon)}`}
-                    aria-hidden="true"
-                    title="add"
-                  />
-                </button>
-              </Col>
-              <Col className="d-flex flex-column justify-content-center">
-                <Row className={css(style.form.row)}>
-                  <span className={css(style.dropzone.titleSpan)}>
-                    Add your file
-                  </span>
-                </Row>
-                <Row className={css(style.form.row)}>
-                  <span className={css(style.dropzone.descSpan)}>
-                    Maximum{' '}
-                    <span className={css(style.dropzone.boldSpan)}>
-                      2.00GB / 12h
-                    </span>
-                  </span>
-                </Row>
-              </Col>
-            </Row>
-          </Dropzone>
-        </FormGroup>
-        <FormGroup className={css(style.form.group)}>
-          <Row className={css(style.errors.fileErrorWrapper)}>
-            <Col className={css(style.errors.fileErrorBox)} xs="10">
-              <span className={css(style.errors.fileErrorSpan)}>
-                File is too large
-              </span>
-            </Col>
-            <Col>
-              <span className={css(style.errors.fileErrorCloseButton)}>
-                <i
-                  className={`la la-close ${css(
-                    style.errors.fileErrorCloseIcon
-                  )}`}
-                  aria-hidden="true"
-                  title="close"
-                />
-              </span>
-            </Col>
-          </Row>
-        </FormGroup>
-        <FormGroup className={css(style.form.group, style.message.box)}>
-          <Input placeholder="Message" className={css(style.message.input)} />
-        </FormGroup>
-        <FormGroup className={css(style.form.group, style.links.box)}>
-          <Row className={css(style.form.row)}>
-            <Col
-              xs="7"
-              className={css(
-                style.links.wrapper,
-                style.links.instagramLinkWrapper
-              )}
-            >
-              <Link to="/login" className={css(style.links.link)}>
-                Instagram follow for view
-              </Link>
-            </Col>
-            <Col
-              className={css(style.links.wrapper, style.links.PPVLinkWrapper)}
-            >
-              <Link to="/login" className={css(style.links.link)}>
-                Pay per view
-              </Link>
-            </Col>
-          </Row>
-        </FormGroup>
-        <FormGroup className={css(style.form.group)}>
-          <Row className={css(style.form.row)}>
-            <Col xs="12">
-              <h4 className={css(style.sliders.h4)}>Display time</h4>
-            </Col>
-          </Row>
-          <Row className={css(style.form.row)}>
-            <Col xs="10" className={css(style.sliders.wrapper)}>
-              <input
-                type="range"
-                min="1"
-                max="100"
-                value={this.state.displayTime}
-                onChange={this.onDisplayTimeChange.bind(this)}
-                className={css(style.sliders.slider)}
-              />
-            </Col>
-            <Col xs="2" className={css(style.sliders.labelWrapper)}>
-              <span className={css(style.sliders.label)}>
-                {this.state.displayTime}h
-              </span>
-            </Col>
-          </Row>
-        </FormGroup>
-        <FormGroup className={css(style.form.group)}>
-          <Row className={css(style.form.row)}>
-            <Col xs="12">
-              <h4 className={css(style.sliders.h4)}>Validity period</h4>
-            </Col>
-          </Row>
-          <Row className={css(style.form.row)}>
-            <Col xs="5" className={css(style.sliders.wrapper)}>
-              <input
-                type="range"
-                min="1"
-                max="100"
-                value={this.state.validity.hour}
-                onChange={this.onValidityChange.bind(this, 'hour')}
-                className={css(style.sliders.slider)}
-              />
-            </Col>
-            <Col xs="1" className={css(style.sliders.labelWrapper)}>
-              <span className={css(style.sliders.label)}>
-                {this.state.validity.hour}h
-              </span>
-            </Col>
-            <Col xs="4" className={css(style.sliders.wrapper)}>
-              <input
-                type="range"
-                min="0"
-                max="4"
-                value={this.state.validity.minute / 15}
-                onChange={this.onValidityChange.bind(this, 'minute')}
-                className={css(style.sliders.slider)}
-              />
-            </Col>
-            <Col xs="2" className={css(style.sliders.labelWrapper)}>
-              <span className={css(style.sliders.label)}>
-                {this.state.validity.minute}m
-              </span>
-            </Col>
-          </Row>
-        </FormGroup>
-        <FormGroup className={css(style.form.group, style.views.box)}>
-          <Row className={css(style.form.row)}>
-            <Col xs="7" className={css(style.views.inputWrapper)}>
-              <Input
-                type="number"
-                placeholder="Number of views"
-                className={css(style.views.input)}
-                disabled={!this.state.viewNumberCheckbox}
-              />
-            </Col>
-            <Col className="d-flex flex-column justify-content-center">
-              <input
-                type="checkbox"
-                id="views_checkbox"
-                checked={this.state.viewNumberCheckbox}
-                onChange={this.toggleCheckbox.bind(this)}
-                className={css(style.views.checkbox)}
-              />
-              <label htmlFor="views_checkbox">
-                <span
-                  className={css(
-                    this.state.viewNumberCheckbox
-                      ? style.views.spanChecked
-                      : style.views.span
-                  )}
-                >
-                  No limit views
-                </span>
-              </label>
-            </Col>
-          </Row>
-        </FormGroup>
-        <Button type="submit" className={css(style.form.submitButton)}>
-          Create link!
-        </Button>
-      </Form>
+      <Row className={css(style.main.wrapper)}>
+        <RenderError
+          onClick={this.onResetStoreClick.bind(this)}
+          {...this.props.uploadform}
+          error={this.props.uploadform.error}
+        />
+        <RenderProgress {...this.props.uploadform} />
+        <RenderSuccess
+          onCopyLinkClick={this.onCopyLinkClick.bind(this)}
+          onBackLinkClick={this.onBackLinkClick.bind(this)}
+          {...this.props.uploadform}
+        />
+        <RenderUploadForm
+          request={this.props.uploadform.request}
+          response={this.props.uploadform.response}
+          stateError={this.state.upload.error}
+          error={this.props.uploadform.error}
+          currency={this.props.currency}
+          authState={this.props.auth.auth.local}
+          instagramAccounts={this.props.instagramAccounts}
+          onFormSubmit={this.onFormSubmit.bind(this)}
+          onDropRejected={this.onDropRejected.bind(this)}
+          onDropAccepted={this.onDropAccepted.bind(this)}
+          onFilenameChange={this.onFilenameChange.bind(this)}
+          onMessageChange={this.onMessageChange.bind(this)}
+          onInstagramClick={this.onLinkClick.bind(this, 'instagram')}
+          onPPVClick={this.onLinkClick.bind(this, 'ppv')}
+          onPPVInputChange={this.onPPVInputChange.bind(this)}
+          onInstagramSelectChange={this.onInstagramSelectChange.bind(this)}
+          onInstagramInputChange={this.onInstagramInputChange.bind(this)}
+          onDisplayTimeChange={this.onDisplayTimeChange.bind(this)}
+          onValidityMinuteChange={this.onValidityChange.bind(this, 'minute')}
+          onValidityHourChange={this.onValidityChange.bind(this, 'hour')}
+          onViewsNumberChange={this.onViewsNumberChange.bind(this)}
+          onCheckboxClick={this.toggleCheckbox.bind(this)}
+          onErrorCloseClick={() =>
+            this.setState({ ...this.state, upload: { error: null } })}
+          state={this.state}
+        />
+      </Row>
     )
   }
 }
 
-export default UploadForm
+const RenderError = props => {
+  if (!props.error || props.request || props.response) {
+    return null
+  }
+
+  return <Error onClick={props.onClick} error={props.error} />
+}
+
+const RenderProgress = props => {
+  if (!props.request || props.error || props.response) {
+    return null
+  }
+
+  return <Progress />
+}
+
+const RenderSuccess = props => {
+  if (!props.response || props.error) {
+    return null
+  }
+
+  return <Success {...props} url={props.response.url} />
+}
+
+const RenderUploadForm = props => {
+  if (props.request || props.response || props.error) {
+    return null
+  }
+
+  return <UploadForm {...props} />
+}
+
+export default Upload

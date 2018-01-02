@@ -55,7 +55,7 @@ export class PieTimer extends React.Component {
 
         clearInterval(interval)
       }
-    }, 1000)
+    }, 500)
   }
 
   render() {
@@ -68,6 +68,7 @@ export class PieTimer extends React.Component {
           width: this.state.size + 6,
           height: this.state.size + 6
         }}
+        className={this.props.renderClassName || ''}
       >
         <svg
           width={this.state.size + 6}
