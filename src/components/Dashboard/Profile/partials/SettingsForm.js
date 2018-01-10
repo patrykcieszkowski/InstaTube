@@ -99,8 +99,17 @@ export const BankInputs = props => (
       <Input
         placeholder='Bank account number'
         className={css(style.inputs.input)}
-        name={`swift`}
+        name={`bank`}
         defaultValue={props.profile.bank}
+        onChange={props.onTextChange}
+      />
+    </Col>
+    <Col xs='12' className={css(style.inputs.wrapper)}>
+      <Input
+        placeholder='BIC/SWIFT'
+        className={css(style.inputs.input)}
+        name={`swift`}
+        defaultValue={props.profile.swift}
         onChange={props.onTextChange}
       />
     </Col>
