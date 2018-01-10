@@ -39,15 +39,6 @@ export const PasswordInputs = props => (
         onChange={props.onTextChange}
       />
     </Col>
-    <Col xs='12' className={css(style.inputs.wrapper)}>
-      <Input
-        placeholder='Current Password'
-        type='password'
-        className={css(style.inputs.input)}
-        name={`current`}
-        onChange={props.onTextChange}
-      />
-    </Col>
   </Row>
 )
 
