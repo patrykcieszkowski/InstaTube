@@ -15,7 +15,7 @@ import PasswordForm from './partials/PasswordForm'
 import ScrollArea from '../../partials/ScrollArea'
 import Alert from '../../partials/FormAlert'
 
-@inject('user', 'alert')
+@inject('user', 'auth', 'alert')
 @observer
 export class Profile extends React.Component {
   constructor (props) {
@@ -77,7 +77,9 @@ export class Profile extends React.Component {
   }
 
   onAccountDeleteConfirm() {
-    // delete account
+    this.props.user.deleteAccount()
+      .then((data) => this.props.auth.logout())
+      .catch(console.error)
   }
 
   render () {
