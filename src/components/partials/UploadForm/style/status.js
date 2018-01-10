@@ -63,11 +63,19 @@ const stateStyle = {
     color: `white`,
     fontSize: `18px`,
     fontWeight: `600`,
-    width: `100%`
+    width: `100%`,
+    ':hover': {
+      color: `#e1306c`,
+      background: `white`,
+    }
   },
   resetButton: {
     background: `#fdc741`,
-    borderColor: `#fdc741`
+    borderColor: `#fdc741`,
+    ':hover': {
+      color: `#fdc741`,
+      background: `white`
+    }
   }
 }
 
