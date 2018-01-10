@@ -2,6 +2,8 @@ import React from 'react'
 import { css } from 'aphrodite'
 import { Form, FormGroup, Input, Button, Row, Col } from 'reactstrap'
 
+import countryList from '../../../../countries'
+
 import style from '../style'
 
 export const SettingsForm = props => (
@@ -72,6 +74,18 @@ export const PersonalInputs = props => (
         defaultValue={props.profile.city}
         onChange={props.onTextChange}
       />
+    </Col>
+    <Col xs='12' className={css(style.inputs.wrapper)}>
+      <select
+        className={css(style.inputs.input, style.inputs.select)}
+        defaultValue={props.profile.country}
+        name={`country`}
+        onChange={props.onTextChange}
+      >
+        { countryList.map((item, i) => (
+          <option key={i} value={item.code}>{ `${item.name} (${item.code})` }</option>
+        )) }
+      </select>
     </Col>
   </Row>
 )
