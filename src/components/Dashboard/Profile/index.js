@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from 'aphrodite'
 import { Container, Row } from 'reactstrap'
+
 /* eslint-disable no-unused-vars */
 import { inject, observer } from 'mobx-react'
 /* eslint-enable no-unused-vars */
@@ -9,11 +10,12 @@ import style from './style'
 
 import SidebarHeader from '../../partials/SidebarHeader'
 import SettingsForm from './partials/SettingsForm'
+import AccountForm from './partials/AccountForm'
 import PasswordForm from './partials/PasswordForm'
 import ScrollArea from '../../partials/ScrollArea'
 import Alert from '../../partials/FormAlert'
 
-@inject('user')
+@inject('user', 'alert')
 @observer
 export class Profile extends React.Component {
   constructor (props) {
@@ -57,6 +59,27 @@ export class Profile extends React.Component {
     this.props.user.postPassword(newData)
   }
 
+  onAccountDeleteSubmit(e) {
+    e.preventDefault()
+
+    this.props.alert.setAlert({
+      active: true,
+      text: `Are you sure you want to delete your account?`,
+      success: {
+        text: `Yes`,
+        onClick: this.onAccountDeleteConfirm.bind(this)
+      },
+      cancel: {
+        text: `No`,
+        onClick: () => {}
+      }
+    })
+  }
+
+  onAccountDeleteConfirm() {
+    // delete account
+  }
+
   render () {
     return (
       <Container fluid className={css(style.main.container)}>
@@ -75,6 +98,7 @@ export class Profile extends React.Component {
           onFormSubmit={this.onPasswordFormSubmit.bind(this)}
         />
         <AccountForm 
+          onFormSubmit={this.onAccountDeleteSubmit.bind(this)}
         />
       </Container>
     )
