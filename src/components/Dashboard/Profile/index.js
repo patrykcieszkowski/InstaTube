@@ -74,6 +74,8 @@ export class Profile extends React.Component {
           onTextChange={this.onTextChange.bind(this, 'password')}
           onFormSubmit={this.onPasswordFormSubmit.bind(this)}
         />
+        <AccountForm 
+        />
       </Container>
     )
   }
