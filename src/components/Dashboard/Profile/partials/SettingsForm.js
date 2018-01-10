@@ -16,10 +16,6 @@ export const SettingsForm = props => (
     </FormGroup>
 
     <FormGroup className={css(style.form.group)}>
-      <BankInputs profile={props.profile} onTextChange={props.onTextChange} />
-    </FormGroup>
-
-    <FormGroup className={css(style.form.group)}>
       <Button className={css(style.buttons.button)}>Save</Button>
     </FormGroup>
   </Form>
@@ -28,7 +24,7 @@ export const SettingsForm = props => (
 export const PersonalInputs = props => (
   <Row className={css(style.form.row)}>
     <Col xs='12' className={css(style.labels.wrapper)}>
-      <h4 className={css(style.labels.h4)}>basic</h4>
+      <h4 className={css(style.labels.h4)}>Bank Information</h4>
     </Col>
     <Col xs='12' xl='6' className={css(style.inputs.wrapper)}>
       <Input
@@ -87,14 +83,7 @@ export const PersonalInputs = props => (
         )) }
       </select>
     </Col>
-  </Row>
-)
 
-export const BankInputs = props => (
-  <Row className={css(style.form.row)}>
-    <Col xs='12' className={css(style.labels.wrapper)}>
-      <h4 className={css(style.labels.h4)}>bank information</h4>
-    </Col>
     <Col xs='12' className={css(style.inputs.wrapper)}>
       <Input
         placeholder='Bank account number'
