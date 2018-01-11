@@ -110,6 +110,7 @@ export const PersonalInputs = props => (
         name={`currency`}
         onChange={props.onTextChange}
       >
+        <option value={-1}>Currency</option>
         { currencyList.map((item, i) => (
           <option key={i} value={item.code}>{ `${item.code}` }</option>
         )) }
