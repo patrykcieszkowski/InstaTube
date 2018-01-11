@@ -50,6 +50,16 @@ export class Auth extends React.Component {
     })
   }
 
+  onAlertClick(e) {
+    e.preventDefault()
+
+    this.props.auth.clearErrors()
+    this.setState({
+      ...this.state,
+      error: null
+    })
+  }
+
   render () {
     const remindResponse = this.props.auth.response.remind
     const remindAlert =
@@ -77,7 +87,10 @@ export class Auth extends React.Component {
             <Row>
               <SidebarHeader title={`Remind Password`} md={false} paddingTop />
             </Row>
-            <RenderAlert {...remindAlert} />
+            <RenderAlert
+              {...remindAlert}
+              onClick={this.onAlertClick.bind(this)}
+            />
             <RemindForm
               alert={remindAlert}
               onTextChange={this.onTextChange.bind(this)}

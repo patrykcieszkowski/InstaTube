@@ -108,6 +108,16 @@ export class Locked extends React.Component {
     })
   }
 
+  onAlertClick(e) {
+    e.preventDefault()
+
+    this.props.payment.clearErrors()
+    this.setState({
+      ...this.state,
+      error: null
+    })
+  }
+
   render () {
     return (
       <LockedComponent
@@ -118,6 +128,7 @@ export class Locked extends React.Component {
         onPaymentFormSubmit={this.onPaymentFormSubmit.bind(this)}
         onRulesClick={this.onRulesClick.bind(this)}
         onTextChange={this.onTextChange.bind(this)}
+        onAlertClick={this.onAlertClick.bind(this)}
         payment={this.props.media.payment}
         state={this.state}
       />

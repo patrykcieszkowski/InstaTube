@@ -133,6 +133,23 @@ export class Auth extends React.Component {
     })
   }
 
+  onAlertClick(e) {
+    e.preventDefault()
+
+    this.props.auth.clearErrors()
+    this.setState({
+      ...this.state,
+      login: {
+        ...this.state.login,
+        error: null
+      },
+      register: {
+        ...this.state.register,
+        error: null
+      }
+    })
+  }
+
   render () {
     const loginResponse = this.props.auth.response.login
     const loginAlert =
@@ -171,7 +188,10 @@ export class Auth extends React.Component {
                 <Row>
                   <SidebarHeader title={`Login`} paddingTop paddingBottom />
                 </Row>
-                <RenderAlert {...loginAlert} />
+                <RenderAlert
+                  {...loginAlert}
+                  onClick={this.onAlertClick.bind(this)}                  
+                />
                 <LoginForm
                   onFacebookLogin={this.onFacebookLogin.bind(this)}
                   onInstagramLogin={this.onInstagramLogin.bind(this)}
@@ -196,7 +216,10 @@ export class Auth extends React.Component {
                   />
                   <SidebarHeader title={`Register`} className={`d-xl-none`} />
                 </Row>
-                <RenderAlert {...registerAlert} />
+                <RenderAlert 
+                  {...registerAlert}
+                  onClick={this.onAlertClick.bind(this)}
+                />
                 <RegisterForm
                   onTextChange={this.onTextChange.bind(this, 'register')}
                   onSubmit={this.onRegisterFormSubmit.bind(this)}

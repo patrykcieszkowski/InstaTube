@@ -82,19 +82,30 @@ export class Profile extends React.Component {
       .catch(console.error)
   }
 
+  onAlertClick(e, type) {
+    e.preventDefault()
+    this.props.user.clearErrors(type)
+  }
+
   render () {
     return (
       <Container fluid className={css(style.main.container)}>
         <Row>
           <SidebarHeader title='Profile' paddingBottom md />
         </Row>
-        <Alert {...this.props.user.profile.response} />
+        <Alert 
+          {...this.props.user.profile.response}
+          onClick={this.onAlertClick.bind(this, 'profile')}
+        />
         <SettingsForm
           profile={this.props.user.profile.data}
           onTextChange={this.onTextChange.bind(this, 'settings')}
           onFormSubmit={this.onSettingsFormSubmit.bind(this)}
         />
-        <Alert {...this.props.user.password.response} />
+        <Alert 
+          {...this.props.user.password.response}
+          onClick={this.onAlertClick.bind(this, 'password')}
+        />
         <PasswordForm
           onTextChange={this.onTextChange.bind(this, 'password')}
           onFormSubmit={this.onPasswordFormSubmit.bind(this)}

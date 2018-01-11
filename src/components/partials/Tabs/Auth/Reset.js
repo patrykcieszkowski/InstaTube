@@ -56,6 +56,16 @@ export class Reset extends React.Component {
     })
   }
 
+  onAlertClick(e) {
+    e.preventDefault()
+
+    this.props.auth.clearErrors()
+    this.setState({
+      ...this.state,
+      error: null
+    })
+  }
+
   render () {
     const resetResponse = this.props.auth.response.recovery
     const resetAlert =
@@ -83,7 +93,10 @@ export class Reset extends React.Component {
             <Row>
               <SidebarHeader title={`Reset Password`} md={false} paddingTop />
             </Row>
-            <RenderAlert {...resetAlert} />
+            <RenderAlert
+              {...resetAlert}
+              onClick={this.onAlertClick.bind(this)}
+            />
             <ResetPasswordForm
               onTextChange={this.onTextChange.bind(this)}
               onFormSubmit={this.onFormSubmit.bind(this)}
