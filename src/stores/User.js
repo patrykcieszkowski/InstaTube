@@ -6,7 +6,9 @@ class User {
   @observable
   profile = {
     data: {},
-    response: {}
+    response: {
+      content: 'test'
+    }
   }
   @observable
   password = {
@@ -115,6 +117,14 @@ class User {
     //   "total": "1254.00",
     //   "currency": "USD"
     // }
+  }
+
+  @action clearErrors(type) {
+    if (!this[type]) {
+      return
+    }
+
+    this[type].response = {}
   }
 }
 
