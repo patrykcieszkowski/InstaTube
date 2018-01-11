@@ -79,6 +79,7 @@ export const PersonalInputs = props => (
         name={`country`}
         onChange={props.onTextChange}
       >
+        <option value={-1}>Country</option>
         { countryList.map((item, i) => (
           <option key={i} value={item.code}>{ `${item.name} (${item.code})` }</option>
         )) }
