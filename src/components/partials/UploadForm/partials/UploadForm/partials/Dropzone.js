@@ -96,10 +96,10 @@ const RenderDescSpan = props => {
 
   return (
     <span className={css(style.dropzone.descSpan)}>
-      Maximum{' '}
       <span className={css(style.dropzone.boldSpan)}>
-        2.00GB / {`24h`}
+        2.00GB
       </span>
+      {' '}active links
     </span>
   )
 }
