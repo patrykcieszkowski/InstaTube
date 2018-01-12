@@ -106,7 +106,7 @@ export class UploadedList extends React.Component {
         <ListItem
           key={index}
           index={index}
-          item={{ ...item, active: !!+item.active } || {}}
+          item={{ ...item, active: +item.active } || {}}
           currency={this.props.user.dashboard.data.currency}
           onDateActionHover={this.onDateActionHover.bind(this, index, true)}
           onDateActionHoverOut={this.onDateActionHover.bind(this, index, false)}

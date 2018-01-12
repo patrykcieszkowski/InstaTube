@@ -158,14 +158,19 @@ export const uploadedStyle = {
   },
   statusCircle: {
     display: `block`,
-    background: `#67d85b`,
     borderRadius: `50%`,
     width: `8px`,
     height: `8px`,
     margin: `8px`
   },
+  statusCircleOffline: {
+    background: `#9ca2a5`,
+  },
   statusCircleOnline: {
     background: `#7eca12`
+  },
+  statusCirclePending: {
+    background: `#0080ff`
   },
   actionIcon: {
     textDecoration: `none`,
