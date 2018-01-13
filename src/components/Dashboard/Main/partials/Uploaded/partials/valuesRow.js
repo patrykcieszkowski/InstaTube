@@ -16,6 +16,8 @@ const ItemValuesRow = props => {
       ? utils.secondsToTime((endDateUnix - nowDateUnix) / 1000).slice(0, 3)
       : null
 
+  const statusCircleClass = props.item.active === 1 ? 'statusCircleOnline' : props.item.active === 2 ? 'statusCirclePending' : 'statusCircleOffline'
+
   return (
     <Row
       onMouseOver={props.onDateActionHover}
@@ -33,7 +35,7 @@ const ItemValuesRow = props => {
         <div
           className={css(
             style.uploaded.statusCircle,
-            props.item.active ? style.uploaded.statusCircleOnline : ''
+            style.uploaded[statusCircleClass]
           )}
         />
       </Column>
