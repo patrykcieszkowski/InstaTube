@@ -38,7 +38,10 @@ const Payment = props => {
           />
         </Col>
         <Col xs='12'>
-          <Alert {...paymentAlert} />
+          <Alert
+            {...paymentAlert}
+            onClick={props.onAlertClick}
+          />
         </Col>
         <Col xs='12'>
           <PaymentForm

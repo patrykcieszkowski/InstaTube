@@ -8,7 +8,10 @@ const RenderAlert = props => {
   const alert = props.content && props.alert ? props.alert : 'hide'
 
   return (
-    <Row className={css(style.alert.fileAlertWrapper, style.alert[alert])}>
+    <Row 
+      className={css(style.alert.fileAlertWrapper, style.alert[alert])}
+      onClick={props.onClick}
+    >
       <Col className={css(style.alert.fileAlertBox)} xs='10'>
         <span
           className={css(style.alert.fileAlertSpan)}

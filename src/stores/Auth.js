@@ -317,6 +317,15 @@ class Auth {
         }
       })
   }
+
+  @action clearErrors() {
+    this.response = {
+      login: null,
+      register: null,
+      remind: null,
+      recovery: null
+    }
+  }
 }
 
 const AuthStore = (window.AuthStore = new Auth())

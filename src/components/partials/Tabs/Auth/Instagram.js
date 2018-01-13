@@ -103,6 +103,19 @@ export class InstagramAuth extends React.Component {
     })
   }
 
+  onAlertClick(e) {
+    e.preventDefault()
+
+    this.props.auth.clearErrors()
+    this.setState({
+      ...this.state,
+      register: {
+        ...this.state.register,
+        error: null
+      }
+    })
+  }
+
   render () {
     if (!this.state.hashParams.instagram_token) {
       return <Redirect to='/' />
@@ -141,7 +154,10 @@ export class InstagramAuth extends React.Component {
                     className={`d-xl-none`}
                   />
                 </Row>
-                <RenderAlert {...registerAlert} />
+                <RenderAlert
+                  {...registerAlert}
+                  onClick={this.onAlertClick.bind(this)}
+                />
                 <RegisterInstagramForm
                   onTextChange={this.onTextChange.bind(this, 'register')}
                   onSubmit={this.onRegisterFormSubmit.bind(this)}

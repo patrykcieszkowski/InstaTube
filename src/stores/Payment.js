@@ -23,6 +23,10 @@ class Payment {
         this.response = err.response.data
       })
   }
+
+  @action clearErrors() {
+    this.response = null
+  }
 }
 
 export default new Payment()

@@ -58,6 +58,10 @@ class Social {
         console.log(err)
       })
   }
+
+  @action clearErrors() {
+    this.data.response = {}
+  }
 }
 
 export default new Social()

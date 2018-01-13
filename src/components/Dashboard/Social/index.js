@@ -26,13 +26,21 @@ export class Social extends React.Component {
     window.location.href = `https://api.instagram.com/oauth/authorize/?client_id=${instagram.apikey}&redirect_uri=${instagram.url}&response_type=code&scope=basic+follower_list+relationships+public_content`
   }
 
+  onAlertClick(e) {
+    e.preventDefault()
+    this.props.social.clearErrors()
+  }
+
   render () {
     return (
       <Container fluid className={css(style.main.container)}>
         <Row>
           <SidebarHeader title='Social Networks' paddingBottom md />
         </Row>
-        <Alert {...this.props.social.data.response} />
+        <Alert 
+          {...this.props.social.data.response}
+          onClick={this.onAlertClick.bind(this)}
+        />
         <Row className={css(style.main.mainRow)}>
           <Col xs='12' className={css(style.history.wrapper)}>
             <SocialHistory />
