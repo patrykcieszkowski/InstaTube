@@ -87,6 +87,11 @@ class User {
       })
   }
 
+  @action deleteAccount() {
+    const API_URL = process.env.REACT_APP_API_URL
+    return axios.post(`${API_URL}/actions/delete`)
+  }
+
   @computed
   get getTransfer() {
     return this.dashboard.data.transfer

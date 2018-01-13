@@ -13,6 +13,15 @@ const buttonStyle = {
       background: 'white',
       color: '#e1306c'
     }
+  },
+  delete: {
+    background: `white`,
+    color: `#3f295a`,
+    borderColor: `#3f295a`,
+    ':hover': {
+      background: '#3f295a',
+      color: 'white'
+    }
   }
 }
 
