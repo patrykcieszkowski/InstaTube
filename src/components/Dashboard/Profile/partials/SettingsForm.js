@@ -3,6 +3,7 @@ import { css } from 'aphrodite'
 import { Form, FormGroup, Input, Button, Row, Col } from 'reactstrap'
 
 import countryList from '../../../../countries'
+import currencyList from '../../../../currencies'
 
 import style from '../style'
 
@@ -93,7 +94,7 @@ export const PersonalInputs = props => (
         onChange={props.onTextChange}
       />
     </Col>
-    <Col xs='12' className={css(style.inputs.wrapper)}>
+    <Col xs='8' className={css(style.inputs.wrapper)}>
       <Input
         placeholder='BIC/SWIFT'
         className={css(style.inputs.input)}
@@ -101,6 +102,19 @@ export const PersonalInputs = props => (
         defaultValue={props.profile.swift}
         onChange={props.onTextChange}
       />
+    </Col>
+    <Col xs='4' className={css(style.inputs.wrapper)}>
+      <select
+        className={css(style.inputs.input, style.inputs.select)}
+        defaultValue={props.profile.currency}
+        name={`currency`}
+        onChange={props.onTextChange}
+      >
+        <option value={-1}>Currency</option>
+        { currencyList.map((item, i) => (
+          <option key={i} value={item.code}>{ `${item.code}` }</option>
+        )) }
+      </select>
     </Col>
   </Row>
 )
