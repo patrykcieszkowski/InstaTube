@@ -9,7 +9,7 @@ export const headerStyle = {
   closeButton: {
     cursor: `pointer`,
     position: `absolute`,
-    zIndex: 101
+    zIndex: 98
   },
   lgCloseButton: {
     top: `30px`,
