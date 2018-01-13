@@ -34,7 +34,6 @@ export const uploadedStyle = {
     paddingRight: `35px`
   },
   titleBlockSpan: {
-    display: `block`,
     fontSize: `12px`,
     fontWeight: `100`,
     color: `#8c9194`,

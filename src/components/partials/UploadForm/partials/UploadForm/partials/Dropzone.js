@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone'
 
 import style from '../../../style'
 
-const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*'
+const ATTR_ACCEPT_ALL = 'video/*,audio/*,image/*,video/mp4'
 
 const RenderDropzone = props => (
   <FormGroup className={css(style.form.group)}>
@@ -72,15 +72,35 @@ const RenderTitle = props => {
       </Row>
       <Row className={css(style.form.row)}>
         <Col>
-          <span className={css(style.dropzone.descSpan)}>
-            Maximum{' '}
-            <span className={css(style.dropzone.boldSpan)}>
-              2.00GB / {`24h`}
-            </span>
-          </span>
+          <RenderDescSpan validity={props.state.validity} />
         </Col>
       </Row>
     </Col>
+  )
+}
+
+const RenderDescSpan = props => {
+  if (props.validity.hour > 0 || props.validity.minute > 1) {
+    return (
+      <span className={css(style.dropzone.descSpan)}>
+        Validity: {' '}
+        <span className={css(style.dropzone.boldSpan)}>
+          {props.validity.hour}h
+        </span>{' '}
+        <span className={css(style.dropzone.boldSpan)}>
+          {props.validity.minute}m
+        </span>
+      </span>
+    )
+  }
+
+  return (
+    <span className={css(style.dropzone.descSpan)}>
+      Maximum{' '}
+      <span className={css(style.dropzone.boldSpan)}>
+        2.00GB / {`24h`}
+      </span>
+    </span>
   )
 }
 

@@ -14,24 +14,22 @@ const HOME_NAME = 'Dashboard'
 @observer
 export class DashboardContiner extends React.Component {
   componentWillMount () {
-    if (!this.props.auth.auth.local) {
-      return
-    }
-
-    this.props.user.fetchProfile()
-    this.props.user.fetchDashboard()
-    this.props.uploads.fetch()
-    this.props.payments.fetch()
-    this.props.social.fetch()
-
-    this.interval = setInterval(() => {
+    if (this.props.auth.auth.local) {
+      this.props.user.fetchProfile()
+      this.props.user.fetchDashboard()
       this.props.uploads.fetch()
-    }, 1000 * 60 * 5)
+      this.props.payments.fetch()
+      this.props.social.fetch()
+
+      this.interval = setInterval(() => {
+        this.props.uploads.fetch()
+      }, 1000 * 60 * 5)
+    }
 
     document.title = HOME_NAME
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearInterval(this.interval)
   }
 
@@ -101,6 +99,7 @@ export class DashboardContiner extends React.Component {
         />
         <Components.partials.Container fluid noPadding minHeight fullHeight>
           <Components.Dashboard.Main homeTitle={HOME_NAME} />
+          <Components.partials.Alert />
         </Components.partials.Container>
         <Sidebar
           {...this.props}

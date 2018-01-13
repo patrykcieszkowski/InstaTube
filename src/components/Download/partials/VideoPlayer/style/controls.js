@@ -1,22 +1,3 @@
-const sliderThumbStyle = {
-  appearance: `none`,
-  borderColor: `#e1306c`,
-  borderStyle: `solid`,
-  borderRadius: `50%`,
-  marginTop: `-8px`,
-  background: `#e2e6ea`,
-  cursor: `pointer`
-}
-
-const sliderTrackstyle = {
-  width: `100%`,
-  height: `8px`,
-  borderRadius: `5px`,
-  background: `#e2e6ea`,
-  border: `none`,
-  cursor: `pointer`
-}
-
 export const controlStyle = {
   wrapper: {
     background: `linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 12%, rgba(0,0,0, 0) 25%, rgba(0,0,0,0.25) 69%, rgba(0, 0, 0, 0.7) 91%)`,
@@ -62,57 +43,45 @@ export const controlStyle = {
   },
   bottomControlsWrapper: {
     display: `flex`,
-    flexDirection: `column`,
-    flexBasis: `80px`
+    flexDirection: `column`
   },
   bottomControls: {
     display: `flex`,
     flexDirection: `row`,
-    justifyContent: `center`,
+    justifyContent: `space-between`,
     alignItems: `center`
   },
+  bottomControlsSide: {
+    display: `flex`,
+    flexDirection: `row`,
+    alignItems: `center`,
+    padding: `10px 5px`    
+  },
   bottomControlsButton: {
-    fontSize: `34px`,
+    position: `relative`,
+    fontSize: `24px`,
     color: `white`,
     textDecoration: `none`,
-    padding: `0 10px`
+    padding: `0 5px`
   },
-  sliderWrapper: {
-    margin: `20px 15px`
+  timerange: {
+    color: `white`,
+    fontSize: `14px`
   },
-  slider: {
-    appearance: `none`,
-    width: `100%`,
-    borderRadius: `5px`,
-
-    '::-webkit-slider-runnable-track': {
-      ...sliderTrackstyle
-    },
-    '::-moz-range-track': {
-      '-moz-appearance': `none`,
-      ...sliderTrackstyle
-    },
-    '::-webkit-slider-thumb': {
-      width: `24px`,
-      height: `24px`,
-      borderWidth: `6px`,
-      '-webkit-appearance': `none`,
-      ...sliderThumbStyle
-    },
-    '::-moz-range-thumb': {
-      width: `18px`,
-      height: `18px`,
-      borderWidth: `6px`,
-      '-moz-appearance': `none`,
-      ...sliderThumbStyle
-    },
-    ':-moz-focusring': {
-      outline: `1px solid white`,
-      outlineOffset: `-1px`
-    },
-    ':focus': {
-      outline: `none`
-    }
+  qualityMark: {
+    position: `absolute`,
+    zIndex: 10,
+    background: `#e12f6c`,
+    top: `0px`,
+    right: `0px`,
+    color: `white`,
+    fontSize: `8px`,
+    padding: `0 3px`,
+    margin: `3px 0`
+  },
+  gearIcon: {
+    position: `relative`,
+    zIndex: 11
   }
 }
 

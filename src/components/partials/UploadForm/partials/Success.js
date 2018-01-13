@@ -9,10 +9,9 @@ export const Success = props => (
     <Row className={css(style.status.infoBox, style.status.success)}>
       <Col xs='1' className={css(style.status.col)} />
       <Col
-        xs='1'
-        className={`${css(
-          style.status.col
-        )}  d-flex justify-content-center align-items-center`}
+        xs='auto'
+        className={`${css(style.status.col, style.status.iconWrapper)}
+        d-flex justify-content-center align-items-center`}
       >
         <i
           className={`la la-check-circle-o ${css(style.status.icon)}`}

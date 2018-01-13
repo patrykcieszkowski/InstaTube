@@ -21,14 +21,14 @@ export const linksStyle = {
     border: `2px solid #e1306c`,
     borderRadius: `5px`,
     color: `#e1306c`,
-    '@media (min-width: 1200px)': {
-      fontSize: `18px`
-    },
     transition: `all 0.1s cubic-bezier(0.47, 0, 0.745, 0.715)`,
-    ':hover': {
-      color: 'white',
-      background: '#e1306c'
-    }
+    '@media (min-width: 1200px)': {
+      fontSize: `18px`,
+      ':hover': {
+        color: 'white',
+        background: '#e1306c'
+      }
+    },
   },
   active: {
     color: 'white',

@@ -8,11 +8,12 @@ import utils from '../../../../../../utils'
 import style from '../../../style'
 
 const ItemValuesRow = props => {
-  const endDate = new Date(props.item.end).getTime()
-  const nowDate = Date.now()
-  let parsedTime =
-    endDate > nowDate
-      ? utils.secondsToTime((endDate - nowDate) / 1000).slice(0, 3)
+  const endDate = utils.dateTimeStringToDate(props.item.end)
+  const endDateUnix = endDate.getTime()
+  const nowDateUnix = new Date().getTime()
+  const parsedTime =
+    endDateUnix > nowDateUnix
+      ? utils.secondsToTime((endDateUnix - nowDateUnix) / 1000).slice(0, 3)
       : null
 
   return (
@@ -107,8 +108,16 @@ const ItemValuesRow = props => {
           {props.item.earn ? `${props.item.earn}${props.currency}` : '-'}
         </span>
       </Column>
-      <ActionExpireColumn props={props} parsedTime={parsedTime} />
-      <DTimeLeftColumn props={props} parsedTime={parsedTime} />
+      <ActionExpireColumn
+        props={props}
+        parsedTime={parsedTime}
+        endDate={endDate}
+      />
+      <DTimeLeftColumn
+        props={props}
+        parsedTime={parsedTime}
+        endDate={endDate}
+      />
       <ActionsColumn props={props} />
       <NamepBlockColumn props={props} />
       <CopyBlockColumn props={props} />
@@ -116,7 +125,7 @@ const ItemValuesRow = props => {
   )
 }
 
-const ActionExpireColumn = ({ props, parsedTime }) => (
+const ActionExpireColumn = ({ props, parsedTime, endDate }) => (
   <Column
     xl='3'
     xxl
@@ -143,6 +152,13 @@ const ActionExpireColumn = ({ props, parsedTime }) => (
             ? parsedTime.map(val => `${val[0]}${val[1][0]}`).join(' ')
             : 'end'}
         </span>
+        <span
+          className={`${css(
+            style.uploaded.valueSpan
+          )} d-flex d-xl-none justify-content-xl-center align-items-center`}
+        >
+          {parsedTime ? `${endDate.getHours()}:${endDate.getMinutes()}` : 'end'}
+        </span>
       </div>
       <div>
         <RenderActions {...props} />
@@ -159,17 +175,6 @@ const RenderActions = props => {
           style.uploaded.valueSpan
         )} d-flex justify-content-xl-center align-items-center`}
       >
-        <a href='#extend' onClick={props.onExtendItemClick}>
-          <i
-            className={`la la-clock-o ${css(
-              style.uploaded.actionIcon,
-              style.uploaded.actionIconExtend
-            )}`}
-            aria-hidden='true'
-            title='clock'
-          />
-        </a>
-
         <a href='#delete' onClick={props.onDeleteItemClick}>
           <i
             className={`la la-trash-o ${css(
@@ -356,7 +361,7 @@ const CopyBlockColumn = ({ props }) => (
   </Column>
 )
 
-const DTimeLeftColumn = ({ props, parsedTime }) => (
+const DTimeLeftColumn = ({ props, parsedTime, endDate }) => (
   <Column
     xs='12'
     xxxxl='2'
@@ -368,18 +373,18 @@ const DTimeLeftColumn = ({ props, parsedTime }) => (
     <span
       className={`${css(
         style.uploaded.valueSpan
-      )} d-flex d-xl-none align-items-center`}
-    >
-      {props.item.end || 'end'}
-    </span>
-    <span
-      className={`${css(
-        style.uploaded.valueSpan
-      )} d-none d-xl-flex align-items-center justify-content-center`}
+      )} d-none d-xl-flex align-items-center justify-content-xl-center`}
     >
       {parsedTime
         ? parsedTime.map(val => `${val[0]}${val[1][0]}`).join(' ')
         : 'end'}
+    </span>
+    <span
+      className={`${css(
+        style.uploaded.valueSpan
+      )} d-flex d-xl-none align-items-center justify-content-xl-center`}
+    >
+      {parsedTime ? `${endDate.getHours()}:${endDate.getMinutes()}` : 'end'}
     </span>
   </Column>
 )

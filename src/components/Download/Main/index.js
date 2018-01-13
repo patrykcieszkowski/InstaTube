@@ -13,7 +13,7 @@ import Media from './partials/Media'
 import SignupInfo from './partials/SignupInfo'
 import PieTimer from '../../partials/PieTimer'
 
-@inject('media')
+@inject('media', 'alert')
 @observer
 export class Main extends React.Component {
   constructor (props) {
@@ -21,6 +21,7 @@ export class Main extends React.Component {
     const state = {}
     state.timer = {}
     state.loadComplete = false
+    state.mediaCompleted = false
     this.state = state
     this.media = this.props.media.media
   }
@@ -40,6 +41,13 @@ export class Main extends React.Component {
     this.setState({
       ...this.state,
       timer
+    })
+  }
+
+  onMediaComplete () {
+    this.setState({
+      ...this.state,
+      mediaCompleted: true
     })
   }
 
@@ -70,7 +78,28 @@ export class Main extends React.Component {
       return null
     }
 
-    if (this.props.media.error) {
+    if (
+      (this.props.media.error && !this.props.media.error.success) ||
+      !this.props.media.media.active
+    ) {
+      this.props.alert.setAlert({
+        active: true,
+        text:
+          this.props.media.error && this.props.media.error.content
+            ? this.props.media.error.content
+            : `Item's validity period has expired!`,
+        success: {
+          text: 'OK'
+        }
+      })
+
+      return <Redirect to={`/`} />
+    }
+
+    if (
+      this.props.media.error ||
+      (!this.props.media.media.premium && this.state.mediaCompleted)
+    ) {
       return <Redirect to={`/`} />
     }
 
@@ -102,6 +131,7 @@ export class Main extends React.Component {
             <Media
               timer={this.state.timer}
               onLoadComplete={this.onLoadComplete.bind(this)}
+              onMediaComplete={this.onMediaComplete.bind(this)}
             />
           </Col>
           <Col

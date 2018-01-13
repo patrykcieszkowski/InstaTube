@@ -2,36 +2,42 @@ export const mainStyle = {
   container: {
     background: 'white',
     position: 'absolute',
-    overflow: `hidden`,
+    overflowX: `hidden`,
     padding: `0`,
     boxShadow: `0px 0px 17px 0px rgba(0,0,0,0.15)`,
     top: `10px`,
     width: `0`,
-    bottom: `0`,
     right: `0`,
     transition: `all 0.5s cubic-bezier(0.77, 0, 0.175, 1)`,
     transform: `translate3d(100%, 0, 0)`,
     marginTop: `130px`,
     '@media only screen and (min-width : 1200px)': {
+      bottom: `0`,
       marginTop: `80px`
     }
   },
   stickToTop: {
     top: `0px`,
     paddingTop: `130px`,
-    marginTop: `0`
+    marginTop: `0`,
+    '@media only screen and (min-width : 1200px)': {
+      paddingTop: `80px`
+    }
   },
   'xlg-stickToTop': {
     '@media only screen and (min-width : 1200px)': {
       marginTop: `0`,
       top: `0px`,
-      paddingTop: `130px`
+      paddingTop: `130px`,
+      '@media only screen and (min-width : 1200px)': {
+        paddingTop: `80px`
+      }
     }
   },
   fullHeight: {
     height: `calc(100% - 80px)`,
     '@media only screen and (min-width : 1200px)': {
-      height: `100%`
+      height: 'auto'
     }
   },
   zIndex: {

@@ -44,13 +44,13 @@ const RenderMedia = props => {
     case 'audio':
       return (
         <Col className={css(style.media.box, style.media.audioWrapper)}>
-          <Audio media={props.media} />
+          <Audio media={props.media} onMediaComplete={props.onMediaComplete} />
         </Col>
       )
     case 'video':
       return (
         <Col className={css(style.media.box, style.media.videoWrapper)}>
-          <Video media={props.media} />
+          <Video media={props.media} onMediaComplete={props.onMediaComplete} />
         </Col>
       )
     case 'image':
