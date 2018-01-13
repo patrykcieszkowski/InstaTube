@@ -80,20 +80,6 @@ const RenderTitle = props => {
 }
 
 const RenderDescSpan = props => {
-  if (props.validity.hour > 0 || props.validity.minute > 1) {
-    return (
-      <span className={css(style.dropzone.descSpan)}>
-        Validity: {' '}
-        <span className={css(style.dropzone.boldSpan)}>
-          {props.validity.hour}h
-        </span>{' '}
-        <span className={css(style.dropzone.boldSpan)}>
-          {props.validity.minute}m
-        </span>
-      </span>
-    )
-  }
-
   return (
     <span className={css(style.dropzone.descSpan)}>
       <span className={css(style.dropzone.boldSpan)}>
