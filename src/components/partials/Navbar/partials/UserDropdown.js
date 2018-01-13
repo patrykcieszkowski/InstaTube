@@ -7,8 +7,17 @@ import utils from '../../../../utils'
 import style from '../style'
 
 export class UserDropdown extends React.Component {
+  constructor(props) {
+    super(props)
+    this.onClickout = this.onClickDocument.bind(this)
+  }
+
   componentDidMount () {
-    document.addEventListener('click', this.onClickDocument.bind(this))
+    document.addEventListener('click', this.onClickout)
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('click', this.onClickout)
   }
 
   onClickDocument (e) {
