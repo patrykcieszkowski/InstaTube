@@ -41,7 +41,7 @@ export const Success = props => (
         className={css(style.status.button)}
         onClick={props.onCopyLinkClick}
       >
-        Copy link to clipboard
+        Copy link
       </Button>
     </Row>
     <Row className={css(style.status.buttonWrapper)}>
