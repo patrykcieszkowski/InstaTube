@@ -28,6 +28,11 @@ export class Profile extends React.Component {
     document.title = `${this.props.title} - ${this.props.homeTitle}`
   }
 
+  componentWillUnmount() {
+    this.props.user.clearErrors('profile')
+    this.props.user.clearErrors('password')
+  }
+
   onTextChange (type, e) {
     this.setState({
       ...this.state,
