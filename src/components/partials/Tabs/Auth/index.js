@@ -81,7 +81,7 @@ export class Auth extends React.Component {
     e.preventDefault()
     window.location.href = `https://api.instagram.com/oauth/authorize/?client_id=${this
       .props.config.instagram
-      .key}&redirect_uri=${`http://it.systemxent.pl/api/auth/instagram`}&response_type=code&scope=basic+follower_list+relationships+public_content`
+      .key}&redirect_uri=${`https://linkstory.com/api/auth/instagram`}&response_type=code&scope=basic+follower_list+relationships+public_content`
   }
 
   onRegisterFormSubmit (e) {
